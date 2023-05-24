@@ -1,0 +1,20 @@
+This is a rough gameplan for a Splunk projects:
+AzureAD Audit Log Forwarding to Splunk
+Cloud Logs Forwarding to Splunk
+
+
+AzureAD Audit Log Forwarding to Splunk: In order to be able to carry out SIEM or investigations on security incidences that could occur
+in AzureAD where users, resources, applications and others are housed in an organization, it is pertinent to be able to get sign in and
+audit logs into Splunk. The steps and integrations that it will take to be able to successfully carry out this task are mapped out and
+highlighted in this project.
+Requirements
+A  running Splunk instance.
+An Active Azure AD.
+Office 0365 Add-On On Splunk
+
+A running Splunk instance: We have got an on-prem splunk instance in our environment that is tightly coupled and not deployed to A
+cluster like most. So there is no fault-tolerant or DR for this particular instance. The index and run in the same instance.
+My problem statement is to integrate this splunk instance with our active directory so that we can be able to view and carry out
+further post mortem on sign-in logs and audit logs in it. Some of the resources I used to carry this out can be found at the top.
+
+The Steps:
