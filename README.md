@@ -40,3 +40,17 @@ drwxr-xr-x- for these 3 groups; the first group(which is the file or folder owne
 Example: "-rw-r--r--" means i am a read and write owner of a file but can execute. the - in the front means it is a file, the rw means the file or directory owner can read or write, the group owner means can only read, while the last means it is only a read info. so i can only read. i can only write, if i am put in group, where i am the file owner. e.g wheel group. So to allow me to be able to write read and execute on new.txt file that currently has this kind of permission, i need to use a command called change mode (chmod)- in 2 ways:
 chmod 777 new.txt - numbering system will give it read, write and execute for every single thing. OR
 chmod +x new.txt - it means i can use "execute" on that file. the file color code will change to green (shows you can execute on a file). it will give the permission to all the 3 groups. it becomes "-rwx-rx--rx". you need this permission i.e a file to be executable if you want to run a script e.g bash script.
+To add a user- run "adduser Jide" and enter a password for it. e.g know the credentials of a new user to be added to populate this. If you are not a root user, you won't be able to perform this process successfully. In order to execute this command, you need to be a root user, so you can run "sudo su" temporarily to be a root user and execute it or enable a root account with "sudo passwd" and run the subsequent commands.
+adduser - to add a new user permissions.
+sudo su - switch to root temporarily
+sudo passwd - password to enable a root account.
+cat /etc/passwd - to access the important file to view users and their permissions to perform actions on directories or files. You find the users that are on the machine at the bottom, other than root. e.g jide is in group 1000 now.
+For "Pentesting" , we are only concerned about the "root user" and the "users on the machine".
+cat /etc/shadow - To look at the shadow file. To get the "hash" for root user at the top and other users on the machine at the bottom e.g jide in my own case. The hashes can be cracked. You can use a tool called "unshadowing" to crack it. You will combine the hash for root in shadow file and passwd file or combine the the two files ( use hashes or files), and "it takes the root and places the 'hash' in the shadow file in place of the x in passwd file and runs the rest(the remaining part of hash) out in the remaining part of the root in the password file. It should crack. To crack someone's password or root password use this- combinantion of shadow file and passwd file or combinantion of hash and x will give you what the root password is or combination of hash for Jide and password for Jide.
+Note: Important
+etc passwd file contains the passwords /etc/passwd
+etc shadow file contains the hashes /etc/shadow
+su - to switch user
+su jide - to switch user to jide.
+Permissions will be denied if user is switched to jide and jide tries to cat the /etc/shadow file because jide is not a root user. not part of the "sudoers" file. jide needs to be in the sudoers file to be able to carry out this permission.
+/var/log# cat auth.log - to check for a "reported user trying to access the machine info" the funny "you will be reported" message
