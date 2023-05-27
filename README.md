@@ -54,3 +54,13 @@ su - to switch user
 su jide - to switch user to jide.
 Permissions will be denied if user is switched to jide and jide tries to cat the /etc/shadow file because jide is not a root user. not part of the "sudoers" file. jide needs to be in the sudoers file to be able to carry out this permission.
 /var/log# cat auth.log - to check for a "reported user trying to access the machine info" the funny "you will be reported" message
+"su -" switch you back to root and it will ask for password
+cd /var/log - cd into var log and then cat auth.log i.e
+/var/log# cat auth.log
+Network Commands:
+ifconfig - it displays info about all network interfaces e.g network mask, ip etc
+ping - to know whether a connection is running or active or not
+arp -a gives info about the association of mac address with ip address.
+netstat - shows you all the ports that are opened and what is connected to those ports.
+netstat -ano
+route - displays routing table
