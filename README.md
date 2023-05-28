@@ -80,3 +80,6 @@ click/hit on enter to go back to the terminal
 cat oluwalana.txt - to view the content of the file
 rm greeting.txt - to remove a file
 sudo rm greeting.txt - to remove a file if you don't have permissions
+Update machine, tools:
+apt update && apt upgrade- to update your machine (this takes time)
+apt install git -y - to install git without prompting for yes. how to install tools
