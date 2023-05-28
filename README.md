@@ -64,3 +64,19 @@ arp -a gives info about the association of mac address with ip address.
 netstat - shows you all the ports that are opened and what is connected to those ports.
 netstat -ano
 route - displays routing table
+history - to get a list of previous commands you have ran
+history | grep ping - to get a list of specific previous commands you have ran for e.g ping.
+~ to go to root folder
+cd ~/Downloads/ - to go to downloads in the root folder.
+Creating and writing files:
+echo "hi" > greeting.txt - to write to a file called greeting.txt
+echo "hi jide" > greeting.txt - you will overwrite what you had in the previous file- it will delete it. To avoid this- if you want to add or append another text to your text file i.e new content, you will use this command >>:
+echo "hi jide" >> greeting.txt - it will append hi jide to the hi in the greeting.txt file.
+touch oluwalana.txt- another way to write to a file.
+nano oluwalana.txt - write to a file- it opens up a file for you. write into it e.g hi olajide. then run the below command to save it: (no vim or vi)
+crtl + x
+click/hit on y to save your file
+click/hit on enter to go back to the terminal
+cat oluwalana.txt - to view the content of the file
+rm greeting.txt - to remove a file
+sudo rm greeting.txt - to remove a file if you don't have permissions
