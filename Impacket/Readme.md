@@ -24,4 +24,10 @@ service postgresql start
 To really start it run the below commands with systemctl enable
 systemctl enable ssh - to make it to be fully active and running - it will enable a symlink
 systemctl enable postgresql - to enable or create a symlink
-service apachejide stop - to stop the webserver service that was created
+service apachejide stop - to stop the webserver service that was created.
+Writing Script;
+cd out of the impacket folder.
+Do a ping of your local ip with a count of 1 to check that it is up: ping -c 1 192.168.1.254
+write it to a file: ping -c 1 192.168.1.254 > ip.txt
+view it: cat ip.txt. it will have same content as when you ping the ip
+Next: Build a ping sweeper
