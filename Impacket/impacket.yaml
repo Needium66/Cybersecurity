@@ -1,0 +1,7 @@
+#Sources
+#https://darknetdiaries.com/imgs/Python-CheatSheet.pdf
+# run an nmap scan to get the ips in the list e.g scan for port 80 on all the machines.
+#it will tell you what is open and what is not open
+# for ip in $(cat iplist.txt); do nmap -p 80 -T4 $ip & done
+# hit enter
+#it will show you all the ips that are open to port 80
