@@ -77,5 +77,20 @@ gpa = 4.0 #float or float(4.0)
 print(int(age))
 print(int(29.9)) #does not round
 
+#putting a string in print. because age is an integer and not a string, we will need to convert age to string to
+#enable an alignment with others
+print("My name is " + " and I am " + str(age) + " years old.")
+
+#To add one more year to my age
+print("\n") #new line
+# The += means we are adding something into what is already there.
+age += 1
+print(age)
+
+#Or do it in terms of variable to add
+birthday = 1
+age += birthday
+print(age)
+
 
 
