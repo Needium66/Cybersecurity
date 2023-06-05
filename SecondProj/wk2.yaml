@@ -65,3 +65,17 @@ Variables and Methods:
 ALL IS FAIR IN LOVE AND WAR
 all is fair in love and war
 All Is Fair In Love And War
+
+print("\n") #new line
+#Another variable execution
+#set your bio as variable.
+#3 variables
+name = "Jide"
+age = 37 #int or int(37)
+gpa = 4.0 #float or float(4.0)
+#Print
+print(int(age))
+print(int(29.9)) #does not round
+
+
+
