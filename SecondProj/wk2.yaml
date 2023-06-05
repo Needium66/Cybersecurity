@@ -1,0 +1,45 @@
+#!/bin/python3
+
+#To print a string
+#Put everything that will be printed in double quotation marks, since it would be string
+print{"Strings and things:"}
+#To print using single quotes
+print{'Hello world'}
+#Print multiline; you have to put it in triple quotes
+print{"""Hello, this is
+a first multiline code!"""}
+#it is recommended to use gedit but unfortunately i was unable to get it installed on my machine.
+#I deviced this method and follow the following steps to get it done on kali
+#I created the week2 folder, by running "mkdir week2"
+#I created a file with nano command and wrote the the code to print it " nano python101.py"
+#I closed the file by running "ctrl + x", y, and "Enter"
+#I ran "chmod +x python101.py" to make the file executable
+#I ran "python3 pyhton101.py" to print what is on the file
+#Unfortunately, i got missing parenthesis error on the file, because i was supposed to use
+#parenthesis and not inverted brackets. So i corrected it by following the steps from nano
+#it worked
+
+#Do concatenation inside of a print
+print("This is a "+" Jide's string")
+
+#To entirely print a new line
+print('\n') new line
+
+#Math: You can do a lot of Math on python without calling a "math module"
+Print("Math time:")
+#add
+Print(50 + 50)
+#subtract
+Print(50-20)
+#multiply
+Print(50 * 50)
+#divide; it could give a number with decimal if it has left overs
+Print(50 / 50)
+#PEMDAS
+Print(50 + 50 - 50 * 50 / 50)
+#exponent
+Print(50 ** 2)
+#modula; takes the remainder after division, gives 0 here
+Print(50 % 2)
+#number without leftovers; after you divide, it will not be float or gives a number with decimal
+Print(50 // 6)
