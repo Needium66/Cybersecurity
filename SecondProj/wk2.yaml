@@ -43,3 +43,25 @@ Print(50 ** 2)
 Print(50 % 2)
 #number without leftovers; after you divide, it will not be float or gives a number with decimal
 Print(50 // 6)
+
+
+print("\n") #new line
+#Variables and Methods
+print("Variables and Methods:")
+#Declare a variable called quote and have a string in it
+quote = "All is fair in love and war"
+#print the length of quote- how many characters make up quote
+print(len(quote))
+#Turn the quote to all uper case
+print(quote.upper())
+#Print it a lower
+print(quote.lower())
+#Print it out in title form
+print(quote.title())
+
+#Output
+Variables and Methods:
+27
+ALL IS FAIR IN LOVE AND WAR
+all is fair in love and war
+All Is Fair In Love And War
