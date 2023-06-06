@@ -273,5 +273,66 @@ Too bad!
                                                                              
 ┌──(root㉿kali)-[~/week2]
 
+#List
+print("\n")
+print("Lists have square brackets:")
+#lets have list of series
+series = ["Snowfall", "House of Cards", "Game of Thrones", "Prison Break", "Power"]
+#there is a lot that can be printed out of this.
+#lets print out the first series in the list
+print(series[0])
+
+#Output
+Lists have square brackets:
+Snowfall
+                                                                             
+┌──(root㉿kali)-[~/week2]
+└─# 
+#print the first and second items on the list
+print(series[0:2]) # to do this, we have to call the first number and a number after the number that we want
+#print up to the item, but not including. Print from first item and second item, but not the third
+
+#slicing
+#print from the item on 1 to the end i.e from House of Cards to Power
+print(series[1:]) #slice, start at 1 and print everything on the list
+print(series[:1]) #slice and stop at 1
+print(series[-1]) #negative 1 prints out the last item on the list
+#print the length of the list; to see how many series are in the list
+print(len(series))
+#add a series to the list
+series.append("The Wire") #it will be at the end of the list; negative 1
+print(series)
+#remove a specific series from the list
+series.pop("Power") #or series.pop(4)
+print(series)
+#remove the last series in the list; negative 1
+series.pop()
+print(series) #it will remove The Wire
+
+#Output
+['Snowfall', 'House of Cards']
+['House of Cards', 'Game of Thrones', 'Prison Break', 'Power']
+['Snowfall']
+Power
+5
+['Snowfall', 'House of Cards', 'Game of Thrones', 'Prison Break', 'Power', 'The Wire']
+Traceback (most recent call last):
+  File "/root/week2/python101.py", line 172, in <module>
+    series.pop("Power") #or series.pop(4)
+TypeError: 'str' object cannot be interpreted as an integer
+#There is an error with series.pop("Power") that it is not an integer. so the correct thing is series.pop(4)
+#Output
+['Snowfall', 'House of Cards', 'Game of Thrones', 'Prison Break', 'The Wire']
+['Snowfall', 'House of Cards', 'Game of Thrones', 'Prison Break']
+#lets pair or combined series with persons
+
+series = ["Snowfall", "House of Cards", "Game of Thrones", "Prison Break", "Power"]
+person = ["Jide", "Lana", "Awwal", "Abiona", "Funke"]
+combined = zip(series, person)
+print(list(combined))
+
+#Output
+[('Snowfall', 'Jide'), ('House of Cards', 'Lana'), ('Game of Thrones', 'Awwal'), ('Prison Break', 'Abiona'), ('Power', 'Funke')]
+
 
 
