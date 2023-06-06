@@ -335,4 +335,29 @@ print(list(combined))
 [('Snowfall', 'Jide'), ('House of Cards', 'Lana'), ('Game of Thrones', 'Awwal'), ('Prison Break', 'Abiona'), ('Power', 'Funke')]
 
 
+#Tuples
+#you cannot change or modify tupes;cannot add or remove
+#cannot pop or append inn tuples
+print("Tuples have parenthesis and cannot change:")
+grades = ("A", "B", "C", "D", "F")
+print(grades[1])
+
+#Looping
+print("For loops - start to finish of iterate:")
+#e.g iterate an ip from 1 through 55, until done
+#declare a list
+vegetables = ["cucumber", "spinach", "cabbage"]
+#write a for loop
+for x in vegetables: #iterate through the list, vegetables
+        print(x)
+
+#while loop
+print("While loop - Execute as long as True:")
+#it usually starts with i = 1
+i = 1 #declare i = 1
+#then the while loop
+while i < 10: #while i is less than 10
+        print(i)
+        i += 1 #keep on iterating until the end.
+
 
