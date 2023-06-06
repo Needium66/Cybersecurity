@@ -92,5 +92,61 @@ birthday = 1
 age += birthday
 print(age)
 
+print("\n") #new line
+#Functions
+#Best for when we are trying to do something repeatedly: execute it repeatedly.
+#tab, spacing and syntax are very important to executing this. tabs for indentation
+#right spacing and appropriate syntax
+#you have to use def in function
+#you have to use colon too
+print("Functions:")
+def who am i():
+#tab next
+        name = "Jide" #declare a variable
+        age = 37 #declare another variable
+        print("My name is " + " and I am " + str(age) + " years old.") #print out something
+#call the function now
+#everything in the function will get executed
+#it will print out whatever is defined inside the function and nothing else
+#prints out what resides in the function alone
+who__am__i()
+#got a syntacx error when i first ran this, because i did not put double underscore in the function call
+#that i had (who am i)
+
+#Output error message
+┌──(root㉿kali)-[~/week2]
+└─# nano python101.py   
+                                                                             
+┌──(root㉿kali)-[~/week2]
+└─# python3 python101.py
+  File "/root/week2/python101.py", line 59
+    def who am i():
+            ^^
+SyntaxError: invalid syntax
+                                                                             
+┌──(root㉿kali)-[~/week2]
+└─# 
+#Output another error message for not defining the function appropriately. 
+# it should be def who__am__i():
+┌──(root㉿kali)-[~/week2]
+└─# python3 python101.py
+  File "/root/week2/python101.py", line 59
+    def who am i():
+            ^^
+SyntaxError: invalid syntax
+                                                                             
+┌──(root㉿kali)-[~/week2]
+└─# 
+#The output: Expected output
+Functions:
+My name is  and I am 37 years old.
+                                                                             
+┌──(root㉿kali)-[~/week2]
+└─# 
+
+
+
+
+
 
 
