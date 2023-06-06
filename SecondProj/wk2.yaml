@@ -219,5 +219,59 @@ test_not = not True
 
 print(test_and) # this should give False, since one of them is false.
 
+#Conditional statements
+print("Conditional statements:")
+print("\n")
+def soda(money):
+# wants to buy a soda that costs $2
+#so if you have $2
+        if money >= 2:
+                return "You have got yourself a soda!"
+        else:
+                return "No, you can't get a soda!"
+#print soda if you have got $3
+print(soda(3))
+#print soda if you have got $1
+print(soda(1))
+
+#Output
+Conditional statements:
+
+
+You have got yourself a soda!
+No, you can't get a soda!
+                                                                             
+┌──(root㉿kali)-[~/week2]
+└─# 
+# a little more complicated
+# military age and iq- you have to have above 150 in iq test for you to join and above 18
+def military(age,iq_test):
+#You are of age and you passed the iq_test
+        if (age >= 18) and (iq_test >= 150):
+                return "Congratulations! You are qualified!"
+#You are of age, but you bungled the iq_test
+        elif (age >= 18) and (iq_test < 150):
+                return "You are of age, but you are not qualified with the test"
+#You are not of age, but you did very well in the test
+        elif (age < 18) and (iq_test > 150):
+                return "You are on the right track, come back when you are of age"
+#You are not of age and you did not do very well in the test
+        elif (age < 18) and (iq_test < 150):
+                return "Too bad!"
+
+#print statement
+print(military(20,150))
+print(military(20,140))
+print(military(17,160))
+print(military(17,140))
+
+#Output
+Congratulations! You are qualified!
+You are of age, but you are not qualified with the test
+You are on the right track, come back when you are of age
+Too bad!
+                                                                             
+┌──(root㉿kali)-[~/week2]
+
 
 
