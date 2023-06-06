@@ -198,6 +198,26 @@ bool5 = "True"
 print(type(bool5)) # gives a string
 
 #Memorize the truth table
+#https://stackoverflow.com/questions/4445948/understanding-logic-in-python-exercise-27-of-learn-python-the-hard-way
+#Relational and Boolean Operators
+greater_than = 7 > 5
+less_than = 5 < 7
+greater_than_equal_to = 7 >= 7
+less_than_equal_to = 7 <= 7
+
+print(greater_than,less_than,greater_than_equal_to,less_than_equal_to)
+#All these should give you true.
+
+#Testing True and False statements
+#when you have "and" both statements must be true for it to be True.if one is false, then the test must be False
+#if both statement is false, then it is False.
+# if the operator is "or", if both are true, it is True and if both are false, it is False.
+#if it is true or false for "or", it is still True.
+test_and = (7 > 5) and (8 < 7)
+test_or = (7 > 5) or (5 < 7)
+test_not = not True
+
+print(test_and) # this should give False, since one of them is false.
 
 
 
