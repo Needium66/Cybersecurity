@@ -176,6 +176,12 @@ def multiply(x,y):
 #print it. execute it
 print(multiply(7,7))
 
+#square root
+def square_root(x):
+#exponent of 1/2 will give the square root
+        return x ** .5
+#print it out
+print(square_root(36))
 
 
 
