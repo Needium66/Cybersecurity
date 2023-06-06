@@ -144,7 +144,22 @@ My name is  and I am 37 years old.
 ┌──(root㉿kali)-[~/week2]
 └─# 
 
+#adding parameters
+#calling parameters
+#define a function called add one hundred and call the parameter "num"
+def add__one__hundred(num):
+#print parameter num + 100. have a number and add 100 to it
+        print(num + 100)
+#call the function. you are adding 100 to another 100 to give 200
+add__one__hundred(100)
 
+#Output
+Functions:
+My name is  and I am 37 years old.
+200
+                                                                             
+┌──(root㉿kali)-[~/week2]
+└─# 
 
 
 
