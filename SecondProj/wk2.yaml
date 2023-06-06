@@ -100,7 +100,7 @@ print("\n") #new line
 #you have to use def in function
 #you have to use colon too
 print("Functions:")
-def who am i():
+def who__am__i():
 #tab next
         name = "Jide" #declare a variable
         age = 37 #declare another variable
@@ -160,7 +160,21 @@ My name is  and I am 37 years old.
                                                                              
 ┌──(root㉿kali)-[~/week2]
 └─# 
+#add multiple parameters
+def add(x,y):
+        print(x + y)
 
+add(7,7)
+add(200,500)
+
+#return. return values, instead of using print. return values and store it for later.
+print("\n")
+print("Return:")
+def multiply(x,y):
+        return x * y
+
+#print it. execute it
+print(multiply(7,7))
 
 
 
