@@ -1,0 +1,19 @@
+#can host a server through python
+#have a python file e.g portscanner.py
+#run ifconfig to get ip
+#check whether you can access it on a browser
+#run this command- python -m SimpleHTTPServer 80( for python2)
+#run this for python3 "python3 -m http.server 80"
+#You will get something like this on the browser
+#Directory listing for /
+#ipsweeper.py
+#portscanner.py
+
+#check on the browser
+#you will get a directory of everything that you are hosting.
+#to get a malware for testing, you can use this quickly to test that.
+#you can also download an ftp server and enable it to work and transfer files that way
+#the python hosting is called pyftpdlib (to host an ftp server on python)
+#install pyftpdlib by running this command "pip install pyftpdlib"
+#run "python3 -m pyftpdlib -p 21 w"
+#to accss the directory of your python host online- go back to the browser and insert "ftp:\" in front of the ip.

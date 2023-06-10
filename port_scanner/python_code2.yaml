@@ -171,3 +171,37 @@ print("Dictionaries are keys and values pairs:")
 #drink as key, price as value
 drinks = {"White Russians": 8, "Vita Malt": 2, "Lemon Drop": 3, "Buttery Nipple": 6}
 print(drinks)
+
+employees = {"Finance": ["Bob", "Linda", "Tina"], "IT": ["Ola", "Olu", "Muideen"], "HR": ["Damola", "Olufunke"]}
+print(employees)
+#add another employee in another department
+employees["Legal"] = ["Sewa"]
+print(employees)
+
+#can you update to add to the employees too, instead of using only the key-value pair.
+employees.update({"Sales": ["Ollie", "OJ"]})
+print(employees)
+
+#update drinks
+drinks["White Russians"] = 9
+print(drinks)
+
+#to get the price of a drink using get
+print(drinks.get{"White Russians"})
+
+#Outputs
+Dictionaries are keys and values pairs:
+{'White Russians': 8, 'Vita Malt': 2, 'Lemon Drop': 3, 'Buttery Nipple': 6}
+{'Finance': ['Bob', 'Linda', 'Tina'], 'IT': ['Ola', 'OluMuideen'], 'HR': ['Damola', 'Olufunke']}
+{'Finance': ['Bob', 'Linda', 'Tina'], 'IT': ['Ola', 'OluMuideen'], 'HR': ['Damola', 'Olufunke'], 'Legal': ['Sewa']}
+{'Finance': ['Bob', 'Linda', 'Tina'], 'IT': ['Ola', 'OluMuideen'], 'HR': ['Damola', 'Olufunke'], 'Legal': ['Sewa'], 'Sales': ['Ollie', 'OJ']}
+{'White Russians': 9, 'Vita Malt': 2, 'Lemon Drop': 3, 'Buttery Nipple': 6}
+9
+
+#List and Dictionaries combination
+series = ["Game of Thrones", "Snowfall", "Power", "Things Fall Apart"]
+person = ["Ola", "Olu", "Muideen", "Abiona"]
+combined = zip(series, person)
+series_dictionary = {key: value for key, value is combined}
+
+print(series_dictionary)
