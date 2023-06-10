@@ -12,3 +12,117 @@
 #Insufficient XSS Prevention-Reflected
 #Insufficient Usename Enumeration Protection
 #XSS
+
+#!/bin/python3
+
+#importing
+print("importing is important for scripting:")
+
+import sys #system functions and paramters
+
+from datetime import datetime
+print(datetime.now())
+
+#Output
+┌──(root㉿kali)-[~/week3]
+└─# python3 portscanner.py
+importing is important for scripting:
+2023-06-09 21:00:50.608220
+                                                                             
+┌──(root㉿kali)-[~/week3]
+└─# 
+#importing as an alias
+from datetime import datetime as dt #importing with an alias
+print(dt.now())
+
+#print new line
+def new_line():
+        print('\n')
+
+new_line()
+
+#Advanced scripting
+print("Advanced Strings:")
+my_name = "Olajide"
+#I want to print the first initial of my name
+print(my_name[0])  #first initial
+#want last letter of my name to be printed
+print(my_name[-1])
+
+#Output
+┌──(root㉿kali)-[~/week3]
+└─# python3 portscanner.py
+importing is important for scripting:
+2023-06-09 21:11:38.341399
+2023-06-09 21:11:38.341502
+
+
+Advanced Strings:
+O
+e
+                                                                             
+┌──(root㉿kali)-[~/week3]
+#capture the first word in a sentence
+
+sentence = "This is a sentence."
+
+print(sentence[:4]) #first word(count the number of words in the sentence and make it colon with it)
+print(sentence[-9:-1]) #this print out the last word
+#split a sentence
+print(sentence.split()) #split sentence by delimiter (space)
+#to join the sentence back
+sentence_split = sentence.split()
+sentence_join = ' '.join(sentence_split)
+print(sentence_join)
+print('\n'.join(sentence_split))
+
+#Output
+┌──(root㉿kali)-[~/week3]
+└─# python3 portscanner.py
+importing is important for scripting:
+2023-06-10 11:55:01.024006
+2023-06-10 11:55:01.024082
+
+
+Advanced Strings:
+O
+e
+This
+sentence
+['This', 'is', 'a', 'sentence.']
+This is a sentence.
+This
+is
+a
+sentence.
+                                                                             
+┌──(root㉿kali)-[~/week3]
+#quote exception
+quoteception = "I said, 'give me all the money'"
+print(quoteception)
+
+quoteception = "I said, \"give me all the money\""
+
+#general check
+print("A" in "Apple")
+#change the logic and define some variables
+letter = "A"
+word = "Apple"
+print(letter in word)
+#change the letter to lower case a and print again
+letter = "a"
+print(letter in word)
+#to have n output that is true, use lower command in it.
+print(letter.lower() in word.lower())
+
+word_two = "Bingo"
+#the first one gives True and the second one is false, but the "and not" "false" makes it to be True
+print((letter.lower() in word.lower())) and not (letter.lower() in word_two.lower()))
+#getting whitespace;space off using strip
+too_much_space = "          hello        "
+print(too_much_space.strip())
+
+full_name = "lajide Efunkunle"
+print(full_name.replace("lajide", "Efunkunle"))
+#Find where my last name occurs in the string
+print(full_name.find("Efunkunle"))
