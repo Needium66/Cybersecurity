@@ -117,12 +117,57 @@ print(letter.lower() in word.lower())
 
 word_two = "Bingo"
 #the first one gives True and the second one is false, but the "and not" "false" makes it to be True
-print((letter.lower() in word.lower())) and not (letter.lower() in word_two.lower()))
+print((letter.lower() in word.lower()) and not (letter.lower() in word_two.lower()))
 #getting whitespace;space off using strip
 too_much_space = "          hello        "
 print(too_much_space.strip())
 
 full_name = "lajide Efunkunle"
-print(full_name.replace("lajide", "Efunkunle"))
+print(full_name.replace("lajide", "Olajide"))
 #Find where my last name occurs in the string
 print(full_name.find("Efunkunle"))
+
+#using placeholder
+movie = "The Godfather"
+print("My favorite movie is {}.".format(movie))
+
+def favorite_book(title, author):
+        fav = "My favorite book is \"{}\", which is written by {}.".format(title, author)
+        return fav
+
+print(favorite_book("My Hero","O. Efunkunle"))
+
+#Output
+Advanced Strings:
+O
+e
+This
+sentence
+['This', 'is', 'a', 'sentence.']
+This is a sentence.
+This
+is
+a
+sentence.
+I said, 'give me all the money'
+True
+True
+False
+True
+True
+hello
+Olajide Efunkunle
+7
+My favorite movie is The Godfather.
+My favorite book is "My Hero", which is written by O. Efunkunle.
+                                                                             
+┌──(root㉿kali)-[~/week3]
+└─# 
+#
+new_line()
+
+#Dictionaries
+print("Dictionaries are keys and values pairs:")
+#drink as key, price as value
+drinks = {"White Russians": 8, "Vita Malt": 2, "Lemon Drop": 3, "Buttery Nipple": 6}
+print(drinks)
