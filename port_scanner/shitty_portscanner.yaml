@@ -17,3 +17,46 @@
 #install pyftpdlib by running this command "pip install pyftpdlib"
 #run "python3 -m pyftpdlib -p 21 w"
 #to accss the directory of your python host online- go back to the browser and insert "ftp:\" in front of the ip.
+
+#!/bin/python3
+#to access command line arguments and others
+import sys
+#in order to be able to use a port, import this next module (socket)
+import socket
+from datetime import datetime
+
+#define our target
+if len(sys.argv) == 2:
+# YOU HAVE GOT TWO ARGUMENTS N THE SAME LINE ACCORDING TO YOUR LOGIC
+#one argument has the command and the other has the ip. so get the hostname and change it to ip as output
+        target = socket.gethostbyname(sys.argv[1]) #Translate a host name to IPV4
+#if it is not 2 arguments, print as invalid
+else:
+        print("Invalid amount of arguments.")
+        print("Syntax: python3.portscanner.py <ip>")
+        sys.exit()
+#run it to see if it will throw out an error. run python3 shitty_portscanner.py 192
+#Output
+┌──(root㉿kali)-[~/week3]
+└─# python3 shitty_portscanner.py
+Invalid amount of arguments.
+Syntax: python3.portscanner.py <ip>
+                                                                             
+┌──(root㉿kali)-[~/week3]
+└─# 
+#add a pretty banner
+print("-" * 50)
+print("Scanning target "+target)
+print("Time Started: "+str(datetime.now()))
+print("-" * 50)
+
+#Output
+┌──(root㉿kali)-[~/week3]
+└─# python3 shitty_portscanner.py 192
+--------------------------------------------------
+Scanning target 0.0.0.192
+Time Started: 2023-06-10 19:41:04.491915
+--------------------------------------------------
+                                                                             
+┌──(root㉿kali)-[~/week3]
+└─# 
