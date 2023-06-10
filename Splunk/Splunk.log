@@ -1,6 +1,7 @@
 This is a rough gameplan for a Splunk projects:
 AzureAD Audit Log Forwarding to Splunk
 Cloud Logs Forwarding to Splunk
+#https://www.youtube.com/watch?v=PD9S5xGC16g
 
 
 AzureAD Audit Log Forwarding to Splunk: In order to be able to carry out SIEM or investigations on security incidences that could occur
