@@ -61,3 +61,12 @@ sleep 1
 awk -F':' '{print $2}' $master > $passwords
 echo
 exit 0
+
+#run this command breach-parse @tesla.com tesla.txt
+#run ls
+#cat tesla.master.txt out
+#take the found credentials and try to put them through a log
+#Go to tesla.com
+#Go find contact and click on it.
+#Go to tesla.com HQ and zoom in on the map as far as possible
+#look for doors, areas of interest etc.
