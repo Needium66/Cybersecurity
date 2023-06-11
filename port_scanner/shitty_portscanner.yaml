@@ -60,3 +60,38 @@ Time Started: 2023-06-10 19:41:04.491915
                                                                              
 ┌──(root㉿kali)-[~/week3]
 └─# 
+#using try and an exception. if there is an exception, throw it an error.
+try:
+#run a for loo for every ports between 40 and 85 and set up a connection
+#define a variable s and timeout default connection
+#store the result if it throws an error in the connection
+#print a check in port to just check
+# if it is success, print the port 
+        for port in range(40,85):
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #AF.NET is for IPV4
+                socket.setdefaulttimeout(1)
+                result = s.connect_ex((target,port)) #returns error indicator
+                print("Checking port {}".format(port))
+                if result == 0:
+                        print("Port () is open".format(port))
+                #close the connection
+                s.close()
+
+#declare some exceptions
+#for keyboard interrupt: ctrl + c
+except KeyboardInterrupt:
+        print("\nExitingProgram.")
+        sys.exit()
+
+#exception for if we cannot connect to the hostname
+except socket.gaierror:
+        print("Hostname could not be resolved.")
+        sys.exit()
+
+#cannot connect to anything e.g server is down
+except socket.error:
+        print("Couldn't connect to server.")
+        sys.exit()
+#Outputs.
+#it checked all the ports from 40 to 85, no port is opened for me.
+#for improvement, add threading for it to multiprocess
