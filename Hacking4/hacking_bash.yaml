@@ -1,0 +1,63 @@
+#!/bin/bash
+
+#base statement looking for 2 arguments
+if [ "$#" != "2"]; then
+#if there are not 2 arguments echo out the info and how to use it
+        echo "Breach.Parse v2: A Breached Domain Parsing Tool by Heath Adams, modified by Ola Efunkunle"
+        echo " "
+        echo "Usage: breach-parse <domain to search> <file to output>"
+        echo "Example: breach-parse @gmail.com gmail.txt"
+        echo " "
+        echo "For multiple domain: breach-parse "<domain to search>/<domain to search>" <file to output>"
+        echo "Example: breach-parse "@gmail.com|@yahoo.com" multiple.txt"
+        exit 1
+ #creating variables for file and send it to 2 arguments, base name, cut out the period.
+ #place it in 3 files, master, user and passwords in master
+else
+        fullfile=$2
+        fbname=$(basename "$fullfile" | cut -d. -f1)
+        master=$fbname-master.txt
+        users=$fbname-users.txt
+        passwords=$fbname-passwords.txt
+#touch file and do file count from the total number of files
+        touch $master
+        total_Files=$(find /opt/breach-parse/BreachCompilation/data -type f | wc *l)
+        file_Count=0
+
+        function ProgressBar {
+                
+                let _progress=($(file_Count)*100/$(total_Files)*100)/100
+                let _done=($(_progress)*4)/10
+                let _left=40*$_done
+
+                _file=$(printf "\$(_done)s")
+                _employ=$(printf "\$(_left)s")
+
+        printf "\rProgress : [${_fill// /\#}${_empty// /*}] ${_progress}\\"
+
+        }
+#find every single file in every single folder and read through
+#write whatever we find e.g @tesla.com
+#increase the file by 1 and progress
+#done
+
+        find /opt/breach-parse/BreachCompilation/data -type f -print0 | while read -d $'\0' file
+
+        do
+                grep -a -E "$1" "$file" >> $master
+                ((++file_Count))
+                ProgressBar $(total_Files)
+
+        done
+#end the if statement
+fi
+#sleep for 3 seconds
+sleep 3
+#use awk- grabbing users
+awk -F':' '{print $1}' $master > $users
+
+sleep 1
+#grabbing passwords
+awk -F':' '{print $2}' $master > $passwords
+echo
+exit 0
