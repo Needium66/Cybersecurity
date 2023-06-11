@@ -1,0 +1,39 @@
+#5 phases of hacking
+#Reconnaisance(Passive or Active)- Information gathering. Active can be considered as level 2 or scanning phase.
+#Scanning and Enumeration(nmap,nessus,nikto, tenable etc)-Carrying out info gathering that does not involve the client or entity itself
+#e.g looking up LinkedIn info, google info, twitter etc, but no attempt on the server or host(active) etc. 
+#This is where you will use scanning tool. It is the most important phase-phase 2
+#Gaining Access
+#Maintaining Access (As pen tester, you don't really need 4 but it is important too) for Blue Team. Not wanting to lose session 
+#even when the server goes down. Not get disconnected. Not get detected. 
+#Covering Tracks (As pen tester, you don't really need 5 but it is important too) for Blue Team. USE PSEXEC
+#For Red Team, 4 and 5 are important.
+#Passive Recon(OSINT)
+
+#PASSIVE RECON - PHYSICAL /SOCIAL
+#Location Info: Satellite images, drone recon, building layout(badge readers, break areas, security, fencing)
+#Job Info: Employees(name, job title,phone number, manager, etc). Pictures(badge photos, desk photos, etc)
+#cloning of ids etc.
+#PASSIVE RECON - WEB/HOST
+#Target Validation: WHOIS, nslookup, dnsrecon e.g to verify if the ip that we have is authentic, or subnet or ip range
+#confirm from the website obtained that the target owns it. There is no typo. Any of these tools can be used to get owner info
+#Finding Subdomains: Google Fu, dig, Nmap, Sublist3r, Bluto, crt.sh, etc.Sub domains are useful too. Use any of these tools to find subdomains
+#Could be lucky and get a dev environment subdomain
+#Fingerprinting: Nmap, wappalyzer, WhatWeb, BuiltWith, Netcat. Can consider this as active recon, cos you will go to the website itself.
+#to see what types of tools or backend the host site is using. This falls under passive/active
+#Data Breaches: HaveIBeenPwned and similar lists.
+
+#Goto https://www.bugcrowd.com/
+#Go to "Programs" tab
+#Select any of the clients.
+#Go to "hunter.io"- you need to create an account on it, to be able to do it.
+#You supply an email address and it will search through email addresses to find people with that email address
+#(i know how to do this on my own). You get 20 free every month
+#You can do an api with harvester too
+#create an account at hunter with your email address
+#enter tesla.com and it will populate emails of testla employees it can find online with elon first.
+#you can look at the pattern and export it to a csv for further investigation
+#you can do enumeration through this too by going to outlook to gather more info.
+#using the time delay to enumerate users- username comes back quick, it is good. not quick, it is not.
+#1.4 billion clear text password list-tensoflow from github- it has 1.4 billion clear text passwords.
+#copy the magnet link, paste it, have your torrent and download it.
