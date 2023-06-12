@@ -83,3 +83,42 @@ sudo rm greeting.txt - to remove a file if you don't have permissions
 Update machine, tools:
 apt update && apt upgrade- to update your machine (this takes time)
 apt install git -y - to install git without prompting for yes. how to install tools
+
+
+#projects implemented
+1)worked on some unsupported log4j- we have versions 1.14- support for it was ended in 2015
+our scanning tool- tenable discovered this vulnerabilities and i was tasked with ensuring
+that all the machines that still have it had the security vulnearibilities mitigated on them
+through upgrades or through some other means
+for the linux servers
+i moved the log4j on the machines where it was not been used anymore to backup to stop it from being executable or runnable
+i used tenable to locate where it is on the machine
+cd to that folder through the path
+mv the log4j from the current directory to a bak file
+checked it on tenable later to see if it is still a threat
+for the windows server
+logged into the machine
+went to the directory it was located
+make a copy of it
+zip it and leave it for some days
+delete it after
+for the upgrade of log4j in the linux servers. because it is on a vmware machines
+i cloned one of the machines and make it to be in a cluster with others
+i followed the steps for an upgrade and observed for some days
+then go ahead to do it on the real prod machines.
+requires java 8 and log4j 2.7 and above to be installed or upgraded.
+2)worked on finding resources that are still using tls 1.0 and 1.1 in aws
+turned it in to the developers to make code changes that will enable the apps to be using only 1.2
+3)sign-in and audit log forwarding in splunk
+4)all the business dns we are using
+5)encryption of all ebs, s3 resources, databases etc, using trusted advisor to find out the non compliant resources
+6) node js upgrade in lambda
+7) net upgrade in lambda
+8) python upgrade in lambda
+9)set up  a log forwarder from aws into splunk: aws config, lambda, event bridge, cloudwatch, s3 and sns
+10)customer kms key for rds
+11)ec2 key pairs
+12) rds db subnet
+13)phishing test through bit defender
+14)cybereason scanning for malware and other threats
+15) tenable nessus scanning for malware and other threats.
