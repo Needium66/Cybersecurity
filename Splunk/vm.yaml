@@ -1,0 +1,16 @@
+#Log in to the vm center
+#Go to a specified datacenter- always at the top
+#Select the specified vm to be cloned- 03
+#Right click on the vm
+#Go to "Clone" and select "Clone to a Virtual Machine"
+#Give it a name e.g 04
+#Click on "Next"
+#Select on the "Compute resource" i.e the host to put it on
+#Click on "Next"
+#Select a specified storage
+#Click on Next
+#Select "customize the operating system"
+#Click on "Next"
+#Click on "Finish"
+#change ip(not good for the machine that you clone and the new one to have same ip address) and network card
+#change the name of the computer cos they will share that too.
