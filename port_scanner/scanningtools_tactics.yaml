@@ -162,6 +162,40 @@ PORT   STATE SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 0.13 seconds
 
 #you can enter port with a "P" and define our range- or else, it will give the first 1000
-#nmap -4 -A -p- ip #A is for all, -p for port.
+#nmap -4 -A -p- ip #A is for all inclusive os version, -p- for all ports.scanning ip
 #A will detect trace route, os detection, version
+
+#you can run scanning for only spefic opened ports
+#nmap -4 A -p53,80,111,443,514 $ip this is a quicker scanning that running it for all ports
+
+#to output in different formats e.g xml, kiddie etc, run the below command:
+#nmap -4 A -p- $ip -oA client
+
+#to scan udp
+#nmap -sU -T4 $ip
+#you can really trust udp scan because there are a lot of false positives that always come up
+#Output
+┌──(root㉿kali)-[~]
+└─# nmap -sU -T4 $ip
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-06-20 00:33 EDT
+Nmap scan report for $ip
+Host is up (0.000014s latency).
+All 1000 scanned ports on $ip are in ignored states.
+Not shown: 1000 closed udp ports (port-unreach)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.26 seconds
+                                                                             
+┌──(root㉿kali)-[~]
+
+#run ls /usr/share/nmap/script
+#this is run to see all scripts available to you via nmap
+#you can use any of this script to run scrapt for vulnerability
+#script to be used for web server assessment
+#to check for ciphers. what kind of servers are they running
+#to run it for all the scripts in nmap
+#nmap -p 443 --script=all -enum ciphers tesla.com
+#nmap -p 443 --script=ssl -enum ciphers tesla.com scan tesla for all the ciphers. it rates them
+#grade as A or C or B
+
+
 
