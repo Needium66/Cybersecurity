@@ -1,0 +1,35 @@
+#port scanning tool
+#go to metalsploit
+#run msfconsole on your machine
+#5 major features for metalsploit
+#important ones to know are: auxilliary (before hand or prestage)
+#exploitation
+#post exploit module
+#after completing the installation, it will show msf6(current version) command, run : "search portscan"
+
+#Output
+   #  Name                                              Disclosure Date  Rank    Check  Description
+   -  ----                                              ---------------  ----    -----  -----------
+   0  auxiliary/scanner/portscan/ftpbounce                               normal  No     FTP Bounce Port Scanner
+   1  auxiliary/scanner/natpmp/natpmp_portscan                           normal  No     NAT-PMP External Port Scanner
+   2  auxiliary/scanner/sap/sap_router_portscanner                       normal  No     SAPRouter Port Scanner
+   3  auxiliary/scanner/portscan/xmas                                    normal  No     TCP "XMas" Port Scanner
+   4  auxiliary/scanner/portscan/ack                                     normal  No     TCP ACK Firewall Scanner
+   5  auxiliary/scanner/portscan/tcp                                     normal  No     TCP Port Scanner
+   6  auxiliary/scanner/portscan/syn                                     normal  No     TCP SYN Port Scanner
+   7  auxiliary/scanner/http/wordpress_pingback_access                   normal  No     Wordpress Pingback Locator
+
+
+Interact with a module by name or index. For example info 7, use 7 or use auxiliary/scanner/http/wordpress_pingback_access                                
+
+msf6 > 
+#first 1, 0- the first parameter is auxilliary, the second one is scanner, the third one is portscan, then ftpbounce
+#the one you can focus on or look for is 5 auxilliary/scanner/portscan/tcp
+#run use auxiliary/scanner/portscan/syn
+#to know what the module is all about, run "info". it will tell its name, who created it and what it does:
+#enumerate open tcp services using tcp
+#run "options" next
+#run "set ports 1-65535"
+#run "set rhosts 192.168.3.4" use this to scan only one address
+# run this command "run" for it to start scanning or run "sploit"
+#all it does is to tell you whether an ip is open or close

@@ -1,4 +1,12 @@
 #download nessus home version
 #go to the browser and google nessus home- for home lab
+#it will send you an activation code- to the email you registered with
 #click on download button
 using debian kali. follow the instructions to download
+#go to your machine and change directory to where you downloaded the file too
+#check it with "ls"
+#unpack it with this command "dpkg $Nessus file"
+#start the machine from the current directory with- /etc/init.d/nessusd start
+#check it on a browser with the default port https://kali:8834
+#create an account(credentials) to be able to access it
+#use the activation code sent to your email
