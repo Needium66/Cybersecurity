@@ -1,0 +1,11 @@
+#two types of web scanner that i will be using:
+#nikto; that comes with kali
+#you can run it from anywhere on your kali machine
+#run "nikto"
+#run "nikto H" to get all features
+#to run nikto against a host, e.g tesla you can run "nikto -h https://tesla.com"
+#It pulls out an IP, a series of IP, Cipher that is being used.
+#I cannot put this out cause of security implications
+#Got findings for anti-clickjacking, X-XXS protection header SSL and others
+#checks all the headers
+#do web scanning and try to offer suggestions that are exploitable e.g vulnerabilities
