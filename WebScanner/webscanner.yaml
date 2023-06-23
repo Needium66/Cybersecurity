@@ -9,3 +9,43 @@
 #Got findings for anti-clickjacking, X-XXS protection header SSL and others
 #checks all the headers
 #do web scanning and try to offer suggestions that are exploitable e.g vulnerabilities
+
+
+#Burp Suite- Most important tool you can own if you want to do web apps- It cost around $400 or more for pro edition
+#To start your own test company, purchase nessus and burp suite- it may cost you around $3000- for annual licensing
+#Set it up
+#Pick a target e.g Tesla from the "Target" tab, the "intercept is on" once you click on "Target" by deafult
+#Need to make your browser talk or connect to burp suite
+#You could use a tool like Foxy proxy to enable to quickly change
+#Open up a new browser
+#Click on the menu icon that has "Preferences" on the far right of your browser page and select it.
+#Scroll down to "Settings" at the bottom and click on it
+#Select "Manual proxy configuration"
+#Use your home address- ip and port
+#Ensure the box "Use proxy for all protocols" is checked or enabled
+#Click "Ok"
+#You can go back to Burp Suite to see what it has intercepted from Tesla
+#You can hit Forward to see what info it provides
+#keeping hitting the "Forward" tab to see more.
+#You can turn off the intercept, by clicking on the tab once more
+#You can hit the "Target" tab again to see what is happening
+#You can right click on the site you want to test e.g http...tesla.com and select "Add to scope"-"Sitemap" tab gets you here too
+#Click on "Yes"
+#Click on the "Filter" bar
+#Select "Filter only in scope items" then your only in scope item becomes tesla.com
+#You can click on the tesla bar on your left to expand to show more info it has gotten for you- called spidering
+#the old burp suite allows you to right click and select "spidering". Not with the new burp.
+#If you want to test more than tesla.com, you can to your scope by clicking on "Scope" and add a regex stuff
+#something like wildcard. so instead of tesla alone, it gets info from other hosts.
+#click on "Sitemap" tab 
+#Right click on tesla host and select "Scan"
+#Select your "Scan Type" e.g crawl and audit, crawl, audit selected item etc choose "audt selected item"
+#select one item or more from the search box
+#you can select "Scan configuration" to configure how you want it.
+#go to "Resource pool", you can increase "Max concurrent request" from 10 to 100 if the website can handle that-runs 10 threads concurrently by default
+
+#click OK
+#Go back to your dashboard to view
+#You can click "view details" to see what it has found.
+#Click on "issue activity" to see what it has found
+#in this case it found a ssl cert and robot.txt file
