@@ -10,3 +10,34 @@ using debian kali. follow the instructions to download
 #check it on a browser with the default port https://kali:8834
 #create an account(credentials) to be able to access it
 #use the activation code sent to your email
+
+#scanning in nessus
+#go to scans
+#go to settings
+#go to "Name" and give it a name
+#you can enter the name for "Description"
+#give the "Folder" name
+#enter the "Target" for your scanning e.g the ip address. you can enter as many ips as possible, seperated by commas
+#enable a schedule if we want i.e for the scanning
+#you can send out an email at the beginning of the day for pen testing, and once you are off, you can send another one.
+#you can enter an email for notifications to be sent to you or smtp
+
+#Discovery:
+#you can change the "Scan Type" from "Common Port" to "All ports"
+#This will scan all ports, use netstat credentials that are provided, use SYN scanner too.
+#the hosts that are going to be used are TCP, ARP and ICMP (twice)
+
+#Assessment- Go to assessment
+#You can leave as "Default" or select "Scan for all vulnerabilities"(this may be too complex, so you may do without selecting it)
+
+#Note: Web assessment is different from pen testing. you can do all cross-site scripting and sql injection for web assessment.
+
+#Report: Go to report:
+#You can leave this as default.
+
+#Advanced
+#Go to "Advanced" and leave it as default too.
+#Click on "Save"
+#Then click on the "Launch" button for the scan.
+
+#Once the scanning is completed, you will see ports that are either open or vulnerable points in your system.
