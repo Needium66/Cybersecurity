@@ -141,4 +141,15 @@ curl: (7) Failed to connect to $my ip port 80 after 0 ms: Connection refused
 #Take a screenshot of all the weak ciphers and use the image editor like before
 #border it and highlight the "least Strength: F"
 
+
+#Some Exploits
+the open SSL seems to be unsupported. can assume it has a lot of vulnerabilities
+#report, it is outdated(unsupported), you need to patch this
+Apache too
+Open SSH
+
+#Go and google Apache 1.3.20 
+#you csan click on anyone to look at the CVE details. The higher the number, the better.
+#remote code execution type will be great, but it takes too much to do DoS attack.
+#Exploit Database
                       
