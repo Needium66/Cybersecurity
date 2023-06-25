@@ -41,3 +41,12 @@ using debian kali. follow the instructions to download
 #Then click on the "Launch" button for the scan.
 
 #Once the scanning is completed, you will see ports that are either open or vulnerable points in your system.
+Ports that are open e.g 443, 80 etc
+traceout info
+ssl info
+Once you get your scanning completed by nessus, you can look at the result and begin the enumeration phase
+
+#Enumeration
+#scanning kioptrix level 1
+#this is a penetration testing and environment vm.
+#Use Hack the box- you need hacking to be able to get access to this. 
