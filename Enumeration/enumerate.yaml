@@ -1,0 +1,51 @@
+#Go to hackthebox
+#choose a machine
+#choose active machine
+#one two seven
+#copy the ip of one two seven
+#goto kali terminal and run nmap to scan
+#nmap -T4 -p- 10.10.10.133
+#output
+┌──(root㉿kali)-[~]
+└─# nmap -T4 -p- 10.10.10.133            
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-06-27 03:54 EDT
+Nmap scan report for 10.10.10.133
+Host is up (0.035s latency).
+All 65535 scanned ports on 10.10.10.133 are in ignored states.
+Not shown: 65535 filtered tcp ports (no-response)
+
+Nmap done: 1 IP address (1 host up) scanned in 243.16 seconds
+
+#scan the udp as well
+#nmap -sU -T4 10.10.10.133
+#RUN THE SCAN AGAIN SPECIFICALLY FOR THE PORTS THAT ARE IN THE OUTPUTS FOR YOUR FIRST SCAN
+nmap -A -T4 -p 22,80,60080 10.10.10.133
+#output
+─# nmap -A -T4 -p22,80,65535 10.10.10.133
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-06-27 04:02 EDT
+Nmap scan report for 10.10.10.133
+Host is up (0.00049s latency).
+
+PORT      STATE    SERVICE VERSION
+22/tcp    filtered ssh
+80/tcp    filtered http
+65535/tcp filtered unknown
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+OS details: Actiontec MI424WR-GEN3I WAP, DD-WRT v24-sp2 (Linux 2.4.37), Linux 3.2, Linux 4.4, Microsoft Windows XP SP3, Microsoft Windows XP SP3 or Windows 7 or Windows Server 2012, VMware Player virtual NAT device
+Network Distance: 2 hops
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT     ADDRESS
+1   0.27 ms 192.168.5.2
+2   0.19 ms 10.10.10.133
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 8.94 seconds
+
+#FROM EXPERIENCE WHENEVER YOU ARE RUNNING OSCP, whenever you find port 80 opened, you will
+#likely find credentials that will lead you to port 22 and allows you to get to a shell
+#or gets an exploit on 80 that will get you to a remote code execution, get credentials
+#ssh over and find root
+#makes a finding on apache server header, eventhough it is saying the page is moved, it is still a finding
+#chcek out the website on a browser by running the ip- 10.10.10.133
+#you can view the page source
