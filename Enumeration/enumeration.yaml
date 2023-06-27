@@ -152,4 +152,75 @@ Open SSH
 #you csan click on anyone to look at the CVE details. The higher the number, the better.
 #remote code execution type will be great, but it takes too much to do DoS attack.
 #Exploit Database
+
+#Searchsploit
+#lets use searchsploit- it is a local tool on the machine
+#if you are looking for apache 1.2.30 for example, you could search for that.
+
+#Output
+┌──(root㉿kali)-[~]
+└─# searchsploit apache 1.2.30
+------------------------------------------- ---------------------------------
+ Exploit Title                             |  Path
+------------------------------------------- ---------------------------------
+Apache + PHP < 5.3.12 / < 5.4.2 - cgi-bin  | php/remote/29290.c
+Apache + PHP < 5.3.12 / < 5.4.2 - Remote C | php/remote/29316.py
+Apache < 1.3.37/2.0.59/2.2.3 mod_rewrite - | multiple/remote/2237.sh
+Apache < 2.0.64 / < 2.2.21 mod_setenvif -  | linux/dos/41769.txt
+Apache < 2.2.34 / < 2.4.27 - OPTIONS Memor | linux/webapps/42745.py
+Apache Archiva 1.0 < 1.3.1 - Cross-Site Re | multiple/webapps/15710.txt
+Apache CouchDB < 2.1.0 - Remote Code Execu | linux/webapps/44913.py
+Apache CXF < 2.5.10/2.6.7/2.7.4 - Denial o | multiple/dos/26710.txt
+Apache mod_ssl < 2.8.7 OpenSSL - 'OpenFuck | unix/remote/21671.c
+Apache mod_ssl < 2.8.7 OpenSSL - 'OpenFuck | unix/remote/47080.c
+Apache mod_ssl < 2.8.7 OpenSSL - 'OpenFuck | unix/remote/764.c
+Apache Struts < 1.3.10 / < 2.3.16.2 - Clas | multiple/remote/41690.rb
+Apache Struts < 2.2.0 - Remote Command Exe | multiple/remote/17691.rb
+Apache Tika-server < 1.18 - Command Inject | windows/remote/46540.py
+Apache Tomcat < 5.5.17 - Remote Directory  | multiple/remote/2061.txt
+Apache Tomcat < 6.0.18 - 'utf8' Directory  | multiple/remote/6229.txt
+Apache Tomcat < 6.0.18 - 'utf8' Directory  | unix/remote/14489.c
+Apache Tomcat < 9.0.1 (Beta) / < 8.5.23 /  | jsp/webapps/42966.py
+Apache Tomcat < 9.0.1 (Beta) / < 8.5.23 /  | windows/webapps/42953.txt
+Apache Xerces-C XML Parser < 3.1.2 - Denia | linux/dos/36906.txt
+Oracle Java JDK/JRE < 1.8.0.131 / Apache X | php/dos/44057.md
+Webfroot Shoutbox < 2.32 (Apache) - Local  | linux/remote/34.pl
+------------------------------------------- ---------------------------------
+#it gives you exploit
+#to look further at any of the files, you can "cat" it.
+cat /windows/webapps/42953.txt
+cat /usr/share/exploitdb/exploits/windows/remote/2120.txt
+
+#lets enumerate smb
+#run a listing first- smbclient -L \\\\$hostip
+#you could find anonymous login, file share- these are findings
+#you could connect to some of the shares to look more info.
+# run this command - smbclient \\\\$hostip\\ADMIN$
+#click enter twice to see if you could have access
+#you may get an NT_STATUS_WRONG_PASSWORD. so, you don't have access
+#you can run this next - smbclient \\\\$hostip\\IPC$
+#you may or may not be able to get to IPC with anonymous login.
+#do ls, and see if it will list them for you.
+#you can check the type of smb they are running with nessus. search "smb" in nessus
+#can use metasploit next, run msfconsole
+#then run "search smb"
+#types of auxillairy module in metasploit
+auxilliary admin
+auxilliary gather
+auxilliary fuzzers
+auxillairy scanner
+
+#lets use smb version
+# run this with the "msf6" msf5 > use auxilliary/scanner/smb/smb version
+#options
+#run set rhosts $hostip
+#enter "run" next
+#you can copy the version of smb (samba) that you find.
+#run searchsploit Samba 2.2
+# run search trans2open
+#run info exploit/linux/samba/trans2open
+NOTE:
+#whenever you get an exploit/s, you don't run it until you get a confirmation/approval from it manager to run it.
+#until it says yes.
+#GET ON THE NETWORK- openvpn m4v3rlck.ovpn
                       
