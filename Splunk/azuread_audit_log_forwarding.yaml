@@ -1,0 +1,91 @@
+#we have a self hosted splunk instance
+#we require sign-in logs and audit logs to be forwarded to splunk as part of ms logs
+#we will be sending those logs from one of our AzureAd
+#Azure requires you to have at least a P2 license to be able to get logs sent from Azure to Splunk
+#you have to have admin access to be able to carry out what are needed.
+#all in all, we require logs for successful and failed logins, changes to user accounts and other activities to 
+#protect our data, users and services against risks, security breaches and suspicious activities that can take place and
+#needs to be investigated
+
+#Steps
+Create an app in AzureAd for the audit log forwarding
+Give all required permissions to the app created to enable it to send logs to splunk
+Install or update the Add-on required that will ensure the connection between Azure AD and Splunk
+Create a tenant in the Add-on that will ensure the connection between AzureAD and Splunk
+Create the inpiuts in office 365 Add-on, that will enable the ingestion of necessary logs into Splunk
+Test for your logs by running some queries in search and reporting.
+
+#Create an app in AzureAD for the audit log forwarding
+Go to AzureAD and ensure that you are in the right AzureAD (We have 3)
+Select "Azure Active Directory" or serach for it from the search bar at the top
+Select "App registrations" on the left
+Click on "New registrations"
+Give it a "Name"
+Select "Accounts in this organizational directory only" as "Supported account types"
+Select "Web" and enter a url in the "Redirect URI column"
+Click on "Register"
+Create a secret for it.
+
+#Add permissions
+Microsoft graph
+Application permissions
+Go to "Policy", enable "Policy.Read.All"
+Go to "Audit Log", enable "AuditLog.Read.All"
+Go to "ServiceMessage", enable "Read service messages"
+Go to "Reports", enable "Read all usage reports"
+Go to "Directory".enable "Directory.Read.All"
+Add the "ActivityFeed"
+Add the "ReportingWebService" field.
+Click on the "Add permissions" button at the bottom
+Click on the checkmark for "Grant admin consent for the Azure AD" on the main page for the Api permissions
+Complete the process
+
+#Install or update the Add-on required that will be ingesting data from AzureAD
+Go to your splunk instance and access it with your credentials
+Click on the "Apps" dropdown at the top left-hand side of the page.
+Select "Find More Apps" at the bottom if it is new install or select the specified app if already installed and needs an update
+For a new install, search for it from "Browse More Apps"
+Select the "Install" tab on it
+Enter your splunk.com credentials(different from your self-hosted credentials for splunk).You can register for this at Splunk
+#it is required because the instance needs to be restarted or needs an upgrade
+Click "Agree and Install" button
+You will be asked to restart the server
+From the first step to now, if for already installed Apps, click on the "Update" button on the specified app.
+Check the box in the page that pops up for agreeing to uodate
+Click on "Accept and continue" button at the bottom(Splunk will restart once you do this)
+
+#Create a tenant
+Go back to the self-hosted splunk instance
+Select "Apps" at the top left-hand side of the main page.
+Go to "Splunk Add-on for Microsoft Office 365" and select it
+Create a tenant for the office 0365 app that you created in AzureAD e.g you should see whatever tenant you created in AzureAD and select it
+Enter a "Name" for it
+Select "Worldwide" as endpoint
+Enter the value of the TenantID for your app
+Enter the client ID for your app
+Enter the "Client secret" of your app
+Leave the rest as default
+Click on "Create" button
+
+#Create the inputs to ingest the logs
+Click on the "Input" tab at the top left
+Click on the green "Add input" button at the top left
+Select "Management Activity"
+Select "Tenant Name" e.g the one you created
+Select "Audit.Azure Active Directory" for "Content Type"
+Select "main" or any of your preferred index
+LEAVE THE INTERVAL AS 300
+Enter your preferred "Input Name"
+Click on "Add" button at the bottom
+Repeat steps from Management Activity to add Audit.Exchange, Audit.Share.Point
+Audit General and DLP.ALL as "Content type"
+Go back to "Add Input button and add "Audit Logs Input"
+Add "Office 365"
+
+#Test for your logs
+Go to search and reporting on the main page and run the below queries
+index = "main" (or whatever you use as index)
+index ="_internal" 0365 sourcetype="splunk:ta:0365:log"
+Run this query to know the status of your kvstore
+| rest splunk_server=local count=1 /services/server/info
+| table kvStoreStatus
