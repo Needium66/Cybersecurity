@@ -49,3 +49,13 @@ Nmap done: 1 IP address (1 host up) scanned in 8.94 seconds
 #makes a finding on apache server header, eventhough it is saying the page is moved, it is still a finding
 #chcek out the website on a browser by running the ip- 10.10.10.133
 #you can view the page source
+
+#we can run a nikto on the host for onetwoseven
+#run
+nikto -h onetwoseven.htb
+#we can run a dirbuster too
+#run the sftp for the hostname that you saw
+sftp onetwoseven.htb
+#add the username to it, it will prompt you for the password.
+sftp ##### onetwoseven.htb
+                      

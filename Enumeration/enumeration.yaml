@@ -35,6 +35,8 @@ We have got info that they are using Apache (gave out info about what type of fr
 We have got info that they are using red hat(gave out info about what type of OS you are running)
 #Why are they running a test page online. Did they forget to turn it off or what?
 
+
+
 #Notes
 A folder with Vulnerabilities(low) as name
 A subfolder under it with "Default Web Page) as name. you can put the ip or ips of the host you identified
@@ -223,4 +225,3 @@ NOTE:
 #whenever you get an exploit/s, you don't run it until you get a confirmation/approval from it manager to run it.
 #until it says yes.
 #GET ON THE NETWORK- openvpn m4v3rlck.ovpn
-                      
