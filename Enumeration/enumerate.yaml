@@ -86,4 +86,50 @@ hostname
 cat /etc/shadow
 arp -a
 route
+
+#credential stuffing
+#password spraying
+
+#credential stuffing
+injecting breached account credentials in hopes of account takeover
+e.g having a compromised server that has users credentials
+#take the passwords from it and try them in website logins owned by the client
+#there is a "breach parse" in github that you can use or run
+#tjis script searches through 1.4billion+ password list
+https://github.com/hmaverickadams/breach-parse
+
+#what does the information reveal?
+usernames/passwords
+username patterns
+password patterns
+#find a hash for a password that has not been cracked yet
+#that it is crackabke, does not mean it can be cracked.
+
+#use burp suite
+go to the burger-like icon on your browser
+right click on it and select "preferences"
+go to "network" setting at the bottom
+select "proxy"
+select "manual proxy configuration"
+enter the http proxy-ip and port e.g 8080
+enter the ip for the targeted host in another browser and see if you could access
+refresh
+go back to burp suite and click on "intercept is on" button, if it produces output, it means it is scanning the host
+click on "payloads" button and let it be at set 1 for email addresses of users
+payload set 2, should have the passwords of users
+click on "start attack" button at the top right hand corner
+click on "OK"
+If you are seeing differences in values in the "length" column. That means something is different.
+you can highlight the one with major difference changes and click on "render" button below to see what happens
+if you try login into the website and you get a warning that reflects that the username is correct, but not the password
+you should do "PASSWORD SPRAYING" next
+
+#Password spraying
+#threat actor using a single common password against multiple accounts on the same application
+you change something in the text with a particular password
+you go to payload and do set 1 that has all the emails
+click on "start attack"
+click on "OK"
+it will set the password that was changed to all the emails in the payload in set 1 and see if something breaks
+this is the strategy used to get into a VPN.
                       
