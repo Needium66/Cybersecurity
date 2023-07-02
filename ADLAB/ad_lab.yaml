@@ -1,0 +1,35 @@
+#BUILDING AN AD LAB, LLMNR POISONING AND NTLMv2 CRACKING W/ HASHCAT
+#BUILD AN AD LAB
+#AD EXPLOITATION: LLMNR POISONING
+
+#BUILD AD LAB
+https://www.microsoft.com/en-us/evalcenter/download-windows-server-2016
+https://www.microsoft.com/en-us/evalcenter/download-windows-server-2022
+
+Download it
+#Evaluation for an 180days
+Click on ISO for the "evaluation file type"
+Click on "continue"
+Enter your bio data
+Click on "Continue"
+It will automatically downlaod the ISO
+
+#Do same for Windows 10 Enterprise
+Select "ISO Enterprise" for the "evaluation file type"
+Click on "Continue" and download it.
+
+#Running 3 VMs at once for this lab
+#you have to have a super fast computer
+
+Once you set up the vm
+Click on "Edit virtual machine settings" in the navigation pane on the left
+select the "floppy" from the "Hardware options" (it causes a lot of issues)
+Click on "Remove" button at the bottom
+Click on "Power on this machine" in the navigation pane on the left
+Hit enter to continue
+Let it boot up
+Hit "Next"
+Hit "Install now"
+Select "Standard evaluation desktop experience"Hit "Next"
+Hit "Agree"
+Hit "Next"
