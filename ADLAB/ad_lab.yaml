@@ -33,3 +33,42 @@ Hit "Install now"
 Select "Standard evaluation desktop experience"Hit "Next"
 Hit "Agree"
 Hit "Next"
+
+#How to set up domain controller(dc)
+https://cloudinfrastructureservices.co.uk/setup-a-domain-controller-on-windows-server/
+
+#dc/ad
+From the "Server Manager" home page, select "Add roles and features"
+Click "Next" on before you begin page
+Click "Next" on "Select Installation Type" page- "Role based or feature based installation"
+Select "destination server" from the pool and click on "Next"
+Select "Server roles" "Active Directory Domain services"- check the box for it
+Select "Add Features"
+Click "Next"
+Click "Next"
+Click "Next"
+Click "Install" (takes some minutes)
+Once it shows "Installed", click on "Close"
+#Need dc when we turn on ad service
+Hit the top warning sign saying "promote this server to a domain controller"
+From the deployment configuration, select "Add a new forest"
+Give it a "Root domain name"
+Click on "Next"
+Leave all the default options as is and enter passwords for "Directory Service Restore Mode(DSRM) password"
+Click on "Next"
+Once the "NET Bios Domain name" is populated, click on "Next"
+Click on "Next"
+Click on "Next"
+Click on "Install"
+Once completed, restart the machine
+Once completely booted, sign in again
+Go to "Tools" at the top and select "Active Directory Users and Computers"
+Expand the "forest" folder you created on the left
+Select "Domain Controllers" to see what it is probably
+There is "Users" folder, you can click on it to view too
+Right click on the "Users"
+Click "New"
+Enter the details
+Click "Next"
+Set passwords
+#So for any user(laptop or whatever), you will always be joining the domain
