@@ -72,3 +72,36 @@ Enter the details
 Click "Next"
 Set passwords
 #So for any user(laptop or whatever), you will always be joining the domain
+
+#All about enumeration and exploitation
+Go to your "Server Manager"
+Select "File Storage and Services"
+Select "Shares" below "Servers"
+Open up a new folder at the bottom
+Go to "PC"
+Go to C:drive
+Right click and create a new folder and give it a name e.g hackme
+Go back to the Server Manager and on the page where you have selected "Share", select "Task" dropdown button at the top
+Select "New Share"
+Select "SMB Share Quick" if it is not yet automatically selected
+Enter the appropriate path to "Type a custom path" under "Select the server and path for this share" or "Browse"
+Select the approrpiate folder e.g "hackme" folder in this case
+Select "Next"
+Select "Next"
+Check the box for "Enable access based enumeration" and "Allow caching of share"
+Select "Next"
+Select "Next"
+Select "OK"
+Select "Next"
+Select "Create"
+Select "Close"
+SMB Share has been created
+
+#Go back to your machine and add the share
+Click on "PC"
+Click on "Files" at the top
+Select "Map a network drive"
+Give the drive a name in the "Folder" column e.g \\JIDE\hackme
+Check the box for "Recoonect sign in"
+Click "Finish"
+You will have access to hackme folder
