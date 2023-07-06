@@ -105,3 +105,32 @@ Give the drive a name in the "Folder" column e.g \\JIDE\hackme
 Check the box for "Recoonect sign in"
 Click "Finish"
 You will have access to hackme folder
+
+#LINK LOCAL MULTICAST NAME RESOLUTION/ NETBIOS NAME SERVICE (NBTMS)
+#Used to identify host when DNS fails
+#Downside: using username and hash
+#ATTACK- Classic man in the middle attack
+#targeting getting hashes from a network- some hashes that don't have specified destinations
+#waiting to pounce as an hacker when an authenticated and authorized user sends his hash to you based on what you have configured.
+#Hacker takes the hash and tries to run it against the password. If the password is not too long, you may have a field day.
+#Or do a prelaying with the hash- try to send it to a server
+#then use the hash to authenticate to a server via SMB without knowing the passwod of the server
+
+#TODO
+#Set up a man in the middle listener called responder
+locate your responder on kali- locate Responder.py #should be in user share responder folder
+cd into the path - cd /usr/share/responder/ #you are setting this up to get access to a particular server. maybe you have remote access
+#already, by you are just sitting in there on the network and waiting to get an elevated access e.g through a misdirected hash
+#best time to run this- in the morning, when people just resume at work at trying to access their workstations
+run - python Responder.py -I eth0 -rdw # i for interface, switches of r,d and w
+#It will show you the poisoners- LLMNR, NBT -NS, DNS/MONS
+#The available servers- some maybe on, while others are off
+#HTTP Options
+#Poisoning options
+#Generic Options
+
+#We are listening to events and hash etc
+#To trigger or check if it is working, try to connect to your lab pc and open the smb folder created(hackme)
+#the responder will send something to the PC
+#YOU CAN GRAB YOUR IP THROUGH ifconfig and open up a browser to run it there- it should trigger a hash for the responder that
+#has been set up
