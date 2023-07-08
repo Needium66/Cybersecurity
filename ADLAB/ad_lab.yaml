@@ -134,3 +134,45 @@ run - python Responder.py -I eth0 -rdw # i for interface, switches of r,d and w
 #the responder will send something to the PC
 #YOU CAN GRAB YOUR IP THROUGH ifconfig and open up a browser to run it there- it should trigger a hash for the responder that
 #has been set up
+
+#rockyou.txt /usr/share/wordlists/rockyou.txt.gz - locate it in that folder
+#It is a file that has a massive password list. It is inbuil in kali by default
+#unzip it from where it is located and use "hashcat" e.g run the below
+hashcat -m 5600 hash.txt /root/rockyou.txt  #the m means mode, 5600 is the port we are using, /root/rockyou.txt path to where the wordlist is
+#Output
+                                                                             
+┌──(kali㉿kali)-[~/Downloads]
+└─$ locate rockyou.txt
+/usr/share/wordlists/rockyou.txt.gz
+                                                                             
+┌──(kali㉿kali)-[~/Downloads]
+└─$ 
+#go to whatever machine you are running on and cd into the folder that has the hashcat file
+#cd c:\Users\Olajide\Desktop\hashcat-4.2.1
+#run "hashcat64.exe" -m 5600 hashes.txt rockyou.txt
+#Once you run that, it will display a password that has been cracked on not. You can use this to navigate the network- have access
+#realuniq is another wordlist that you can use.
+
+#Defense Strategy
+The best defense for this is to disable  LLMNR and NBT-NS
+#To disable LLMNR
+Select "Turn off multicast name resolution" under
+Local computer policy
+Computer configuration
+Administratives template
+networkDNS Client in the group policy editor
+
+#To disable NBT-NS
+Go to "Network Connections"
+Network Adapter Properties
+TCP/IPV4 Properties
+Advanced Tab
+WINS Tab
+Select "Disable NETBIOS over TCP/IP"
+
+#IF YOU CANNOT DISABLE LLMNR/NBT-NS, the best course of action is
+1. Require Network Access Control. If an attacker cannot get onto the network, the attack cannot be performed
+2. Require strong user passwords e.g > 12 characters in length and limit common usage. The more complex a password,the harder
+it is for an attacker to crack the hash. Greater to crack anything more than 12.
+
+#TODO- MS1710 FOR ETERNAL BLUE
