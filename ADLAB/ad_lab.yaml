@@ -175,4 +175,77 @@ Select "Disable NETBIOS over TCP/IP"
 2. Require strong user passwords e.g > 12 characters in length and limit common usage. The more complex a password,the harder
 it is for an attacker to crack the hash. Greater to crack anything more than 12.
 
-#TODO- MS1710 FOR ETERNAL BLUE
+#TODO- MS17-010 FOR ETERNAL BLUE
+
+
+#NTLM RELAY, TOKEN IMPERSONATION, PASS THE HASH, PsEXEC and MORE
+#Worth reading
+#AD Beginner and common tactics
+https://adam-toscher.medium.com/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa
+#AD Advanced
+https://adsecurity.org/
+https://blog.harmj0y.net/ #harmjoy
+https://blog.harmj0y.net/blog/
+#Windows Non-AD Privilege Escalations
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+#Linux Privilege Escalation
+https://fuzzysecurity.com/
+https://fuzzysecurity.com/tutorials/16.html
+
+#CERTIFICATIONS/COURSES/TRAINING
+#eLearnsecurity PTX
+https://elearnsecurity.com/tag/penetration-testing-extreme-ptx/
+#Pentester Academy Attacking and Defending Active Directory
+https://bootcamps.pentesteracademy.com/course/ad-adv-mar-22
+#Pentester Academy Red Team Lab
+https://www.pentesteracademy.com/redteamlab
+#Hack the box rasta labs
+https://www.hackthebox.com/hacker/pro-labs
+
+#COMMON AD ATTACK STRATEGIES
+#LLMNR & NBT-NS POISONING
+Crack hashes online- Test credentials against logins, PsExec, CrackMapExec
+Relay hashes (SMB signing must be closed)
+Kerberoasting, GPP/C-passwords, MS17-010
+Default  credentials e.g on a printer
+
+#Using HACK THE BOX FOR LAB
+#Go to HTB
+Go to "Machines" in the navigation pane your left
+Select "Retired"
+
+#Go to a Windows machine. Simulating for an attack
+#Go to C:drive where you have a folder that has users credentials or something thqt can give qaccess e.g Scan
+Right click on the folder and select "Properties"
+Select "Sharing"
+Select "Share"
+Select the user from the box e.g Jide Efunkunle
+Click on "Share" button at the bottom
+
+
+#####
+Click on "Menu"
+Select "Computer Management"
+Expand "Local Users and Groups" from the navigation pane on the left
+Select "Groups"
+Double click on "Administrators" on the main page
+Select the "Add" button at the bottom from the pop up page
+Type in the name of the user you want to add- e.g Jide Efunkunle
+Click on the "OK" button at the bottom
+Reboot the machine- right click on menu and select "restart"
+Enter as an Administrator- select other user and enter as an admin
+#Windows defender is a good to catch this kind of attack sometimes. So you might need to turn it off before you do it.
+#To turn it off
+Search for "Windows Defender"
+Click on it
+Turn the firewall off
+
+Get the ip of the machine by running ifconfig
+Go to kali terminal to use metasploit
+run "msfconsole"
+#use exex- run
+use exploit/windows/smb/psexec
+#gameplan- as an administrator you can share files, the shell can be gained and malware will be uploaded to attack
+# apt install crackmapexec
+#crackmapexec smb $ip/24 -u Administrator -p 'P@$$w0rd!' -d JIDE #P FOR PASSWORD, D FOR DOMAIN
+#It will go through all ips used for login
