@@ -432,3 +432,11 @@ set lport $port number #the required port number
 set smbuser Administrator #set the smb user as Administrator
 set  smbpass $password - #set the password of the smbuser as given name
 run
+
+
+#Cleanup (Pentesting Cleanup)
+1. Remove all executables, scripts, and temporary file from a compromised system. If possible use secure delete method to remove files and folders
+2. Return to original values system settings and app configuration parameters if they were modified during assessment.
+3. Remove all backdoors and/or rootkits isntalled
+4. Remove any user accounts created for connecting back to compromise systems.
+http://www.pentest-standard.org/index.php/Post_Exploitation#Cleanup
