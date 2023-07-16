@@ -1,0 +1,198 @@
+Security Analyst: Helps minimize risks to organization and people
+Work to proactively guard against incidents, sytems and networks
+Investigate and report their findings on any incident that occurs
+How to use security to protect business operations, users and devices
+
+#Hands-on activities
+Detecting and responding to attacks
+Monitoring and protecting networks
+Investigating incidents
+Writing code to automate tasks
+
+#Security Operations Enablement
+#How to manage security risks
+Security domains
+Frameworks and controls
+Common secutrity threats, risks and vulnerabilities
+Tools used by security analysts
+
+#CISO Google Fiber
+# Internet Networks and Network security
+Structure of a network
+Network protocols
+Common network attacks
+How to secure a network
+
+#Linux and SQL Foundational
+Linux CLI and SQL
+
+#Cybersecurity Assets, Network tThreats and Vulnerabilities
+Security controls
+Risks and vulerabilities
+
+#Cybersecurity IDR Incident Detection and Response
+Detecting and responding to security incidents
+Monitor and analyse network actvities using powerful security tools
+
+#Using Python
+Using python to automate common security tasks
+
+
+#Foundational
+Define security
+Job responsibilities of a security analyst
+Core skills of a security analyst
+Value of security
+8 security domains
+Security frameworks and controls
+Common tools
+
+#Define security- Prepare for storm- yet there are water leaks, prepare to mitigate the leaks or potential damage.
+Cybersecurity (Security): Practice of ensuring confidentiality, integrity and availability of information by protecting networks, devices,
+people, and data from unathorized access or criminal exploitation. e.g
+Requiring complex passwords to access sites and services to improve confidentiality against threat actors(pose danger or risk)
+Benefits of security
+Protects external(someone trying to gain access to private information, network or devices) or 
+internal(current(accidental or accessing unathorized data) or former employee,  external vendors) threats
+Maintain customers and partner trust
+Maintain revenue once customers or partners trust are not lost
+
+Personally Identifiable Information (PII)
+
+#Roles
+1. Security analyst or specialist- Monitoring and protecting information and system
+#3 responsibilites of security analyst
+Protecting and monitoring computer and network systems (contribute to pen testing or ethical hacking). Proactively work to prevent risks
+Install Software and hardware for development
+Conducting periodic audits (confidential information is secure)
+2. Cybersecurity analyst or specialist
+#Responsibilities
+Security operations center (SOC) analyst
+Information security analyst
+
+#Evolution of attacks
+Virus: Malicious code written to interfere with computer operations and cause damage to data and software
+It attaches itself to PROGRAM or DOCUMENT on a computer. Then it spreads and INFECTS one or more computers
+An example of a computer virus is a WORM-It can SPREAD and DUPLICATE on its own without human involvement
+Today, viruses are commonly known as MALWARE
+Malware: Software designed to harm devices or networks
+Two examples of  early Malware attacks:
+Brain virus
+Morris worm
+Brain virus(1986): Alvi brothers created it. Its intention was to TRACK illegal copies of MEDICAL SOFTWARE and prevent PIRATED LICENSES.
+But it turned out unexpectedly to- when someone used a pirated software, the VIRUS infected the computer. Then any disk inserted into the
+computer will also be infected. Anytime anybody used the infected disks in a new computer, the VIRUS spread. Undetected, the VIRUS spread
+globally in months. It changed the security industry-e emphasizing the need for plan and productivity.
+Morris worm(1988): Robert Morris developed a program to access the SIZE OF THE INTERNET. The program CRAWLED the web and installed itself
+onto other computers to tally the numbers of computers that were connected to the internet. The program however failed to keep TRACK of
+the computers it had already COMPROMISED and continued to REINSTALL itself, until computers RAN OUT OF MEMORY and CRASHED.
+About 6000 computers were affected-this represented 10% of the INTERNET at that time. Caused millions of dollars in damages
+Computer Emergency Response Teams(CERTs): were established to respond to security incidents.
+Disks are no ore needed to spread virus. Internet does it through the Malware now. Malware attacks:
+Loveletter Attack
+Equifax breach
+Loveletter Attack(Onel de Guzman): 2000- Created the loveletter malware to STEAL internet login credentials. It spread rapidly and took
+advantage of people that have not developed a HEALTHY SUSPICION FOR UNSOLICITED EMAILS.
+Users received emails with the subject line-"I LOVE YOU" and had an attachment . Whenever, the attachment was opened, the malware
+scanned the user's address book and automatically sent itself to each person on the list and install itself on the program to collect
+information and passwords. 
+It infected 45million computers globally and believed to have caused over $10 billion dollars in damages.
+#Social Engineering: A manipulation technique that exploits human error to gain private information, access, or valuables.
+Ways to safeguard your organization
+1. Conduct regular internal trainings e.g training on Phishing
+Phishing: Use of digital communication to trick people into revealing SENSITIVE DATA or DEPLOYING malicious software.
+#EQUIFAX BREACH
+Equifax breach(2017): Credit reporting agency- full blown data breaches of sensitive info. Over 143million customer records were stolen
+and the breach affected over 40% of Americans. PII: SSN, Birth date, Home address, credit card details.
+Multiple security lapses from Equifax caused it- The attack took advantage of numerous vulnerabilities.
+Equifax settled with US government to pay over $575million
+
+Notice similar trends, patterns and methodologies, you can identify potential breach and future damage.
+
+#C.I.S.S.P DEFINED 8 DOMAINS
+Security and risk management
+Asset security
+Security architecture and engineering
+Security operations
+Software Development security
+Security assessment and testing
+Identity and access management
+Communication and network security
+
+#NOW
+Security and risk management: Focuses on defining security goals and objectives, risk mitigation, compliance, business continuity, and 
+the law. e.g update company policies related to private health information if a change is made to federal policy e.g Health Insurance
+Portability and Accountability Act (HIPPA)
+Asset security: Focuses on securing digital and physical assets. It is related to STORAGE, MAINTENANCE, RETENTION nd DESTRUCTION OF DATA
+e.g making sure that old equipment is properly disposed off and destroyed and any unused data.
+Security architecture and enginerring: Focuses on optimizing data security by ensuring effective tools, systems, and processes are in place
+e.g configure a firewall
+Communication and network security: Focusues on managing and securing physical networks and wirelesss communications e.g Analysing user
+behavior in your organization. e.g using usb ports to charge phones.
+Identity and access management: Focuses on keeping data secure, by ensuring that users follow established policies to control and manage
+physical assets, like office spaces, and logical assets e.g networks and applications e.g validating the identities of employees and 
+documenting access roles. Setting up employees key card access to buildings
+Security assessment and testing: Conducting security control testing, collecting and analyzing data, and conducting security audits
+to monitor for risks, threats and vulnerabilities. e.g conducting regular audits of users permissions. e.g limiting access to payroll
+to only certain employees.
+Security operations: Conducting investigations and implementing preventatives measures. e.g receives an alert that an unidentifiable device
+has been connected to your network. You will want to find the device and prevent the potential threat.
+Software development security: Focuses on using secure coding practices, a set of recommended guidelines that are used to create secure
+applications and services. e.g work with developers to ensure that security practices are incorporated into the SDLC e'g advise on password
+policies or ensure that user data is properly secured and managed.
+
+#How organization protect themselves using key principles
+Frameworks
+Controls
+Ethics
+Frameworks and Controls: Confidentiality, Integrity and Availability controls- C.I.A Triage
+An example of control is using security key to access your account- only a user can be able to access this even if his password is compromised
+#alerts on suspicion or malicious attacks- how to protect your organization
+First, identify your organization's potential risks and threats
+Then, implement necessary frameworks and controls
+Security frameworks- are guidelines used for building plans to help mitigate risks and threats to data and privacy.
+It provides a structured approach in implementing a security lifecycle.
+#Purpose of security frameworks
+1. Protecting PII
+2. Securing financial information
+3. Identifying security weaknesses
+4. Managing organizational risks
+5. Aligning security objectives and goals
+
+#Four Core Components of Frameworks- It will help to better manage potential risks
+Goals: Identifying and documenting security goals e.g an org may want to align with EU General Data and Protection Regulation(GDPR) law
+It grants European Union citizens more control over their data e.g SA may identify and document where his org is out of compliance with GDPR
+Guidelines: Setting guidelines to achieve security goals e.g updating your policies to comply with GDPR policy
+Communication: Implementing strong security processes
+Processes: Monitoring and communicating resultse.g monitoring your org's network and report a security issue affecting GDPR to your manager.
+#Security controls:
+Designed to reduce specific security riskse.g an org conducting a training for its employees to complete a privacy training to reduce
+the risk of data breaches. As a SA, you may use a tool to track which employee has completed the training
+#C.I.A Triage
+Foundational model that helps inform how organizations consider risks when setting up systems and security policies.
+Confidentiality: Only authorized users can access specific data or assets. e.g there should be a policy stating who shoul and should not
+have access to a data should be in place.
+Integrity: Means the data is correct, authentic and reliable.. use encryption to protect data integrity
+Availaibility: Data is accessible to those who are authorized to access it.
+
+NIST CSF National Institute of Standards and Technology: the Cybersecurity Framework
+It consists of standards, guidelines and best practices to manage cybersecurity risks
+Do you know about organizational frameworks and principles?
+How do you use them to secure organizations assets and infra?
+Security Ethics: Are guidelines to making accurate decisions in security related issues
+
+Ethical principles in security:
+Confidentiality: Keep info like PII confidential and safe in the course of your job
+Privacy: Safeguarding private information from unauthorized use.
+Laws: Rules that are recognized by a community and enforced by a governing entity.
+
+#Tools
+SIEM tools: It collects and analyze log data to monitor critical actvities in an organization
+It collects real-time log or info and allows SA to analyze it. It can provide alerts for specific types of risks and threats
+e.g Splunk and Chronicle. Splunk Enterprise provides that
+Playbooks: It provides details about any operational actions. It guides on how to analyze security incident before, during and after it
+has occurred. 
+Network protocol analyzers: Also called packet sniffer. A tool designed to capture and analyze data traffic within a network
+e.g tcpdump and wireshark
+Linux operating system: Using linux to examine logs in the system. analysing error logs
+Python and SQL
