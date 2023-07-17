@@ -196,3 +196,78 @@ Network protocol analyzers: Also called packet sniffer. A tool designed to captu
 e.g tcpdump and wireshark
 Linux operating system: Using linux to examine logs in the system. analysing error logs
 Python and SQL
+
+
+#2. How to Manage Security Risks and Threats
+Identity Risks and Threats in Cybersecurity
+Certified Information Security Professional (CISSP) Eight Domains
+Security Frameworks and controls
+Security audits
+Security tools
+
+#Security  Risk and Management (Elaboration)
+When you define the GOALS and OBJECTIVES, an org can reduce risks and threats to data and assets e.g PII
+Risk mitigation involves the process of having the right procedures and rules in place to quickly REDUCE the impact of a risk e.g BREACH
+Compliance is a method used to design an org policies and regulatory requirements and independent standards.
+Business continuity is an organization's ability to MAINTAIN their productivity by establishing RISK DISASTER RECOVERY
+Laws is folowing rules and ethical behavior to minimize negligence of abuse or fraud
+
+#Asset Security
+Asset security e.g PII or SPII should securely handled and protected. Whether stored in a computer, transferred over internet or physically
+collected
+
+#Security Architecture and Engineering:
+Shared reepsonsibilities by all everybody in the organization. Policies can help to enable situations to be handled quickly and effectively
+
+#Communication and Network Security
+Secure networks for org data and safe communication whether on-site or in the cloud
+
+#IAM
+Reduce risks to asset and data
+4 components in IAM:
+Identification: Access card, biometric data e.g fingerprint, username
+Authentication: Verification process to prove a person's identity e.g passowrd or pin
+Authorization: Access to resources in the org based on level or title in the org.
+Accountability: Monitoring and reporting user actions e.g login attempts.
+
+#Security Assessment and Testing
+New and better way to mitigate threats, risks and vulbnerabilities. Implementing a new control e.g requiring multifactor authentication
+
+#Security operations
+Work on neutralizing threats and conducting digital forensics afterwards.
+
+#Software Development Security:
+Ensure app security is implemeented.
+
+#Threat
+Any circumstance or event that can negatively impact assets. e.g social engineering attack
+Social engineeering is a manipulation technique that exploit human errors to gain private info, access and valuables. e.g phishing- technique
+used to acquire sensitive data e.g username, passwords, or banking information
+
+#Risk
+Risk is anything that can impact the confidentiality, integrity or availability of an asset. Low risks examples are website content,
+published research data. Medium risk assests examples are  early release of a company's quarterly earnings. High risk assests examples
+are SPII or PII
+
+#Vulnerabilities
+Aweakness that can be exploited by a threat
+A threat and vulnerability MUST be PRESENT before there can be a RISK. e.g outdated firewall,software or application, weak passwords,
+unprotected confidential data, people
+#SA can help with these:
+How to identify suspicious email
+Moniroting and documenting employees access to critical assets
+
+#An example of EXPENSIVE MALWARE is called RANSOMWARE
+#3 impacts of threats, risks and vulnerabilities to organization.
+Ransomware: A malicious attack where threat actors encrypt an organization's data and demand payment to restore access
+Once ransomware is deployed by an ATTACKER, it can FREEZE network systems, leave devices unusable and encrypt and lock confidential data
+Actor demands a ransom in exchange for a decryption key.
+Intranet is an example of DEEP WEB
+DARKWEB: is only accessible by special software
+
+#3 impacts of TRV
+1. Financial: Once your system/network is compromised, it can lead to disruption of production and services. The COST to correct the issues
+and fines for non-compliance with laws and regulations
+2. Identity Theft: Storing data of employees, external data and customers for how long. Sensitive data includes PII- this can
+be leaked or sold through the DARKWEB.
+3. Damage to an org reputation: It could create bad press
