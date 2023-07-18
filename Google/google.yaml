@@ -271,3 +271,46 @@ and fines for non-compliance with laws and regulations
 2. Identity Theft: Storing data of employees, external data and customers for how long. Sensitive data includes PII- this can
 be leaked or sold through the DARKWEB.
 3. Damage to an org reputation: It could create bad press
+
+
+#NIST Risk Management Framework(RMF)
+There are 7 steps in RMF:
+Prepare: Activities that are necessary to manage security and privacy risks before a breach occurs
+Categorize: Used to develop risk management processes and tasks
+Select: Choose, customize and capture documentation of the controls that protect an organization
+Implement: Implement security and privacy plan for organization
+Assess: Determine if established controls are implemented correctly
+Authorize: Being accountable for the security and privacy risks that may exist in an organization
+Monitor: Be aware of how systems operate
+
+Security Frameworks: Are guidelines used for building plans to help mitigate risk and threats to data and privacy. e.g social engineering attacks
+and ransomware.
+People are the biggest threat to security.
+Security Controls: Are safeguards designed to reduce specific security risks.
+3 types of control:
+Encryption
+Authentication and
+Authroization
+Encryption: Is the process of converting data from a readable format to an encoded format. converting data from plain text
+to cypher text.
+Authentication: Is the process of verifyin who someone or something is. e.g login in with your username and password into a website
+One of social engineering attack that can exploit authentication is vishing- the exploitation of electronic voice communication
+to obtain sensitive information or to impersonate a known source.
+Authorization: The concept of granting access to specific resources within a system. Access a deep web only if you are a federal employee.
+
+CIA Triad: A model that helps inform how organizations consider risk when setting up systems and security policies.
+Confidentiality: Only authorized users can access a specific assets or data.
+Integrity: The data is correct, authentic and reliable.
+Availability: Data is accessible to those who are authorized to access it.
+This is very essential for banks for example
+
+NIST CSF- Core fucntions - IPDRR
+Identify: Identify a workstation that has been compromised with an unknown device plugged into it
+Protect: You block the unknown device remotely, to STOP any potential threat and PROTECT the organization. You REMOVE the workstation to prevent
+the spread of the damage
+Detect: You use tools to DETECT any additional threat or behavior, and identify the unknown device.
+Respond: You RESPOND by investigating the incident to determine who used the unknown device, how the threat occured, what was affected and
+where the attack originated.
+Recover: You do your best to recover any files or data that were affected 
+
+NIST S.P 800-53 for Federal Government. Special Publication
