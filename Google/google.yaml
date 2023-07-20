@@ -307,10 +307,87 @@ This is very essential for banks for example
 NIST CSF- Core fucntions - IPDRR
 Identify: Identify a workstation that has been compromised with an unknown device plugged into it
 Protect: You block the unknown device remotely, to STOP any potential threat and PROTECT the organization. You REMOVE the workstation to prevent
-the spread of the damage
-Detect: You use tools to DETECT any additional threat or behavior, and identify the unknown device.
+the spread of the damage. The strategy used to protect an organization through the implementation of policies, procedures, training and
+tools that help mitigate cybersecurity threats.
+Detect: You use tools to DETECT any additional threat or behavior, and identify the unknown device. Identifying potential security incidents
+and improving monitoring capabilities to increase speed and efficiency of detections.
 Respond: You RESPOND by investigating the incident to determine who used the unknown device, how the threat occured, what was affected and
-where the attack originated.
-Recover: You do your best to recover any files or data that were affected 
-
+where the attack originated. Making sure that the proper procedures are used to contain, neutralize, and analyze security incidents and
+implement improvements to the security process.
+Recover: You do your best to recover any files or data that were affected. The process of returning the affected incident back to normal
+operation.
 NIST S.P 800-53 for Federal Government. Special Publication
+Open Web Application Security Project(OWASP) security principles
+1. Minimize the attack surface area- disabling software features, control who can access certain assets, or establish more complex password
+requirements
+2. Principles of least privilege-least amount of access given to users to perform their tasks.
+3. Defense in depth- Have more security controls that deals with risks and threats in different ways. e.g Using MFA
+4. Seperation of duties- no one should be giving so many privileges so that they can misuse the system. e.g person who signs paycheck
+should not be the one preparing them.
+5. Keep security simple-don't make security control complex.
+6. Fix security issues correctly-weak password to access an organization's wifi.
+
+#Security audit
+It is a review of an organization's security controls, policies and procedures against a set of expectations.
+There are 2 types of security audits- external and internal
+Internal Security Audity team- Compliance officer, security manager and other security team members.
+Purpose of internal security audits
+1. To improve an org security posture.
+2. To avoid paying fines to regulatory bodies due to non-compliance
+3. Identify organizational risks
+4. Access controls
+5. Correct compliance issues
+
+#Common elements of internal audits
+1. Establishing the scope and goals
+2. Conducting a risk assessment of the organization's assets- often consucted by managers or other stakeholders
+3. Completing a controls assessment
+4. Assessment compliance- e.g compliance with GDPR if you run your business in the EU
+5. Communicating results
+
+Scope could be:
+Assess users permissions
+Identify existing controls, policies and procedures
+Account for technology currently in use
+
+Goals could be:
+Adhere to the NIST CSF
+Fortify system controls
+Establish policies and procedures to ensure compliance with regulations
+
+#Audit questions will help you to answer the remaining 3 common elements
+What is the audit meant to achieve?
+Which assets are most at risk?
+Are current controls sufficient to protect those assets?
+What controls and compliance regulations need to be implemented?
+
+#Controls division
+Administrative e.g passowrd policies
+Technicale.g intrusion detection systems, encryption
+Physical e.g surveilance camera, locks
+
+#Stakeholder communication
+Summarizes scope and goals
+List existing risks
+Notes how quickly those risks needs to be addressed
+Identifies compliance regulations
+Provides recommendations
+
+#Common logs that you will need to be analyzing
+Firewall logs: a record of established or attempted connections for incoming traffic from the internet. It also includes outbound requests
+to the internet from within the network
+Network logs: a record of all computers and devices that enter and leave the network. It also records connections between devices and
+services on the network.
+Server logs: a record of events related to services, e.g websites, emails, or file shares . It includes actions e.g login, passowrd
+and username requests
+
+SIEM provides:
+real time visibility
+event monitoring
+automated alerts
+stores all data in a centralized location (index)
+
+#Different types of SIEM tools
+Self hosted: an org will install,operate and maintain. bank can use this e.g Splunk Enterprise
+Cloud based: maintain and manage by SIEM providers. e.g Splunk Cloud, Chronicle
+Hybrid hosted: combine two- to leverage of the cloud and maintain physical assets to the tool
