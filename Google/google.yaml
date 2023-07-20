@@ -391,3 +391,22 @@ stores all data in a centralized location (index)
 Self hosted: an org will install,operate and maintain. bank can use this e.g Splunk Enterprise
 Cloud based: maintain and manage by SIEM providers. e.g Splunk Cloud, Chronicle
 Hybrid hosted: combine two- to leverage of the cloud and maintain physical assets to the tool
+
+#Playbook
+A manual that provides details about any operational action. Different types of playbooks e.g for incident response, security alerts,
+team specific and product specific playbook, malware, ransomware, DDOS etc
+Commonly used playbook- Incident response playbook: It is a guide with 6 phases used to mitigate and manage security incidents from
+beginning to the end.
+1. Preparation: Org must prepare to mitigate risks, by documenting procedures, establish plans and educate users.
+2. Detection and analysis: Define and analyse events, using defined processes and technology.
+3. Containment: Prevent further damage and reduce immediate impact of security incidents.
+4. Eradication and recovery: Remove artifcats so that the org can return to normal operations. Also known as IT restoration
+5. Post incident activity: documenting the incidents
+6. Coordination: Recording and reporting the incidents throughout the incidents response period.
+
+Playbook for malware:
+assess the alert- determine if the alert is valid or not by analyzing the logs in SIEM
+actions and tools to use to reduce the damage of the malware e.g ISOLATE OR DISCONNECT THE INFECTED NETWORK SYSTEM
+eliminate the traces of the incident and restore the affected the systems back to normal operations- e.g restore the affected OS, then
+restore the affected data using a cleanup created.
+perform post incident actvities: creating final report to report to stakeholders or to necessary authorities
