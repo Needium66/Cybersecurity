@@ -1,0 +1,56 @@
+#While troubleshooting how to get splunk enterprise backup, it was discovered that the certificate had expired
+#How I got the certficate renewed
+#KVstore failed
+Why? If you don't have valid self-signed/third-party certificates enabled Splunk will fall on default certificates, which are expired in your case
+Solution: rename your certficate file e.g serverfile.pem to serverfile.pem.back through a path e.g /opt/splunk/etc/auth and restart the instance
+That should FORCE Splunk to create a NEW DEFAULT VALID CERTIFICATE. Try this process on all of your Splunk instances where there are default
+certficates being used. Then run the below command on the instance where the kvstore errors were:
+openssl x509 -enddate -noout -in ./server.pem
+Note: It is important to run the command in the following path: /opt/splunk/etc/auth. First, go to /opt/splunk/etc/auth and then run the command
+https://community.splunk.com/t5/Security/How-do-I-renew-an-expired-Splunk-Certificate/m-p/389701
+If you have made changes to inputs.conf regarding using certificates to secure connections, you can revert those changes since we are going
+to try it first using default certificates, if after resolving thhe kvstore issues, you still want to secure your connections using your
+own certificates you can still do that.
+Once confirmed that your certifcate is not expired anymore, you can migrate the StorageEngine, which in your instance is currently 'mmapv'
+but it has to be "WiredTiger" if your Splunk version is 9.0.0, First create a backup kvstore Backup KVStore-https://docs.splunk.com/Documentation/Splunk/9.1.0/Admin/BackupKVstore
+You will be needing free storage space that is equal to twice the size of your KVstore directory in order to complete the migration.
+Steps:
+Stop Splunk Enterprise. Do not the -f option.
+Open server.conf in the $SPLUNK_HOME/etc/system/local/directory.
+Edit the storageEngineMigration setting to match the following example.
+
+[kvstore]
+storageEngineMigration=true
+Save the server.conf file
+To begin the migration, use the below command:
+splunk migrate kvstore-storage-engine --target-engine wiredTiger
+
+To reduce the strorage space required to migrate, use the --enable-comprehension option to compress the backup data. This option causes slightly
+higher CPU usage.
+Check the $SPLUNK_HOME/var/log/splunk/mongod.log file on *nix or the %SPLUNK_HOME\var\log\splunk\mongod.log file on Windows to see the status
+of your migration.
+After verifying the migration is successful, start Splunk Enterprise again.
+Delete the KV store backup data in the $SPLUNK_DB/kvstore/old_db directory on *nix or the %SPLUNK_DB%\kvstore\old_db directory on Windows.
+https://community.splunk.com/t5/Installation/How-to-complete-a-KVStore-migration/m-p/585968
+Focus on the one referring to single-instance deployment.
+
+If you have successfully migrated to WiredTiger, but not to the latest version of MongoDB, manually upgrade to the latest version of
+MongoDB with the following CLI command.
+splunk migrate migrate-kvstore
+After completing all the steps above, you should not see any errors. You can confirm it by running "splunk show kvstore-status --versbose"
+without quotes
+Verify that serverVersion and storageEngine fields indicate the latest versions:
+#STEPS
+Sudo access to your splunks server through the DNS name or IP address
+Let the stakeholder know that there will be brief interruption of splunk( cos you will have to restart it)
+SSH to servers
+Run command to take a backup and delete serverfile:
+a. mv /opt/splunk/etc/auth/$serverfile.pem /opt/splunk/etc/auth/serverfile.pem.bak
+b. you can remove the serverfile if needed- sudo rm /opt/splunk/etc/auth/serverfile.pem
+Run the command to restart splunk with with executable program:
+a. cd /opt/splunk/bin
+b. ./splunk restart
+Verify cert is renewed:
+a. cd /opt/splunk/etc/auth/
+b. openssl x509 -enddate -noout -in ./serverfile.pem
+Update reminder file

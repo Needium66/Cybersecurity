@@ -410,3 +410,65 @@ actions and tools to use to reduce the damage of the malware e.g ISOLATE OR DISC
 eliminate the traces of the incident and restore the affected the systems back to normal operations- e.g restore the affected OS, then
 restore the affected data using a cleanup created.
 perform post incident actvities: creating final report to report to stakeholders or to necessary authorities
+
+#INTERNET NETWORKS AND NETWORK SECURITY
+Stucture of network
+Network operations
+Network attacks
+Security hardening
+
+#Structure of a network
+Structure of a network
+Standard networking tools
+Cloud networks
+TCP/IP model
+
+#Structure of a network
+The IPs and MAC addresses will enable devices to communicate with each other. Devices can communicate on two types of network- Local
+Area Network(LAN)-spans a small area e.g office building, a school, or a home ( e.g a phone+wifi=LAN) and Wide Area Network(WAN)- spans
+on large geographical area e.g city, state or country e.g internet (an employee in SanFras+ an employee in Dublin)
+#Common devices that make up a networking tools (These 4 are all physical tools)
+Hub: a network device that broadcast info to every device on the network.
+Switch: it makes connections between specific devices on a network by sending and receiving data between them. More intelligent than hub.
+It only passes data to the intended destination. More secure than hub
+Router: It is device that connects multiple networks to one and another. e.g passing info from one computer to a tablet.
+It leaves the computer and goes to the router, which finds the network address and forwards the data to the intended router and finally
+the receiving router directs the info to the tablet
+Modem: A device that connects your router to the internet and brings internet access to LAN. computer sending info from one location to
+a computer in another location- computer to a router, through a modem, to the internet. to the reciving router, and then to the computer
+#Virtualization tools: 
+Pieces of software that performs network operations. They replace the physical tools and provided by cloud service providers
+AWS Transit Gateway is used a network hub in AWS
+A data packet will have a Header e.g IP address, Body e.g MAC(Media Address Control) address and Footer e.g Protocol number i.e HEADER+BODY+FOOTER
+#TCP/IP Model
+TCP is an internet communication protocol that allows two devices to form a connection and stream data.
+Internet Protocol(IP): A set of standards used for routing and addressing data packets as they travel between devices on a network.
+IPs that are sent across networks are assigned ports(ithey organize the sending and receiving of data across networks)
+Common ports:
+Port 25- Email
+Port 443- Secure internet connection
+Layers of TCP/IP Models(4): NITA . 
+Network access layer: Layer 1- creation of data packets and transmission across network e.g hardware devices connected to physical cables
+and switches that directs data to its destination
+Internet layer: Layer 2- it is where IP addresses are attached to data packets to indicate location of the sender or receiver. It determines
+whether data will be sent to e.g LAN or remote network for example.
+Transport layer:  It controls the flow of the traffic across a network
+Application layer: It determines how the data packets will interact receiving devcies e.g file transmers, email.
+
+#Network Protocols
+A set of rules used by two or more devices on a network to describe the order of delivery and the structure of the data. e.g
+User hits a website for something, TCP handsake will help to enable the communication between the user and remote server to get a response
+from. The server will send out data packets that will be viewable by the user on the webpage.
+HTTPS: Allows web browser to send data securely over a network.
+Domain Name System(DNS): Trannslates the internet domain names e.g yummy.com to IP addresses
+Finally: Just by sending a request, it will do TCP, ARP, HTTPS and DNS
+
+Security Protocols:
+HTTPS
+TLS/SSL
+
+Firewall: A network security device that monitors traffic to and from your network It either allows or blocks network. A firewall can use port filtering- 
+that allows or blocks certain port numbers to limit unwanted communication.
+Hardware firewall:
+Software Firewall: Performs the same function. It is a software program installed on a server or computer.
+Stateful firewall: It keeps  track of info passing through it and proactively filters out threats.
