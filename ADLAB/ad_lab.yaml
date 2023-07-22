@@ -440,3 +440,12 @@ run
 3. Remove all backdoors and/or rootkits isntalled
 4. Remove any user accounts created for connecting back to compromise systems.
 http://www.pentest-standard.org/index.php/Post_Exploitation#Cleanup
+
+#PLAYBOOK FOR Risky AD Logging
+When a user's account appears to be compromised
+- Disable the account
+- Reset the password
+- Expire the sessions on the user's account
+- Fix the user's account when available
+- Confirm that user's account is compromised on AzureAD Security Portal.
+- Create a JIRA ticket to track it.

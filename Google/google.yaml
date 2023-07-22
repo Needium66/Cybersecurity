@@ -472,3 +472,143 @@ that allows or blocks certain port numbers to limit unwanted communication.
 Hardware firewall:
 Software Firewall: Performs the same function. It is a software program installed on a server or computer.
 Stateful firewall: It keeps  track of info passing through it and proactively filters out threats.
+Stateless firewall: It operates based on defined rules and does not keep track of info from data packets. They considered less secure
+than stateful firewall.
+Next Genration Firewalls: Provides even more security than stateful firewall. It not only performs tracking of incoming and outgoing
+traffic, it also performs more in-depth security functions e.g intrusion detection, deep packet inspection, threat intelligence.
+
+#VIRTUAL PRIVATE NETWORK(VPN)
+A network security service changes your public IP address and hides your virtual location so that you can keep your data private when
+you are using a public network like internet. It also encrypts your data and travels the internet to preserve confidentiality. It also
+performs encapsulation- a process performed by a vpn service that protects your data by wrapping sensitive data in other data packets.
+Basically VPN encrypts your data and encapsulate them in other data packets.
+Security zone: A segment of network that protects the internal network from the internet. Part of security network called network segmentation
+An example of network segmentation is hotel that offers free wi-fi.
+An organization NETWORK can be sub divided into SUBNETWORKS OR SUBNET (Like segmenting them due to security; when an attack occurs in one subnet
+it will not affect the other network)- it maintains privacy for each department in an organization. Database subnet, Weserver subnet,
+Web reporting subnet. If there is an attack on the database subnet, an admin can isolate it and tackle it.
+Classification of security zones: 2
+Uncontrolled zone: Any network outside of the organizations control. e.g internet. 
+Controlled zone: A subnet that protects the internal network from uncontrolled zone. TYPES OF CONTROLLED ZONE-
+Demilitarized zone(DMZ)-It is in the outer layer. It contains public-facing services that can access the internet. e.g web servers,
+proxy servers that hosts websites for the public, DNS servers that provide IP address for internet users., email and file servers
+that handles communication.
+Internal network- contains private servers and data that the organization needs to protect
+Restricted zone- Protects highly confidential info. It is always accessible to employees with certain privileges.
+DMZ is situated between two firewalls. One filters traffic outside the DMZ and the other one filters traffic entering the internal
+network. it protects the internal network against external attack. There is a restricted zone protected by another firewall, so that
+any attack that enters the DMZ zone CANNOT spread to the restricted zone or penetrate the internal network.
+
+INTERNET -- FIREWALL == (DMZ) == FIREWALL -- (INTERNAL NETWORK == FIREWALL == RESTRICTED ZONE)
+For the DMZ, the policies that you can implement include:
+Restrict ports and IPs
+Only HTTPS traffic can access your DMZ
+
+How to secure INTERNAL NETWORKS: with PROXY SERVERS (Very important to protect against attacks)
+Proxy servers are another system that helps secure networks. It is a server that fulfils requests of a client by forwarding them on to
+other servers. It is a dedicated SERVER that is between the INTERNET and the rest of the networks. It uses a public IP address that is
+different from all the private network. It hides the private IP address from malicious act from the internet and adds a layer of security.
+It can also be used to block websites that you don't want anybody from your organization to have access to. It uses temporary memory.
+Types of proxy service:
+1) Forward proxy server- regualtes and restrict's access to the internet. Goal is to hide IP address and approve all outgoing requests.
+2) Reverse Proxy Server-regulates and restricts internet access to an internal server. Goal is to accept traffic from external service, approves it
+and forward it to internal server. Used for protecting web servers with confidential info.
+3) Email proxy server- it filter's spam email by verifying whether a sender's address is forged, It reduces phishing for example.
+Why do I need to secure networks?
+Common network intrusion attacks:
+Malware
+Spoofing: It is another type of network attack, when an attacker changes the SOURCE IP of a data packet to impersonate an authorized user
+and gain access to a network. Hackers pretend to be what they are not so that can communicate over the network with the target Some common
+IP sppofing attacks are-
+On-path attack: An attacker will place himself or herself in the middle of an authrorized connections and alters or intercepts data in transit.
+e.g the attacker gains access and put himself between two devices (web server and web browser). Then, they sniff the packet info and learn
+about the IP and MAC addresses of the two devices.
+Replay attack: A network performed when a malicious actor INTERCEPTS a data packet in transit and DELAYS IT or REPEAT IT another time.
+Smurf attack: A network attack performed when an attacker SNIFFS an AUTHORIZED USER'S IP ADRESS and FLOOD it with PACKETS. It is combination
+of DDoS attack and IP spoofing to bring down the servers and the entire network.
+How to protect your network from packet spoofing attack:
+Implement encryption of data always
+Configure firewalls
+Network segmentation
+Use only current wireless connection
+Packet sniffing: Using of software tools to observe data as it moves across network. Personnally, you can legally use PACKET SNIFFING to
+analyze and capture packets when investigating ongoing incidents or debugging network issues. Stand in between 2 authorized users to gain
+control of the network. Packet sniffing can be active or passive. Passive sniffing is a type of attack where DATA PACKETS are read IN TRANSIT.
+Packet flooding. Active packet sniffing is a type of attack where data packets are manipulated in traffic e.g injecting IP to redirect
+packets to unintended port or changing the info the packets contain. How to protect MALICIOUS PACKET SNIFFING ATTACK:
+1. VPN Tunneling- Using VPN to protect and encrypt the data as it travels across the internet. When you use VPN hackers may interfere with
+your network, but they will not be able to DECODE or READ YOUR PRIVATE INFO.
+2. Using HTTPS at the beginning of your domain. Using SSL/TLS at the beginning of your communication.
+3. Using unprotected wi-fi- e.g at coffee shops or restaurants or airports. Avoid using free wifi, unless you have VPN installed.
+
+What can result from an attack on an organization:
+Leaking of valuable or confidential information
+Damaging an organization's reputation
+Impacting customer retention
+Costing money and time
+Examples:
+An attack on Home Depot in 2014- Hackers compromised Home Depot's servers with Malware. By the time network admin shut down the attack.
+Attackers had already taking debit and credit info of customers-56 million customers.
+Common network attacks to be protected from:
+Denial of Service Attack(DoS)- an attack that targets a NETWORK or SERVER and floods it with NETWORK TRAFFIC. The goal is to OVERLOAD
+an organization's network in order to disrupt its operations.Send so much info/traffic to a network device, in order to CRASH IT OR MAKE IT
+UNABLE TO RESPOND to legitimate users. A network crash can also lead them to more VULNERABILITIES and THREATS apart from MONEY and TIME
+that will be lost.
+Distributed Denial of Service Attack(DDOS)- It is DOS attack that uses MULTIPLE DEVICES or SERVERS in different locations to flood the target
+network with unwanted traffic
+A good example of DOS attack: an attacker crafted a CAREFUL PACKET that caused a router to spend more time processing the request. There is
+a specific and never ending situation
+3 COMMON LEVELS DOS ATTACKS:
+1. SYN Flood Attack- It is a type of DOS attack that SIMULATES A TCP connection and FLOODS a server with a SYN packets. This is targeted at
+Handsake SYN-SYN-ACK-ACK process. So the goal is to flood the first step with SYN packets or requests that will overwhelm the ports on the
+server and prevent it from able to handle the request, thereby the server getting overwhelmed.
+2. Internet Control Message Protocol (ICMP)- An internet protocol used by devices to tell each other about data transmission errors
+across the network. ICMP Flood Attack: It is a type of DoS attack where an attacker repeatedly sends ICMP packets to a network server. This
+will FORCE a server to send an ICMP back. This eventually USES all the BANDWIDTH for incoming and outgoing traffic and causing the server
+to crash
+Both ICMP and SYN Flood Attacks take advantage of COMMUNICATION REQUESTS to achieve their goals. The 3rd one does damage with just ONE REQUEST
+3. Ping of Death- It is a type of DOS attack where an attacker PINGS A SYSTEM by sending it an OVERSIZED ICMP packet that is beigger than 64KB.
+Since a correctly sized ICMP packet is 64Kilobytes. An hacker sends more than appropriate size in order to overwhelm the network.
+
+#Security Hardening
+#OS Hardening
+#Network Hardening Practices
+#Cloud Network Hardening
+
+#Security Hardening
+Security hardening is implemented for:
+Devices
+Networks
+Applications
+Cloud infrastructure
+Part of job responsibilities of an SA are- patch updates and backups.
+Security hardening is the process of STRENGHTENING a system to REDUCE vulnerabilities and attack surface- all the potential vulnerabilities
+that a threat actor could exploit. An SA will perform regular maintenance to enable network device and systems functioning securely.
+Security hardening can be conducted on Hardware, Applications, Databases, Devices and Networks. Examples of security hardening- software
+patches, configuration changes e.g regular password change, removing or disabling unused apps and services, disabling unused ports, condcuting
+regular penetration testing- helps to identify VULNERABILITIES in SYSTEMS, NETWORKS, WEBSITES, APPLICATIONS and PROCESSES.
+
+#OS HARDENING
+To strengthen an OS, you can do:
+Regular updates e.g patch installation(patch updates), baseline configuration, hardware and software disposal
+Backups
+Keeping an up-to-date list of devices and authroized users.
+Password regular change, MFA etc.
+
+#NETWORK SECURITY HARDENING
+It strenghtens networks such as:
+Port filtering: This is performed regularly. It is a firewall function that blocks or allows certain port numbers to limit
+unwanted communication. Basic principle is to ONLY ALLOW ports that are being used for network operations.
+Network access privilege: Performed regularly. Set up networks with up-to-date firewall protocols. Using network segmentation to isolate
+according to departments.
+Encryption of networks: Performed regularly. Encrypt all data using current standard encryption.
+Some network hardening tasks that are performed once are:
+- firewall rules maintenance
+- Network log analysis- examine network logs to IDENTIFY EVENTS of INTERESTS. There is where SIEM is used SIEM presents logs
+on the scale of PRIORITY- HIGH to LOW. High priorities logs have a short time frame for mitigation.
+- Patch updates
+- Server backups
+
+#CLOUD NETWORK HARDENING
+Separation of data- older apps should be kept sperate from newer apps.
+Backend apps should be separate from Frontend apps
