@@ -54,3 +54,15 @@ Verify cert is renewed:
 a. cd /opt/splunk/etc/auth/
 b. openssl x509 -enddate -noout -in ./serverfile.pem
 Update reminder file
+
+#Splunk Core Certified User Exam
+Introduction to Splunk's certification
+Basic searching
+Using fields in searches
+Search fundamentals
+Transforming commands
+Creating reports and dashboards
+Creating and using lookups
+Scheduled reports
+Alerts
+Using pivot
