@@ -612,3 +612,117 @@ on the scale of PRIORITY- HIGH to LOW. High priorities logs have a short time fr
 #CLOUD NETWORK HARDENING
 Separation of data- older apps should be kept sperate from newer apps.
 Backend apps should be separate from Frontend apps
+
+#Developing security features and fixing vulnerabilities to SECURE emails-gmail
+#CYBERSECURITY ASSETS, NETWORK THREATS AND VULNERABILITIES
+Asset Security
+Security systems and controls
+Common vulnerabilities in the systems
+
+Risk: Anything that can affect the integrity, confidentiality or availability of an asset. CIA
+Security planning- first step of CIA triad.
+Security Risk Planning: Are based on 3 elements-
+Assets
+Threats and
+Vulnerabilities
+They measure these to know how they can impact CIA. Each of them is WHY, WHAT and HOW OF SECURITY
+Asset: An item of value for an organization. e.g building, data, people, businesses. Security teams can PRIORITIZE their ASSETS based
+on threats.
+Threat: An circumstance or event that can negatively impact assets.
+Vulnerabilities: A weakness that can be exploited by a threat. Vulnerabilities are FLAWS within an ASSET. Asset can have many TYPES of
+VULNERABILITIES.
+You can only protect things that you account for.
+Asset Management: The process of tracking assets and the risks that affect them.
+All security plan revolves around Asset management.
+You need to be able to rate your assets-
+Asset classification: The practice of labelling assets based on sensitivity and importance to an organization. Bais that most companies 
+follow to classify their assets include- PUBLIC, INTERNAL ONLY, CONFIDENTIAL and RESTRICTED.
+Public- can be shared with anyone
+Internal-only- can be shared ONLY with people int the organization.
+Confidential- can only be shared by people working only a specific project.\
+RESTRICTED- HIGHLY SENSITIVE AND NEED TO BE PROTECTED e.g IP, FINANCIAL INFO ETC.
+
+Security teams PROTECT data in 3 different STATE:
+In-use- it is being used by one or 2 people e.g when you log in
+In-transit- data traveling from one place to another
+At rest- data not currently being used. data that has been stored
+
+INFORMATION SECURITY(INFOSEC): Keeping data at all states away from an unauthorized user. Weak infosec can lead to
+1. Identity theft
+2. Reputation damage
+3. Financial loss
+Types of risk categories:
+Damage
+Disclosure
+Loss of information
+
+Elements of SECURITY PLAN: It consists of 3 elements
+Policies
+Standards
+Procedures
+#Policies
+A policy is a set of rules that REDUCES risk or PROTECT information. It identifies the scope, objectives and purpose of a security plan.
+e.g New hieres sign Acceptable Use Policy (AUP)
+#sTANDARDS
+Tactical part of security planning. References that inform how to set policies. e.g companies using password management standard identified
+in special publication, 800-63B
+#Procedures
+Step-by-step instructions to perform a specific security task. e.g how employees can securely reset a password when it has been Locked.
+
+#Compliance - It comes after security planning
+Compliance:
+It is the process of ADHERING to internal STANDARDS and EXTERNAL REGULATIONS. Maintaining trust, reputation, safety and integrity are what 
+are important for COMPLIANCE. fines, lawsuit and regulations are what make compliance important.
+Focus of our compliance will be based on NIST-CSF:
+One of the roles of NIST is to openly provide organization with set of frameworksand security standards that REFLECT key security regulations
+Components of NIST-CSF are 3:
+Core- simplified version of FUNCTIONS, or DUTIES, of a security plan. It identifies 5 broad functions of NIST-CSF
+1. Identify(asset management related), Protect, Detect, Respond, Recover (IPDRR)
+Tiers- It provides security teams a way to MEASURE performance of each of the 5 fucntions of Core. From levels 1 -5. Level 1 means it is
+PASSIVE and Level 4 means it is ADAPTIVE.
+Profiles: Final components of CSF. It provides INSIGHT into the CURRENT STATE of a security plan.
+
+#IMPORTANT: Keep CURRENT or ABREAST with BEST PRACTICES and EMERGING TRENDS.
+
+#SECURITY CONTROLS
+Security controls: Are SAFEGUARDS designed to REDUCE specific security risks.
+Types of security controls- 3 types:
+1. Technical- many technologies to protect assets e.g encryptions, authentication systems and others.
+2. Operational- it involves day-to-day handling of security environment e.g awareness training, incident response.
+3. Managerial- Centred around how the first 2 REDUCE risks. e.g polices, standards and procedures.
+Security controls are technologies used to REGULATE information privacy.
+Encryption: Genesis- Ceasar's Cipher from Julius Ceasar. Cipher is an algorithm that encrypts information.
+Cryptographic key-is a mechanism that DECRYPTS ciphertext
+Flaws of cipher:
+Brute Force Attack- A trial and error processes of discovering private information.
+It relies on single key.
+We use Public Key Infrastructure( PKI) now:
+An encryption framework that SECURES exchange of information online. How it works- 2 step process
+1. Starts with exchange of encrypted information- asymmetric encryption, symmetric encryption or both
+Asymmetric encryption: Involves use of a public and private key pair for encryption and decryption of data. public key can be used by
+any reource, server or anybody to have access to data it is encrypting, private key is only accessible to the user or resource to decrypt
+whatever data that is encrypted. It slows down process
+Symmetric encryption: The use of SINGLE secret key to exchange information. It is a faster process.
+2. Establish trust using a system of digital certifcates.
+
+Hash function: An algorithm that PRODUCES a code that can't be DECRYPTED. It is a one-way key unlike asymmetric and symmetric encryption.
+It produces unique identifier instead. Find the hash values of files or applications and comparing them against known malicious files.
+e,g hashing a file - "sha256sum newfile.txt"
+VirusTotal: Tool used by SA to analyze suspicious files, domains, IPs and URLs.
+Non-repudiation: The concept that the authenticity of information CANNOT be denied.
+
+#ACCESS CONTROLS
+Security controls that manage access, authorization, and accountability of information.
+AAA Framework
+Authentication- to answer- who are you? question. 3 factors of authentication-
+knowledge- something the user knows e.g security question
+Ownership- something the user possesses e.g OTP
+Characteristics- something the user is e.g fingerprints, biometrics etc.
+SSO is great because it eases the problem of having to be authenticated severally, but it is not too good when using a single sign in
+Use MFA instead to make it more secure.
+Authorization- Related to separation of duties and action of least privilege. e.g HTTP Basic Auth- HTTP uses basic auth-technology used
+to establish a user's request to a server. Flaw- it transfers username and password openly through the network. People use HTTPS
+these days. and OAuth- Open standard authorization protocol that shares designated access between applications. It uses API token.
+Accountability
+
+
