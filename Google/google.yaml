@@ -723,6 +723,62 @@ Use MFA instead to make it more secure.
 Authorization- Related to separation of duties and action of least privilege. e.g HTTP Basic Auth- HTTP uses basic auth-technology used
 to establish a user's request to a server. Flaw- it transfers username and password openly through the network. People use HTTPS
 these days. and OAuth- Open standard authorization protocol that shares designated access between applications. It uses API token.
-Accountability
+Accountability- monitoring the access logs of a system- who access the system, when do they access the system, what resources do they
+access? e.f failed log in attempt #ACCESS LOGS
+Session: A sequence of network HTTP basic auth requests and responses associated with the same user.. Session ID will be created when a 
+user first access a system. 2nd thing is the EXCHANGE of session cookies between a SERVER and a USER'S DEVICE.
+Session cookies ensure that no sensitive info like credentials etc are shared, prevent attackers from obtaining sensitive info
+FLAW: An attacker can impersonate a user through SESSION HIJACK- Monitoring and accounting of ACCESS LOGS can detect this on-time.
+Exploit: Means taking advantage of a vulnerability.
+
+Vulnerability Management:
+1. Identify vulnerabilities- The most important step
+2. Consider potential exploits
+3. Prepare defenses against threats
+4. Evaluate those defenses.
+This is always a continuous process or cylce. New vulnerabilities are alsways being disovered, known as ZERO DAY EXPLOITS-
+ZERO-DAY: An exploit that was previously unknown. The exploit is happening in REAL-TIME with ZERO DAYS to fix it.
+Defense In Depth: Layered security approach. Referred to CASTLE APPROACH. Historically having a MOAT( Water filled defense)
+GIANT STONE WALLS, WATCH TOWERS. Adopted in cybersecurity using a 5 Layer Design-
+1. Perimeter Layer- First step layer of DID e.g username and passwords. authentication layer
+2. Network Layer- closely related with ATHORIZATION- include techologies like NETWORK FIREWALLS and
+3. Endpoint Layer- devices that have access on a network e.g laptop, deskstop, or a server. Antivirus software is a technology
+that protects this layer.
+4. Application Layer- Interfaces that are used to interact with technology. Security measures are PROGRAMMED as part of an application
+e.g MFA
+5. Data Layer- Critical data layer e.g PII. Asset classification is a SECURITY CONTROLthat is very important in this layer.
+A lot of orgs design their SECURITY CONTROL through this model-DID
+Explosure: It is a mistake that can be EXPLOITED by a threat.
+One of the most popular libraries of exposure is a CVE LIST-
+Many orgs use these lists to find ways to IMPROVE THEIR DEFENSES.
+Critical Used to Get a CVE Listed:
+1. Independent of other issues.
+2. Recognized as potential security risk
+3. Submitted with supporting evidence
+4. Only affect one code base.
+NIST National Vulnerability Database will need to validate a CVE before it can PASS as one too-
+> 9 is critical CVE
+Vulnerability Assessment Process:
+1. Identification- using scanning tools
+2. Vulnerability analysis- using it to find the source of the problem
+3. Risk assessment- A score is assigned to each vulnerability. impact of the vulnerability.
+4. Remediation- address vulnerabilities that can impact the org. e.g enforcing security procedures, patches etc.
+Attack Surface: All the potential vulnerabilities or threats that an actor can exploit
+Attack Vectors: Pathway that attackers use to penetrate security defenses.e.g posting company's use that should not have been shared.
+Practicing an attacker mindset:
+1. Identify a target
+2. Determine how a target can be accessed
+3. Evaluate attack vectors that can be exploited
+4. Find the tools and methods of attack.
+Defending attack vectors:
+Educating users
+Applying least privilege rule
+Using and applying security controls e.g installing antivirus 
+Building diverse security team.
+
+Threats:
+Social engineering
+Malware
+Web-based exploit- online threats.
 
 
