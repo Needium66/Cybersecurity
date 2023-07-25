@@ -782,3 +782,50 @@ Malware
 Web-based exploit- online threats.
 
 
+#SOCIAL ENGINEERING
+Prepare
+Establish trust
+Persuasion tactics
+Disconnect from the target
+
+#Preventing the attacks
+Managerial control
+Staying informed of trends
+
+#Examples of social engineering attack-
+Phishing: The use of digital communication to trick people into revealing sensitive data or deploying malicious software.
+#Phishing Kit
+3 main tools inside a phishing kit-
+1. Malicious attachments:
+2. Fake data collection forms:
+3. Fraudulent web links:
+
+Smishing: The use of text messages to obtain sensitive information or to impersonate a known source.
+Vishing: The exploitation of electronic voice communication to obtain sensitive information or impersonate a known source.
+
+Types of malware:
+Virus
+Worm: Malware that can DUPLICATE and SPREAD itself across systems on its own
+Trojan: Malware thatlooks like a legitimate file or program.
+Ransomware: Type of malicious attack where attackers encrypt an organization's data and demand payment to restore access
+Spyware: Malware that is used to gather and sell information without consent.
+
+Cryptojacking: A form of malware that installs software to illegally mine cryptocurrencies.
+
+Intrution Detection Systems (IDS): An application that monitors system actvity and alerts on possible intrusions.
+Signs that can show cryptojacking:
+Slowdown
+Increased CPU Usage
+Sudden system crashes
+Fast draining batteries
+Unusually high electricity costs
+
+Web-based exploits: Malicious code or behavior that is used to take advantage of coding flaws in a web application.
+Injection attack: Malicious code inserted into a vulnerable application.
+Cross site scripting(XSS): An injection attack that inserts code into vulnerable website or web application. Exploiting HTML and Javascript
+Three main types of cross-site scripting attack:
+Reflected
+Stored
+DOM Based-
+
+
