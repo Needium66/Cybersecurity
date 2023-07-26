@@ -1,0 +1,46 @@
+#AWS was phasing out the usage of tls 1.0 and 1.2
+#This is focused on appropriately disabling tls 1.1 or lower on some resources or apps that are currently using it
+#Found out s3 was still using tls 1.1 or lower
+#Need to turn on dataevents for cloudtrail logs and run a query to see what is using the phased out tls
+How to enable Cloudtrail lake in Cloudtrail:
+1. Go to an appropriate AWS account/environment
+2. Navigate to the CloudTrail console
+3. Select Lake from the left-hand navigation menu of the main page
+4. Select the Event Data Store tab
+5. Navigate to, and select, Create event data store.
+6. Enter a name for the data store
+7. Enter the retention period for your data store e.g from 7 days.
+8. Select whether you want to include only the current region in this data source. The current region’s name is shown for your reference.
+(Optional) Select if you want to include all accounts in the organization (applies only to AWS Organizations environments)
+
+https://aws.amazon.com/blogs/mt/announcing-aws-cloudtrail-lake-a-managed-audit-and-security-lake/
+
+
+SELECT
+    userIdentity.accountId, recipientAccountId, userIdentity.arn, eventSource, eventName, awsRegion, tlsDetails.tlsVersion, tlsDetails.cipherSuite, userAgent, COUNT(* 
+    ) AS numOutdatedTlsCalls 
+FROM
+    $EDS_ID
+WHERE
+    tlsDetails.tlsVersion IN ('TLSv1', 'TLSv1.1' 
+    ) 
+    AND eventTime > '2022-04-19 00:00:00' 
+    AND eventTime < '2022-04-30 00:00:00' 
+GROUP
+    BY userIdentity.accountId, recipientAccountId, userIdentity.arn, eventSource, eventName, awsRegion, tlsDetails.tlsVersion, tlsDetails.cipherSuite, userAgent 
+ORDER 
+    BY eventSource, eventName, tlsVersion
+
+
+
+SELECT
+    eventTime, eventSource, sourceIPAddress, eventName, tlsDetails.tlsVersion, element_at(resources, 1).arn as ARN
+FROM
+    $EDS_ID
+WHERE
+    eventSource = 'S3.AMAZONAWS.COM'  AND
+  sourceIPAddress IN ($IPS) AND
+  eventTime > '2023-04-20 00:00:00'
+
+ORDER BY
+    sourceIPAddress, tlsDetails.tlsVersion, eventTime

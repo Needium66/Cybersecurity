@@ -89,3 +89,38 @@ index ="_internal" 0365 sourcetype="splunk:ta:0365:log"
 Run this query to know the status of your kvstore
 | rest splunk_server=local count=1 /services/server/info
 | table kvStoreStatus
+
+
+#Queries
+index = "_internal" o365 sourcetype="splunk:ta:0365:log"
+index = "main"
+"|rest splunk_server=local count=1 /server"
+
+Splunk Add-on for Microsoft Office 365
+Install and configure it in Splunk
+Set up an app with necessary permissions in AzureAD (This will be forwarding the logs to Splunk)
+
+Event Hub was set up for AzureAD tenant and Azure audit. Logs should be streaming from the AzureAd tenant into Splunk.
+
+To be able to launch app to connect Azure App account to Splunk for Microsoft Azure Add-on for splunk, you will have to restart splunk-a brief pause.
+
+
+To get an accurate count of daily log usage, these logs need to be forwarded to Splunk
+Windows event logs from all windows servers
+Linux syslogs, including AWS AMI EC2 instances
+AWS IAM logs
+AWS ACL logs
+Azure AD logs
+CISCO ASA logs
+AS400 logs
+DC logs- successful logins, failed logins, changes to user accounts, changes to security groups
+Need accurate counts for Splunk renewal licensing
+
+#To log elastic beanstalk
+Install cloudwatch agent on each instance
+Set up a config fro that
+Give IAM role with permissions to launch CloudWatch
+Set up functions
+Make necessary code changes
+
+Recreate functions where log groups exist (account and regions where log groups are configured)
