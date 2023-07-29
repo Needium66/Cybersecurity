@@ -827,5 +827,60 @@ Three main types of cross-site scripting attack:
 Reflected
 Stored
 DOM Based-
+Reflected XSS Attack: It is an instance when a MALICIOUS SCRIPT is sent to the SERVER and ACTIVATED during the SERVER'S RESPONSE.
+e.g false url in a browser that is clicked on that makes a https request, in response the malicious script will be sent back and then
+get INFO about the cookies and sessions.
+Stored XSS Attack: Not hidden- A MALICIOUS SCRIPT is directly INJECTED into a SERVER. e.g An attacker will target elements of a site
+that are served to a user. e.g targets the IMAGE and SITE that are loaded for the visit.
+DOM Based XSS Attack: Document Object Model- It is basically the source code of a website. An instance when a MALICIOUS SCRIPT exists in the
+WEBPAGE a BROWSER loads. A malicipus script can be seen in the URL of a DOM-based XSS. Criminals will change the PARAMETERS that are in a url e.g
+mywebsite.com/mything?theme=color to mywebsite.com/mything?theme=<script>alert(1);</script> (this hidding malicious java script in an html tag)
+ALL THESE ARE CROSS-SITE SCRIPTING.
 
+
+#SQL
+Online Retail Company e.g clothing
+Appears as menu and images to customers in the frontend. Whatever selection that is made e.g selecting a shirt and adding it to a cart-
+an sql query is working in the background(backend)
+SQL INJECTION: An ATTACK that executes UNEXPECTED QUERIES on a DATABASE.
+The attack takes place at the point of the website that is designed to accept USER INPUT. e.g the login form to ACCESS a site.
+An attacker will enter additional code that is harmful to a user's login input, exploit this to get sensitive info, access to the database
+admin rights.
+DEFENSE: Have a CODE that will SANITIZE the inputs of all users. e.g using a "PREPARED STATEMENT"- A coding technique that EXECUTES SQL
+statements before passing them onto the DATABASE. THIS VALIDATES THE code BEFORE PERFORMING THE QUERY of a user's input. Security teams
+work with developers to TEST applications for these SORT of vulnerabilities.
+
+#THREAT MODELING:
+The process of identifying assets, their vulnerabilities, and how each is exposed to threats. Apply these to
+1. Entire systems
+2. Applications
+3. Business processes.
+Threat Modeling Steps:
+1. Define the scope- develop inventory of assets and classify them
+2. Identify threats- team determines all POTENTIAL THREAT ACTORS- Any person or group who presents a security risk. It could be internal
+or external. ONCE THEY ARE IDENTIFIED, the team will come up with an ATTACK TREE-A diagram that MAPS threat to ASSETS.
+3. Characterize the environment- Consider how customers and employees interact with the environment. They consider external partners and other
+vendors too.
+4. Analyze threats- the team works to EXAMINE protections and IDENTIFY gaps. Rank threats according to their risk scores and assign them.
+5. MITIGATE RISKS- Team decides how to MITIGATE risks. The group create their PLANS for defending against threats.
+Transfer it, Reduce it, or Accept it, is the CHOICE here.
+6. Evaluate Findings- Everything that was done during the exercise is documented and the team makes notes of successes they have had.
+Example: Using PASTA Framework- A popular threat modeling framework that is used across many industries:
+Process for
+Attack
+Simulation and
+Threat
+Analysis
+There are 7 Stages of PASTA Framework: For a fitness app
+1. Define businesses and security objectives e.g how PII is handled
+2. Define the technical scope- identify the application components that must be evaluated. e.g technology that is involved while data is at rest
+and in use, network protocols, security controls
+3. Decompose the application- identify the EXISTING CONTROLS that will protect USER DATA from threats. Means working with app developers
+to produce a DATA FLOW diagram. How data gets from a user's device to a company's database.
+4. Perform a threat analysis- Collect the most up to date info on the type of attacks being used.
+5. Perform a vulnerability analysis- the team more deeply investigate potential vulnerabilities by considering the root of the problem
+6. Conduct attack modeling- The team tests the vulnerabilities that were analyzed in Stage 5 by simulating attacks. Simulate an attack tree
+here, like a flow chart. e.g add SQL injection to our attack tree, because a threat actor might exploit vulnerabilities for an unsanitized
+inputs. Securtiy teams will run a TEST to validate threats of an attack vector like this.
+7. Analyze risks and impacts- Assemble all info from stages 1 to 6
 
