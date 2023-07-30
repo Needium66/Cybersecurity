@@ -846,7 +846,7 @@ SQL INJECTION: An ATTACK that executes UNEXPECTED QUERIES on a DATABASE.
 The attack takes place at the point of the website that is designed to accept USER INPUT. e.g the login form to ACCESS a site.
 An attacker will enter additional code that is harmful to a user's login input, exploit this to get sensitive info, access to the database
 admin rights.
-DEFENSE: Have a CODE that will SANITIZE the inputs of all users. e.g using a "PREPARED STATEMENT"- A coding technique that EXECUTES SQL
+DEFENSE: Have a CODE that will SANITIZE the inputs of alnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnl users. e.g using a "PREPARED STATEMENT"- A coding technique that EXECUTES SQL
 statements before passing them onto the DATABASE. THIS VALIDATES THE code BEFORE PERFORMING THE QUERY of a user's input. Security teams
 work with developers to TEST applications for these SORT of vulnerabilities.
 
@@ -884,3 +884,136 @@ here, like a flow chart. e.g add SQL injection to our attack tree, because a thr
 inputs. Securtiy teams will run a TEST to validate threats of an attack vector like this.
 7. Analyze risks and impacts- Assemble all info from stages 1 to 6
 
+
+#CYBERSECURITY IDR (INCIDENT DETECTION AND RESPONSE):
+Incident Detection Analysis and Response:
+Incident response lifecycle
+Monitor and analyze network traffic
+Processes and procedures
+Interpret logs and alerts
+
+#Incident response lifecycle: objectives
+incident response lifecycle
+incident handler's journal
+incident response teams
+documentation
+incident respnse lifecycle framework: using NIST CSF - 5 STEPS. This will focus on the last 3 steps
+Detect
+Respond
+Recover
+NIST CSF here covers:
+Preparation
+Detection and analysis
+Containment and eradication and recovery
+Post-incident activity.
+Incident: An occurrence that actually or imminiently jeopardizes, without lawful authority, the confidentiality, integrity, or availability
+of information or of an information system; or constitutes a violation or imminent threat or violation of law, security policies, security
+procedures, or acceptable use policies.
+Event: An observable occurrence on a network, system, or device.
+5 W's of an incident:
+1. Who triggered the incident
+2. What happened
+3. When the incident took place
+4. Where the incident took place
+5. Why the incident took place
+Incident handler's journal: A form documentation used in incident response.
+Computer security incident response teams(CSIRT): A specilaized group of security professionals that are trained in incident management
+and response.
+Security Analyst- He will determine the critical rating of an incident. Some incidents can be immediately REMEDIATED and does not need  
+require escalation.
+Technical Lead- Provides technical leadership by guiding security incidents through their lifecycle
+Incident coordinator-Tracks and manages the actvities of ++                                  bbbbthe CSIRTs and other teams involved in the CSIRTs. Update teams on the status
+of incident responses. Can be Ops Lead in some other organizations.
+CSIRT can be Incident Handling Team(IHT) or Security Incident Response Team (SIRT) in some other organizations.
+#Incident response plan
+Elements of a security plan are: Policies, Standards and Procedures 
+Incident response procedures
+System information- network diagram, data flow, asset inventory information and other documents.
+Other documents- contact list, forms and templates.
+You can do tzbletops or simulations to review and test
+Tools that SA uses:
+Detection and management tools
+Documentation tools                                                                                                                                                                    
+Investigative tools
+Types of documentation:
+Playbooks
+Incident handler's journals
+Policies
+Plans
+Final reports
+IDS and IPS tools:
+Snort
+Zeek
+Kismet
+Sagan
+Suricata
+SIEM Tools: Processes
+Collects data-logs e.g firewalls, application etc
+Aggregate data- all the data from different data source gets aggregated in one centralized place
+Normalize data
+Analyze data
+Another tool: SOAR(Security Orchestration, Automation and Response)
+A collection of applications, tools and workflows that uses automation to respond to security events. SOAR to automates analysis and
+security events. SOAR can also be used to TRACK and MANAGE cases.
+Network traffic: The amount of data that moves across a network.
+Network data: Data that is transmitted between devices on a network.
+Can detect abnormalities in network through Indicators of Compromise (IOC): 
+Observable evidence that suggests signs of potential security incident. e.g
+Data Exfiltration- Unauthorized transmission of data from a system. Attackers use this method to STEAL or LEAK credentials or IP
+LATERAL MOVEMENT OR PIVOTING: Used by attackers to maintain access in a system they have gained access to. Study and explore the network
+to maintain and expand their access. Scope out the environment to understand valuable assets e.g sensitive data e.g PII, etc
+Reduce the size of the stolen data to BYPASS the existing security controls, then they will EXFILTRATE the data to their hands. e.g
+they can email the data to themselves using the COMPROMISED email account.
+Defensive measures:
+Prevent attacker access
+Monitor network activity
+Protect assets
+Detect and stop the exfiltration
+Ways:
+Block the IP address/es of the attacker using firewall rules
+Data is known to be sent as packets. Packets contain the below
+Components of a packet:
+Header- it contains the packet of the source and destination address
+Payload- has the content of a packet
+Footer- end of a packet
+Use a Network Protocol Analyzer(Packer sniffer): A tool designed to capture and analyze data traffic within a network.
+Packet Capture(P-Cap): A file containing data packets intercepted from ana interface network.
+Use TCPDUMP and WIRESHARK to analyze network
+Analyze IP headers for packets transmission: The way the layers are structured
+1. Application
+2. Transport
+3. Internet- this layer accepts and delivers packets for the network. It is where the IP operates. Responsible for making sure packets reach
+their destinations.
+Structure:
+Version- which version of IP is being used 4 or 6
+IHL- Internet Header Length-it specifies the length of IP header with any other options.
+ToS- Type of Service-it tells us if certain packets should be TREATED with different care.
+Total Length- it identifies the length of the entire packet, including the headers and the data.
+Next 3 Fields- Identification, Flags and Fragment Offset- deal with information related to fragmentation(when an IP packets is broken
+into chunks and get transmitted). These 3 fields find out if fragmentations had been used
+Time to Live-it determines how long a packet can live before it gets DROPPED
+Protocol- It provides a VALUE that corresponds to protocol e.g TCP is represented by 6
+Header checksum-it stores a value called a checksum, which is used to DTEREMINE if any error has occured in the header.
+Source address- specifies the source IP address
+Destination address- Specifies the destination IP address.
+Options- It is not really required. Commonly used for network troubleshooting, rather than network traffic. If it is used, the header length
+will increase.
+4. Network
+TCPdump is a popular network analyzer-it is preinstalled on many Linux distribution and can be installed on most unix-like OS. Can easily
+MONITOR traffic like TCP,IP,ICMP, and many more. It is a CLI. With it you can FILTER for IP, protocol and port number. e.g using a tcpsump-
+to capture data packets: "sudo tcpdump -i any -v -c 1"
+sudo - given tcpdump permission since it does not have it on that machine
+tcpdump - to start tcpdump
+-i - to indicate inteface we want to SNIFF traffic from
+-v - is for verbose to indicate detailed packet info
+-c - stands for count which specifies how many packets tcpdump will CAPTURE- 1 is specified here.
+Output: tcpdump is listening on any available tools and given us additional info e.g capture size
+packet size field- details time of travel of the packet- in hours minutes, seconds and fraction, timestamp is very important
+IP is listed next, which means IPv4, then tos 0x10 means tos service, then ttl 64 means time to live, id 32645, offset 0, flags [DF] are
+for identification, offset and flags- DF stands for Don't Fragment.
+proto TCP (6)- it SPECIFIES the protocol in use and provides us with a value CORRESPONDS to protocol- the protocol here is TCP, which is
+represented by number 6. length 196 is the last field, which means total length of the packet, including IP header.
+IPs that are communicating with each other- the direction of the arrow (>) is an INDICATOR of the traffic flow. the last piece of the IP
+address indicates the port number or name. cksum 0xa83f correct-indicates the checksum header to indicate if any errors have occurred; here
+it is telling us it is correct with no errors. P in the Flags indicates PUSH flag, ACK flags means acknowledge flag. It means it is PUSHING
+OUT data.
