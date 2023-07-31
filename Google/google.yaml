@@ -1127,3 +1127,34 @@ Monitor host in which it is installed.
 Network: To monitor network use Network-based Intrusion Detection System
 Similar to packet sniffers. because they analayze network data e.g Tenable or nessus. NID uses Signature analysis.
 Set up a rule that needs to be matched for an IDS to be triggered.
+NIDS rule contains:
+Action
+Header
+
+#Signature
+SignatureID(SID):
+rev: means revision e.g rev:1 means first revision-it has been updated once.
+#suricata
+cd /etc/suricata
+ls
+cd rules/
+ls
+less custom.rules
+#custom rules for http connection
+first word means alert are triggered, when the conditions specified are met, sid- means signatures id.
+SIEM tooLS:
+Collect and process enormous amount of data from different environment
+All the data are in different formats
+SIEM tool will normalize these data to make it seamless for an analyst and process it.
+Only relevant data is included.
+Finally, SIEM tools will INDEX the data, so that it can be accessed through search
+Examples of search-
+failed login with eventid in a specified day
+Splunk uses Search Processing Language
+buttercups error OR fail*, select a time range
+right click on one of the outputs to exclude it, it will show what is executed in the serach bar.
+Chronicle uses the YARA-L language to DEFINE rules for detection. Using it, you can search for hostname, domain, IP, URL, email, username
+or file hash.
+Types of search:
+UDM Search- Unified Data Model
+Raw log search
