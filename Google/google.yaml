@@ -1158,3 +1158,30 @@ or file hash.
 Types of search:
 UDM Search- Unified Data Model
 Raw log search
+
+
+#USING PYTHON FOR CYBERSECURITY
+Python can be used to MANAGE access control list.
+Analyze network traffic
+Advantages:
+Easy to read
+Requires less coding
+Standard guideline
+Online support
+User friendly
+Examples:
+Print a failed login account once it is more that 5 times
+if failed_attempts > 5:
+    print ("Account locked")
+
+Print if the OS matches OS 2 --MATCHES, if the condition evaluates to 2, it print updates now. If it is false, it will not be printed
+The indentaion means it depends on the top, to be executed.
+operating_system = "OS 2"
+if operating_system == "OS 2":
+    print("Updates needed")
+Incorportaing "else" if the if statement is false or fails
+operating_system = "OS 3"
+if operating_system = "OS 3":
+    print("Updates needed")
+else:
+    print("No updates needed")
