@@ -1185,3 +1185,32 @@ if operating_system = "OS 3":
     print("Updates needed")
 else:
     print("No updates needed")
+
+#Loops, iterative statement-repeatedly execute a set of instructions
+
+for i in range(10):
+    print("Cannot connect to the destination")
+
+while loop: keeps running until false
+time = 0
+while time <= 10:
+    print(time)
+    time = time + 2
+
+while loop for no of devices that users can connect to
+max_devices = 5
+i = 1
+
+while i < max_devices:
+    print("User can still connect to additional devices")
+    i = i + 1  #once it reaches 5, it will exit the loop and print that it has reached the maximum
+print("user has reached maximum number of connected devices")
+
+#function
+a message to greet employees
+#Define a function
+def greet_employee():
+    print("Welcome! You are logged in. ")
+
+#Call a function
+greet_employee()
