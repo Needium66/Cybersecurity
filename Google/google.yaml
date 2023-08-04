@@ -1214,3 +1214,32 @@ def greet_employee():
 
 #Call a function
 greet_employee()
+
+#Using a range function or parameters
+def greet_employee():
+    print("Welcome! You're logged in",name)
+#call a function
+greet_employee("Jide Efunkunle")
+
+#using parameters first name and last name
+def greet_employee(first_name, last_name):
+    print("Welcome! You're logged in",first_name, last_name)
+#call a function
+greet_employee("Jide", "Efunkunle")
+
+#To get failed login
+def calculate_fails(total_attempts, failed_attempts):
+#get a variable for the percentage of failed attempts login
+    fail_percentage = failed_attempts / total_attempts
+#lets get the output by using a return
+    return fail_percentage
+#lets call a function to execute the program where toatl attempts is 4 times, and failed attempts is 2 (an argument)
+calculate_fails(4,2)
+Output = 0.5 or 50%
+
+#To make it effective, we have to give the percentage a value, so that an action will be taking e.g say if the percentage is greater
+#than or equal to 0.5, the account should be locked
+percentage = calculate_fails(4,2)
+
+if (percentage >= 0.5):
+    print("Account locked.")
