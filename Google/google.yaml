@@ -1243,3 +1243,49 @@ percentage = calculate_fails(4,2)
 
 if (percentage >= 0.5):
     print("Account locked.")
+
+#Extracting IPs from a list of IPs. Extract the first 3 digits. 
+# We have to use string slicing for that- to extract first 3 digits of each IP
+#Use the loop to apply SOLUTION to every IP address on the list
+
+#starting with 1 IP address
+
+IP_address = 192.168.1.1
+#extract the first 3 digits. the IP_address is the IP address variable that we are slicing
+#Since python starts at 0. We will start at index 0 through 3 to capture the first 3 digits
+print(IP_address[0:3])
+
+#To do this for IP addresses in the original list, we will put it in a loop.
+#We will use append method here too.
+#The IP address list
+IP_address = ["198.567.X.X", "198.561.X.X", "148.132.X.X", "163.152.X.X"]
+#Extract the first 3 characters from the list, give it a variable
+IP_list = []
+#create a for loop. address is in the variable in the for loop. append is used to add an IP to the end of a list
+for address in IP_address:
+    IP_list.append(address[0:3])
+#print the IP list
+print IP_list
+
+#Regular Expressions
++ sign represents one or more occurrences of a specific character. e.g "a+" could mean a, or aaa, or aaaaa.
+e.g if you have 4 different set of characters with some a characters in them, when you use a+, it will return the "as" inside each
+of those set of charaters
+"\w" matches with any alphanumeric character but it does not match symbols
+"\w+" a combination
+#to extract email addresses
+format of an email: user1@email.com
+first segment of an email i.e user1: contains alphanumeric characters "\w+" use this to match any alphanumeric string of any length.
+second segment @: it is always present
+third segment email: alphanumeric characters represnt with "\w+"- this varies
+fourth segment .: always present, use "\."
+last com: use "\w+"
+
+#Extract email address
+#use import module or library
+import_re
+email_log = """ Email recived August 3 from user1@email. com. Email recived August 3 from user2@email.com. Email rejected August 3 from
+user3@email.com"""
+#re.findall returns all results for a regualr expression. email log indicates where to search for the emails
+print(re.findall("\w+@\w+\.\w+",email_log))
+#run it to a get a list of all the emails
