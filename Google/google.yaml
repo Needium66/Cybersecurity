@@ -1449,3 +1449,11 @@ you may make irreversible mistake- e.g delete a directory
 problem in a multi-user accounts- can't trace or track who did what
 vulnerable to attacks
 #use sudo instead. temporary super user permissions
+sudoers
+#useradd
+useradd adds a sudo user to a system
+#someone with root or sudo privileges can only add a user
+sudo useradd amir16
+deluser: to delete user
+whatis tail
+apropos password
