@@ -1289,3 +1289,134 @@ user3@email.com"""
 #re.findall returns all results for a regualr expression. email log indicates where to search for the emails
 print(re.findall("\w+@\w+\.\w+",email_log))
 #run it to a get a list of all the emails
+
+#Opening files. With is always used in the code to open files
+first is to add with function, then, open to know what kind of action we want to perform on the file, then the first parameter, which is about
+the file or location of the file(file path), usually has an extention with it, then second parameter will tell you what to do with the file
+r means read and file is a variable that contains the file information. as long as we are inside the statement.
+with open("login_attempts.txt", "r") as file:
+#use python built-in function-read to convert files to strings- read()
+    file_text = file.read()
+print(file_text)
+
+#parsing is the process of converting data into more readable format.
+split() method converts list into a string.- sepearting them into smaller chunks that can be analyzed
+
+with open("login_attempts.txt", "r") as file:
+#use python built-in function-read to convert files to strings- read()
+    file_text = file.read()
+    #use split to seperate what is in the list
+print(file_text.split())
+#lets save this list into a variable so that it can be reused in other codes.
+usernames = file_text.split()
+print(usernames)
+#in order to be able to know the number of user login attempts, we need to add a for loop with counter command
+#logic use counter = 0, and enter a username login, start at index 0, if the username desired is not what is there, it enters 0, if it is,
+#it counts 1 and does count more for any additional matching usernames.
+#we need a for loop, an if statement and a counter variable.
+
+with open("login_attempts.txt", "r") as file:
+#use python built-in function-read to convert files to strings- read()
+    file_text = file.read()
+    #use split to seperate what is in the list
+print(file_text.split())
+#lets save this list into a variable so that it can be reused in other codes.
+usernames = file_text.split()
+print(usernames)
+#create a function that count's users failed login attempts
+def login_check(login_list, current_user):
+    counter = 0
+    for i in login_list:
+        if i == current_user:
+            counter = counter + 1
+            #else if statement
+        if counter >= 3:
+            return "You have tried to login three or more times, hence your account has been locked"
+        else:
+            return "You can log in"
+login_check(usernames, "elarson")
+Output will be you can login. For any username that appears more than 3 times, it will be locked
+
+Errors
+Types of errors
+1. Syntax errors
+2. Logic errors
+3. Exceptions
+syntax error is easily found
+For logic errors, use print statement on each line to know your output- print("line 20")
+print("line 55: inside the conditional")
+use debugger
+Exceptions, when something is mathematically impossible,use different data type, NameError is a type of exception
+to debug: ask these questions
+what is the purpose of the code? what do you want to use the code for
+
+
+
+
+#LINUX AND SQL
+DISTROS IN LINUX
+RedHat is a parent of CentOS
+Slackware is a parent of SUSE
+Debian is a parent of Ubuntu and and KALI Linux
+#Tools that are used for penetration testing in Kali Linux
+Metasploit: Can be used to look for and EXPLOIT vulnerabilities on machines.
+Burp Suite: Tool that is used to TEST for WEAKNESSES in web applications.
+John The Ripper: Tool used to GUESS passwords.
+#Tools that are used for DIGITAL FORENSICS in Kali Linux
+tcpdump: used to CAPTURE network trAFFIC.
+wireshark: can be used to analyze life and CAPTURE network traffic
+autopsy: forensic tool used to analyze HARDRIVES and SMARTPHONES.
+
+#COMMANDS
+#read files /filtering
+cat
+cat access.txt
+#to read the top 10 files in directory
+head
+#to search a specified file and return lines in the file containing specified string. you insert the argument that you are looking for 
+#afer the grep command, then the name of the file as the next argument
+grep OS updates.txt
+#piping
+#send the list in the below subdirectories through pipe and use grep to search for users in the file. return only files with users in it.
+ls /home/analyst/reports | grep users
+#commands to use when you want to create directories for drafts or reports
+mkdir
+mv
+cp
+rm
+#removing a directory from a working directory location
+rmdir $directoryname
+#create a directory in working directory
+mkdir drafts
+#get into the directory and create files
+cd drafts
+touch email_patches.txt
+touch OS_patches.txt
+ls
+#go back to reports directory from drafts directory
+cd /home/analyst/reports/
+#move file from reports to drafts
+mv email_policy.txt /home/analyst/drafts/
+#check the drafts directory for the new file
+cd /home/analyst/drafts/
+ls
+#to edit a file in a directory.
+#go to the working directory
+cd /home/analyst/drafts
+#check for the file
+ls
+#go into the file and edit
+nano updates_os.txt
+#To save whatever you have edited in the file and exit, follow the below commands
+Control O + Enter
+Control X to exit
+
+Permissions
+User
+Group
+Other
+#full permission
+drwxrwxrwx - d indicates the file type(directory), if it contains "-", it means it is a regualr file. the 2nd,3rd nand 4th characters
+indicate the permissions for the user(read,write and execute), if one of the permissions was missing, it will have "-" and that means no 
+permission for that. the 5th,6th and 7th indicate permissions for the next owner type-group(read, write and execute). the 8th,9th and 10th
+characters- indicate permission for the last owner group(others.)
