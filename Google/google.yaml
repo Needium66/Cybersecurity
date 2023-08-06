@@ -1457,3 +1457,98 @@ sudo useradd amir16
 deluser: to delete user
 whatis tail
 apropos password
+
+
+#SQL
+Relational database will have multiple tables
+Two tables can be said to relate, if they share at least one similar column
+e.g TWO TABLES OF EMPLOYEES and MACHINES, where there is an employee_id field in both of them. The employee_id field is the "key"
+There are two types of KEYS:
+Primary key- A column where EVERY ROW has a UNIQUE ENTRY. No null or empty values.
+Foreign Key- A column in a table that is PRIMARY KEY in ANOTHER TABLE. Can have empty values and duplicates.
+A TABLE can only have ONE PRIMARY KEY with MULTIPLE FOREIGN KEYS
+
+#Need entries in employee_id and device_id in the "employee" table to query for expected results
+Will be using just 2 commands:
+SELECT - Indicates which column to RETURN
+FROM - Indicates which TABLE to QUERY
+# Select employee_id and device_id from the employees table. not case-sensitive commands. put semicolon to END a query.
+SELECT employee_id, device_id
+FROM employees;
+then "ENTER"
+#WHAT DEPARTMENT THE EMPLOYEES USING THE COMPUTER IS FROM OR THEIR USERNAME OR OFFICE THEY WORK IN. Use SELECT to PRINT all from the table
+SELECT *
+FROM employees;
+ENTER
+#How to add FILTERS to our tables.
+Operator e.g equals to =
+e.g in the country column, if you want to FILTER for USA, Use country = 'USA'
+WHERE indicates a CONDITION for a filter.
+e.g find all login attempts made in the USA:
+WHERE country = 'USA' #Create this filter. 
+#DO IT
+SELECT *
+FROM log_in_attempts
+WHERE country = 'USA';
+#search for patterns instead of exact words.
+#there is an office column- search for offices in the East building
+To search for PATTERN, % sign is used to ACT AS A WILD CARD FOR UNCERTAIN CHARACTERS e.g 'East%'
+NOTE: Cannot use = operator when you use pattern % sign. 'LIKE' is used instead.- like is used with WHERE to search for a pattern in a
+column.
+Example: Some enters USA, while others enter US, use the pattern to filter
+SELECT *
+FROM log_in_attempts
+WHERE country LIKE 'US%'; #THE US% indicates both US and USA
+#Common data types to be found in databases:
+String
+Numeric
+Date and time
+#Operators:
+=
+>
+<
+<> #not greater than
+>= #greater than or equal to
+<= #less than or equal to
+
+#Get login attempts after 6PM
+SELECT *
+FROM log_in_attempts
+WHERE time > '18:00';
+
+#filter for numbers and dates using the "BETWEEN" operator. it filters for numbers and dates within a range e.g looking for all patches
+installed within a certain range. e.g search for patches installed between March 1st 2023 and September 1st 2023
+SELECT *
+FROM machines
+WHERE OS_patch_date BETWEEN  '2023-03-01' AND '2023-09-01';
+#AND
+Specifies that both conditions must be met simultaneously.
+#list of machines running operatin system1 and using emailsystem1.
+SELECT *
+FROM machines
+WHERE operating_system = 'OS 1' AND email_system = 'Email System 1';
+#OR
+Specifies either condition can be met
+SELECT *
+FROM machines
+WHERE operating_system = 'OS 1' OR operating_system = 'OS 3';
+#NOT
+SELECT *
+FROM machines
+WHERE NOT operating_system = 'OS 3';
+#HOW TO COMBINE AND JOIN TWO TABLES TOGETHER; joining tables when you query a database
+write the name of the table first, then the name of the column you are referencing.
+filtering for emaployees using machines
+find the shared column
+ffind the primary key, that is a foreign key in another table.
+#INNER JOIN
+Returns rows matching on a specified column that exists in more than one table.
+SELECT username, office, operating_system
+FROM employees
+INNER JOIN machines ON employees.employee_id = machines.enployee_id;
+Types of Outer Joins:
+LEFT JOIN
+RIGHT JOIN
+INNER JOIN: Returns all of the records of the first table, but only returns rows of second table that match a specified column
+RIGHT JOIN: Returns all of the records of the SECOND table, but only returns rows from the first table that match a specified column
+FULL OUTER JOIN: Return all records  from both tables
