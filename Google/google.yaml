@@ -1420,3 +1420,32 @@ drwxrwxrwx - d indicates the file type(directory), if it contains "-", it means 
 indicate the permissions for the user(read,write and execute), if one of the permissions was missing, it will have "-" and that means no 
 permission for that. the 5th,6th and 7th indicate permissions for the next owner type-group(read, write and execute). the 8th,9th and 10th
 characters- indicate permission for the last owner group(others.)
+
+#Check permissions in directories
+ls -l #displays permissions in directories
+ls -a #do displays hidden files
+ls -la # displays permissions in directories and hidden files
+#chmod
+changes permissions on files and directories
+two modes for changing permissions:
+1. symbolic
+chmod g+w, o-r access.txt
+#first command after chmod INDICATES how to change permissions, the last argument must be presnt, because it is the file that permissions
+#need to be changed for.
+u = user
+g = group
+o = other
+#in the above command, g indicates the need to change permissions for group, o indicates the need to change permissions for others
+#use mathematical operators + or - and others to indicate whether we want to add or take from permissions
+# + sign after g is to indicate wanting to add permissions to g, add write permissions to the "group"
+# - sign after g is to indicate wanting to take permissions from o. take away read permissions from "others"
+for access.txt, check the permissions on it:
+ls -l
+#add write permission to the group, and take away read permission from others
+chmod g+w, o-r access.txt
+#root
+never login as root user because of security risks
+you may make irreversible mistake- e.g delete a directory
+problem in a multi-user accounts- can't trace or track who did what
+vulnerable to attacks
+#use sudo instead. temporary super user permissions
