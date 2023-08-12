@@ -66,3 +66,23 @@ Creating and using lookups
 Scheduled reports
 Alerts
 Using pivot
+
+
+Searching in Splunk:
+index=web sourcetype=access_* status=503 | stats sum(price) as lost_revenue
+index=web sourcetype=access_* status=503: search terms
+stats = command
+sum = function
+price = Argument
+lost_revenue = clause
+Best Practices:
+Use OR instead of wildcards, and if used don't use * in the middle of or beginning of string
+
+Some Splunk Use Cases: So many search queries are embedded in this link-
+https://0xcybery.github.io/blog/Splunk+Use+Cases
+
+Devsecop Controls:
+https://learn.microsoft.com/en-ie/azure/cloud-adoption-framework/secure/devsecops-controls
+
+All about security:
+https://mesutoezdil.medium.com/
