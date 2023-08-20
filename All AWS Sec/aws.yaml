@@ -184,3 +184,20 @@ Threat detection phase: Actvity logs----indicators-----alerts---- notification. 
 Automation data for triage, containment and eradication---Data for triage, scope and impact----Evidence preparation for forensics(thelast
 two are INCIDENT DATA)--Responders---IR repo--- stakeholders. Post incident activity.
 Rule: No root access. If it is ever used, i want to be alerted.
+
+Design of incident response
+Workloads:
+Services: VPC(EC2, IAM , S3)
+Threats: Root user abused, Unauthorized access,  IAM access keys abused, Sensitive data being made public.
+Alerts: Root usage detected, Unauthorized access to EC2 instance detected, Long term IAM access keys exposed, S3 bucket or object made public
+Find the baseline to be used for alerts.
+From alerts to log sources:
+Alerts- Unauthorized access to EC2 instance
+Findings: AmazonGuardDuty
+UnauthorizedAccessEC2/SSHBruteForce
+UnauthorizedAccessEC2/RDPBruteForce
+BehaviorEC2/NetworkPortUnusual
+BehaviorEC2/TrafficVolumeUnusual
+Log sources: Amazon GuardDuty, Flow logs,  AWS Security Hub, AWS Cloudtrail, AWS Config, 
+Log storage: S3, S3 glacier
+Analytics: Amazon athena, Amazon detectives.
