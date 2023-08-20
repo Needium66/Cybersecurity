@@ -2,3 +2,185 @@
 #integration of splunk with aws
 #iam
 #waf
+1) Threat Detection and Incident Response
+2)Security Logging and Monitoring
+3)Infrastructure Security
+4)Identity and Access Management
+5)Data Protection
+6)Management and Security Governance
+
+#Threat Detection and Incident Response
+1) Design and Implement Incident Response Plan:
+First focus here is to respond to security events
+Some challenges in response to security events or threats:
+Alert fatigue
+Inadequate playbooks
+Lack of log analytical capabilities
+Requirements:
+Fundamentals of AWS Cloud Security for Incident Response
+Incident Response Maturity Model
+Foundation of Incident Response- Educate, Prepare, Simulate and Iterate (EPSI)
+Fundamentals of AWS Cloud Security for IR:
+Looking at shared responsibilities model and using a 3 tier web application model with a database component as an example.
+You maybe using some cloud resources e.g RDS, which takes some security responsibilities off you. But, you will still have some security responsbilities
+AWS CAF (Cloud Adoption Framework)
+You need detective and response baselines
+You need to have an alerting system in place, that when triggers, you can INVESTIGATE any deviations from the baseline set.
+AWS Security Incident Response Guide:https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-security-incident-response-guide/aws-security-incident-response-guide.pdf#aws-security-incident-response-guide
+Build your security controls together to have an effective secuirty control system
+Threat Modeling:
+What are we trying to protect?
+What are the threats?
+What alerts do we need?
+Depends on your workload.
+Incorporate regulatory and statutory compliance to your threat modeling
+Using S3 as a workload to develop your threat modeling:
+Alert- Attempted or successful s3 bucket deletion (perhaps you already set up an IAM policy in a pipeline to be the only one that can perform this
+You can then set up the detective and responsive requirements for it:
+Threat detection requirements for s3-
+Incident Response requirements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Actors' actions are translated into  activity logs. Logs are the meeting point for both ACTORS and BUSINESS.
+IR Maturity Model:
+Zero playbook
+Classic playbook
+Playbook as code
+Zero Playbook: Notification(notifcation comes in)-----Recipient(someone receives it)---Responder(you will call someone to deal with it)
+Classic Playbook: Notification( notification comes in)---Responder(it hits the responder directly). Notification would have come from an
+alert generated from a security tool. The alert was generated based on findings. The findings are generated from parsing, normalizing and correlation of
+activity logs. So the first 3 steps or phases(activity log, findings and alerts) REPRESENT threat detection phase.
+Activity Logs----Findings---Alerts---Notification----Responder (Triage, scope and impact): You will have to do the incident response in a
+SIEM (Forensic analysis, inform stakeholder)
+Playbook as code: IAC and event driven architecture are incorporated into this-
+Threat detection phase: Actvity logs----indicators-----alerts---- notification. Alerts are selected based on threat modeling
+Automation data for triage, containment and eradication---Data for triage, scope and impact----Evidence preparation for forensics(thelast
+two are INCIDENT DATA)--Responders---IR repo--- stakeholders. Post incident activity.
+Rule: No root access. If it is ever used, i want to be alerted.
