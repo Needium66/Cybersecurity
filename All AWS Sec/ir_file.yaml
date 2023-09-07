@@ -21,6 +21,31 @@ The aspects that are focussed on for incident response in AWS are i.e the proces
 incident response plan includes:
 Preparation: Prepare your team on how to DETECT and RESPOND to incidents within AWS using DETECTIVE CONTROLS and VERIFYING ACCESS to TOOLS
 and CLOUD SERVICES. Prepare a MANUAL and AUTOMATED PLAYBOOKS to verify reliable and consistent responses
-Operations:
-Post-Incident Activity
-POP for short
+Operations: Carry out security events and incident response using NISTs phases of incident response- i.e use NISTS phases to carry out operations
+on security events and potential incidents - use DACER (Detect, Analyze Contain, Eradicate, Recover)
+Post-Incident Activity(PIA): Iterate based on the outcome of SECURITY EVENTS or SIMULATIONS and improve the efficacy of your plan for response
+and investigation in order to REDUCE the risk.
+Flow: This aligns with NIST flow too              Preparation ------ Operations (Detection&Analysis)+(Containment&Eradication)---PIA
+POP (aspects) for short
+NIST SP 800-61  - The current version
+AWS Incident Response Principles and Design Goals:
+Establish response objectives: Work with stakeholders on how to respond to incidents. Goals like 
+1)Containing and mitigating the issue
+2)Recovering the affected resources
+3)Preserving data for forensics
+4)Returning to known safe operations
+5)Learn from incidents
+Respond using the cloud: Implement your plan in the cloud
+Know what you have and what you need: Preserve LOGS, RESOURCES, SNAPSHOTS and OTHER EVIDENCE by storing and copying them in a centralized location
+You can use tags , metadata
+Use redeployment mechanisms: You can redeploy to remediate if an anomaly is due to misconfigurations.
+Automate where possible: Automate where possible to make everything fast and effective
+Choose scalable solutions: Build a response plan that is scalable across environments.
+Learn and improve your process: Iterate as you progress.
+
+CLOUD SECURITY INCIDENT DOMAINS
+There are 3 domains within customer's responsibility where incidents can occur. The domains will require different TOOLS,KNOWLEDGE and RESPONSE
+Service: Incidents in service domain may affect AWS ACCOUNT, IAM PERMISSIONS, RESOURCE METADATA, BILLING etc It has to with responding through
+AWS API mechanisms, root causes associated with configuration or resource permissions, service-oriented logging.
+Infrastructure: It may affect DATA or NETWORK RELATED ACTIVITY e.g processes and data on EC2, traffic to EC2 instances within VPC
+Application: Occurs in the application code or software deployed to the services or infrastructure.
