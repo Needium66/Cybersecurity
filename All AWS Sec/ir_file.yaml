@@ -49,3 +49,63 @@ Service: Incidents in service domain may affect AWS ACCOUNT, IAM PERMISSIONS, RE
 AWS API mechanisms, root causes associated with configuration or resource permissions, service-oriented logging.
 Infrastructure: It may affect DATA or NETWORK RELATED ACTIVITY e.g processes and data on EC2, traffic to EC2 instances within VPC
 Application: Occurs in the application code or software deployed to the services or infrastructure.
+
+PREPARATION: To prepare for INCIDENTS, you csn do that across these 3 domains-
+People: Identify the necessary stakeholders for incident response and train them on INCIDENT RESPONSE and CLOUD TECHNOLOGIES.
+Define roles and responsibilities for HR, EXECUTIVE, LEGAL, DEVELOPERS/OWNERS OF THE APPLICATION, CLOUD ADMINISTRATOR. Train STAFF
+on the technologies that are being used, run GAMEDAY or SIMULATIONS occassionally. Understand AWS technologies and environments.
+Document your AWS environments and make it accessible. Use AWS Customer Incident Response Team (CIRT) support if needed.
+DDoS Response Support- Use Amazon Shield, which provides a managed protection of Ddos and safeguards web apps running on AWS
+AWS Managed Service(AMS)- It provides ongoing management of AWS infrastructure. AMS automates activities like CHANGE REQUESTS, MONITORING
+PATCH MANAGEMENT, SECURITY, and BACKUP SERVICES.
+Process: Set up processes, by DOCUMENTING ARCHITECTURE, DEVELOP incident response plan and CREATE PLAYBOOKS for consistent IR.
+Have clear steps and workflows to manage response to security incidents. Update, Iterate, and Test your incident response processes.
+Develop an INCIDENT RESPONSE PLAN document. Your incident response plan document should have these sections:
+1) An incident response team overview
+2) Roles and responsibilities
+3) A communication plan
+4) Phases of incident response and action to take
+5) Incident severity and pripritization definition
+Document and centralize architectural diagrams.
+AWS account structure - You need to know:
+• How many AWS accounts do you have?
+• How are those AWS accounts organized?
+• Who are the business owners of the AWS accounts?
+• Do you use Service Control Policies (SCPs)? If so, what organizational guardrails are implemented by
+using SCPs?
+• Do you limit the regions and services that can be used?
+• What differences are there between business units and environments (dev/test/prod)?
+AWS service patterns:
+• What AWS services do you use?
+• What are the most widely used AWS services?
+Architecture patterns:
+• What cloud architectures do you use?
+AWS authentication patterns:
+• How do your developers typically authenticate to AWS?
+• Do you use IAM roles or users (or both)? Is your authentication to AWS connected to an identity
+provider (IdP)?
+• How do you map an IAM role or user to an employee or system?
+• How does access get revoked when someone is no longer authorized?
+AWS authorization patterns:
+• What IAM policies do your developers use?
+• Do you use resource-based policies?
+Logging and monitoring:
+• What logging sources do you use and where are they stored?
+• Do you aggregate AWS CloudTrail logs? If so, where are they stored?
+• How do you query CloudTrail logs?
+• Do you have Amazon GuardDuty enabled?
+• How do you access GuardDuty findings (for example, console, ticketing system, SIEM)?
+• Are findings or events aggregated in a SIEM?
+• Are tickets automatically created?
+• What tooling is in place to analyze logs for an investigation?
+Network topology:
+• How are devices, endpoints, and connections on your network physically or logically arranged?
+• How does your network connect with AWS?
+• How is network traffic filtered between en11vironments?
+External infrastructure:
+• How are externally facing application deployed?
+• What AWS resources are publicly accessible?
+• What AWS accounts contain infrastructure that is externally facing?
+• What DDoS or external filtering is there?
+Technology: Set up access, AGGREGATE and MONITOR LOGS, IMPLEMENT EFFECTIVE ALERT MECHANISMS and DEVELOP RESPONSE and INVESTIGATIVE
+CAPABILITIES.
