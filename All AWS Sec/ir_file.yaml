@@ -1,0 +1,26 @@
+Intro:
+This is workplan or roadmap for incident response in AWS based on their incident response whitepaper
+https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-security-incident-response-guide/aws-security-incident-response-guide.pdf#aws-security-incident-response-guide
+AWS Shared Responsibility Model on Security: AWS will be RESPONSIBLE for security OF the cloud
+Customer will be RESPONSIBLE for security IN the cloud i.e you will have FULL CONTROL of your security implementation e.g access to TOOLS
+and SERVICES in your AWS environment. With this, you can establish a SECURITY BASELINE for your AWS environment.
+What you will need to know as customer
+How to RESPOND or INVESTIGATE: If there is a DEVIATION from the BASELINE e.g a misconfiguration or external factors.
+Controls: Controls that you can use for security
+Capabilities: Capabilities that you can use for security
+Automation: How to use automation for remediation purposes for after an incident to improve RESPONSE SPEED and CONSISTENCY
+Compliance and Regulatory requirements: on how to build an incident response program.
+Some resources to look at on AWS security standards and frameworks-
+https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/security-perspective.html
+https://aws.amazon.com/architecture/security-identity-compliance/?cards-all.sort-by=item.additionalFields.sortDate&cards-all.sort-order=desc&awsf.content-type=*all&awsf.methodology=*all
+AWS NIST for the industry- https://csrc.nist.gov/pubs/sp/800/61/r2/final
+
+Aspects of AWS Incident Response Overview (Cloud)
+The incident response that is carried out in the cloud is different from the traditional on-premises incident response.
+The aspects that are focussed on for incident response in AWS are i.e the processes that are needed to be followed to have an effective
+incident response plan includes:
+Preparation: Prepare your team on how to DETECT and RESPOND to incidents within AWS using DETECTIVE CONTROLS and VERIFYING ACCESS to TOOLS
+and CLOUD SERVICES. Prepare a MANUAL and AUTOMATED PLAYBOOKS to verify reliable and consistent responses
+Operations:
+Post-Incident Activity
+POP for short
