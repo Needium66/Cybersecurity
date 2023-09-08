@@ -50,7 +50,7 @@ AWS API mechanisms, root causes associated with configuration or resource permis
 Infrastructure: It may affect DATA or NETWORK RELATED ACTIVITY e.g processes and data on EC2, traffic to EC2 instances within VPC
 Application: Occurs in the application code or software deployed to the services or infrastructure.
 
-PREPARATION: To prepare for INCIDENTS, you csn do that across these 3 domains-
+PREPARATION: To prepare for INCIDENTS, you cann do that across these 3 domains-
 People: Identify the necessary stakeholders for incident response and train them on INCIDENT RESPONSE and CLOUD TECHNOLOGIES.
 Define roles and responsibilities for HR, EXECUTIVE, LEGAL, DEVELOPERS/OWNERS OF THE APPLICATION, CLOUD ADMINISTRATOR. Train STAFF
 on the technologies that are being used, run GAMEDAY or SIMULATIONS occassionally. Understand AWS technologies and environments.
@@ -158,10 +158,91 @@ Develop threat models- This can help to identify attack vectors a threat actor m
 will be crucial to responding in a timely manner.
 Integrate and use cyber threat intelligence- Cyber threat intelligence includes- IP addresses or file hashes of malware, behavioral pattern
 and intent. You can use tools like AWS GuardDuty, DNS Firewall, AWS WAF
-SELECT AND SET UP LOGS FOR ANALYSIS AND ALERTING: Select and enable log sources that are relevant to AWS workload. AWS Cloudtrail is ENABLED
+SELECT AND SET UP LOGS FOR ANALYSIS AND ALERTING: 
+Select and enable log sources that are relevant to AWS workload. AWS Cloudtrail is ENABLED
 by default with 90-day management event retention that can be retrieved via Event History in Cloudtrail.
 If you need a retention of more than 90 days, you will need to set up a CLOUDTRAIL integrated with S3 bucket and optionally with Cloudwatch log group.
 Or set a Cloudtrail Lake (which retains cloudtrail logs up to 7 years and provide SQL query based facility)
 If you are using VPC and DNS logs, it is recommended to use VPC Flow Logs(can be used for VPC, subnet or network interface) and Route 53 Resolver Query Logs and STREAM them to an S3 bucket
 or Cloudwatch log group.
 VPC Flow Logs, CloudTrail and Route 53 resolver query logs are the TRIFECTA of logging for incidents investigation in AWS
+Select Log Storage- based on querying tool you use, retention capabilities, cost and familiarity. Usually S3 or Cloudwatch log group.
+I don't know of anybody using CloudWatch log grpoup. But if you use s3, you can use Amazon athena as your querying tool and enjoy the lifecycle
+policy available. You can use s3 as your log storage and use 3rd party query tool (SIEM)for querying purposes e.g Splunk- we use Splunk.
+For log retention, you may want to optimize STORAGE and RETRIEVAL COSTS, so considering 3 - 12 months of logs readily available for querying
+and 7 years for retention. Availability and Retention should be dependent on security, statutory, and regulatory requirements and business mandate
+The querying mechanisms or tolls that you choose eventually will be dependent on your staff's skillset, tool's logs limits because of cost,
+You may use MULTIPLE QUERYING TOOLS; use SIEM tools to perform queries for last 90 days of data and use ATHENA for queries beyond 90 days because
+of log ingestion cost. (it is cheaper) than Splunk or other 3rd party for example
+Use any of these:
+S3 = Athena or Amazon OpenSearch Services
+CloudWatch log groups = CloudWatch Log Insights
+S3 or CloudWatch log groups = Any of 3rd party SIEM tool.
+Use Logs for alerting- Amazon GuardDuty, AWS Security Hub and AWS Config natively provide alerting. You can use SNS or third party tool
+to set up your log alert. What do you use to set up alerting for Splunk? We use email for lower environments, then PD for prod.
+DEVELOP FORENSIC CAPABILITIES:
+Once your environment and AWS accounts are set up for forensic capabilities, you can follow these 4 phases to EFFECTIVELY perform that
+CEAR (Collection, Examination, Analysis, Reporting)
+Collection- Collect relevant AWS Logs,  e.g AWS Cloudtrail, AWS Config, VPC Flowlogs,  host level logs. Collect snapshots, backups and
+memory dumps of impacted AWS resources.
+Examination- Examine the data collected. Extract and access the data
+Analysis- Analyze the data collected to understand the incidents and draw conclusions
+Reporting- Report your findings
+Capture backups and snapshots- Set up backups for key systems and databases. With backups, you can restore systems from their previous
+safe state. Snapshots provide you point-in-time backups of resources. You may need these in ransomware situations. Sevure your backups too
+Automate your forensics in AWS- It will not be helpful to be manually doing this because of human errors and other factors. You can use
+Lambda and CloudFormation template to deploy this- https://aws.amazon.com/blogs/security/how-to-automate-forensic-disk-collection-in-aws/
+https://aws.amazon.com/solutions/implementations/automated-forensics-orchestrator-for-amazon-ec2/
+
+OPERATIONS: The second aspect for IR 
+It is the CORE aspect of performing IR. It has these 5 phases-
+Detection- Identify a potential security event
+Analysis- Determine if the incident is a security event and ASSESS the scope
+Containment- MINIMIZE and LIMIT the scope of the security event
+Eradication- REMOVE unauthorized resources or artifacts related to the security event. Implement mitigations that CAUSED the security events.
+Recovery- Restore SYSTEMS to known safe state and monitor SYSTEMS to verify that the threat does not return
+These 5 phases SHOULD always server as GUIDANCE in responding to IR at any point in time.
+Detection: 
+Alert Sources for Detection can be any of these
+Findings- from AWS services e.g GuardDuty, Security Hub, Amazon Macie, Amazon Inspector, AWS Config, IAM Access Analyzer, & Network Access Analyzer
+Logs- Logs from S3 and Cloudwatch log group can be parsed and correlated
+Billing activity- A sudden change in billing activity can GENERATE event. Monitor estimated charges
+Cyber thereat intelligence- if you have 3rd party intelligence feed, you can correlate it with you are having from other tools
+Partner Tools- EDR (Endpoint Detection and Response) and SIEM tools. Intrusion Detective System (IDS) tool.
+AWS Trust and Safety- Customer may be contacted by AWS if they suspect malicious activities.
+One - time contact - email, ticketing etc
+Controls- Directive control e.g root user, Detective control e.g event bridge + SNS to alert Security Operations Center (SOC),
+Responsive control- select appropriate playbook, perform analysis and work until incident is resolved.
+Using Business Impact Analysis (BIA) to determine the criticality or levels of alerts - LOW MEDIUM or HIGH.
+Detective Control Implementations: CAN BE RULE BASED or BEHAVIORAL. PEOPLE IMPLEMENT BOTH THESE DAYS. IDS e.g IDS with Guarduty-
+Exfiltration finding- IAM user/ Anomalous behavior is generated. It tells you about an anomaly event by an adversary. It is behavioral in nature.
+Imapct finding- S3/ MaliciousIPCaller- guarduty analyses API calls from s3 by comparing sourceIPaddress log management with a table
+of public IP addresses that has intelligence feeds, it GENRATES  a finding once it finds a match.
+Use frameworks like MITRE ATTACK to undertstand threat actors tactics.
+https://attack.mitre.org/
+Analysis:
+Validation- validate the alerts
+Scoping- inventory all resources involved and adjust the alert criticality. Check if it is not FALSE-POSITIVE.
+Impact Analysis- details of actual business disruption
+Collect and analyze forensic evidence- network traffic packet captures, OS memory dump, AWS cloudtrail logs.
+Collect relevant artifcats- collect various types and sources of data that will be relevant to investigation. service/control plane logs
+(Cloudtrail, Amazon S3 data events, VPC Flow Logs), data (Amazon s3 metadata and objects) and resources (databases, Amazon EC2 instances)
+For EC2, there are certain data to be collected and a specific order to the collection- for analysis and investigation
+1) Acquire instance metadata- relevant to the investigation e.g instance ID, IP address, VPC/Subnet ID, Region, AMI ID, SG attached, launch time
+2) Enable instance protections and tags- e.g enable termination protection, disable DELETE or TERMINATION for EBS volumes, apply appropriate tags
+3) Acquire disks (EBS snapshots)- Acquire EBS snapshot of the attached EBS volumes.
+4) Acquire memory- Acquire a system meory image because snapshots may not captue data STORED or CACHED IN MEMORY by apps or OS.
+5) Perform live response/artifact collection (Optional)- Perform TARGETED data collection (disk/memory/logs) through LIVE response on the system
+only if disk or memory is unable to be acquired.
+6) Decommission the instance- Detach the instance from auto-scaling group, deregister the instance from the load balancers and adjust a
+or apply a pre-built instance profile with minimized permissions.
+7) Isolate or contain the instance- Verify that the instance is effectively isolated from other systems and resources within the environment
+by ending and preventing future connections to the instance.
+8) Responder's Choice- based on situations and goals, select one of these-
+a) Decommission and shutdown the system
+b) Continue running the instance within an isolated environment instrumented for monitoring
+Example- Marketing and sales department received a ransom note demanding payment in cryptocurrency to avoid public posting of sensive data
+The SOC determined that the Amazon RDS database belonging to marketing and sales was PUBLICLY ACCESSIBLE on a stated date
+The SOC queried RDS ACCESS LOGS and determined the IP address that was used by one of the developers .
+The queried VPC flow logs and determined  that approximate amount of data egressed to the same IP address the same time.
+Found that the credentials used is publicly available in open text in a public repo now
