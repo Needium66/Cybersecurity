@@ -123,5 +123,45 @@ queries should an analyst run? What code should be run to achieve the desired ou
 • Eradicate-  How will the threat be removed from the environment?
 • Recover- How will the affected system or resource be brought back into production?
 • Expected- outcomes After queries and code are run, what is the expected result of the playbook?
+Run regular simulations- You MIMICK threat actor's techniques and procedures (TTPs), then you respond to this mock cyber event.
+Types of simulations:
+Tabletop exercises- It is a discussion based one, where stakeholders will discuss the roles etc. Done in a day. It focusses on processes, people and collaborations.
+Purple team exercises- It increases the collaboration between the INCIDENT RESPONDERS(Blue team) and SIMULATED THREAT ACTORS(Red team)
+Blue team generally comprises of SOC and maybe other stakeholders and read team comprises of PENETRATION TESTING TEAM or KEY STAKEHOLDERS
+trained in OFFENSIVE SECURITY.
+Red team exercises- Red team conducts a SIMULATION with certain objectives from a pre-determined scope. The blue team may not have info about 
+the scope or the duration. So this exercise seems to provide a more REALISTIC ASSESSMENT. You should however be cautions that it does not provide damage to your environment security posture
+STEPS FOR SIMULATIONS: The regular steps in which simulation follows:
+1) Define core exercise elements- define the simulation scenarios and objectives of it and get it approved by the leadership
+2) Identify key stakeholders- identify key stakeholders- legal, HR, communications and executive leadership
+3) Build and test scenarios- you may need to REDINE scenarios while testing
+4) Facilitate the simulation- the type of exercise will determine the facilitation- paer-based or not or less
+5) Develop the after action report(AAR)- Identify areas that went well, those that needs improvements, the gaps and build on that for the future.
 Technology: Set up access, AGGREGATE and MONITOR LOGS, IMPLEMENT EFFECTIVE ALERT MECHANISMS and DEVELOP RESPONSE and INVESTIGATIVE
 CAPABILITIES.
+Follow these for technology- I call this blueprint. Because this is exactly how our cloud environment is structured out.
+DEVELOP AWS ACCOUNT STRUCTURE: Use AWS Organizations. OUs to group accounts together, to ADMINISTER as a single unit.
+For IR, it is important to have an ACCOUNT that supports the functions of IR(security OU and forensic OU) Have accounts for:
+1) Log archival- Aggregate logs in this account e.g Central account or Master account or IR account
+2) Security tooling- It operates as a delegated admin for security services e.g Master account or Infra or Admin etc
+Accounts for each region that you operate in e.g us-east-1 and us-west-2 or us-east-2 and us-west-2. Structure of sample account
+                                        Organization Root
+                        Security OU                                 Forensic OU
+          Security Tooling Account   Log Archival Account      Forensics Region 1   Forensics Region 2
+DEVELOP AND IMPLEMENT A TAGGING STRATEGY: Have all resources in your AWS tagged maybe based on environment, application, purpose, version etc
+UPDATE AWS ACCOUNT INFO: Have accurate and up-to-date contact info in each of your aws accounts. Have primary and alternate contacts for
+SECURITY, BILLING and OPERATIONS. Use a DL to avoid problems emanating from using just one person's email
+PREPARE ACCESS TO AWS ACCOUNTS: Ensure your team have access to appropriate environments before an event occurs. Know the access that is required
+and provide least privilege access.
+UNDERSTAND THE THREAT LANDSCAPE:
+Develop threat models- This can help to identify attack vectors a threat actor may have. Understanding what threat you are defending against
+will be crucial to responding in a timely manner.
+Integrate and use cyber threat intelligence- Cyber threat intelligence includes- IP addresses or file hashes of malware, behavioral pattern
+and intent. You can use tools like AWS GuardDuty, DNS Firewall, AWS WAF
+SELECT AND SET UP LOGS FOR ANALYSIS AND ALERTING: Select and enable log sources that are relevant to AWS workload. AWS Cloudtrail is ENABLED
+by default with 90-day management event retention that can be retrieved via Event History in Cloudtrail.
+If you need a retention of more than 90 days, you will need to set up a CLOUDTRAIL integrated with S3 bucket and optionally with Cloudwatch log group.
+Or set a Cloudtrail Lake (which retains cloudtrail logs up to 7 years and provide SQL query based facility)
+If you are using VPC and DNS logs, it is recommended to use VPC Flow Logs(can be used for VPC, subnet or network interface) and Route 53 Resolver Query Logs and STREAM them to an S3 bucket
+or Cloudwatch log group.
+VPC Flow Logs, CloudTrail and Route 53 resolver query logs are the TRIFECTA of logging for incidents investigation in AWS
