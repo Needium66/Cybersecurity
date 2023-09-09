@@ -245,4 +245,36 @@ Example- Marketing and sales department received a ransom note demanding payment
 The SOC determined that the Amazon RDS database belonging to marketing and sales was PUBLICLY ACCESSIBLE on a stated date
 The SOC queried RDS ACCESS LOGS and determined the IP address that was used by one of the developers .
 The queried VPC flow logs and determined  that approximate amount of data egressed to the same IP address the same time.
-Found that the credentials used is publicly available in open text in a public repo now
+Found that the credentials used is publicly available in open text in a public repo now.
+Containment:
+The criteria for containment strategy can be found below- through NIST
+1) Potential damage to and theft of resources
+2) Need for evidence preservation
+3) Service availability
+4) Time and resources needed to implement the containment strategy
+5) Effectiveness of the strategy
+6) Duration of the solution
+Containment in AWS can be narrowed down to these 3 STEPS-
+Source containment
+Technique and access containment
+Destination containment
+Source containment: This involves the USE and APPLICATION OF FILTERING or ROUTING within AWS environment to PREVENT ACCESS to RESOURCES from
+a specific IP ADDRESS or NETWORK RANGE. i.e containing the threat from the source- blocking the ip or network range. Examples of what to use
+1) Security groups- Apply isolation to SG of an EC2 instance or REMOVE rules from an existing EC2 instance
+2) Policies- Configure S3 bucket policy to BLOCK or ALLOW IP address from a certain network range or VPC endpoint.
+3) AWS WAF- Configure web ACLs on WAF to provide FINE-GRAINED CONTROL over web requests that resources respond to. Add an IP address or network range
+to a configured IP SET on WAF and APPLY match conditions to BLOCK IT.
+Technique and access containment: Limiting the functions and IAM principals with access to resource for an unauthorized user. e.g restricting
+the permissions of IAM principal that has access to the resource or temporary revocation of the access.
+Restrict permissions- Follow least privilege principles for granting permission and during any security event, restrict the permissions to
+the principal resource using AWS Management Console, or CLI or SDK.
+Revoke Keys- delete or deactivate the ACCESS KEY. You can recativate and access key after it has been deactivated. You CANNOT recover an
+access key that has been deleted. Rotate access keys
+Configure AWS WAF to MATCH and DENY traffic for malicious traffic incidents like SQL injections or cross-site scripting.
+Destination containment: Apply FILTERING or ROUTING to an environment to PREVENT access to TARGETED HOST or RESOURCE. Using AWS services for
+destination containments includes;
+Network ACLs- Add deny rules added to NACLs on subnets. to prevent access to a particular aws resource
+Shutdown- Shutdown the affected resource to prevent access.
+Isolation VPCs- This can be preconfigured before an event to PERMIT valid IP addresses and ports and targeted resources can be immediately
+moved to isolation VPC during an event.
+Autoscaling groups and loadbalancers- Detach and deregister resources atached to them as part of containment procedure.
