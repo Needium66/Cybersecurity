@@ -278,3 +278,97 @@ Shutdown- Shutdown the affected resource to prevent access.
 Isolation VPCs- This can be preconfigured before an event to PERMIT valid IP addresses and ports and targeted resources can be immediately
 moved to isolation VPC during an event.
 Autoscaling groups and loadbalancers- Detach and deregister resources atached to them as part of containment procedure.
+Eradication:
+It involves REMOVAL of suspicious or unauthorized resources in an effort to RETURN the account to SAFE known state.
+It depends on multiple factors, which depends on business requirements for the organization. NIST steps for eradication includes
+1) Identify and mitigate all vulnerabilities that were exploited
+2) Remove malware, inappropriate materials and other components
+3) If more affected hosts are discovered( malware host), repaet the process of DETECTION, CONTAINMENT and then ERADICATION.
+First step in ERADICATION is to always DETERMINE which resource has been affected. That can be determined from available log sources. Find answers to these questions
+Identify UNAUTHORIZED ACTIONS taken by IAM IDENTITIES IN YOUR ACCOUNT
+Identify UNAUTHORIZED ACCESS or CHANGES to your account
+Identify the CREATION of UNAUTHORIZED RESOURCES or IAM users
+Identify the RESOURCES or SYSTEMS with unauthorized changes.
+Access the resource to make a decision on business impact of the incident- should you DELETE or RESTORE?
+A web server is HOSTING your business application and DELETING IT would cause downtime. RESTORE it from verified SAFE Backups OR RE-LAUNCH
+the SYSTEM from a CLEAN-AMI before DELETING the impacted server.
+Then PERFORM REMEDIATIONS after the deletion, such as:
+1) Rotate or delete keys- to prevent the ACTOR from performing further activities within the account
+2) Rotate potentially unauthorized IAM credentials
+3) Delete unrecognized or unauthorized resources
+NOTE: If you must keep resource for investigation, BACKUP the resource e.g for EC2, create an EBS snapshot of it before removing it.
+For malware- Use 3rd party vendors or AWS partners.
+Then do a review of your account with AWS Config.
+Recovery:
+Restore to a known sfae state after validating that there is no further damage-
+Perform a BIA first to determine that-
+1) Business or dependency priority
+2) The restoration plan
+3) Authentication and authorization
+From NIST Guide-
+RESTORE systems from CLEAN BACKUPS- Verify backups are EVALUATED before restoring to systems i.e no infections. Evaluate backups regularly
+as part of DR testing to verify that it is working. Use backups before the event based on timestamp
+REBUILDING SYSTEMS from SCRATCH e.g redeploying from TRUSTED SOURCE using automation perhaps in anew AWS account
+REPLACING compromised files with CLEAN VERSIONS
+INSTALLING patches
+CHANGING passowrds
+TIGHTENING NETWORK Perimeter security( firewall rules, boundary router and control lists)
+
+POST INCIDENT ACTIVITY:
+Iterating to improve your security posture. The below can help you VERIFY that your organization remains with the LATEST CAPABILITIES
+and Knowledge to effectively respond, no matter the situation.
+Establish a framework for LEARNING FROM INCIDENTS- Try to achieve the below points in the lessons learned framework
+1) When is a lesson learned held?
+2) What is involved in the lesssons learned process?
+3) How is lessons learned performed?
+4) Who is involved in the process and how?
+5) How will areas of improvements be identified?
+6) How will you ensure improvements are effectively tracked and implemented?
+Ask right questions to get the most values from the process that will foster improvements-
+1) When was the incident?
+2) When was the incident first identified?
+3) How was it identified?
+4) What systems alerted on the actvity?
+5) What specifically occurred?
+6) What worked well?
+7) What didn't work well?
+8) Which process or procedures failed or failed to scale to respond to the incident?
+9) What can be improved within the following areas of
+People
+1) Were the people who needed to be contacted available and was the contact list up to date?
+2) Were people missing training or capabilities needed to effectively respond and investigate the incident?
+3) Were the appropriate resources ready and available?
+Process
+1) Were the processes and procedures followed?
+2) Were the processes and procedures documented and available for this type of incident?
+3) Were the required processes and procedures missing?
+4) Were the responders able to gain timely access to the required information to respond to the issue?
+Technology
+1) Did the existing alerting systems effectively identify and alert on the activity
+2) Do existing alerts need improvement or new alerts need to be built for this type of incident?
+3) Did existing tooling allow for effective investigation of the incident?
+4) What can be done to help identify this type of incident sooner?
+5) What can be done to help prevent this type of incident from occurring again?
+6) Who owns the improvement plan and how will you test that it has been implemented?
+7) What is the timeline for additional monitoring /preventive controls/process to be implemented and tested?
+Establish metrics for success:
+Mean time to detect- average time it takes to DISCOVER a security incident.
+Mean time to acknowledge- average time it takes to acknowledge and prioritize a possible security incident. Time between the generation of an
+alert and when a member of SOC team prioritize the alert for processing.
+Mean time to respond- average time it takes to begin the intial response to a possible security incident.
+Mean time to contain- average time it takes to contain a security incident.
+Mean time to recover- average time it takes to fully return to safe operations from a possible security incidents.
+Attacker dwell time- average time an unauthorized user has access to a systems or environment. Priority will be to REDUCE the attacker dwell time.
+USE INDICATORS OF COMPROMISE(IOC): It is an ARTIFACT observed in or on NETWORK, SYSTEM, or ENVIRONMENT that can IDENTIFY malicious activities
+or security incident
+IOCs can be any of these:
+IP addresses
+domains
+network-level artifacts e.g TCP flags or payloads
+systems or host-level artifacts
+file names and hashes
+log file entries or registry entries.
+Collect IOCS to continuously BUILD and IMPROVE detections and alerting  and improve the speed and efficacy of investigations.
+CONTINUE EDUCATION AND TRAINING:
+
+Link-https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-security-incident-response-guide/aws-security-incident-response-guide.pdf#aws-security-incident-response-guide
