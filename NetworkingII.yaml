@@ -1,0 +1,68 @@
+Networking II- Routers and switches
+All about my coursework.
+LAN Standard Review
+1) Point-to-Point- Just 2 points or nodes
+2) Multi-point- 3 or more nodes or points
+MESH: each node to every other node
+ADVANTAGE- redundant pathways; not practical
+DISADVANTAGE- expensive; redundant wire, each needs a NIC( Network Interface Card)
+STAR: each device connects to a CENTRAL POINT
+ADVANTAGES - each node is isolated on its own cable
+Easy to connect and disconnect without disrupting other nodes
+All data goes through a central point.
+Easy to isolate problems
+DISADVANTAGES: Requires more cable
+HUB failure will disable entire network.
+There are 3 types of HUB
+1) PASSIVE HUB- It is a simple signal splitter. Main function is to electrically CONNECT the arms of the HUB. All traffic is routed to all nodes.
+2) ACTIVE HUB- Does same as PASSIVE HUB, but it REGENERATES and RETRANSMITS the message
+3) INTELLIGENT HUB- Similar to ACTIVE and PASSIVE HUBS. But it does more intelligently- it makes more INFORMED PATH SELECTION; it is only
+sent to the NODE that needs the MESSAGE.
+RING: each node in the ring RECEIVES a message and RETRANSMIT it to the next. This means each node acts as a REPEATER.
+ADVANTAGE- NO signal degradation
+DISADVANTAGE- A break in the ring may disrupt the network
+Each node must be involved in almost each message transmission.
+e.g a TOKEN RING
+BUS: each node is ATTACHED to the same TRANSMISSION MEDIUM. Each node is IDENTIFIED with a UNIQUE ADDRESS.
+ADVANTAGE- minimum cable cost
+DISADVANTAGE- no central point, which means it is more difficult to troubleshoot.
+
+HYBRID: combines parts of differnt topologies.
+LOGICAL (VIRTUAL) TOPOLOGIES
+1) LOGICAL RING- Data is passed from node to node, one at a time. Each node has a SEPARATE receiver path and transmitter path e.g TX and RX
+
+LAN STANDARDS: Standards that are used in COMPUTERS to ease NETWORK connections between one computer and the other without regards to brands.
+802.2 - Defines Logical Link Control (LLC)- This is close to what is called the Data Link Layer (Layer 2 in OSI Layer Model). Consist of LLC layer and MAC (Medium Access Control) layer
+There are 2 types of LLC- Connectionless services e.g UDP is connectionless protocol UDP/IP e.g postal service. Connection-oriented services e.g TCP/IP e.g telephone
+802.3 - Defines Ethernet (CSMA/CD)- Alternatively called CSMA/CD . It is said to be operating in Multiple Access (MA) mode. All data that is
+transmitted by the SENDING COMPUTER is encapsulated or formed into a FRAME addressed to the DESTINATION COMPUTER. The FRAME is broadcast
+over the common cable. All computer's connected to this cable DETECT that a FRAME is being transmitted. Only computer that MATCHES the destination
+address continues receiving the FRAME and responds according to PREDEFINED LINK PROTOCOL. 
+802.4 - Defines Token Bus
+802.5 - Defines Token Ring
+
+Difference between Broadband and Base or Baseband- Baseband; the wire can only handle one message at a time(channel at a time) while Broadband; the wire can handle multiple messages at a time.
+The Network Interface Card(NIC) CONNECTS the COMPUTER(DTE) to the Ethernet Line using 5 wires
+
+100% of LAN is Ethernet today i.e CSMA/CD. It is more popualr than Token Ring now. Token Ring was more popular in the 1970's about 80% of LAN
+and Ethernet was 20%.
+
+ROUTERS AND SWITCHES shaped MODERN NETWORKING
+Router has 3 interfaces
+Serial 1 interface - S1
+Serial 0 interface - S0
+Ethernet Interface- E0
+The serial interfaces (S1 and S2) are used to CONNECT OTHER routers.
+Ethernet interface is used to CONNECT computers to FORM the LAN.
+E.G Having 3 routers connecting routers together to form WAN- the phase between routers. So between these 3 routers wil be 2 WANs WAN 1 
+and WAN 2. 3 routers- Router A, B and C. Ethernet will form 3 LANs then LAN 1, 2 and 3
+Comparing Ethernet with Token Ring: Traffic against Throughput.
+Ethernet PERFORMS better in LOW TRAFFIC. As traffic increases, the number of collisions increase, and so the THROUGHPUT from ETHERNET
+decreases in HIGH TRAFFIC. But Token ring PERFORMS better at High traffic.
+SEGMENTATION and COLLISION DOMAINS indicate why ETHERNET is the most DOMINANT LAN today.
+SEGMENTATION means we can add ROUTERS to ease or streamline the COLLISIONS occurring. Add 3 more routers. It was 100 routers before.
+Divide into 3 segments- 34 routers on Router A, 34 on Router B, 33 on Router C.
+SWITCH IMPORTANCE TO ETHERNET DOMINANCE:
+Switch operates at OSI layer 2 i,e it uses the MAC address. Router uses the IP address. Switch has multiple ports. Using HUB in switches
+enables it to have more COLLISION DOMAIN added and therefore makes ETHERNET performs better than TOKEN RING.
+
