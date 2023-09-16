@@ -66,3 +66,80 @@ SWITCH IMPORTANCE TO ETHERNET DOMINANCE:
 Switch operates at OSI layer 2 i,e it uses the MAC address. Router uses the IP address. Switch has multiple ports. Using HUB in switches
 enables it to have more COLLISION DOMAIN added and therefore makes ETHERNET performs better than TOKEN RING.
 
+WEEK 2: SUBNETTING
+IP ADDRESS
+SUBNET MASK
+IP ADDRESS- You have got 2 routers. Each router has ethernet that has multiple computers communicating. The computers that has ethernet in
+each of the routers can communicate with each other through their MAC addresses. But what of if a computer in Router 1 wants to communicate with
+the computer in Router 2? This is done through the power of an IP. IP in comupter A that has ethernet that forms LAN with IP in computer C
+that has ethernet that forms LAN too. So eventually, we will have 2 addresses- MAC address and IP address (2 MOST IMPORTANT ADDRESSES IN MODERN COMPUTING)
+IP address has 32 bits 2 raised to power 32. MAC address has 48 bits. MAC address CANNOT be used for a large network.
+SUBNET MASK- It SEPARATES the network card of the IP address from the host address of the actual computer i.e it masks it. it secures it from
+being revealed.
+
+CLASSFUL IP ADDRESS- CLASS A, B and C
+Class A: The first octet address is the NETWORK, the 3 Octet address identified as the HOST i.e N, H, H, H i.e network.node.node.node
+Class A Addresses: network.node.node.node 0.0.0.0 through 127.255.255.255.
+In class A network, the most significant bit(msb) in the IP ADDRESS is 0 (zero) 0NNNNNNN nnnnnnnn nnnnnnnn nnnnnnnn
+where N = Network address bit, n = host address bit
+So Class A Network can be IDENTIFIED BY an IP Address in which msb = 0. Therefore the first octect in a Class A IP address is between 0 and 127
+( i.e whenever you see an IP address that has a number from either 0 to 127 in its first octet, it is Class A)
+0000 0000(binary) = 0
+0111 1111(binary) = 127
+NOTE: A network of all 0's is a DEFAULT ROUTE(RESERVED IP ADDRESSES)
+Network of 127 is used for DIAGNOSTICS. Therefore, only 126 CLass A network addresses exist(between 1 and 126)
+For the Node Address: 24 bits are used, so there are, so there are 2 raised to 24 or 16,777, 216 unique values. But because node addresses
+of all 0's and 1's are RESERVED, there are actually 2 raised to 24 - 2 or 16,777,214 unique values.
+So 10.0.0.0 is a NETWORK ADDRESS, 10.0.0.1 is the FIRST NODE ADDRESS within the NETWORK. The NODE ADDRESS can range from 10.0.0.1 to
+10.255.255.254 since 10.255.255.255 is RESERVED.10.255.255.255 is used to BROADCAST TO ALL NODES on CLASS A NETWORK ADDRESS(10.0.0.0)
+There are 2 THINGS that determine which part of the IP address is the NETWORK ADDRESS and the NODE ADDRESS-
+Class B: The first 2 OCTETS identified as NETWORK, the last 2 OCTETS identified as HOST i.e N.N.H.H - network.network.host.host
+128.0.0.0 through 191.255.255.255
+In CLASS B network the msb=1 and the 2nd msb=0. 10NNNNNN NNNNNNNN nnnnnnnn nnnnnnnn
+where N= network address bit, n = host address bit. The first 2 OCTETS dtermine the network address, but since Class B network needs to begin
+with 10, you have 14bits or 2 raised to the power of 14 = 16,384 unique Class B network addresses. So the range of IP addresses in Class B
+network is between 128 and 191 inclusive
+1000 0000 0000 0000 = 128.0.0.0
+1011 1111.1111 1111 = 191.255.255.255
+Class C: The first 3 OCTETS identified as the NETWORK and the last identified as the HOST. NNNH- network.network.network.host
+192.0.0.0 through 223 255 255 255
+In CLASS C network the first 3 msb = 110. This allows for 21 bits or 2 raised to 21 =2,097,152. So the range of possible IP addresses are
+between 192.0.0.0 through 223.255.255.255 inclusive
+1100 0000. 0000 0000. 0000 0000. 0000 0000 = 192.0.0.0
+1101 1111. 1111 1111. 1111 1111. 1111 1111 = 223.255.255.255
+Each class C network may have  2 raised to 8 - 2 0r 254 possible node addresses. For example
+192.234.123.0 represents the NETWORK ADDRESS
+192.234.123.255 represents the BROADCAST ADDRESS
+192.234.123.001 is the first NODE ADDRESS on the NETWORK
+192.234.123.254 is the LAST NODE on the NETWORK
+SUBNET MASK: Default
+CLASS A - 255.0.0.0
+CLASS B - 255.255.0.0
+CLASS C - 255.255.255.0
+Suppose we have a Class C IP address with 207.207.7.0, the default subnet mask will be 255.255.255.0
+SUBNETTING (Independent Network): Sub divide POSSIBLE ADDRESSES e.g 254 into a smaller number
+RESERVED IP ADDRESSES(SPECIAL PURPOSE):
+1) Network address of all 0's - This network(default route)
+2) Network address of all 1's - All networks (broadcast address)
+3) Network address of 127  - For diagnostic tests
+4) Network address of 127.0.0.1 - (Feedback loop)For loop back tests in which node sends a test packet to itself without generating network traffic
+5) Node address of all 0's - Because a node address of all 0's cannot refer to 1 single node, a node address of 0's refers to the network address
+6) Node address of all 1's - "all nodes" on this network. This is used as a broadcast address . Class B 190.5.255.255 refers to all nodes on
+on this 190.5 Class B address
+7) 0.0.0.0 Used to designate the default route
+8) 255.255.255.255 is the Broadcast to all nodes of the network
+NOTE(RULE):
+CANNOT USE ALL 0'S
+CANNOT USE ALL 1'S
+1)The class of thr IP Network: Class A or B or C
+2)The subnet mask
+CLASSLESS IP ADDRESS
+IP CLASSES: 5 classes of IP network
+             8       8        8    8
+CLASS A   Network  Host      Host Host - It has a large number of HOSTS. So 24 of the 32bits are used to ADDRESS the HOSTS. 24 for hosts
+CLASS B   Network Network    Host Host - Has a MODERATE number of HOSTS. 16 (half) of 32bits are to ADDRESS the HOSTS
+CLASS C   Network Network Network Host - Has FEW NUMBER of HOSTS. 8 of 32 bits are to ADDRESS the HOSTS.
+CLASS D   Multicast
+CLASS E   Research
+The breakdown is up in 8s. First octet, second one, third one and the fourth one.
+
