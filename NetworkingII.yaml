@@ -131,8 +131,13 @@ on this 190.5 Class B address
 NOTE(RULE):
 CANNOT USE ALL 0'S
 CANNOT USE ALL 1'S
+The two things that DETERMINE which part of the IP address is the network address and node are:
 1)The class of thr IP Network: Class A or B or C
 2)The subnet mask
+Classful (Classical) Subnetting- e.g you have a Class C network address of 192.234.123.0. You did not have 254 nodes on this network. Only
+20 nodes. Instead of MONOPOLIZING the entire network address for only 20 nodes. It will be better to SUBNET(Subnetwork(Subdivide a network address into
+smaller independent networks) and a SUBNET MASK is used to DISTINGUISH where one network ENDS and another one BEGINS. It is a SUBNET MASK
+that tells us WHICH BITS are used for the NETWORK ADDRESS and which are used for the NODE ADDRESS.
 CLASSLESS IP ADDRESS
 IP CLASSES: 5 classes of IP network
              8       8        8    8
@@ -142,4 +147,70 @@ CLASS C   Network Network Network Host - Has FEW NUMBER of HOSTS. 8 of 32 bits a
 CLASS D   Multicast
 CLASS E   Research
 The breakdown is up in 8s. First octet, second one, third one and the fourth one.
+
+SUBNETTING CALCULATIONS:
+IP address is 192.10.20.0 and subnet mask is 255.255.255.192
+1) How many valid IP subnets do we have?
+2)How many possible HOSTS in each subnet?
+c) What are the NETWORK ADDRESS, the IP ADDRESS of the FIRST HOST, SECOND HOST, LAST HOST and BROADCAST ADDRESS of the Subnets?
+
+ANSWER
+This is a Class C IP address since it starts with 192 and in Class C, you have the first 3 OCTETS as the NETWORK ADDRESS. Therefore, the
+LAST OCTET is the only HOST(NODE) address. N.N.N.n
+This means it is ONLY THE LAST OCTET that can be used for SUBNETTING.
+
+
+192.10.20.0         255.255.255.192
+                    11111111.11111111.11111111.11000000 (Binary representation)
+                    To do the subnetting, PARTITION OFF the 1s, which is the ADDRESS, and the 0s, which are the NODES, partition after 
+                    the 1s i.e 11---000000
+                    Now we have 2bits for subnetting. The possibilities from there is 00. Going back to RULES- CANNOT USE ALL 0's and
+                    CANNOT USE ALL 1's. Therefore, it is not a VALID SUBNET.
+                    Therefore our first SUBNET will be 01. Therefore the ADDRESS of our first subnet will be 192.10.20, what is the last OCTET
+                    Using 000000 it will be 1,2,4,8,16,32,64 Therefore it will be 64. Counting from the 0 at the back, backward, then do the subsequent ones. 192.10.20.64
+                    01--000000 =   0=1,0=2,0=4,0=8,0=16,0=32,1=64. It stops at 1 from backward
+                    Therefore my first subnet is 192.10.64
+                    What will be the address of out second subnet? it will 10 from 10---000000
+                    It will be 0=1,0=2,0=4,0=8,0=16,0=32,0=64,1=128
+                    Therefore my second subnet = 192.10.20.128
+                    What about 11? CANNOT GET ALL 1'S (RULE)
+                    So, if there is 2 bits for subnetting, 2 raised to power of 2 is 4. CANNOT USE ALL 0'S and 1's.
+                    Therefore subtract 2 from 4, it gives 2 subnets. 2 SUBNETS.
+NOTES: 2 bits of the LAST OCTET(node octet) will be used for SUBNETTING and remaining 6 bits will be used to DEFINE THE HOSTS.
+With 2 bits for SUBNETTING, how many subnets can you have
+00 NOT ALLOWED ACCORDING TO RULES
+01 VALID SUBNET
+10 VALID SUBNET
+11 NOT ALLOWED ACCORDING TO RULES
+Therefore there are only 2 vaid subnets 01000000=64 and 10000000=128
+The minimum number of bits that you can use is 2bits.
+
+What is the first IP ADDRESS in the first SUBNET(192.10.20.64)? The first one is 192.10.20.65 (0100000000)
+What is the second IP ADDRESS in it? 192.10.20.66 (010000010)
+What will be the last IP ADDRESS? CANNOT HAVE ALL 1's) 192.10.20.126 (0111111110)
+ALL 1's is called BROADCAST ADDRESS 01---11111111. Broadcast address in this case is 192.10.20.127
+
+The first IP ADDRESS of the second subnet(192.10.20.128) is 192.10.20.129
+The second IP ADDRESS is 192.10.20.130
+The third IP ADDRESS is 192.10.20.131
+The last IP ADDRESS is 192.10.20.190
+
+NOTES:
+Subnet 64    HOST
+01           000000  (Network address)
+01           000001  (Refers to the first host in the subnet)
+01           000010  (Refers to the second host in the subnet)
+01           000011  (Refers to the third host in the subnet)
+01           111110  (Refers to the last host address in the subnet)
+01           11111111 (Refers to the broadcast address)
+
+
+Subnet 128    HOST
+10           000000  (Network address)
+10           000001  (Refers to the first host in the subnet)
+10           000010  (Refers to the second host in the subnet)
+10           000011  (Refers to the third host in the subnet)
+10           111110  (Refers to the last host address in the subnet)
+10           11111111 (Refers to the broadcast address)
+
 
