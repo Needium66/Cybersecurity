@@ -214,3 +214,292 @@ Subnet 128    HOST
 10           11111111 (Refers to the broadcast address)
 
 
+
+ROUTER CONFIGURATION- Using Cisco 2500 Series Router
+It is using an IOS OS
+It is a prompt based system
+Its IOS can be divided into 4 COMMAND MODES (Each designated by a different prompt)
+1) User EXEC Mode   Router>
+2) Privileged EXEC Mode Router#
+3) Global Configuration Mode Router(config)#
+4) Specific Configuration Modes
+      Interface     Router(config-if)#
+      SubInterface  Router(config-subif)#
+      Controller    Router(Config-controller)#
+      Map-list      Router(config-maplist)#
+      Map-class     Router(config-map-class)#
+      Line          Router(config-line)#
+      Router        Router(config-router)#
+Most of the router configuration command are issued in Global or Spefic Configuration Mode (#)
+To move from PRIVILEGED EXEC Mode to CONFIGURATION MODE the (config terminal or config t is issued)
+Router#config t
+Router(config)#
+1) When you (a user) first log in to a router, the USER MODE prompt is displayed:
+Password
+Router A>
+enable command: can be used to access Privileged Mode from User Mode (you get this prompt when in Privileged Mode #)
+disable command: can be used to EXIT from Privileged Mode
+Exit: can be used to Exit from User Mode
+
+2) Naming a host router
+Given a name to a host router that is logged into
+
+Router>enable    (accessing privileged mode from user mode)
+Router#config t  (accessing configuration mode)
+Router(config)#  hostname LAB-JIDE (Given it a hostname)
+LAB-JIDE(config)#   (host name has been given and you are accessing it)
+
+3) Set passwords
+There is a PASSWORD for User Mode and ENCRYPTED PASSWORD for Privileged EXEC Mode.
+The User must be in Global Configuration Mode to set the PASSWORDS.
+You can set the USER MODE password with enable password command
+You can set the PRIVILEGED EXEC password with enable secret command
+
+Router>enable
+Router#config t
+Router(config)#
+LAB-JIDE(config)# enable password yourpassword
+LAB-JIDE(config)# enable secret  thesecretpassword
+
+Configuraing Routers:
+A router has basically 3 interfaces-
+Serial 1 interface S1
+Serial 0 interface S0
+E0 interface (Ethernet) LAN
+The routers are connected to each other by CONNECTING the serial interfaces (S1 and S0)
+Each one of the interfaces EXIST in a subnet
+The interfaces will be given an IP address
+NOTE: Routers are of different models and therefore have different naming for the interfaces e.g E0 may be called GigabitEthernet0/0 or
+Ethernet0/0. The S0 may be Serial0/3 or S1 may be Serial0/3/1.
+Therefore, look at the TOP OF THE ROUTER for proper naming.
+
+DTE/DCE
+In communications, they are often misunderstood maybe because of their historical origin in telecommunications.
+The way telecommunication was connecting before was having the TTY (data terminal) called teletype CONNECTED to distant TTYs using the
+TELEPHONE SYSTEM. The Teletype TTY( called a DTE) would be connected to a MODE (Called DCE), which was in turn CONNECTED to a telephone line.
+When information was entered into the local TTY(DTE), the same information would be transmitted and would appear through distant TTY(DTE)
+TTY which were the DATA SOURCE, were later replaced by computers.
+DCE(MODEM): It originally meant Data Circuit Terminating Equipment. But also known today as Data Communications Equipment. It provides a
+PHYSICAL CONNECTION to the NETWORK and provides SIGNAL for DATA TRANSMISSION. Examples are MODEM and Network Interface Card (NIC)
+DTE(TTY): Data Terminal Equipment. It is a DEVICE at the user end that SERVES as a data source.
+It is also a device at the DESTINATION that receives the data being sent.
+The DTE connects to a NETWORK through the DCE.
+Originally, the data terminal or teletype was the most common DTE. But now, the most common DTE is COMPUTER ROUTER, MULTIPLEXOR.
+
+COMMUNICATIONS:
+DCE and CTE are used these days to describe how ROUTERS communicate with each other. When 2 routers are connected to each other through
+the SERIAL INTERFACES(WAN- which exists between the 2 routers). One of the serial routers MUST provide a CLOCK SIGNAL in order to send in
+the data. With serial synchronous transmission of data, there are 2 lines. One for the DATA and one for the CLOCKING SIGNAL, which tells the
+RECEIVING END and when to sample the data line.
+
+Data 0  1   0   0   1   1   0
+Carrier Signal Clocking Signal 0  1   0   0   1   1   0
+DCE will be plugged into the serial interface that is providing THE CLOCK. DTE is plugged into the serial interface that is RECEIVING the
+CLOCK. For older cables- the cable with PRONGS on it is the DTE
+
+How To Configure The Serial Interfaces:
+
+The clock will be generated from the S0 interface. To TURN OFF the interface, use the "shutdown" command instead.
+LAB-JIDE# config t  (get into config terminal)
+LAB-JIDE(config)# interface s0  (the DCE)
+LAB-JIDE(config-if)# ip address 207.207.7.129   255.255.255.240 (assign an ip address)
+LAB-JIDE(config-if)# clock rate 56000  (Give it a clock rate)
+LAB-JIDE(config-if)# no shutdown   (to startup the interface)
+LAB-JIDE(config-if)# exit
+LAB-JIDE(config)#
+
+To configure S1: below (It will RECEIVE the CLOCK SIGNAL and not GENERATE IT)
+
+LAB-JIDE(config)# interface s1  (the DTE)
+LAB-JIDE(config-if)# ip address 207.207.7.128   255.255.255.240 (assign an ip address and subnet mask address)
+LAB-JIDE(config-if)# no shutdown   (to startup the interface)
+LAB-JIDE(config-if)# exit
+LAB-JIDE(config)#
+
+Configure the Ethernet Interface E0. On 2500, It is simply E0. On 1700 router, it is f0.0(FastEthernet)
+
+1700 Router
+LAB-JIDE(config)# interface f0.0
+LAB-JIDE(config-if)# ip address 207.207.7.113   255.255.255.240
+LAB-JIDE(config-if)# no shutdown
+LAB-JIDE(config-if)# exit
+LAB-JIDE(config)#
+
+2500 Router
+LAB-JIDE(config)# interface e0
+LAB-JIDE(config-if)# ip address 207.207.7.113   255.255.255.240
+LAB-JIDE(config-if)# no shutdown
+LAB-JIDE(config-if)# exit
+LAB-JIDE(config)#
+
+Configuring the routing protocol:
+This command will tell the router what routing protocol to use. The following NETWORK commands will identify the subnets associated with
+each router interface
+
+LAB-JIDE(config)# router rip ( routing protocol rip)
+#associating each interface with a particular subnet. Here we have subnet 96, 112 and 128 for each routing subnet interface.
+LAB-JIDE(config-router)# network 207.207.7.96
+LAB-JIDE(config-router)# network 207.207.7.112
+LAB-JIDE(config-router)# network 207.207.7.128
+LAB-JIDE(config-router)#exit
+LAB-JIDE(config)#
+
+Configuration to assign HOSTNAME to each ip address:
+After the assignment, the hostname can be used instead of IP address when trying to Telnet or ping the ip address.
+LAB-JIDE(config)# ip host LAB-A 207.207.7.49  207.207.7.65  207.207.7.34
+LAB-JIDE(config)# ip host LAB-B 207.207.7.81  207.207.7.66  207.207.7.97
+LAB-JIDE(config)# ip host LAB-C 207.207.7.113  207.207.7.98  207.207.7.129
+LAB-JIDE(config)# ip host LAB-D 207.207.7.130  207.207.7.145
+LAB-JIDE(config)# ip host LAB-E 207.207.7.146
+LAB-JIDE(config)# ip host LAB-F 207.207.7.17  207.207.7.33
+
+Configuring the cosnole:
+Connection from the console connection of the router to the personal computer using the DB9 connection.
+The login command specifies that the user wants the ability to login using a password
+LAB-JIDE(config-line)#line console 0
+LAB-JIDE(config-line)#login
+LAB-JIDE(config-line)#password cisco
+LAB-JIDE(config-line)#exit
+
+To disable a password:
+LAB-JIDE(config-line)#line console 0
+LAB-JIDE(config-line)#login
+LAB-JIDE(config-line)#no password
+LAB-JIDE(config-line)#exit
+
+To create a login and password on vty virtual terminal:
+LAB-JIDE(config-line)#line vty 0 4
+LAB-JIDE(config-line)#login
+LAB-JIDE(config-line)#password mypassword
+LAB-JIDE(config-line)#exit
+
+Different Types of Mmemory in a 1700 or 2500 Cisco Router
+Flash Memory: EEPROM contains IOS, the CISCO Operating System. To verify your version of IOS, use this command Router#sh flash
+NVRAM: Non-volatile Random Access Mmeory contains the start up configuration of the router
+NVRAM is the start-config.
+command: copy run start (will copy the runnning configuration to the startup configuration)
+
+NOTE: To erase a configuration and start over
+LAB-JIDE#erase start
+LAB-JIDE#reload
+
+PASSWORD RECOVERY FOR THE ROUTER 1700 ROUTER:
+Power off and on: As the 1700 comes up, hit Ctrl+Break
+Commands:
+1> confreg 0X2142    ; to change the internal register to allow you to bypass the password
+2> reset
+    When the 1700 comes up:
+Router> ena
+Router#config t
+Router(config)#config-register 0x2102  ; to change the register back to normal
+Then set the new password
+
+PASSWORD RECOVERY FOR THE ROUTER 2500 ROUTER:
+1) Reboot
+2) Within 60 seconds press control + break
+3) > o/ r 0x2142
+4) > i(goes to setup)
+5) > n (at any other prompts)
+6) enable
+7) # copy start run
+8) config t
+9) (config)# config reg 0x2102
+10) (config)# enable secret <password>
+
+Use notpad to create a textfile for your configurations: exercise
+
+#Configuration for router A
+config t
+hostname LAB-A
+enable password cisco
+enable secret class
+
+interface f0.0
+  ip address 207.207.7.23 255.255.255.240
+  no shutdown
+
+interface s0
+  ip address 207.207.7.33 255.255.255.240
+  clockrate 56000
+  no shutdown
+
+interface s1
+  ip address 207.207.7.81 255.255.255.240
+  no shutdown
+exit
+
+router rip
+  network 207.207.7.16
+  network 207.207.7.32
+  network 207.207.7.80
+exit
+
+
+ip host LAB-A 207.207.7.17 207.207.7.33 207.207.7.81
+ip host LAB-A 207.207.7.34 207.207.7.65 207.207.7.49
+
+line console 0
+  password cisco
+  login
+
+line vty 0 4
+  password cisco
+  login
+  exit
+exit
+copy run start
+
+
+#Configuration for router B
+config t
+hostname LAB-B
+enable password cisco
+enable secret class
+
+interface f0.0
+  ip address 207.207.7.23 255.255.255.240
+  no shutdown
+
+interface s0
+  ip address 207.207.7.33 255.255.255.240
+  clockrate 56000
+  no shutdown
+
+interface s1
+  ip address 207.207.7.81 255.255.255.240
+  no shutdown
+exit
+
+router rip
+  network 207.207.7.16
+  network 207.207.7.32
+  network 207.207.7.80
+exit
+
+
+ip host LAB-B 207.207.7.17 207.207.7.33 207.207.7.81
+ip host LAB-A 207.207.7.34 207.207.7.65 207.207.7.49
+
+line console 0
+  password cisco
+  login
+
+line vty 0 4
+  password cisco
+  login
+  exit
+exit
+copy run start
+
+CABLES:
+Focus on RJ-45 Cabels:
+Crossover
+Straight Through
+
+DB-25 Ports
+Pin 1- Ground
+Pin 2- Transmit
+Pin 3- Receive
+
+An example of crossover cable is the ethernet cable.
+2 computers can be connected together with Straight Through cables by using  a HUB.

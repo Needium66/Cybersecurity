@@ -115,7 +115,7 @@ the playbook?
 the expected notification?
 • Stakeholder information  Who is involved and what is their contact information? What are each of
 the stakeholders responsibilities?
-• Response steps  Across phases of incident response, what tactical steps should be taken? What
+• Response steps  Across phases of incident response, what tactical steps should be taken? What 
 queries should an analyst run? What code should be run to achieve the desired outcome?
 • Detect-  How will the incident be detected?
 • Analyze-  How will the scope of impact be determined?
@@ -144,6 +144,7 @@ DEVELOP AWS ACCOUNT STRUCTURE: Use AWS Organizations. OUs to group accounts toge
 For IR, it is important to have an ACCOUNT that supports the functions of IR(security OU and forensic OU) Have accounts for:
 1) Log archival- Aggregate logs in this account e.g Central account or Master account or IR account
 2) Security tooling- It operates as a delegated admin for security services e.g Master account or Infra or Admin etc
+
 Accounts for each region that you operate in e.g us-east-1 and us-west-2 or us-east-2 and us-west-2. Structure of sample account
                                         Organization Root
                         Security OU                                 Forensic OU
