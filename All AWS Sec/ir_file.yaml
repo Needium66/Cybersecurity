@@ -373,3 +373,36 @@ Collect IOCS to continuously BUILD and IMPROVE detections and alerting  and impr
 CONTINUE EDUCATION AND TRAINING:
 
 Link-https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-security-incident-response-guide/aws-security-incident-response-guide.pdf#aws-security-incident-response-guide
+Check off each one as you progress
+
+Application Failover Runbook Template
+Roll Call- Declare
+Incident Commander
+Communication Lead
+ITOPS Lead
+DS Lead
+QA Lead
+Customer team 
+Confirm, everybody to be on AWS West VPN
+Declare it
+Pause any monitoring alerts
+Pause
+
+Go to us-west-2
+StartDRWebserver in Lambda
+Hit test to start it manually
+Select Upsizefileservers
+Select UpsizeRunningServers
+Check the ALB, or whatever load balancer you are using to check servers that are live and post that.
+Stop any migration jobs e.g moveit or any other. Stop the services
+Start the services on DR servers
+Failover the SFTP
+Disable the Stop DR servers to prevent them from running
+Restore the file servers and apps server drives from snapshot through the pipeline
+
+Do your databases steps
+Failover guide- protect the data
+
+Next step- break connectivity between east and west
+Pre check of AD
+Remove the route 53 routes

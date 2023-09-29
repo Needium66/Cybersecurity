@@ -169,7 +169,7 @@ This means it is ONLY THE LAST OCTET that can be used for SUBNETTING.
                     Therefore our first SUBNET will be 01. Therefore the ADDRESS of our first subnet will be 192.10.20, what is the last OCTET
                     Using 000000 it will be 1,2,4,8,16,32,64 Therefore it will be 64. Counting from the 0 at the back, backward, then do the subsequent ones. 192.10.20.64
                     01--000000 =   0=1,0=2,0=4,0=8,0=16,0=32,1=64. It stops at 1 from backward
-                    Therefore my first subnet is 192.10.64
+                    Therefore my first subnet is 192.10.20.64
                     What will be the address of out second subnet? it will 10 from 10---000000
                     It will be 0=1,0=2,0=4,0=8,0=16,0=32,0=64,1=128
                     Therefore my second subnet = 192.10.20.128
@@ -182,7 +182,7 @@ With 2 bits for SUBNETTING, how many subnets can you have
 01 VALID SUBNET
 10 VALID SUBNET
 11 NOT ALLOWED ACCORDING TO RULES
-Therefore there are only 2 vaid subnets 01000000=64 and 10000000=128
+Therefore there are only 2 valid subnets 01000000=64 and 10000000=128
 The minimum number of bits that you can use is 2bits.
 
 What is the first IP ADDRESS in the first SUBNET(192.10.20.64)? The first one is 192.10.20.65 (0100000000)

@@ -1,1 +1,6 @@
 All about my coursework.
+FINITE AUTOMATA
+A finite automation is a collection of 3 things
+1) A finite set of states( one is designated as INITIAL STATE (START STATE) and some or NONE, designated as FINAL STATES.)
+2) An alphabet of possible input letters.
+3) A finite set of TRANSITIONS that tell for each state and for each letter of the input alphabet which state to go next.
