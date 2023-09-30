@@ -503,3 +503,100 @@ Pin 3- Receive
 
 An example of crossover cable is the ethernet cable.
 2 computers can be connected together with Straight Through cables by using  a HUB.
+
+
+WEEK 5 ROUTING PROTOCOLS
+Routing Protocols: Routing protocols are protocols that enable the routers to do its job of ROUTING, BUILDING ROUTING TABLES, EXCHANGING ROUTING TABLES etc
+Examples are RIP, IGRP, OSPF
+Routed Protocols: Are protocols that enable a MESSAGE to move through the system (that help to implement the OSI Layer 3 Network layer)
+Used to direct user's traffic. used in network layer address to enable a packet to be forwarded from one host to another host based on the
+IP addressing scheme e.g IP, IPX, APPLETALK are examples of routed protocols.
+
+Routing tables can be created STATICALLY or DYNAMICALLY.
+Static Routing: Network admin will build the ROUTING TABLE by manually entering the IP addresses.
+Dynamic Routing: It involves ROUTING PROTOCOL that sends SPECIAL PACKETS of information back and forth between routers. i.e when a router
+RECEIVES a packet, it looks up the DESTINATION IP address in the ROUTING TABLE. If the destination IP address is not in the router's ROUTING
+TABLE, it will discard the packet unless provisions have been made to send packets with unknown IP address to default IP address (on a default
+router)
+Dynamic routing is accomplished by 2 types of routing protocols
+1) Distance vector
+2) Link state
+Distance vector protocol: are LESS COMPLEX than link state protocols e.g DVP might DETERMINE the "best path" based on the number of hops( no
+of routers encountered in a network path). Each time a packet goes through a ROUTER, it is another "hop". The ROUTE with the LEAST NUMBER OF
+HOPS is the best route for DVP. DVP uses BELLMAN FORD ALGORITHM to forward routing table information. It passes entire routing table to its
+neighbors.
+Two important DVPs are:
+RIP- Routing Information Protocol
+IGRP- Interior Gateway Routing Protocol
+Link State Protocols: Are more COMPLEX. they DETERMINE the entire TOPOLOGY of internetwork. An example of LSP is OSPF (Open Shortest Path First)
+They use DIJKSTRA'S ALGORITHM to gain a picture of the entrire TOPOLOGY of a network. Autonomous System occurs in - when routers are in the SAME network under a common
+administrative domain, then it is called a INTERIOR GATEWAY PROTOCOL (IGP). If a routing protocol exchanges router information between 2 SEPERATE
+ASs, it is called Exterior Gateway Protocol (EGP).
+Note: More than one route with equal hops will become LOAD SHARING.
+When routing tables are inconsistent, ROUTING LOOPS occur.
+You can prevent ROUTING LOOPS by using the below techniques
+Maximum Hop Counts: To avoid hop count getting to infinity, you may DEFINE a MAXIMUM HOP COUNT. RIP has a default maximum hop count of 15.
+After a LOOP of 15 hops, the DESTINATION NETWORK will be considered down and therefore unreachable
+Split Horizon: A distance vector rule that says that PACKET CANNOT BE SENT BACK IN THE SAME DIRECTION FROM WHICH THEY CAME FROM.
+Route Poisoning: If a router DETECTS that a network is DOWN, it enters a 16 for the HOP COUNTS in the routing table for the network. So
+other routers will see an unreachable hop count and not attempt to send that packet in that direction.
+Hold down timers: An enforced time delay to prevent updates in a rapidly changing network  from changing the route table too quickly.
+It gives new ACCURATE ROUTING TABLES time to circulate.
+Disadvantages of DVP:
+1) Scalability- RIP cannot scale up to a LARGER NETWORK due to  too many periodic updates. Therefore DVP should only be used on samller networks.
+2) Convergence- RIP and IGRP are SLOW to announce updates to other routers because of the fact that the router SENDS its ENTIRE ROUTING
+TABLE with the changed link.
+3) Loops- It occurs when routing tables contains INCONSISTENT DATA. A non-convergence router could continuously loop packets around the
+network despite the fact that the destination node may be down.
+
+An example of a routing table
+
+Router A s0(172.100.10.0)---------------s1 Router B so(172.100.20.0)---------------- s1 Router C
+  e0                                       e0                                           e0
+   | 172.100.30.0                           | 172.100.40.0                               | 172.100.50.0
+
+
+Initial State: Each routing table shows only directly connected networks. Tables show the address, exit 
+interface, and hop count.
+ Routing Table A Routing Table B Routing Table C
+ 172.100.30.0(a subnet) e0( routing interface) 0( no of hops) 172.100.40.0 e0 0 172.100.50.0 e0 0 .
+ 172.100.10.0 s0 0 172.100.10.0 s1 0 172.100.20.0 s1 0
+ 172.100.20.0 s0 0
+ Summary First Line: Table A, out of the s zero subnet, we have the subnet (172.100.10.0). We are directed to e zero subnet (172.100.30.0) and
+ we have 0 hop count. The explanation holds for the rest too.
+ If the above table converged, they will look like the below converged state.
+Converged State: Tables have been passed throughout the network and all tables show convergence.
+ Routing Table A Routing Table B Routing Table C
+ 172.100.10.0 s0 0 172.100.10.0 s1 0 172.100.10.0 s1 1
+ 172.100.20.0 s0 1 172.100.20.0 s0 0 172.100.20.0 s1 0
+ 172.100.30.0 e0 0 172.100.30.0 s1 1 172.100.30.0 s1 2
+ 172.100.40.0 s0 1 172.100.40.0 e0 0 172.100.40.0 s1 1
+ 172.100.50.0 s0 2 172.100.50.0 s0 1 172.100.50.0 e0 0
+
+MORE ON RIP:
+It is originally developed by Xerox Corp. It works in small environments. It has serious limitations when used in larger internetworks.
+It is slow to convergence i.e it takes a longer time for router changes to be known to all routers. It sends the complete routing table evry
+30 seconds. Two prominent versions of RIP are Cisco RIP (uses only hop counts) and Novell RIP (uses hops and ticks-measurement of time)
+RIP has 3 timers:
+Route invalid timer: It is the length of time that determines if a route has become INOPERABLE. If RIP does not get any updates from a 
+particular timer within this period of time, it will assume there is a PROBLEM, and sends updates to its neighbors telling them this router
+is invalid. The route invalid timer is usually 90 seconds.
+Route flush timer: Times the interval between a route becoming invalid and its removal from the routing table. It is usually set for 240 seconds
+Administrative distances (AD): Used to measure the TRUSTWORTHINESS of routing information passed from a neighbor router.
+
+Difference between version1 and version 2: ( From CIDR and VLSM)
+RIP version 1 does not UPPORT CIDR or VLSM(Variable Length Subnet Mask)- Because of this, subnet mask cannot be changed once established.
+Modern RIP SUPPORT CIDR and VLSM
+RIP version 2 support VLSM and Discontinuous network(2 subnets of a classful network seperated by a different network)
+Discontinuous network does not work with RIPv1 and IGRP.
+
+IGRP: Cisco propriatary routing protocol. Only used by Cisco routers. It was created to overcome sme of the limitations with RIP. T conevreges
+faster than RIP. It does not have RIP up count limitaions. There is an Enhanced IGRP (EIGRP)= It is an hybrid protocol. IGRP uses different metrics
+like BANDWIDTH, DELAY OF THE LINE, LOAD, RELIBAILITY, MAXIMUM TRANSMISSION UNIT (MTU) for determining the best route. The MTU is measured in bytes.
+MTU is the largest packet size that an interface can handle. The default metrics are bandwidth and delay of line (called COMPOSITE METRIC). The
+other 3 metrics are not default metrics.
+It has 4 timers:
+Update timer= to determine the frequency of table updates
+Invalid timer- determine the length of time before a route is considered invalid or inoeprable
+Hold down timers- the default is 3 times the update timer plus 10.
+Flush timer- determines the time period that the route is flushed from the router table after detecting that the route is no longer valid.
