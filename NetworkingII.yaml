@@ -600,3 +600,54 @@ Update timer= to determine the frequency of table updates
 Invalid timer- determine the length of time before a route is considered invalid or inoeprable
 Hold down timers- the default is 3 times the update timer plus 10.
 Flush timer- determines the time period that the route is flushed from the router table after detecting that the route is no longer valid.
+
+Link state protocols:
+The most important link state protocol is OSPF (Open Shortest Path First)
+Its basic concept is that it tries to present a COMPLETE VIEW of the topology of the network unlike Distance Vector protocol that present
+a flat view. It has special packets that travel through the network to learn and to build the topology of the network. i.e there is a method
+to verify what the network looks like. It is bidirectional (not unidirectional like RIP). Relies on Dijkstra algorithm to give the best path.
+Advantages of Link State Protocols:
+1) Routers have a complete view of the network
+2) Bi-directional communication
+3) Enhanced metrics e.g cost for superior path selection.
+4) It can be triggered by topology changes that result in faster convergence.
+
+Disadvantages of LSP:
+1) Complex configurations
+2) Prone to flooding (obstruction) due to much overhead (LSP, HELLO, Updates etc)
+3) Processor intensive
+4) Convergence is slow
+
+OSPF:
+It was developed by internet- Internet Engineering Task Force (IETF) as a replacement for RIP. It support heirachical routing protocol within
+an autonomous system.  The autonomous system can be divided into routing areas. A typical routing area is a collection of one or more
+subnets that are closely related. It provides FAST REROUTINGand supports variable length subner masks. If you have routers from a larger network
+ from different manufacturers, the only option is OSPF
+ Features of OSPF
+ 1) It supports CIDR and VLSM
+ 2) It converges quickly but as qucik as EIGRP
+ 3) No hop count limit
+ 3) The topology is hierarchical in nature.
+ 5) Dijkstra to calculate the route.
+ 6) Route propagation is based on multicast and triggered by a change in topology.
+
+ OSPF Area: It is a group of connected routers. It enables it to establish a heirarchical area of topology. There must always be area 0.
+ Neighbors: Two or more routers have interfaces directly connected.
+ Adjacency: The relationship between two OSPF routers that allow them to share route updates. OSPF only shares updates with neighbors that
+ have established adjacency.
+ Neighborship database: Contains all list of OSPF routers for which Hello packets have been received.
+ Toplogy database: Contains all info from all the Link State Advertisements (LSA) packets that have been received for a particular area.
+ Link State Advertisement: This is the packet type used by OSPF to share route updates.
+
+ IS-IS (Intermediate Systems to Intermediate Systems): It is the second Link State Protocol.
+
+ HYBRID PROTOCOLS: Uses aspects of distance vector protocol and link state protocol. It is such a hybrid protocol. It is an enhanced version
+ of IGRP. It synchronizes routing tables between neighbors and sends specific updates only when topology changes. It is a combination of
+ 4 metrics- Bandwidth, Delay, Load, Reliability.
+ Features of EIGRP:
+ Neighbor discovery- in order for 2 routers to be neighbors, they must share the same autonomous sysytem (AS) and they must have identical K
+ value metrics and they must continue to recieve HELLO or ACK messages from its neighbors.
+ Which protocol is the quiet protocol? EIGRP
+ EIGRP uses Diffusing Update Algorithm (DUAL): to finding and maintaining best route path.
+ EIGRP supports multiple autonomous systems
+ EIGRP supports VLSM
