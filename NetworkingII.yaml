@@ -651,3 +651,5 @@ subnets that are closely related. It provides FAST REROUTINGand supports variabl
  EIGRP uses Diffusing Update Algorithm (DUAL): to finding and maintaining best route path.
  EIGRP supports multiple autonomous systems
  EIGRP supports VLSM
+
+ 
