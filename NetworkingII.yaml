@@ -652,4 +652,15 @@ subnets that are closely related. It provides FAST REROUTINGand supports variabl
  EIGRP supports multiple autonomous systems
  EIGRP supports VLSM
 
- 
+ #Using Cisco packet tracer
+ https://www.netcad.com/courses/packet-tracer
+ using it to simulate the configurations of routers and switches.
+ Create a network of 2 routers from the bottom left corner.
+ Click on the left router to configure the ethernet interfaces.
+ Click on the right router to configure the etherner interfaces too
+ Connect the 2 routers by going to the bottom left and select serie DCE and plug it to the left router (serie 0) and connect it to the right router (serie 1 or router 1)
+ Add two hubs left and right and connect them from router 0 to the hub on the left
+ Add the PCs to the hubs
+ Configure the routers next
+ Configure ethernet next
+ Configure the PCs
