@@ -664,3 +664,132 @@ subnets that are closely related. It provides FAST REROUTINGand supports variabl
  Configure the routers next
  Configure ethernet next
  Configure the PCs
+
+
+ #Using packet tracer, configure router network
+ Install the netapad using the link given
+ #Start
+ Select router icon from the bottom left part of the main page
+ Select "Generic" 2901 and drag it to the middle of the page ( This is your router 0)
+ Select "Generic" 2901 again and drag it up to the middle of the page on the right hand side of router 0 (This is router 1)
+ Select the "Connection" icon from the bottom left part of the main page
+ Select "Serial DCE" connection type and drag it up to the Router 0 and join it with Router 1
+ Left click on Router 0 and select click on the "Physical" tab on the page that pops up
+ Select "HWIC-2T" from the navigation pane on the left and drag it to the required panel in the middle
+ #Note: If you get a pop up error, switch off the power on the panel and repeat the immediate above step
+ Repeat the above step for Router 1 too
+ Check the "Config" tab to validate the Ethernet and Serial numbers for Router 0 and 1
+ Go back to the main page and select "Hub" from the bottom left side of the page
+ Drag the "Generic" hub up under the Router 0
+ Drag the "Generic" hub up under the Router 1
+ Select the connection type and drag it up to Router 0 to connect with Hub 0
+ Select the connection type and drag it up to Router 1 to connect with Hub 1
+ Select "End Devices" from the bottom left part of the page and drag it up under the Hub 0 as PC0
+ Repeat the step above for PC1 beside PC0 under Hub 0
+ Repeat the step above for PC2 under Hub 1
+ Repeat the step above for PC3 beside PC1 under Hub 1
+ Connect the PCs with hubs using the connection types. ( 4 different connection types)
+ #Configure the IPs
+ Left click on Router 0
+ Select "CLI" tab and click on Enter
+ Enter "ena" to enable the configuration
+ Enter "config t"
+ Enter "hostname Router0"
+ #Copy and run the below command for Router0(Copy it and click on the "Paste tab at the bottom")
+ ROUTER0
+interface Serial0/3/0
+ip address 207.207.7.33     255.255.255.240
+clock rate 56000
+no shutdown
+
+Enter "exit" once configured
+# Run the below command next and exit
+interface GigabitEthernet0/0
+ip address 207.207.7.17 255.255.255.240
+no shutdown
+#exit
+
+Left click on Router1
+ Select "CLI" tab and click on Enter
+ Enter "ena" to enable the configuration
+ Enter "config t"
+ Enter "hostname Router1"
+ #Copy and run the below command for Router1(Copy it and click on the "Paste tab at the bottom")
+interface Serial0/3/1
+ip address 207.207.7.34     255.255.255.240
+no shutdown
+
+Enter "exit" once configured
+# Run the below command next and exit
+interface GigabitEthernet0/0
+ip address 207.207.7.49 255.255.255.240
+no shutdown
+#exit
+
+Left click on PC0
+Select the "Physical" tab
+Select the "IP configuration tab"
+Enter 207.207.7.18 into the "IP" address space
+Enter "255.255.255.240" as the "subnet mask"
+Enter "207.207.7.17" as the default gateway
+Note: The link local address will be automatically populated
+Left click on PC1
+Select the "Physical" tab
+Select the "IP configuration tab"
+Enter 207.207.7.19 into the "IP" address space
+Enter "255.255.255.240" as the "subnet mask"
+Enter "207.207.7.17" as the default gateway
+Note: The link local address will be automatically populated
+Left click on PC2
+Select the "Physical" tab
+Select the "IP configuration tab"
+Enter 207.207.7.50 into the "IP" address space
+Enter "255.255.255.240" as the "subnet mask"
+Enter "207.207.7.49" as the default gateway
+Note: The link local address will be automatically populated
+Left click on PC3
+Select the "Physical" tab
+Select the "IP configuration tab"
+Enter 207.207.7.51 into the "IP" address space
+Enter "255.255.255.240" as the "subnet mask"
+Enter "207.207.7.49" as the default gateway
+Note: The link local address will be automatically populated
+#By now, you should be seeing green dots on the connection between your routers, hubs and PC networking
+
+Go back to router0 and left click
+Select CLI tab
+enable the router - run "ena"
+Enter "configure t"
+#Run the below commands for the router rip
+router rip
+ network 207.207.7.16
+ network 207.207.7.32
+exit
+Go back to router1 and left click
+Select CLI tab
+enable the router - run "ena"
+Enter "configure t"
+#Run the below commands for the router rip
+router rip
+ network 207.207.7.16
+ network 207.207.7.32
+exit
+
+Test the connection by pinging
+Go to PC0 and ping
+Select the "Deskstop" tab
+Select the "command prompt" run
+Enter "ping 207.207.7.18"
+Enter "ping 207.207.7.17"
+Enter "ping 207.207.7.19"
+Enter "ping 207.207.7.34"
+Enter "ping 207.207.7.51"
+#Note: If anyone one of them timed out, it means there is no connection
+#Repeat the immediate above steps for connection testing for PC2, but change the IPs
+Enter "ping 207.207.7.50"
+Enter "ping 207.207.7.49"
+Enter "ping 207.207.7.51"
+#Repeat the immdeiate above steps for connection testing for PC3, but change the IPs
+Enter "ping 207.207.7.33"
+Enter "ping 207.207.7.18"
+
