@@ -844,3 +844,27 @@ Forwarding State: Sends and receive all the data on the ports.
 Root bridge: It has all the designated ports
 Non-root bridge: has either non-designated ports, or designated ports.
 Root port: Connects a non-root bridge to a root bridge.
+
+
+CRC (Cyclic Redundancy Check)
+Switch mode of operations:
+1) Store and forward
+2) Cut-through( Real-time)
+3) Fragment free
+
+Error Detection: 2 Types
+Asynchronous serial communications: The smallest unit of data is character- 8-bit byte. Sart and stop bit. One of the bits, can be a PARITY
+BIT. There are 2 types of parity: Even Parity and Odd Parity. Even parity is A BITWISE EXLUSIVE OR (XOR). Even parity always have an EVEN # of 1's
+Odd parity is a COMPLEMENT OF BITWISE XOR. Odd parity always have an odd # of 1's.
+1 EXCLUSIVE or of 0 is 0, of 0 and 1 is 1, of 1 and 0 is 1, of 1 and 1 is 0.
+Synchronous serial communications: The smallest unit of data is a FRAME or PACKET. Start of Frame (SOF) and End of Frame (EOF)
+SDLC Frame has 6 columns
+SOF  ADDR  CONTROL   DATA  Error CK  EOF
+CRC Examples:
+CRC-16
+CRC-CCITT
+CRC-32
+
+CRC is based on a generator polynomial of R-bits and will detect all error busts < R bits.
+A CRC generator polynomial of 32 bits will be able to DETECT an ERROR BURST of 31 bits.
+If the remainders is 0's. It means there is no error.
