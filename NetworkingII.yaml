@@ -10,7 +10,7 @@ STAR: each device connects to a CENTRAL POINT
 ADVANTAGES - each node is isolated on its own cable
 Easy to connect and disconnect without disrupting other nodes
 All data goes through a central point.
-Easy to isolate problems
+Easy to isolate problems 
 DISADVANTAGES: Requires more cable
 HUB failure will disable entire network.
 There are 3 types of HUB
@@ -35,6 +35,7 @@ LAN STANDARDS: Standards that are used in COMPUTERS to ease NETWORK connections 
 802.2 - Defines Logical Link Control (LLC)- This is close to what is called the Data Link Layer (Layer 2 in OSI Layer Model). Consist of LLC layer and MAC (Medium Access Control) layer
 There are 2 types of LLC- Connectionless services e.g UDP is connectionless protocol UDP/IP e.g postal service. Connection-oriented services e.g TCP/IP e.g telephone
 802.3 - Defines Ethernet (CSMA/CD)- Alternatively called CSMA/CD . It is said to be operating in Multiple Access (MA) mode. All data that is
+
 transmitted by the SENDING COMPUTER is encapsulated or formed into a FRAME addressed to the DESTINATION COMPUTER. The FRAME is broadcast
 over the common cable. All computer's connected to this cable DETECT that a FRAME is being transmitted. Only computer that MATCHES the destination
 address continues receiving the FRAME and responds according to PREDEFINED LINK PROTOCOL. 
@@ -68,8 +69,9 @@ enables it to have more COLLISION DOMAIN added and therefore makes ETHERNET perf
 
 WEEK 2: SUBNETTING
 IP ADDRESS
+
 SUBNET MASK
-IP ADDRESS- You have got 2 routers. Each router has ethernet that has multiple computers communicating. The computers that has ethernet in
+IP ADDRESS- You have got 2 routers. Each router has ethernet that has multiple computers communicating. The computers that have ethernet in
 each of the routers can communicate with each other through their MAC addresses. But what of if a computer in Router 1 wants to communicate with
 the computer in Router 2? This is done through the power of an IP. IP in comupter A that has ethernet that forms LAN with IP in computer C
 that has ethernet that forms LAN too. So eventually, we will have 2 addresses- MAC address and IP address (2 MOST IMPORTANT ADDRESSES IN MODERN COMPUTING)
@@ -96,7 +98,7 @@ There are 2 THINGS that determine which part of the IP address is the NETWORK AD
 Class B: The first 2 OCTETS identified as NETWORK, the last 2 OCTETS identified as HOST i.e N.N.H.H - network.network.host.host
 128.0.0.0 through 191.255.255.255
 In CLASS B network the msb=1 and the 2nd msb=0. 10NNNNNN NNNNNNNN nnnnnnnn nnnnnnnn
-where N= network address bit, n = host address bit. The first 2 OCTETS dtermine the network address, but since Class B network needs to begin
+where N= network address bit, n = host address bit. The first 2 OCTETS determine the network address, but since Class B network needs to begin
 with 10, you have 14bits or 2 raised to the power of 14 = 16,384 unique Class B network addresses. So the range of IP addresses in Class B
 network is between 128 and 191 inclusive
 1000 0000 0000 0000 = 128.0.0.0
@@ -373,7 +375,7 @@ LAB-JIDE(config-line)#login
 LAB-JIDE(config-line)#password mypassword
 LAB-JIDE(config-line)#exit
 
-Different Types of Mmemory in a 1700 or 2500 Cisco Router
+Different Types of Memory in a 1700 or 2500 Cisco Router
 Flash Memory: EEPROM contains IOS, the CISCO Operating System. To verify your version of IOS, use this command Router#sh flash
 NVRAM: Non-volatile Random Access Mmeory contains the start up configuration of the router
 NVRAM is the start-config.
@@ -585,12 +587,12 @@ Route flush timer: Times the interval between a route becoming invalid and its r
 Administrative distances (AD): Used to measure the TRUSTWORTHINESS of routing information passed from a neighbor router.
 
 Difference between version1 and version 2: ( From CIDR and VLSM)
-RIP version 1 does not UPPORT CIDR or VLSM(Variable Length Subnet Mask)- Because of this, subnet mask cannot be changed once established.
+RIP version 1 does not SUPPORT CIDR or VLSM(Variable Length Subnet Mask)- Because of this, subnet mask cannot be changed once established.
 Modern RIP SUPPORT CIDR and VLSM
 RIP version 2 support VLSM and Discontinuous network(2 subnets of a classful network seperated by a different network)
 Discontinuous network does not work with RIPv1 and IGRP.
 
-IGRP: Cisco propriatary routing protocol. Only used by Cisco routers. It was created to overcome sme of the limitations with RIP. T conevreges
+IGRP: Cisco propriatary routing protocol. Only used by Cisco routers. It was created to overcome some of the limitations with RIP. T conevreges
 faster than RIP. It does not have RIP up count limitaions. There is an Enhanced IGRP (EIGRP)= It is an hybrid protocol. IGRP uses different metrics
 like BANDWIDTH, DELAY OF THE LINE, LOAD, RELIBAILITY, MAXIMUM TRANSMISSION UNIT (MTU) for determining the best route. The MTU is measured in bytes.
 MTU is the largest packet size that an interface can handle. The default metrics are bandwidth and delay of line (called COMPOSITE METRIC). The
@@ -793,3 +795,52 @@ Enter "ping 207.207.7.51"
 Enter "ping 207.207.7.33"
 Enter "ping 207.207.7.18"
 
+#SWITCHES(BRIDGES)
+A switch is an OSI Layer 2 device, which uses the MAC address to FORWARD FRAMES
+Broadcast domain: A group of DEVICES receiving BROADCAST FRAMES that are initiated from any DEVICES in the group
+All COMPUTERS connected to a SWITCH or EXISTING in the same LAN, are all members of the same BROADCAST DOMAIN
+ROUTERS are the only ones that can TERMINATE broadcast domain.
+Broadcast domain are seperated by LAYER 3 devoices e.g router
+Collision domain: Agroup of computers on the same ETHERNET NETWORK that can be AFFECTED by a common collision.
+It is a group of computers SHARING the same 10base-2,10 base 5, 10 base-T
+ROUTERS, SWITCHES and BRIDGES can TERMINATE collision domain. But HUBS and REPEATERS dont.
+BROADCAST FRAMES VS MULTICAST FRAMES
+Broadcast frames address all IP addresses in a subnet
+Muilticast frames address all IP addresses within a group.
+
+SWITCHES AND BRIDGES
+A bridge is a DEVICE that connects segments of a similar network together.
+A bridge might connect a 100BaseT network to a 10Base-T network. Bridges use the MAC hardware address and are considered OSI Layer 2.
+Purpose of a bridge is to LEARN MAC addresses within a network and to forward frame to the correct destination MAC address.
+
+A switch is a MULTIPORTED BRIDGE. Switches and bridges do forward BROADCAST FRAMES.
+Each network connected to a PORT on a switch can be its own COLLISION DOMAIN.
+You can use a switch to break up a network into a number of collision domains (This is called SEGMENTATION)
+Switches like Bridges work on data LINK layer (OSI LAYER 2) and thus use the MAC aaddress for directing frames.
+DIFFERENCES IN THE TWO
+1) Bridges operates with SOFTWARE,(which makes it slower rhan the switch) while Switches operate with HARDWARE (ASIC), Makes it faster Application-Spe ific Integrated Circuits.
+2) Bridges can have only ONE SPANNING-TREE-INSTANCE, while switches have MANY.
+3) Bridges usually have a SMALL NUMBER OF PORTS, while Switches may have HUNDREDS OF PORTS.
+
+The 3 Functions of Switch:
+1) Address Learning: Build a MAC address table of MAC addresses and ports. When a switch is turned on, it has an empty MAC address table. As
+a frame arrives, the switch puts the MAC address and the port number where it came from into the MAC address table.
+Building a MAC address table of MAC addresses and ports.
+2) Forward/Filter Decisions:
+3) Loop Avoidance: The Spanning-Tree Protocol is used to stop loops. If multiple switches and multiple links are used in the network, LOOPS
+can occur.
+CISCO 1900 CATALYST SWITCH
+STP: It is the software that allows us to avoid having loops.
+Last 2 ports on a switch are designed for connections e.g A, B.
+You can also use ethernet ports for connecting switches.
+The purpose of STP is to SHUT DOWN any LOOP that may develop in a network.
+It allows COMMUNICATION among units using BPDU (Bridge Protocol Data Units)
+It places switches in a PORT in one of the 4 states:
+Blocking State: Frames are not forwarded. The switch will still listen to BPDU
+Listening State: Listens to BPDU to ensure that no loops occur on the network before passing frame on.
+Learning State: Learns MAC address and builds a filter table but does not forward frames
+Forwarding State: Sends and receive all the data on the ports.
+
+Root bridge: It has all the designated ports
+Non-root bridge: has either non-designated ports, or designated ports.
+Root port: Connects a non-root bridge to a root bridge.
