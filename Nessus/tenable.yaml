@@ -1,0 +1,166 @@
+#Tenable Cloud Security
+#How to set up and start using TCS platform 
+#Basic features and use cases
+#Policies
+#Findings interpretations
+#Creating reports
+#Reviewing Identities and entitlements
+Topics:
+Introduction to Tenable Cloud Security:
+Consolidating Multiple Point Solutions CNAPP- Cloud-Native Application Protection Platform
+CIEM Cloud iNFRASTRUCTURE Entitlement Management: Identity access and governance, Least privilege, Just-In-Time (JIT)- Mitigating identity risks and threats
+CSPM Cloud Security Posture Management: Multi-cloudinventory, Misconfiguration, Scoring and Reporting.
+CWP Cloud Workload Protection: Workload protection, Vulnerability Management, Malware dtection, Secrets- Helps customer detect and remediate
+misconfiguration of workload vulnerabilities
+IaC: Shifting misconfiguration to CICD, Remediation in code
+CDR Cloud Detection and Response: Log query and investigation, Behavioral anomaly detection, Rapid Triage, Forensics- Monitors and reports
+on suspicious or unusual activity across your entire-cloud environment
+KSPM Kubernetes Security Posture Management: Kubernetes visbility, Misconfigurations and vulnerabilities, Compliance. Helps to ensure that
+your container configurations are secure by default, or detect any misconfigurations.
+Cloud hosted platform connected via an API to the major public cloud providers. Org integrates with an identity and cloud providers.
+Org also integrates with 3rd party ticketing, notification and SIEM tools to provide visibility and remediation
+Benefits
+- Manage and visualize: Agentless scanning, multi cloud visibility and smart search and query
+- Assess and Prioritize Risks: Identity compute, data, network, infrastructure
+- Detect and Respond: Behavioral anomalies, enriched data
+- Ensure compliance and governance: Compliance standards, org policies, JIT
+- Remediated and Shift Left: Automatic remediation, IaC sec, Ticketing and workflows.
+#Ticketing and ITSM - Jira, ServiceNow. Collaboration: Slack, Teams. SIEM: Datadog, QRadar, Splunk. Data Security: Dig Security
+#Reprting in TCS could be
+#One-time or scheduled
+#Multiple report types available: Inventory, Misconfigurations, Compliance reports, Open Findings
+# CSV or PDF format
+# Email or view/download in TCS
+Dashboard:
+The navigation pane on the left shows the Dashboard, Inventory, Findings, Compliance, IAM, Workload Protection, IaC, JIT, Policies, Reports
+Provides comprehensive overview of your cloud environment. The counts of assets. Then leads you to where you can investigate risky events in
+your environment. You can use it to provide a quick overview of activities to executives. To monitor and drill down to 
+You can configure findings to what you prefer. You can enable compliance to be last 7 days. Use Toxic combinations for resources with
+multiple risk factors/stats. Then section that shows what to do to REMEDIATE risks in your environment.
+You can filter based on accounts you want to see from the top right. But by default, all accounts are displayed.
+Asset Inventory:
+From the navigation pane on the left, select "Inventory" and select the resource type- based on what you have e.g AWS, GCP, Azure AD, Google workspace.
+Select Azure AD for example, it will show the Admin Roles, Application Registrations, Applications, Groups, Secrets and Certificates, Users.
+e.g all privileged users that have sensitive access but not used for a while.  Filters are available from the top. e.g Select "Last sihn-inselect "User Type"
+Select "Guest", From "Last Azure Activity" dropdown, select "Date". From the "Label" dropdown, select "Sensitive". Select the resource from what
+is populated. Info about the resource, Findings about the resource. Permissions from Azure Permission tab. Click on "Activity Log" to see
+the breakdown of the resource. To export it, click on "Export" tab at the far right and have it as CSV or whatever format you want.
+Activity Log:
+Select "Activity Log" from the navigation pane on your left. Use the filters at the top, to select the scope of the activity log. e.g
+Select the "Action" filter. Use the search box to find a specfic type e.g "List Object". Slect it to apply it. To see all actions that did
+not make it through, select "Filter out Success". You can click on the JSON view on the right to view the raw logs in JSON format.
+To export it to a csv file, click the top right.
+Findings:
+It represents at-risk identities and resources, and hard-to-spot toxic combinations. Are listed in order of severity of the potential threat
+to your cloud environment. To group findings in a particular account, click the Group by Finding Type at the top and select "Account".
+You can use the "Filter" at the top to narrow down the results to critical only. Select "Severity", Critical, Policy- Overprivileged IAM role
+Click findings to see more reasons- why the severity was critical. Click permissions/usage to see permission mapping. Review steps for
+remediation. Next, Apply or Cancel. Terraform or Cloudformation file to deploy can be selected at the bottom.
+Policies:
+Select "Policies" from the left side of the navigation menu. By default, the entire organization is selected. Select an account scope
+from the "Organization" on the left to view and manage compliance policies for a specific subset of cloud accounts.
+Click one of the out of the box policies, selct "SHOW MORE" under it. You can apply fiter from the top for a specific categories or
+to narrow the scopes. e.g to see policies with "failed" result in AWS. Select "Cloud" filter and select "AWS". Select the "Result" filter
+and select "Failure". To export the result in CSV format, clik the "Export" button at the top right corner of the policies table
+Click the "Gear" icon on the right to open the Policy Settings page. You can enable or disable it. or delay the policy creation findings.
+Use the exclusions menu to exclude the policies. There are existing templates you can use. From the top right corner of the policy page, click
+on "Add Custom Policy" button, select "Cloud Provider". Select a template category from the left. Select the template you want to use for the policy
+Click "NEXT". On the policy "Name", give it a name and description. Add severity for it. Select when policy should be applied. When finished,
+click "Done" or "X".
+When you click the result of a policy, you will brought to "Findings" page.
+Reports:
+You can create a one-time report or scheduled report of TCS data.
+Click "Reports" from the left side navigation menu
+Select a scope from the "Organization" tree on the left.
+Click "New report" button on the right.
+Select a report type from the drop down e.g compliance.
+Click Type to open the drop down list and select an appropriate type e.g AWS or EKS or GCP etc.
+Select a delivery time option e.g one-time or scheduled( Cadence- daily, monthly or yearly)
+Add an email to the field of Additional delivery methods.
+N.B: Generated reports are always available in the report history page.
+View report link on the right
+Click the 3 dots to download or delete
+Switch the "Scheduled report" tab to see all reports that have been scheduled.
+Cloud Infrastructure Entitlement Management (CIEM)- Query permissions:
+How to query permissions in the IAM feature of TCS. To reveal unused identities, identities with risky privileges
+Click IAM from the navigation pane on the left. Select "Permissions Query"
+Click the "Group by" button at the top to choose whether you want to group by identities or resources
+To view "Excessive" permissions, click on the tab at the top or for "Used" permissions button next to it.
+Narrow down the list by using the 'Filters' that are across the top. e.g click "Identity Type" and select 'IAM' user.
+Select "Identity Label" and select "No MFA"
+Click "Permission Category" and select "Data Access"
+Click 'Resources' and select "Select All" for all the scopes.
+Click on the number next to permissions to view all associated identities or for Resources
+To export, click on the Export button.
+Click an identity or resource to view granular info about it.
+CIEM - Identity Intelligence:
+Use it to learn about identities in your org e.g all privileged third-party identities. e.g users that have admin keys enable but not MFA enabled
+Follow some steps from the previous
+Widget at the top of the page will display risk, severity levels across all identities.
+risk across Users
+risk across Services
+risk across 3rd party identities.
+Use Filter at the top to modify the scope of visible data
+Select "3rd Party" from the "Labels" drop down
+View the risk under the Risk colum to view what kind of risk you are exposed to
+Click the number in the Services column to see a searchable list of services for which the identity has permissions.
+Same is applicable to Resources
+3 dots on the right for additional options e.g view findings app info etc
+If yoiu select "Generate least privilege roles", it will help to provide an on-demand custom roles for users or service identities.
+Then use it in your cloud environment to be used.
+Click generate after configurations.
+CIEM - Excessive permissions:
+Defined as follows:
+In AWS- not used in the last 90days i.e for permissions
+Human identities- not used in the last 180 days.
+Azure and GCP- Not used in the last 60 days.
+Overprivileged
+Users with no MFA enabled
+Naviagation pane- excessive permissions
+Widgets at the top, present identities with excessive permissions INACTIVE, OVERPRIVILEGED(OVERALL, RISK LEVEL*)
+Click a widget to see
+Select from the Filter "Label"  No MFA. Identities with excessive permissions without MFA enabled
+Click Number to see which services have excessive permisssions and resources
+Click "Remediate" tab on the right to see what steps to follow
+Click Next when ready
+Review Actions
+Click "Apply" or Cancel as the case maybe
+Click 3 dots to see additional actions on the excessive permissions e.g select a "Create a JIRA issue"
+Cloud Security Posture Management (CSPM)- Compliance:
+Compliance with legal, regulatory and compliance requirements.
+Guides in implementing security best practices that protect agaianst eveolving threats.
+Select from the org an account
+A breakdown of compliance according to standard is revealed.
+Click to expand Tenable Best Practices
+Breakdown of each policy in the summary column is displayed.
+Export.
+Click "Failed" column to see searchable resources.
+Click a policy name
+Customize your policy from the tab on the left.
+Cloud Workload Protection (CWP):
+TCS uses API to connect to cloud account and extract a snapshot of the machines storage volumes and runs scans on the storage
+software packages
+vulnerabilities
+It scans VMs, Container images, K8 CLUSTERS.
+To view and manage workload in your environment. Identify installed software packages, and analyze associated vulnerabilities.
+Click Workload Protections
+Click Workloads
+Use Filters at the top, click "With vulnerabilities" tab at the top. Click a Resource.
+Click the Software at the top to view the software packages installed on the workload.
+Click the vulnerabilites tab to view the vulnerabilities installed
+On the left click protection, click software.
+With "Fixes" on the top right.
+If you have more than 10,000 results, there will be a warning. You can still go ahead and it will export only 10,000.
+Infrastructure as Code:
+Scan your IaC and shows the non configurations.
+Connect it to your CICD
+Click Settings on the left navigation menu
+Click the "Integrations" tab at the top
+Select the type of pipeline e.g Azure 
+Click Lets Start
+Follow configurations
+Connected shows that it is successful
+Start seeing scans from there in TCS
+cLICK iaC from the navigation pane on the left- scans from there will be displayed
+With changes only shows newly discovered fildings or fixed
+Use Filters at the top to narrow down the scope.
