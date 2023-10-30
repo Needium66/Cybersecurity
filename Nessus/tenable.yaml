@@ -164,3 +164,47 @@ Start seeing scans from there in TCS
 cLICK iaC from the navigation pane on the left- scans from there will be displayed
 With changes only shows newly discovered fildings or fixed
 Use Filters at the top to narrow down the scope.
+
+
+#TENABLE ONE
+IT aseets
+Cloud resources
+Containers
+Web apps
+Identity systems
+Tenable One is Exposure Management Platform (EMP): It combines
+Exposure view
+Attack path analysis
+Asset inventory
+Vulnerability management
+Web app security
+Cloud security
+Identity security
+Attack surface management
+It provides analytics of cyber risks and attack insights
+
+#TenableIO is used for industry's comprehensive vulnerability coverage to predict which secuirty issues to remediate first- end to end vulnerability management solution
+#Tenable.cs used to assess security posture of cloud environments.
+#Tenable.io WAS- Web App Scanning- provides  comprehensive and accurate vulnerabilty scanning to gain full visibility of IT
+#Tenable.asm first external attack surface management (EASM). (For assessing a platform digital/internet footprint). It maps the entire internet
+#and discovers CONNECTIONS to internet-facing assets.
+#Note: AD has become the favored target for attackers to elevate privileges and facilitate lateral movement by leveraging known flaws and configurations
+#Tenable AD helps with this- act to address risk in AD to disrupt attack paths before attackers exploit them.
+#Tenable: Assets inventory
+#Tenable Lumin provides advanced visualization, decision support, analytics and vulnerabilty solutions.
+
+#Tenable One Workspace
+You can click on one of the tiles on the main page and drill down
+To go back to Tenable One workspace, go to crrumbs at the top right hand corner.
+Tenable Lumin:
+Advantages of Lumin- It provides advanced visualization, decision making support, analytics and measurement
+Asset Criticality Rating 1- 10 to represent asset criticality 10- very high. Will be ready in 24 hours.
+Asset Exposure Score (AES): To calculate the score of an asset to exposure. Low (0-349), Medium (350 - 649), High (650 - 1000)-higher exposure
+Cyber Exposure Score(CES): Dynamic. It combines AES for all assets- Low, Medium and High, Historical trending and compare vs everyone nad industry
+ High CES means higher exposure. All these can be seen in Lumin. It is also used for Measuring Effectiveness
+ Assessment Maturity Grade(AMG): It calculates a dynamic Assessment Maturity grade that represents assessment scanning health between A -F 
+ A means you are assessing your assets frequently and thoroughly (75 - 100)
+ Remediation Maturity Grade (RMG)- Letter grade and remediation responsiveness coverage.
+Business Risk
+Cyber Exposure
+Measuring the effectiveness of Exposure Management Program
