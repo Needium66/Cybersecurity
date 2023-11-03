@@ -868,3 +868,58 @@ CRC-32
 CRC is based on a generator polynomial of R-bits and will detect all error busts < R bits.
 A CRC generator polynomial of 32 bits will be able to DETECT an ERROR BURST of 31 bits.
 If the remainders is 0's. It means there is no error.
+
+Virtual Local Area Network
+Virtual LANS
+Factors that contribute to misuse or overuse of broadcast packets include:
+- Poorly designed firewalls
+- Inadequate segmentation
+- Faulty equipment
+
+Broadcast domains: In a switched network, it is possible to control broadcasting using VLAN. VLANs can be considered to be a SUBNET or its
+own BROADCAST DOMAIN. When you CREATE a VLAN, you create a SMALLER BROADCAST DOMAIN. You assign different SWITCH PORTS to different SUBNETWORKS
+to be able to create this. Thus to CONTROL a broadcast domain, VLAN can be created within a switched network.
+Security Considerations: Security is another reason to want to CONTROL a broadcast domains, since all devices can see all other devices and respond.
+1) Any device can INTERROGATE any other device's security e.g password.
+2) Users can join a workgroup just by plugging into existing hub
+3) A network analyzer could be plugged into existing hub and so all traffic on that workgroup could be seen.
+
+NOTE: Router can be used to BREAK a broadcast domains. But it is more cost effective to use SWITCHES and VLANs.
+Two strategies for designing a VLAN are: END-TO-END VLAN and Local VLAN
+END-TO-END VLAN: VLANs can be configured either by FUNCTION(project or department) or by PHYSICAL LOCATION. e.g VLAN named SALES-it may be
+created in which all personnels in the Sales Department are members. VLAN can communicate with each other, but not with those outside VLANs.
+Another advantage is that you can have MEMBERS of that VLAN in different network locations not just within the immediate vicinity. Areas of
+common interest can be grouped together in VLANs.
+80/20 rule: Keep 80% of the traffic within VLAN, and only 20% outside VLAN.
+switch fabric- a network of connected switches.
+
+Local VLAN: VLANs can also be configured by physical location and not by FUNCTION, PROJECT or DEPARTMENT.
+Local VLANs are easier to MANAGE in a centralized server configuration.
+When 80/20 rule CANNOT be maintained, use Local VLAN instead.
+When most of your traffic is outside the end-to-end VLAN, then use Local VLANs.
+
+Two ways of assigning VLANs: Static or Dynamic.
+Static: Set up by admin, who assign switch ports manually. It is the most secure.
+Dynamic: Set up dynamically.  e.g a MAC address assigned to a VLAN, once the MAC address moves, the user stays in the VLAN. mMore software
+is needed in order to do this. VMPS to create a mapping from MAC to VLANs.
+
+Two types of links: Access Links and Trunk Links
+Access Links: connect workstations to the Switch ports (representing a collision domain). Are associated to only 1 VLAN.
+Trunk Links:  carries information from many VLANs. Can handle info from multiple VLANs.
+Both are used to connect switches to each other. through what is called a switch fabric.
+
+IDENTIFYING VLAN- FRAME TAGGING:
+VLAN ID is called FRAME TAGGING.
+These are methods by which VLANs can be implemented- 4 types.
+Interswitch Link(ISL): It is a Cisco proprietary protocol only used by Cisco. It tags VLAN info onto the Ethernet frame.
+IEEE 802.1q: This protocol should be used on non Cisco equipment. It uses an internal tagging process different from cisco.
+LAN emulation (LANE): Used to communicate multiple VLANs over ATM
+IEEE 802.10 (FDDI): Used to send VLAN info over FDDI
+
+VLAN number 1 is a default VLAN- can't be used.
+
+VTP: There must be a VTP server and all VTP must be in the same VTP domain. Catalyst 1900 can be a VTP server.
+Switch in a VTP domain can operate in one of the 3 modes: server, client, transparent.
+Server- is the default mode for all Cisco catalyst switches.
+Client- switch in the client mode receive and send updates from the server, but cannot make any changes.
+Transparent- The switch will not participate in the VTP domain.
