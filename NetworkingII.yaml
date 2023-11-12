@@ -800,8 +800,8 @@ A switch is an OSI Layer 2 device, which uses the MAC address to FORWARD FRAMES
 Broadcast domain: A group of DEVICES receiving BROADCAST FRAMES that are initiated from any DEVICES in the group
 All COMPUTERS connected to a SWITCH or EXISTING in the same LAN, are all members of the same BROADCAST DOMAIN
 ROUTERS are the only ones that can TERMINATE broadcast domain.
-Broadcast domain are seperated by LAYER 3 devoices e.g router
-Collision domain: Agroup of computers on the same ETHERNET NETWORK that can be AFFECTED by a common collision.
+Broadcast domain are seperated by LAYER 3 devices e.g router
+Collision domain: A group of computers on the same ETHERNET NETWORK that can be AFFECTED by a common collision.
 It is a group of computers SHARING the same 10base-2,10 base 5, 10 base-T
 ROUTERS, SWITCHES and BRIDGES can TERMINATE collision domain. But HUBS and REPEATERS dont.
 BROADCAST FRAMES VS MULTICAST FRAMES
@@ -818,7 +818,7 @@ Each network connected to a PORT on a switch can be its own COLLISION DOMAIN.
 You can use a switch to break up a network into a number of collision domains (This is called SEGMENTATION)
 Switches like Bridges work on data LINK layer (OSI LAYER 2) and thus use the MAC aaddress for directing frames.
 DIFFERENCES IN THE TWO
-1) Bridges operates with SOFTWARE,(which makes it slower rhan the switch) while Switches operate with HARDWARE (ASIC), Makes it faster Application-Spe ific Integrated Circuits.
+1) Bridges operates with SOFTWARE,(which makes it slower than the switch) while Switches operate with HARDWARE (ASIC), Makes it faster Application-Spe ific Integrated Circuits.
 2) Bridges can have only ONE SPANNING-TREE-INSTANCE, while switches have MANY.
 3) Bridges usually have a SMALL NUMBER OF PORTS, while Switches may have HUNDREDS OF PORTS.
 
@@ -923,3 +923,176 @@ Switch in a VTP domain can operate in one of the 3 modes: server, client, transp
 Server- is the default mode for all Cisco catalyst switches.
 Client- switch in the client mode receive and send updates from the server, but cannot make any changes.
 Transparent- The switch will not participate in the VTP domain.
+
+#ACCESS CONTROL LISTS(ACLs)
+It is a list of instructions and conditions that ask router to filter out or to allow certain traffic flow.
+It can ALLOW or DENY packets from moving through a router. It exists for IP and IPX and work similarly.
+SPX/IPX is PREDECESSOR of TCP/IP. SPX/IPX was developed to work with Novell Netware (One of the first successful platform for LAN
+implemented for PCs).
+#Similarities between SPX and TCP
+1) They are both Layer 4 protocols
+2)They are both connection oriented
+#Similarities between IPX and IP
+1) They are both Layer 3 protocols
+2) They are both connectionless.
+
+TCP/IP has replaced SPX/IPX. TCP/IP was developed to OPERATE over the INTERNET, while SPX/IPX cannot.
+Access lists(ACLs) can be applied to INBOUND PACKET or OUTBOUND PACKETS.
+
+#Reasons for Access-Lists
+- Limit traffic and increase performance. ACLs can instruct Routers to NOT process packets that are not needed.
+- Provide traffic flow control. Routing update packets can be restricted.
+- Security- Certain applications like FTP, or Telnet can be inhibited or allowed. i.e first line of defence for network security.
+- Limit certain traffic while permitting other traffic.
+There are two types of ACLs
+1) STANDARD ACLS
+IP: Use only the SOURCE IP ADDRESS of an IP Packet
+IPX: Can filter both the source and destination IP addresses
+Place STANDARD ACL CLOSE TO THE DESTINATION INTERFACE.
+
+Basic Format: Standard Access List
+access list {1 - 99} {Permit | Deny} source address {source mask} i.e standard acl can be numbered between 1 and 99
+Standard ACLs numbered 1300 - 1999 are also allowed.
+
+2) EXTENDED ACCESS LISTS
+IP: Check both SOURCE and DESTINATION IP addresses, network layer header, port number at the Transport layer.
+IPX: Use source and destination IPX addresses, network layer headers, socker numbers in the Transport layer.
+
+Basic Format: Extended Access List
+access list {100 - 199} {Permit | Deny} protocol i.e 
+ source address [source mask] [operator operand]
+ destination address [source mask] [operator operand] [established]
+
+ Extended ACLs numbered between 2000 - 2699 are also allowed.
+
+ 3) NAMED ACLs
+ This a third type of ACLs. They have the same FUNCTIONS as STANDARD and EXTENDED ACLs, but handled a bit differently.
+ # So my question is, for a question like how many types of ACLs do we have, should the answer be 3 now or 2 based only on what are considered in the lecture
+ #POINTS TO REMEMBER
+ 1) Each interface can only have one INBOUND ACLs and 1 OUTBOUND ACLs.
+ Inbound and outbound are from the perspectives of the Router Interface.
+ Inbound- refers to a PACKET COMING INTO THE ROUTER VIA AN INTERFACE
+ Outbound- refers to a PACKET LEAVING THE ROUTER VIA AN INTERFACE.
+ 2) If you remove 1 line from the ACL, you will remove the entire list. Use a text editor to build the entire list instead.
+ 3) Each packet is compared to the access list SEQUENTIALLY until a match is made. Once a match is made, there is no further comparisons.
+ If a packet does not match up to any lines in the access list, it is discarded. An "IMPLICIT DENY"- It will DENY all traffic. i.e IF A
+ PACKET DOES NOT MATCH ANY ACCESS LIST, IT WILL BE BLOCKED.
+ TO overcome Implicit Deny, have a PERMIT DENY command at the end to allow traffic that has not matched the condition of the access list.
+ 4) Place standard access list CLOSE to the destination interface( reason-the standard access list RELIES ONLY ON DESTINATION ADDRESS). 
+ Place extended access list CLOSE to the SOURCE INTERFACE(reason-it relies on the DESTINATION and SOURCE ADDRESS)
+ 5) Access lists are identified by the NUMBERS
+ <1 - 99> IP Standard access lists
+ <100 - 199> IP Extended access lists
+ <200- 299> protocol type code access lists
+ <300 - 399> DECnet access lists
+ <400 - 499> XNS standard access lists
+ <500 - 599> XNS Extended access lists
+ <600 - 699> Appletalk access lists
+ <700 - 799> 48-bit MAC address access lists
+ <800 - 899> IPX Standard access lists
+ <900 - 999> IPX Extended access lists
+
+ Example of a Deny set up
+ RouterA(config)#access-list 10 deny host 207.207.7.2 # an access list with number 10 to deny IP number 207.207.7.2
+ RouterA(config)#access-list 10 deny host 207.207.7.3 # an access list with number 10 to deny IP number 207.207.7.3
+ RouterA(config)#access-list 10 deny host 207.207.7.4 # an access list with number 10 to deny IP number 207.207.7.4
+ Assuming IP address 207.207.7.5 comes through and does not match the commands from 1 - 3, it will be discarded.
+ Assuming, you wanted the IP address 207.207.7.5 to come through, you would have to OVERTURN THE IMPLICIT DENY with the below command:
+ #access-list 10 permit any 
+ Therefore, the IP will match the above permit command and will not be discarded.
+
+Wild cards- Allow the specification of a range of IP addresses. It is similar to the subnet mask, but have a different meaning and should
+not be confused with it.
+0's on the wild card octet MEAN that the corresponding octet in the IP address MUST MATCH EXACTLY
+1's on the wild card octet MEAN that the corresponding octet in the IP address CAN BE OF ANY VALUE
+
+E.G:
+RouterA(config)#access-list 10 deny 172.16.30.5 0.0.0.0  #deny traffic to the IP address with the mask 0.0.0.0
+
+172.16.30.5   0.0.0.0  specifies  IP  address     172.16.30.5   exactly and none other
+              172  .  16    .   30   .  5           IP                 #means the corresponding bits in the IP address CANNOT CHANGE. BECAUSE THE 0'S corresponding to it CANNOT CHANGE
+          00000000.00000000.00000000.00000000     MASK
+
+Zero's in the mask SAYS the corresponding bit in the IP address CANNOT CHANGE. 
+So the exact address 172.16.30.5 is specified (SAYS I AM GOING TO DENY THIS ADDRESS AND ALL OTHER ACCORDING TO THE COMMAND ABOVE)
+
+EXAMPLE 2:
+RouterA(config)#access-list 10 deny 172.16.30.5 0.0.0.255  #deny source IP address with the mask 0.0.0.255
+
+172.16.30.0   0.0.0.255  specifies  IP  addresses    172.16.30.0 through 172.16.30.255
+
+                172  .  16     .   30    .00000101 #bits     
+            000000000.000000000.000000000.11111111 # 0.0.0.255 in binary
+
+One's in the Mask says the corresponding bits in the IP address can be 0 or 1.
+So we have the range from 172.16.30.0 to 172.16.30.255.
+
+              172    .  16     .   30    .00000000      172.16.30.0  #to first get bits of all 0's gives the IP address specified
+            000000000.000000000.000000000.11111111
+                          to
+              172    .  16     .   30    .11111111      172.16.30.255 #makes it 1 and gives the IP address sepcified
+            000000000.000000000.000000000.11111111
+
+So this command - RouterA(config)#access-list 10 deny 172.16.30.5 0.0.0.255
+Specifies the IP address 1772.16.30.5 through 172.16.30.255
+
+EXAMPLE 3:
+RouterA(config)#access-list 10 deny 172.16.30.5 0.0.3.255  #deny source IP address with the mask 0.0.0.255
+
+172.16.30.0   0.0.3.255  specifies  IP  addresses    172.16.28.0 through 172.16.31.255
+1's in the mask says the corresponding bits in the IP address can be 0 or 1.
+So we have a range from 172.16.28.0 to 172.16.31.255.
+
+                172  .  16     .   30    .00000101    172.316.30.0
+              00000000.00000000.00000000.11111111
+                     Range from
+              172    .  16     . 0001111  00.11111111      172.16.28.255 #matching up the binary bits with the ip address
+            000000000.000000000. 0000000  11.11111111      #all the 1's and 0's can change
+                          to
+              172    .  16     .ooo1111 11.11111111      172.16.31.255 #makes it 1 and gives the IP address sepcified
+            000000000.000000000.0000000 11.11111111
+
+#KEY WORDS
+ANY AND HOST
+any means 0.0.0.0     255.255.255.255   host implies the wildcard 0.0.0.0, thus
+
+RouterA(config)#access-list 10 permit any         ; could be written as:  #same as saying permit all ip addresses
+RouterA(config)#access-list 10 permit 0.0.0.0. 255.255.255.255 and
+
+RouterA(config)#access-list 10 permit host 192.10.10.13         ; could be written as:
+RouterA(config)#access-list 10 permit 192.10.10.3 0.0.0.0. and
+
+Similar to subnet masks, 0's and 1's must be all adjacent. Thus, you cannot have the following wildcard
+00000000.00000000.0001010111.11111111.
+Thus the range of addresses exists in block sizes of 64, 32, 16, 8, 4.
+
+RouterA(config)#access-list 10 deny host 172.16.16.0  0.0.7.255
+should block ip addresses  172.16.16.0  172.16.23.255
+
+RouterA(config)#access-list 10 deny host 172.16.32.0  0.0.31.255
+should block ip addresses  172.16.32.0  172.16.63.255
+
+Example 4:
+RouterA(config)#access-list 10 deny 172.16.16.0  0.0.7.255
+should block ip addresses  172.16.16.0 through  172.16.23.255
+
+1010 1100.0001 0000.0001 0 000.0000 0000 172.16.16.0   #binary
+0000 0000.0000 0000.0000 0 111.1111 1111   0.0 .7 . 255  #binary
+
+1010 1100.0001 0000.0001 0 000.0000 0000 172.16.16.0   #binary
+0000 0000.0000 0000.0000 0 111.1111 1111 172.16.23.255  #binary
+
+
+Example 5:
+RouterA(config)#access-list 10 deny 172.16.32.0  0.0.31.255
+should block ip addresses  172.16.32.0 through  172.16.63.255
+
+1010 1100.0001 0000.001  00000.0000 0000 172.16.32.0   #binary
+0000 0000.0000 0000.000  11111.1111 1111   0.0 .31. 255  #binary
+
+1010 1100.0001 0000.001  00000.0000 0000 172.16.32.0   #binary
+0000 0000.0000 0000.000  11111.1111 1111   0.0 .31. 255
+
+
+
+
