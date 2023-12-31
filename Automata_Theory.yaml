@@ -4,3 +4,210 @@ A finite automation is a collection of 3 things
 1) A finite set of states( one is designated as INITIAL STATE (START STATE) and some or NONE, designated as FINAL STATES.)
 2) An alphabet of possible input letters.
 3) A finite set of TRANSITIONS that tell for each state and for each letter of the input alphabet which state to go next.
+
+
+numbers = range(1, 21)
+for number in numbers:
+    if number <= 17:
+        print(str(number) + " is Valid or Accepted")
+    else:
+        print(str(number) + " is Invalid or Not Accepted")
+
+
+
+Write a c++ program that produces an output that has numbers 1 to 17 as Yes or Valid and numbers 18 to 20 as No or Invalid:
+1.	Check the directory on TAMUC.
+2.	Check the directory on Commerce.
+3.	Check the reservations at TAMUC.
+4.	Check the reservations at Commerce.
+5.	Loan the reservations on TAMUC.
+6.	Loan the reservations on Commerce.
+7.	Check a directory on TAMUC.
+8.	Search on TAMUC.
+9.	Search on Commerce.
+10.	Search the directory on TAMUC.
+11.	Search the directory on Commerce.
+12.	Search the reservations on TAMUC.
+13.	Search the reservations on Commerce.
+14.	Loan with Commerce.
+15.	Loan with TAMUC
+16.	Loan these reservations on TAMUC.
+17.	Loan these reservations in Commerce.
+18.	Get these reservations written in Commerce.
+19.	Written in TAMUC.
+20.	Written in Commerce.
+
+
+# Define the list of actions
+actions = [
+    "Check the directory on TAMUC.",
+    "Check the directory on Commerce.",
+    "Check the reservations at TAMUC.",
+    "Check the reservations at Commerce.",
+    "Loan the reservations on TAMUC.",
+    "Loan the reservations on Commerce.",
+    "Check a directory on TAMUC.",
+    "Search on TAMUC.",
+    "Search on Commerce.",
+    "Search the directory on TAMUC.",
+    "Search the directory on Commerce.",
+    "Search the reservations on TAMUC.",
+    "Search the reservations on Commerce.",
+    "Loan with Commerce.",
+    "Loan with TAMUC",
+    "Loan these reservations on TAMUC.",
+    "Loan these reservations in Commerce.",
+    "Reservations in TAMUC.",
+    "The TAMUC directory.",
+    "Get reservations on TAMUC.",
+]
+
+# Process each action and determine its status
+for index, action in enumerate(actions):
+    status = "Yes" if index <= 16 else "No"
+    print(f"{index + 1}. {action} - {status}")
+
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Define an enum to represent the status
+enum Status {
+  VALID,
+  INVALID
+};
+
+// Define an array of actions
+const string actions[] = {
+  "Check the directory on TAMUC.",
+  "Check the directory on Commerce.",
+  "Check the reservations at TAMUC.",
+  "Check the reservations at Commerce.",
+  "Loan the reservations on TAMUC.",
+  "Loan the reservations on Commerce.",
+  "Check a directory on TAMUC.",
+  "Search on TAMUC.",
+  "Search on Commerce.",
+  "Search the directory on TAMUC.",
+  "Search the directory on Commerce.",
+  "Search the reservations on TAMUC.",
+  "Search the reservations on Commerce.",
+  "Loan with Commerce.",
+  "Loan with TAMUC",
+  "Loan these reservations on TAMUC.",
+  "Loan these reservations in Commerce.",
+  "Get these reservations written in Commerce.",
+  "Written in TAMUC.",
+  "Written in Commerce."
+};
+
+// Define a function to determine the status of an action based on its index
+Status getStatus(int index) {
+  return (index <= 16) ? VALID : INVALID;
+}
+
+int main() {
+  // Loop through each action
+  for (int i = 0; i < sizeof(actions) / sizeof(actions[0]); ++i) {
+    string action = actions[i];
+    Status status = getStatus(i);
+
+    // Print the action and its status
+    cout << i + 1 << ". " << action << " - ";
+    switch (status) {
+      case VALID:
+        cout << "Valid or Accepted";
+        break;
+      case INVALID:
+        cout << "Invalid or Not Accepted";
+        break;
+    }
+    cout << endl;
+  }
+
+  return 0;
+}
+
+
+This program defines an enum Status to represent the possible states (VALID and INVALID) of each action.
+It then defines an array containing the list of actions and a function to determine the status based on the index of the action in the array. 
+Finally, it iterates through each action, printing its text and corresponding status message.
+
+
+//This program defines an enumeration Status to represent the possible states YES and NO (VALID or INVALID) of each action.
+//Then, it defines an array containing the list of actions and a function to determine the status based on the index of the action in the array. 
+//Finally, it iterates through each action, printing its text and corresponding status message.
+//This program defines an enumeration status to represent either yes or no of each action for the sentences.
+//It defines an array with the list of actions and a function to determine the status based on the index of the action for the sentences.
+//Then iterates through the list and print each status with a corresponding status message of Yes(Valid) or No(Invalid)
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Define an enum to represent the status
+enum Status {
+  YES,
+  NO
+};
+
+// Define an array of actions
+const string actions[] = {
+  "Check the directory on TAMUC.",
+  "Check the directory on Commerce.",
+  "Check the reservations at TAMUC.",
+  "Check the reservations at Commerce.",
+  "Loan the reservations on TAMUC.",
+  "Loan the reservations on Commerce.",
+  "Check a directory on TAMUC.",
+  "Search on TAMUC.",
+  "Search on Commerce.",
+  "Search the directory on TAMUC.",
+  "Search the directory on Commerce.",
+  "Search the reservations on TAMUC.",
+  "Search the reservations on Commerce.",
+  "Loan with Commerce.",
+  "Loan with TAMUC",
+  "Loan these reservations on TAMUC.",
+  "Loan these reservations in Commerce.",
+  "Get these reservations written in Commerce.",
+  "Written in TAMUC.",
+  "Written in Commerce."
+};
+
+// Define a function to determine the status of an action based on its index
+Status getStatus(int index) {
+  return (index <= 16) ? YES : NO;
+}
+
+int main() {
+  // Loop through each action
+  for (int i = 0; i < sizeof(actions) / sizeof(actions[0]); ++i) {
+    string action = actions[i];
+    Status status = getStatus(i);
+    string response;
+
+    // Choose the correct response based on the status
+    switch (status) {
+      case YES:
+        response = "Yes or Valid";
+        break;
+      case NO:
+        response = "No or Invalid";
+        break;
+    }
+
+    // Print the action and its response
+    cout << i + 1 << ". " << action << " - " << response << endl;
+  }
+
+  return 0;
+}
+
+
+
+
+

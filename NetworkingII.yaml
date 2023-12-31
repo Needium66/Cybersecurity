@@ -1093,6 +1093,141 @@ should block ip addresses  172.16.32.0 through  172.16.63.255
 1010 1100.0001 0000.001  00000.0000 0000 172.16.32.0   #binary
 0000 0000.0000 0000.000  11111.1111 1111   0.0 .31. 255
 
+#ACCESS CONTROL LISTS COMMANDS:
+#Standard ACL
+access-list {1 - 99} {permit|deny} source address {source mask}
+
+#Extended ACL
+access-list {100 - 199} {permit | deny} protocol
+  source address [source mask] [operator operand]
+    destination address [source mask] [operator operand] [ established ]
+
+ip access-group {number | name [ in | out ] }
+ip access-list {standard | extended } name
+
+show ip interface
+show access-list
+show ip access-list [ number ]
+
+Example
+3 routers
+3 LAN: Sales, Finance and Marketing
+Sales should not have access to Finance- source address from Sales should not be able to access LAN of Finance
+Sales should be able to access Internet and Marketing
+Marketing should have access to Finance
+N.B: Place standard access list close to DESTINATION INTERFACE.
+
+To block sales from finance, source will be Sales(127.16.40.0) and destination will be Finance. Destination will be 0
+RouterB(config)#access-list 10 deny 172.16.40.0  0.0.0.255   #Router B is Finance, 10 is the number given, deny Sales(source address) with mask adding any line
+RouterB(config)#access-list 10 permit any  #overcomes implicit deny to permit any ip
+RouterB(config)#int e0   #place it at destination inteface (Finance)
+RouterB(config-if)#ip access-group 10 out #place it at destination inteface (Finance)- this is outgoing, so a packet with source address from Sales will be blocked from Finance.
+
+Example 2
+Sales and Finance should not have access to Marketing
+Sales Should have access to the Internet
+Marketing should have access to Finance and Sales
+Place the standard ACL close to the destination. Since yu want to deny access to Marketing, place the ACL on E0 Router C
+Routerc(config)#access-list 10 deny 172.16.40.0  0.0.0.255   #Router C is Marketing, 10 is the number given, deny Sales(source address) with mask adding any line
+Routerc(config)#access-list 10 deny 172.16.10.0  0.0.0.255   #Router C is Marketing, 10 is the number given, deny Finance(source address) with mask adding any line
+RouterC(config)#access-list 10 permit any  #overcomes implicit deny to permit any ip
+RouterC(config)#int e0   #place it at destination inteface (Finance)
+RouterC(config-if)#ip access-group 10 out #packet coming from source addresses will be blocked at e0 router C. ACL on routerc is outgoing.
+
+#Extended ACL
+Dialog
+
+#ports
+echo Echo (7)  #using ping port 7
+ftp  File Transfer Protocol (21)
+pop2 Post Office Protocol v2 (109)
+pop3 Post Office Protocol v3 (110)
+smtp Simple Mail Transport Protocol (25)
+telnet Telnet (23)
+
+RouterA(config)#access-list 110 deny tcp any host 172.16.30.2  eq 21 log # numbered 110 indicates extended acl, "any" means deny any source address, host is the destination address. port 21 is ftp. deny any address from port 21
+RouterA(config)#access-list 110 deny tcp any host 172.16.30.2  eq 23 log # Deny any ip from port 23 - telnet into the host address
+RouterA(config)#access-list 110 permit ip any any #implicit deny, permit any any - first any is the source address, second any is the destination address
+
+#Examples
+Give an ACL that denies 207.207.7.0 from Telneting into 207.207.8.0 All other traffic is permitted
+RouterA(config)#access-list 110 deny tcp 207.207.7.0 0.0.0.255 207.207.7.8.0 0.0.0.255  eq 23 #source address (207.207.7.0 0.0.0.255), destination address(207.207.8.0 0.0.0.255)
+access-list 110 permit ip any any
+
+Give an ACL that denies 207.207.7.17 from Telneting into 207.207.7.33. All other traffic is permitted
+RouterA(config)#access-list 110 deny tcp any host 207.207.7.17 host 207.207.7.33  eq 23
+access-list 110 permit ip any any
+
+Give an ACL that denies network 207.207.7.16 through 207.207.7.13 from Telneting into 207.207.7.32 through 207.207.7.63 . All other traffic is permitted
+access-list 110 deny tcp 207.207.7.16 0.0.0.15 207.207.7.32 0.0.0.31  eq 23 #source addresses(207.207.7.16 0.0.0.15)   destination addresses(207.207.7.32 0.0.0.31)
+access-list 110 permit ip any any
+
+Give an ACL that denies all Telnet traffic to network 207.207.7.0.
+access-list 110 deny tcp any 207.207.7.0  0.0.0.225  eq 23
+access-list 110 permit ip any any
+
+Allow only email to network 207.207.7.0
+access-list 110 permit tcp any 207.207.7.0  0.0.0.255 eq smtp #any source address
+access-list 110 permit ip any any
+
+Deny email to network 207.207.7.17 only. All other traffic is permitted
+access-list 110 deny tcp any host 207.207.7.17 eq smtp #source from emailing into the host destination
+access-list 110 permit ip any any #all other traffic is allowed
+
+#Examples
+UDP-based clients  and servers from subnet 192.10.10.0 and subnet 192.10.20.0 whose IP addresses are in the upper half of the valid IP
+addresses on each subnet are not available to host Bugs
+RouterB(config)#access-list 110 deny udp 192.10.10.0   0.0.0.127
+                                                       host 10.1.1.1.111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111111111111111111111111111111111111111111111111111111111111111111111116333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                                             *******************************************************************************************************************************************************************-------++++++693.RouterB(config)#access-list 111 deny udp 192.10.20.0   0.0.0.127
+                                                       host 10.1.1.1
 
 
 
+
+
+LAB 3: ACL Lab
+Load the network in Lab 1:
+Created a 2 router network- router0 and router1
+PC0, PC1, PC2 and PC3
+First: Verify that PC0 can ping PC2
+Click on PC0. Go to deskstop. Click on command prompt. ping 207.207.7.50. If you a get a reply with a low TTL and a packet sent of 4. It is good
+Ping PC2 - 207.207.7.60- Good
+Ping PC3 - 207.208.7.51 - Good
+Create a standard ACL that will block PC0 from accessing PC2
+Where is it going to be placed? The standard ACL should be placed very close to the destination interface. Here it is at Router1 E0
+Source is PC0. Router1 E0 is the destination interface
+Standard ACL, give a number 10, deny the source of PC0 (207.207.7.18)- #access-list 10 deny host 207.207.7.18
+second line overcomes the implicit deny any- #access-list 10 permit any (on any IP)
+Place this on Router1 E0 #Router1(config)#interface GigabitEthernet0/0
+Copy the script and place in on Router1 on the network
+Click on Router 1. Click on CLI. run "ena". run "config t". Paste the script that was copied
+Check if it is successful.
+Go to command prompt on PC0
+Ping PC2 - ping 207.207.7.50
+If it says "Destination host unreachabele". It means it is successsful.
+Ping PC3 - "Destination Host Unreachable"
+It shows we are blocking the source packet ( from PC0) to go to Router1
+Because the standard ACL has only the source address, you cannot distinguish between destinations
+So PC0 is blocked from accessing PC2 and PC3 (Can't ping PC2 and PC3) because standard ACL can't distinguish between destinations.
+Remove the blocking of access list with this command #no access-list 10
+Check: Go to PC0 and ping PC2 and PC3 again. There were successful.
+
+Create an Extended ACL that will block PC0(207.207.7.18) from accessing PC2(207.207.7.50), but ALLOWS PCO(207.207.7.18) access to PC3.
+Give it a number 110. Going to deny (an ip host is used). The ip host is the source(207.207.7.18) and the destination is PC2 (host 207.207.7.50)
+#access-list 110 deny ip host 207.207.7.18 host 207.207.7.50
+Second line is to allow all of the traffic and this is going to be placed at the source(Extended ACL should be placed close to the source)
+PC0 is the source, therefore Router0 will be the source(close to the source) #Router0(config)#access-list 110 permit ip any any
+#Router(config)#interface GigabitEthernet0/0
+Go to PC0 and see if you can ping PC2 and PC3. For PC2, "Destination Host is Unreachable" is good and for PC3, it should be reachable.
+To verify that PC3 can ping PC0 and PC1, we need to delete the deny access to prevent it from interfering with the result.#CLI and run the command "no-access-list 10"
+
+Go to PC3- Click on it. Command prompt- ping PC0 and PC1, They should be Reachable.
+Create a standard ACL that willblock PC03 from accessing PC0. Place the ACL in Router0 E0
+#access-list 12 deny host 207.207.7.51
+#access-list 12 permit any
+#interface GigbaitEthernet0/0
+#ip access-group 12 out
+#exit
+Check- Go to PC3, can we ping PC1 "Destination Host Unreachable". PC0 is the same. Because the ACL was placed at Router0 E0 and this will BLOCK
+all packets from the source regardless of the destination.
+Remove the ACL and verify by pinging the sources again
