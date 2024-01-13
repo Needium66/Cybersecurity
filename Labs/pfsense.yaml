@@ -79,3 +79,4 @@ So you can skip one of the interfaces, then select the next e.g skip option 5 an
   e. Enter "n" for "do you want to revert to HTTP for your webconfiguration protocol"
   f. Allow it to complete
 #Now we have all the configurations for the pfsense
+#This was achieved in 23 focal steps as part of configuration labs for my cybersecurity detection and monitoring lab.
