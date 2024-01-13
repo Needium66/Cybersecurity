@@ -204,10 +204,22 @@ int main() {
     cout << i + 1 << ". " << action << " - " << response << endl;
   }
 
-  return 0;
-}
+  return 0
 
+Customer KMS encryption key for S3 bucket
+Some clients' files are stored in S3, they need to be encrypted for security. So we need a key that will be rotated annually to encrypt the file
 
+Managed update is failing and rolling back in AWS
+Has an autoscaling group to increase the number of instances from 3 to 4 whenever there is traffic.
+But there is a new version of the application and whenever it is to be applied, it fails and rolls back to the previous version
+To do that manually or not through the maintenance window, "Apply Immediately"
+Get the logs- cfn, HealthD and others from the instance itself and send- get it out of the directory and zip it, then give the name of the file with extension.
 
+Redirect to a maintenace page through LB for decommissioning
 
+KMS Key for RDS
 
+Lock out of a tool-
+Active directory access
+Run the powershell script to know if the credentials of the user is truly expired.
+If it is expired, go to AD and reset for the particular user.

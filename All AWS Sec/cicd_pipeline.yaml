@@ -1,0 +1,46 @@
+Poisoned CICD Pipeline
+Poisoned Pipeline Execution(PPE): It is a sophisticated attack strategy that targets CICD pipeline. So its attack surface is CICD pipeline.
+Listed as CICD SEC-4 or on the top 10 of OWSASP CICD security risks.
+The goal is to be able to gain access to source control system of an organization or use malicious code to poison existing CICD pipeline.
+If you are using "unreviewed code (insecure code)", you could be vulnerable to this kind of attack.
+This could happen while you are extending an already secured pipeline
+
+In CICD environment, in order to have a protective or secure branch, you can set up a branch protective rule or the users/people that are going to be having access
+to a particular branch. Users that can push, delete, merge, review, commit and others. That is, the way you provide granular access control
+An attacker could gain access to a vulnerable branch i.e development or build and modify command there to "whoami" e.g modify "enable: true" to "whoami"
+In order to be able to do that< the attacker could follow the below steps:
+Run a git clone of a repo that he has access to
+Then exploit the PPE in it i.e change a command to exploit it vulnerability
+a. View the configutartions of the pre-configured pipeline file e.g if it is written in shell, run  "cat" to view it.
+b. Modify the line with "sh make || true" line, by running a command to edit the file e.g vi or nano as the case maybe ie. nano "name of the file"
+c. I for "insert" and change the "sh make || true" to "sh whoami"
+d. Exit the file (esc + wq + !) or whatever commands you use to save and exit
+e. Then add it locally, commit it, and then push it back to the remote repo. "git add .", git commit " message", "git push" with some other
+commands if new
+f. If the attacker git push is denied because of write permissions, he could explore indirect poisoning next. Change a file in the repo that
+has some level of permissions e.g makefile in jenkins. If you are using jenkins for your ci.
+g. Run a cat command on the file to view.
+h. Run a "nano" to modify it and then clear out all commands or configurations there and replace it with the "whoami" command
+The attacker will change it from "build":
+                                      "to_pip.sh" 
+                                      TO 
+                                      "whoami"
+Save and exit the file.
+i. Run "git add ." again
+j. Run "git commit"
+k. Run "git push"
+l. If the push was successfully, you can manually trigger a build if it is not set to be triggered automatically.
+m. Check the "console output" or "log output" to see if the changes made were successfully. Once it is validated that the command that
+was changed appears i.e "whoami", then you can exploit more.
+n. Go back into the file and change the "whoami" command to "uname -a", save and exit the file. Running this will exhibit more info, including the Kernel version
+o. Once pushed, go and trigger the build, once you check the "Console output", you should be able to see the "kernel version" and then copy it.
+p. Access the makefile again and change the "whoami" command to "cat" a directory that has credentials or keys that you have located e.g 
+add cat /var/lib/jenkins/secret.key and oush to the repo again. You should be able to see the output for the secret key.
+
+Summary
+1) Gain access to a not so secure repo
+2) Modify the build file in the repo and push to the remote repo from local.
+3) If your push fails because of permission issues, modify the "makefile" or whatever file that has some sort of permissions in the CI of choice
+4) Then modify the file again, to get version of the vm that is running or kernel.
+5) Then modify the file exhibit a secret key or encryption key.
+6) Then exploit that.
