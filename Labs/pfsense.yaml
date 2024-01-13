@@ -1,0 +1,81 @@
+#PFSENSE CONFIGURATION (Configured pfsense for my homelab)
+#pfsense is a free and open source firewall and router, used as threat management, load balancing, WAN (Wide Area Network) and others
+#ARCHITECTURE
+#To configure pfsense as a firewall that enables the network segmentation that only allows controlled traffic for security purposese.g my home network.
+#The intent of this is to use it as firewall for my homelab. This can be replicated by an enterprise too.
+#pfsense download- download pfs from this link-https://www.pfsense.org/download/
+#Follow the below instructions/steps to complete the download
+1. From pfsense landing page, select "AMD64(64-bit)" as the "Architecture" of the latest version
+2. Select "DVD Image (ISO) Installer" as the "Installer" (if you are using a vm like mine-vmware workstation)
+3. Select the default "Mirror" (For me it is "Austin, TX USA")
+4. Select the "Download" button to download the file
+#Configure pfsense on the vm workstation after the download
+1. Access the vm workstation
+2. From "Home", navigate to "Create a New Virtual Machine" and select it.
+3. Go to the "Browse" button and select your pfsense file from the location where it is saved on your local machine,
+4. Select the "Next" button at the bottom.
+5. Enter a name for your virtual machine in "Virtual machine name" e.g pfsense_homelab
+6. Select the "Next" button at the bottom
+7. Select "Next"
+8. Select "Customize hardware" to configure your preferences. My preferences are
+  a. 2GB RAM I.e increase the "Virtual machine memory" from the default to 2GB
+  b. 6 Network Adapters i.e increase the "Network Adapter NAT" from1 to 5, by clicking on the "Add" button at the bottom left, select
+  "Network Adapter" one at a time (5x) and click on the "Finish" button one at a time(5x) (NAT is needed to support the other machines that will be
+  be used for pfsense)
+  c. Assign "Custom virtual network" toe each of the 6 NATs, by selecting a NAT from the left, then select "Custom specific virtual network" from
+  the section displayed on the right. Ensure the NAT number matches the custom specific virtual network e.g if NAT is 1, the custom specific
+  virtual network must be VMnet1. Repeat same for the remaining 5.
+  d. Select "Sound Card" on the left and click on "Remove" button below to remove it.
+  e. Click on "Close" button at the bottom on the right to complete your customization and go back to complete your new vm creation
+9. Select "Finish" button on the right to complete the creation of your new vm for pfsense.
+10. You should see a file on the left of your workstation with the name of your new vm (pfsense_homelab- from step 5)
+11. Select the vm to start it.
+12. Accept all the default settings as displayed on the screen by clicking "Enter" to progress
+13. Select "No" when the pop up page for "Manual Configuration" appears on your screen
+14. Select "Reboot" to complete it.
+15. Enter options for the interfaces you want configured on your pfsense (WAN and LAN are displayed as default)
+  a. Enter the number for "Assign Interfaces" (If it is 1, enter 1.If it is 2, enter 2)
+  b. Enter "no" for "should vlan be set up now"
+  c. Enter your "WAN interface name".(the name of your WAN seen in step 15)
+  d. Enter your "LAN interface name". (the name of your LAN seen in step 15)
+  e. Enter the "Optional 1 - 5 Interface name" ( e.g enter em1 to em5 one at a time based on what the name is on your screen)
+  f. Enter yes for "do you want to proceed" (enter "y")- could take couple of seconds or minutes to be completed.
+  g. Once completed, it should display configurations according to what you have specified
+16. Enter options for assigning IPs to your interfaces for the next "Enter an option". (It is going to be the number for "Set Interface(s) IP address")
+e.g if it is 2, enter it and if it is 3, enter 3. It will display "Available Interfaces" for you.
+17. Select the "LAN interface" as the first "Enter the number of the interface you want to configure". (If LAN is on 3, enter 3)
+  a. Enter the IP of your LAN in the "Enter the new LAN IPV4 address" e. 192.#.#.#
+  b. Enter the new LAN IPV4 subnet e.g 24
+  c. Enter the new LAN IPV4 upstream gateway . select "ENTER" for this. You don't need gateway except you use it in your network
+  d. Enter the new LAN IPV6 address if you use or have it (I don't)
+  e. Enter "y" for "do you want to enable DHCP server on your LAN"
+  f. Enter the start address of the IPV4 client address range that you use- e,g 192.#.#.#
+  g. Enter the end addres of the IPV4 client address range that you use e.g 192.#.#.#
+  h. Enter "n" for "do you want to revert to HTTP for your webconfiguration protocol"
+  i. It will display what your LAN is set at now- The LAN ip that you have specified in step 17a with the subnet in step 17b and state that
+  you can now access webconfiguration by opening the a url in your broowser e.g https://192.#.#.#
+  j. Select "ENTER" to continue.
+18. Enter "2" for "Enter and option"
+19. Select the next interface to configure the rest of your interfaces in "Enter the number of the interface you wish to configure" e.g 2
+  a. Enter a specified IP for "Enter the new OPT1 IPV4 address"
+  b. Enter a specified subnet for "Enter the new OPT1 IPV4 subnet address" e.g 24
+  c. Click on "ENTER" for IPV6
+  d. Enter "n" for "Enter the new OPT1 IPV4 new DHCP"
+  e. Enter "n" for "do you want to revert to HTTP for your webconfiguration protocol"
+20. Enter "2" for "Enter an option"
+21. Select the next interface to configure the rest of your interfaces in "Enter the number of the interface you wish to configure" e.g 4 
+  a. Enter a specified IP for "Enter the new OPT2 IPV4 address" (#because of the OPT2- it could be 192.168.2.1)
+  b. Enter a specified subnet for "Enter the new OPT2 IPV4 subnet address" e.g 24
+  c. Click on "ENTER" for IPV6
+  d. Enter "n" for "Enter the new OPT2 IPV4 new DHCP"
+  e. Enter "n" for "do you want to revert to HTTP for your webconfiguration protocol"
+22 . #we need to leave an option without an IP address so that it can be the port with traffic that the security engine can be monitoring from the network
+So you can skip one of the interfaces, then select the next e.g skip option 5 and go to option 6 to configure.
+23. Select the next interface to configure the rest of your interfaces in "Enter the number of the interface you wish to configure" e.g 4 
+  a. Enter a specified IP for "Enter the new OPT4 IPV4 address" (#because of the OPT4- it could be 192.168.4.1)
+  b. Enter a specified subnet for "Enter the new OPT4 IPV4 subnet address" e.g 24
+  c. Click on "ENTER" for IPV6
+  d. Enter "n" for "Enter the new OPT4 IPV4 new DHCP"
+  e. Enter "n" for "do you want to revert to HTTP for your webconfiguration protocol"
+  f. Allow it to complete
+#Now we have all the configurations for the pfsense
