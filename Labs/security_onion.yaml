@@ -1,0 +1,75 @@
+#Security onion configuration
+#The intent is to use security onion as an ids (intrusion detection system) and log management solution
+#An ids is a network security technology that MONITORS network traffic and looks for suspicious activities. 
+#Built for detecting vulnerabilityexploits against a target application or computer. 
+#It is a LISTEN-ONLY device. 
+#It MONITORS traffic and REPORTS results to an admin.
+#You can connect it to a tool or any endpoint to collect traffic
+#For example,in my case, I am connecting it to pfsense to,so that it can be collecting traffic from it and monitor or log for suspicious activities
+#Download it from this link:
+https://securityonionsolutions.com/software
+
+#Follow the below steps to get it configured and installed
+1. Access your machine (i am using vmware workstation in my own case)
+2. From "Home", navigate to "Create a New Virtual Machine" and select it.
+3. Go to the "Browse" button and select your security_onion file from the location where it is saved on your local machine,
+4. Select the "Next" button at the bottom.
+5. Select "Next"
+6. Select "Linux" as the "Guest Operating System"
+7. Select "CentOs 7" as the version
+8. Give a "Name" to the machine e.g security_onion
+9. Select "Next" button
+10. You can change the "Minimum disk size" to whatever you want, in my case, i select 250GB, different from 50GB recommended.
+11. Leave other configuration as default on the page and select "Next"
+12. Select "Customize Hardware" button
+13. Select appropriate RAM- Changed mine from 12GB to 20GB for "Memory for this virtual machine"
+14. Select "Processor" and change it to "4"
+15. Select "Network Adapter" from the left and add 2 more NATs to it (one at a time(2x))
+16. Ensure you configured appropriate NAT from pfsense config to this- 2 and 3.
+17. Select "Printer" and "Sound cloud" and "Remove" them from the bottom.
+18. Select "Close" from the bottom
+19. Select "Finish" from the bottom.
+20. Select "Power on this virtual machine" button
+21. Select "OK" button at the bottom.
+22. Enter "yes" for "Do you wish to continue"
+23. Create an admin name for "Enter an administrator username"
+24 Enter a password
+25. Follow the on screen instructions
+26. Enter your credentials
+27. Select "Yes" for would you like to continue
+28. Select "Yes"
+29. Select "EVAL" for the "Security Onion Setup"
+30. Select "OK"
+31. Enter the hostname or FQDN(Fully Qualified Domain Name) you would like to set. e.g SecurityOnion
+32. Enter a short description for the node or press ENTER to leave blank- enter a description.
+33. Select your NIC Setup from the "Please select your management NIC"
+34. Click "ENTER"
+35. Select "DHCP" in "Choose how to set up your management interface" ENTER
+36. Select "YES" to keep DHCP- ENTER
+37. Select "OK" to continue.
+38. Select "Direct" in "How would you like to connect to the internet"
+39. Use space bar to select "Please add NICs to Monitor interface"
+40. Select "Automatic" for your OS patching i.e ENTER.
+41. In "Select Components To Install", you will select whatever is appropriate for you. (In my own case, i will enable GRAFANA, WAZUH
+PLAYBOOK, STRELKA) ENTER
+42. Select "YES" for "Do you want to keep the default docker IP range"
+43. Enter an email address to create an admin account to be used for web interface- ENTER
+44. Enter a password- ENTER
+45. Select "IP Address" in "How would you like to access the web interface"
+46. Enter "Yes" for "would you like to configure ntp servers" and select the default next- ENTER
+47. Select "no" for "Do you want to run so-allow to allow access to the web tools"
+48. From the next page, ensure you notate your "ACCESS URL" (You will need it later)
+49. Select "YES" with the tab.
+50. Once this is ready and validated
+51. Enter to reboot.
+52. Enter your credentials.
+#As a SOC Analyst, you should be able to access a tool like this through your local machine. In my coy, our IDS tool is cybereason
+#whitelist your ip to be able to do this. You can use an aws instance as your seconion management tool (local instance)
+51. You can create a new VM to use for simulations for SIEM (Download a Ubuntu desktop to use and use it for your SIEM)
+
+#From a local instance that is used for seconion management tool, do this
+#Run this command
+1. Run "ipconfig"
+2. If you get an error, run sudo apt install net-tools
+3. Enter a password.
+4. Run 'ifconfig' to get the appropriate ip address and notate it somewhere. (to be used later in seconion config)
