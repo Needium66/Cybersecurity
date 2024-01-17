@@ -1,0 +1,82 @@
+#Ojectives
+#Main computing assets and security
+#Main security goals known as CIA triad
+#What are the computing assets to be protected?
+1. Hardware
+2. Software
+3. Data
+Hardware: Includes Computer, Devices (disk drives, memory, printer), Network gear
+Software: Includes OS, Utilities (antivirus), Commercial applications (word processing, photo editing) and individual applications.
+Data: Documents, Photos, music videos, email, class projects.
+
+#Security Goals- CIA (Confidentiality, Integrity and Availability)
+Confidentiality: It is the avoidance of unauthorized disclosure of info. It involves the PROTECTION OF DATA, providing ACCESS to those who are allowed to see it
+and disallowing others from leaning anything about its content.
+Tools of confidentialy: i.e tools that are used to ensure confidentiality
+1. Encryption
+2. Authentication
+3. Access control and support
+Encryption: it is the transformation of info using a secret (an encryption key), so that the TRANSFORMED INFO can only be read using
+another key (a decryption key). In some cases the decryption key can be the same as encryption key. i.e the encryption key will
+TRANSFORM the info into something that cannot be read or deciphered by anybody except when the decryption key is used. can only see ciphertext
+
+Sender (encrypt it with a key)..........> ciphertext(unreadable by attackers)..............>Receiver(decrypt to a plain text)
+Authentication: used to determine the identity or role that a user has. The DETERMINATION can be done in a different ways BUT there could be comb
+ination of ways. The different ways include-
+- something the person has (e.g a smart card or radio key fob storing keys)
+- something the person knows (password)
+- something the person is e.g fingerprint of a human
+Access control: rules and policies that LIMIT access to confidential info for people and/or systems with a "need to know"
+Need to know can be determined by:
+- Identity: e.g a person's NAME or COMPUTER SERIAL NUMBER
+- Role: e.g a person's role e.g a MANAGER or SECURITY ENGINEER
+
+Authorization: It is the DETERMINATION if a person or system is allowed access to resources, based on an access control policy.
+Physical security: It is the ESTABLISHMENT of physical barriers to LIMIT access to PROTECTED RESOURCES. e.g use of sound dampening materials
+putting computers in windowless rooms, locks on cabinets and doors, construction of buildings or rooms with walls incorporating copper
+meshes.
+
+Integrity: It means having info not be altered in unauthorized way.
+Integrity Tools Include:
+1. Backups
+2. Checksums
+3. Data correcting codes
+Backups: Periodic archiving of data
+Checksums: the computation of a function that MAPS the contents of a file to a NUMERICAL VALUE. It is designed in a way that a SMALL CHANGE
+in the INPUT FILE( e.g flipping a single bit) is highly likely to result in a DIFFERENT OUTPUT VALUE.
+Data correcting codes: methods of storing data in such a way that small changes can be easily detected and automatically corrected. e.g AWS Config
+
+Availability: It means that info is ACCESSIBLE and MODIFIABLE in a timely fashion by those authorized to do so.
+Availability tools include:
+1. Physical protections
+2. Computational redundancies
+Physical protections: infrastructure meant to keep info available even in the event of physical challenges
+Computational redundancies: computers and storage devices that serve as backups or disaster recovery in the case of failures
+Other Security Concepts Triple A- A.A.A
+- Authenticity
+- Anonymity
+- Assurance
+Assurance: it refers to how TRUST is PROVIDED and MANAGED in computer systems.
+Trust managements depends on: 
+Policies
+Permissions
+Protections
+Policies: it specifies the behavioural expectations that people or systems have for themselves and others. e.g the designer of an online
+music system can specify the way users can access and copy songs
+Permissions: it describes the behaviors that are allowed by the AGENTS that interact with a person or system. e.g an online music store
+can provide limited access and copying to people that have purchased certain songs
+Protections: mechanisms put in place to ensure permissions and policies e.g an online music store providing protections to prevent people
+from unauthorized access and copying of its songs.
+Authenticity: is the ABILITY to DETERMINE that statements, policies, and permissions issued by persons or systems are GENUINE
+Authenticity Tools:
+- Digital signatures e.g on atm card or cards.
+Anonymity: that certain RECORD S or TRANSACTIONS not to be attributable to any individual.
+Anonymity Tools:
+1. Aggregation
+2. Mixing
+3. Proxies
+4. Pseudonyms
+Aggregation: Combining of data from many individuals so that disclosed sums or averages CANNOT be tied to any individual
+Mixing: The intertwining of transactions, info, or communications in a way that cannot be traced to any individual
+Proxies: Trusted agents that are willing to engage in actions for an individual in such a way that it cannot be traced back to that person
+Pseudonyms: Fictional identities that can fill in for real identities in communications and transactions (trusted identity) e.g user id
