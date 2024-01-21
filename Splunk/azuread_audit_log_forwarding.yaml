@@ -12,7 +12,7 @@ Create an app in AzureAd for the audit log forwarding
 Give all required permissions to the app created to enable it to send logs to splunk
 Install or update the Add-on required that will ensure the connection between Azure AD and Splunk
 Create a tenant in the Add-on that will ensure the connection between AzureAD and Splunk
-Create the inpiuts in office 365 Add-on, that will enable the ingestion of necessary logs into Splunk
+Create the inputs in office 365 Add-on, that will enable the ingestion of necessary logs into Splunk
 Test for your logs by running some queries in search and reporting.
 
 #Create an app in AzureAD for the audit log forwarding
@@ -118,7 +118,7 @@ Need accurate counts for Splunk renewal licensing
 
 #To log elastic beanstalk
 Install cloudwatch agent on each instance
-Set up a config fro that
+Set up a config from that
 Give IAM role with permissions to launch CloudWatch
 Set up functions
 Make necessary code changes

