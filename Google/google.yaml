@@ -88,7 +88,7 @@ onto other computers to tally the numbers of computers that were connected to th
 the computers it had already COMPROMISED and continued to REINSTALL itself, until computers RAN OUT OF MEMORY and CRASHED.
 About 6000 computers were affected-this represented 10% of the INTERNET at that time. Caused millions of dollars in damages
 Computer Emergency Response Teams(CERTs): were established to respond to security incidents.
-Disks are no ore needed to spread virus. Internet does it through the Malware now. Malware attacks:
+Disks are no more needed to spread virus. Internet does it through the Malware now. Malware attacks:
 Loveletter Attack
 Equifax breach
 Loveletter Attack(Onel de Guzman): 2000- Created the loveletter malware to STEAL internet login credentials. It spread rapidly and took
@@ -250,7 +250,7 @@ published research data. Medium risk assests examples are  early release of a co
 are SPII or PII
 
 #Vulnerabilities
-Aweakness that can be exploited by a threat
+A weakness that can be exploited by a threat
 A threat and vulnerability MUST be PRESENT before there can be a RISK. e.g outdated firewall,software or application, weak passwords,
 unprotected confidential data, people
 #SA can help with these:
@@ -1040,7 +1040,7 @@ Item     Date&Time    Release by(Name&Signature)                   Purpose of Tr
 Whenever there is any error in COC, it is called BROKEN CHAIN OF CUSTODY
 In the court of law, COC helps us to establish Integrity, Reliability and Accuracy.
 PLAYBOOK FOR DDoS ATTACK:
-Unknown Incming Traffic ------ Peaked amount of incoming traffic ------ IDS alert
+Unknown Incoming Traffic ------ Peaked amount of incoming traffic ------ IDS alert
 START
 DEFINE INDICATORS OF COMPROMISE- Start with determining if something is compromised by the incoming traffic
 COLLECTS LOGS

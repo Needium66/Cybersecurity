@@ -65,7 +65,7 @@ Develop an INCIDENT RESPONSE PLAN document. Your incident response plan document
 2) Roles and responsibilities
 3) A communication plan
 4) Phases of incident response and action to take
-5) Incident severity and pripritization definition
+5) Incident severity and prioritization definition
 Document and centralize architectural diagrams.
 AWS account structure - You need to know:
 • How many AWS accounts do you have?
@@ -208,7 +208,7 @@ Alert Sources for Detection can be any of these
 Findings- from AWS services e.g GuardDuty, Security Hub, Amazon Macie, Amazon Inspector, AWS Config, IAM Access Analyzer, & Network Access Analyzer
 Logs- Logs from S3 and Cloudwatch log group can be parsed and correlated
 Billing activity- A sudden change in billing activity can GENERATE event. Monitor estimated charges
-Cyber thereat intelligence- if you have 3rd party intelligence feed, you can correlate it with you are having from other tools
+Cyber thereat intelligence- if you have 3rd party intelligence feed, you can correlate it with what you are having from other tools
 Partner Tools- EDR (Endpoint Detection and Response) and SIEM tools. Intrusion Detective System (IDS) tool.
 AWS Trust and Safety- Customer may be contacted by AWS if they suspect malicious activities.
 One - time contact - email, ticketing etc
@@ -383,7 +383,7 @@ Operations Lead
 Data department Lead
 Quality Assurance Lead
 Customer team 
-Confirm, everybody to be on AWS West VPN
+Confirm, everybody to be on failover region (e.gAWS West VPN)
 Declare it
 Pause any monitoring alerts
 Pause
@@ -391,10 +391,10 @@ Pause
 Go to us-west-2
 Start west failover servers in Lambda
 Hit test to start it manually
-Select Upsizefileservers
-Select UpsizeRunningServers
+Select FileServerIncrease
+Select FileActiveServerIncrease
 Check the ALB, or whatever load balancer you are using to check servers that are live and post that.
-Stop any migration jobs e.g moveit or any other. Stop the services
+Stop any migration jobs e.g service being used or any other. Stop the services
 Start the services on west servers
 Failover the SFTP
 Disable the Stop failover servers to prevent them from running
