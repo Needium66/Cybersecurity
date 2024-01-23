@@ -336,7 +336,7 @@ print(list(combined))
 
 
 #Tuples
-#you cannot change or modify tupes;cannot add or remove
+#you cannot change or modify tuples;cannot add or remove
 #cannot pop or append inn tuples
 print("Tuples have parenthesis and cannot change:")
 grades = ("A", "B", "C", "D", "F")

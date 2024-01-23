@@ -1,16 +1,16 @@
 #buffer overflow script
 #fuzzing script written in python2 but concept is still the same
-#declare that you are suing python
-#import modules to do things for you sys and socket
+#declare that you are using python
+#import modules to do things for your sys and socket
 #socket to allow us to do things with ipv4
 #we have a variable buffer that equals to a string of 100 As. sting of A multiplied by 100
 #have a while loop that says as long as the loop is true, it will run
-#we will "try" to do execute something and if something else happens(except)
+#"try" to do execute something and if something else happens(except)
 #close the program
 #send a connection through the first line, to an ip in the port in the second line
 #send a message with variable buffer
 #close out the connection
-#sleep for a second
+#execute sleep for a second
 #append buffer for a second 100 As. becomes 200 As and try it again.
 #if we break the program, print out where buffer is and exit.
 

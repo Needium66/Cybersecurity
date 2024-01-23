@@ -10,7 +10,7 @@
 #Insufficient NTP Configuration - Mode 6 Query
 #F5 Big-Ip Cookie Information Disclosure
 #Insufficient XSS Prevention-Reflected
-#Insufficient Usename Enumeration Protection
+#Insufficient Username Enumeration Protection
 #XSS
 
 #!/bin/python3

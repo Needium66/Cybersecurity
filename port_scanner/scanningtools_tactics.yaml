@@ -5,7 +5,7 @@ UDP
 #Three way handsake
 #Scanning and tactics. e.g burbsweet(burppro), nessus, metalsploit, nmap for scanning
 #TCP  vs udp
-#whenever you scan ports, you are most of the times scanning on tcp. however, you will have to scan some upd ports too cos some tools only use this
+#whenever you scan ports, you are most of the times scanning on tcp. however, you will have to scan some udp ports too cos some tools only use this
 #TCP
 Is connection oriented
 Used by apps that requires high reliability e.g HTTP/S, FTP, Telnet

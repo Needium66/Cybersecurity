@@ -1233,7 +1233,7 @@ def calculate_fails(total_attempts, failed_attempts):
     fail_percentage = failed_attempts / total_attempts
 #lets get the output by using a return
     return fail_percentage
-#lets call a function to execute the program where toatl attempts is 4 times, and failed attempts is 2 (an argument)
+#lets call a function to execute the program where total attempts is 4 times, and failed attempts is 2 (an argument)
 calculate_fails(4,2)
 Output = 0.5 or 50%
 

@@ -1,8 +1,8 @@
 #port scanning tool
-#go to metalsploit
+#go to metasploit
 #run msfconsole on your machine
 #5 major features for metalsploit
-#important ones to know are: auxilliary (before hand or prestage)
+#important ones to know are: auxilliary (before hand or pre-stage)
 #exploitation
 #post exploit module
 #after completing the installation, it will show msf6(current version) command, run : "search portscan"
@@ -245,7 +245,7 @@ OpenFuck.c:1145:9: warning: ‘RC4_set_key’ is deprecated: Since OpenSSL 3.0 [
 /usr/include/openssl/rc4.h:35:28: note: declared here
    35 | OSSL_DEPRECATEDIN_3_0 void RC4_set_key(RC4_KEY *key, int len,
 
-#when i checked for the open folder i asked it to output it to- i get it and it is green, which means it is executable
+#when i checked for the open folder i asked it to output it too- it indicates green, which means it is executable
 ┌──(root㉿kali)-[~/jide/OpenLuck]
 └─# ls
 open  OpenFuck.c  README.md
