@@ -80,3 +80,15 @@ Aggregation: Combining of data from many individuals so that disclosed sums or a
 Mixing: The intertwining of transactions, info, or communications in a way that cannot be traced to any individual
 Proxies: Trusted agents that are willing to engage in actions for an individual in such a way that it cannot be traced back to that person
 Pseudonyms: Fictional identities that can fill in for real identities in communications and transactions (trusted identity) e.g user id
+
+2nd Week
+#Objectives
+Vulnerability, threat, attack and control
+Types of threats and attacks
+Ten security principles
+Access controls and how to implement access control
+Vulnerability: It is a WEAKNESS that could be EXPLOITED to cause HARM.
+Threat: A SET OF CIRCUMSTANCES that has the POTENTIAL to cause LOSS or HARM.
+Attack: Is EXPLOITATION OF VULNERABILITIES by a THREAT. It can be SUCCESSFUL or UNSUCCESSFUL.
+Control: An action, device, procedure or technique that removes or reduces a vulnerability. A COUNTERMEASURE that PREVENTS threat from
+exercising vulnerabilites.
