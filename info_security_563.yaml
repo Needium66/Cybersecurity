@@ -92,3 +92,73 @@ Threat: A SET OF CIRCUMSTANCES that has the POTENTIAL to cause LOSS or HARM.
 Attack: Is EXPLOITATION OF VULNERABILITIES by a THREAT. It can be SUCCESSFUL or UNSUCCESSFUL.
 Control: An action, device, procedure or technique that removes or reduces a vulnerability. A COUNTERMEASURE that PREVENTS threat from
 exercising vulnerabilites.
+Note: A THREAT is BLOCKED by the CONROL OF VULNERABILITY i.e for you stop a threat, you have to control vulnerability- mitigate it. don't 
+let it happen. Ensuring the control of vulnerability to mitigate threat.
+Threat can be due to HUMAN CAUSES or NATURAL CAUSES. Threats can be benign or malicious. Threats can be random or directed.
+Types of Threats:
+1. Eavesdropping: interception of information intended for someone else during its transmission over a communication channel.
+2. Alteration: An unauthorized modification of information e.g the man-in-the-middle attack, where a network stream is intercepted,
+modified, and transmitted. Modifies the info from SENDER to RECEIVER.
+3. Denial of Service: the interruption or degradation of a data service or information access. e.g email spam to fill up a mail queue, so
+that it can slow down the email server.
+4. Masquerading: Fabrication of information that is purported to be from someone who is not actually the author.
+5. Repudiation: The denial of a commitment or data receipt e.g backing out of a contract or protocol that requires the different parties
+to provide receipts acknowledging that data has been received.
+
+Control/Countermeasures:
+There are 3 types of controls
+Physical controls: e.g locks, human guards etc
+Procedural/Administrative Controls: laws/regulations, policies/procedures/guidelines
+Technical Controls: Use technical measures e.g password, access controls. firewalls, intrusion detection systems (ids), encryption.
+
+The 10 Security Principles:
+1. Economy of mechanism: It is a principle that STRESSES the SIMPLICITY in the DESIGN and IMPLEMENTATION of SECURITY MEASURES. A simple
+security framework will enable understanding by developers and users and causes efficient development and verification of enforcement methods.
+KISS rule- Keep It Simple Strictly
+2. Compromise recording: The principle states it is sometimes MORE DESIRABLE to RECORD THE DETAILS of an intrusion than to adopt MORE
+SOPHISTICATED measures to prevent it.
+3. Fail-safe default: It is a principle that STATES that the default configuration of a system should have a CONSERVATIVE PROTECTION SCHEME
+e.g when adding a new user to a system, the default group of the user should have minimal access right to files and services. Fail-safe
+design in engineering is a feature or practice that in the event of a failure, there will be minimal or no harm to other equipment, environment
+or people.
+4. Work factor: The principle states that the COST OF CIRCUMVENTING a security mechanism should be compared with the resources of an attacker
+when designing a security scheme. e.g a school website security (less security) vs government agency (complex and more money)
+5. Complete mediation: The principle is every access to a resource needs to be checked for COMPLIANCE WITH A PROTECTION SCHEME e.g an online
+banking website should require users to sign on again after a certain amount of time e.g 15 minutes.
+6. Psychological acceptability: The principle states that user interfaces should be WELL DESIGNED AND INTUITIVE, and all security-related
+settings should adhere to what an ordinary user might expect.
+7. Least common mechanism: In systems with MULTIPLE USERS, mechanisms allowing resources to be SHARED BY MORE THAN ONE USER SHOULD BE MINIMIZED.
+8. Least privilege: Each user of a computer system should operate with athe bear minimum privilege necessary to function properly.
+9. Separation of privilege: The principle states that multiple conditions should be required to achieve access to restricted resources or
+have a program perform some action.
+10. Open design: The principle states that the SECURITY ARCHITECTURE and DESIGN of a system should be made publicly available.
+Making it open will allow it to be scrutinized by multiple parties and enable discovery and coorection of vulnerabilities on time.
+Security should rely on keeping ONLY cryptographic keys secret. It is opposite of SECURITY BY OBSCURITY
+Kerckhoff's principle: A cryptosystem should be SECURE even if everything about the system, except the key is public knowledge.
+
+#ACCESS CONTROLS
+- Users and Groups
+- Passwords
+- Authentications
+- File protection
+- Access Control Lists
+Which users can read and write which files?
+Are my files really safe?
+What does it mean to be root?
+What do we really want to control?
+#Access control overview
+Access Control Policy: Who + What + How = Yes/No
+Subject: Who? Jide
+Mode of access: How? read
+Object: What? Week2.ppt
+
+Access Control Matrices: A table that defines permissions
+	  /etc/password	      /usr/bin/	    /u/Jide/	        /admin/
+root	read, write	  read, write,exec	read,write,exec	read, write, exec
+Jide	read	        read, exec		
+Lana	read	        read, exec	      read,write,exec	
+backup	read	      read, exec	      read,exec	       read, exec
+
+Access Control List:
+Capabilities:
+Role-Based-Access Control: For large number of users e.g 1000 users. very scalable
