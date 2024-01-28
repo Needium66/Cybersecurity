@@ -28,7 +28,7 @@ IAM|
 0365 Add-on|
 AWS Cloud Add-On|
 
-######
+#################
 
 #Incident Response and Tabletop Project (Cloud):
 
@@ -53,7 +53,7 @@ A more detailed overview of this project can be found in my ir file-https://gith
 Tools: 
 CloudTrail |VPC Flow Logs | Load Balancer| Route 53| Lambda| Event Hub| Security Hub|  GuardDuty| CloudWatch Log| AWS Configs| IAM Access Analyzer|  SNS| Network Access Analyzer| Event Bridge| IAM etc.
 
-######
+##############
 
 #TLS/SSL Project
 
@@ -74,7 +74,7 @@ Link to the file- https://github.com/Needium66/Cybersecurity/blob/main/All%20AWS
 Tools: 
 Data events for CloudTrail| S3| SQL|
 
-#####
+###############
 
 #Risky Logging Playbook
 
@@ -88,5 +88,39 @@ The link to the steps that can be followed can be found in the ad_lab file-https
 
 Tools:
 Microsoft Office 365| Microsoft Defender| Microsoft Outlook| PagerDuty| Contact Number
+
+############
+
+#LLMNR Project Link-Local Multicast Name Resolution (LLMNR Lab) 
+#Problem statement: Worked on a project to investigate usage of LLMNR in Windows servers in all environments in the system. 
+#Solution: Disable it and effectively implement usage of DNS
+#Overview: After the project, I went further to do a LAB on LLMNR poisoning using the cybermentor module. An attacker executes the responder script
+The script listens quietly to events and LLMNR queries taking place in the network.
+When a communication/connection does occur or gets established with a target, it SENDS poisoned response to them.
+If the SPOOFING ATTACKS turn successful, the username and password hash of the target will be displayed by the responder.
+1.	Execute a responder script.
+2.	Responder listens silently to events and LLMNR queries.
+3.	If a target is hit successfully, credentials get spoofed.
+4.	Responder displays username and password hash.
+5.	Exploit it more.
+
+#Lessons Learnt: It cannot be overemphasized, don’t use services that are not secure. Improve your security posture by using secure services e.g DNS as against LLMNR.
+Disable or get rid of insecure services e.g LLMNR
+Ensure you investigate the use of this in your system.
+You can automate a script to scan your network for use of LLMNR if you don’t have tools that scan your network for services like that. But if you use a tool like Tenable, it should automatically scan for vulnerabilities like this.
+Link- https://github.com/Needium66/Cybersecurity/blob/main/ADLAB/ad_lab.yaml
+Did another lab in “Hack-a-box” for the ad attack
+Tools: HTB account
+Kali linux
+PC
+Tools utilized:
+Metasploit|
+Crackmapexec|
+Meterpreter|
+Gpmc|
+Nmap|
+Kerberoasting|
+Smb|
+
 
 
