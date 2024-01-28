@@ -28,7 +28,7 @@ IAM|
 0365 Add-on|
 AWS Cloud Add-On|
 
-#################
+######
 
 #Incident Response and Tabletop Project (Cloud):
 
@@ -53,7 +53,7 @@ A more detailed overview of this project can be found in my ir file-https://gith
 Tools: 
 CloudTrail |VPC Flow Logs | Load Balancer| Route 53| Lambda| Event Hub| Security Hub|  GuardDuty| CloudWatch Log| AWS Configs| IAM Access Analyzer|  SNS| Network Access Analyzer| Event Bridge| IAM etc.
 
-###############
+######
 
 #TLS/SSL Project
 
@@ -73,4 +73,20 @@ Link to the file- https://github.com/Needium66/Cybersecurity/blob/main/All%20AWS
 
 Tools: 
 Data events for CloudTrail| S3| SQL|
+
+#####
+
+#Risky Logging Playbook
+
+#Problem Statement: A user might inadvertently click on a link that results in risky logging alert. Create a playbook that ensures the identification, investigation, and resolution of an attack like this.
+
+#Solution: Configure/ enable the risky logging alert in Microsoft Defender, that integrates with an email or contact number and an AD environment.
+
+#Overview: This explains steps to be undertaking to be able to take care of a risky logging event by an operation person. A user mistakenly clicking on a malicious link will trigger the alert through an email or a tool like pager duty, where a person responsible e.g me, to manage this, will take action in the investigation of event and subsequently following procedures to resolve it
+
+The link to the steps that can be followed can be found in the ad_lab file-https://github.com/Needium66/Cybersecurity/blob/main/ADLAB/ad_lab.yaml
+
+Tools:
+Microsoft Office 365| Microsoft Defender| Microsoft Outlook| PagerDuty| Contact Number
+
 
