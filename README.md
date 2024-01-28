@@ -16,12 +16,12 @@ In no order, the below encapsulates each project as they appear in the repo:
 #Overview
 Implemented this project to enable the ingestion of sign-in and audit logs from AD environment into Splunk, to complement the existing logs being forwarded for SIEM and improve the visibility into a previously non-integrated environment.
 
-Link to the project-
+Link to the project-https://github.com/Needium66/Cybersecurity/blob/main/Splunk/azuread_audit_log_forwarding.yaml
 
 Tools/Technologies Utilized:
-Splunk
-Azure AD
-IAM
-0365 Add-on
-AWS Cloud Add-On
+Splunk|
+Azure AD|
+IAM|
+0365 Add-on|
+AWS Cloud Add-On|
 
