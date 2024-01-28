@@ -1,7 +1,8 @@
-#AWS was phasing out the usage of tls 1.0 and 1.2
+#AWS was phasing out the usage of TLS 1.0 and 1.2
 #This is focused on appropriately disabling tls 1.1 or lower on some resources or apps that are currently using it
-#Found out s3 was still using tls 1.1 or lower
-#Need to turn on dataevents for cloudtrail logs and run a query to see what is using the phased out tls
+#Found out some apps were still using tls 1.1 or lower
+#Needs to turn on dataevents for cloudtrail logs and run a query to see what is using the phased out tls
+
 How to enable Cloudtrail lake in Cloudtrail:
 1. Go to an appropriate AWS account/environment
 2. Navigate to the CloudTrail console
