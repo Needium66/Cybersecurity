@@ -130,5 +130,14 @@ Nmap|
 Kerberoasting|
 Smb|
 
+###############
 
+#Personal project- 
 
+#Problem statement: Find a way to improvement of our security posture of our CICD pipeline.
+
+#Solution: Take necessary actions to prevent a successful PPE attack
+
+#PPE simulation: Updated our change documentation to always integrate our already established security controls and policies to any extension of pipeline. No rulebook or guidelines in the implementation of a pipeline extension prior to this.
+
+Link-https://github.com/Needium66/Cybersecurity/blob/main/All%20AWS%20Sec/cicd_pipeline.yaml
