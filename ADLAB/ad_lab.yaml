@@ -1,6 +1,8 @@
 #BUILDING AN AD LAB, LLMNR POISONING AND NTLMv2 CRACKING W/ HASHCAT
 #BUILD AN AD LAB
 #AD EXPLOITATION: LLMNR POISONING
+#RISKY LOGGING PLAYBOOK
+#Integration of tools like Office 365, Microsoft Defender, Outlook Account and Pager Duty, Contact Number.
 
 #BUILD AD LAB
 https://www.microsoft.com/en-us/evalcenter/download-windows-server-2016
@@ -443,11 +445,12 @@ http://www.pentest-standard.org/index.php/Post_Exploitation#Cleanup
 
 #PLAYBOOK FOR Risky AD Logging
 When a user's account appears to be compromised
-- Disable the account
+- Contact the person to confirm. If you are unable to, follow the next sets of steps.
+- Disable the account of the user
 - Reset the password
 - Expire the sessions on the user's account
 - Fix the user's account when available
-- Confirm that user's account is compromised on AzureAD Security Portal.
+- Confirm that user's account is compromised on AzureAD Security Portal. ( You need to do this to indicate whether it is True or False)
 - Create a JIRA ticket to track it.
 
 
