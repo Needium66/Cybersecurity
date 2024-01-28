@@ -52,3 +52,25 @@ A more detailed overview of this project can be found in my ir file-https://gith
 
 Tools: 
 CloudTrail |VPC Flow Logs | Load Balancer| Route 53| Lambda| Event Hub| Security Hub|  GuardDuty| CloudWatch Log| AWS Configs| IAM Access Analyzer|  SNS| Network Access Analyzer| Event Bridge| IAM etc.
+
+###############
+
+#TLS/SSL Project
+
+#Problem Statement: Deprecated TLS 1.0 and 1.1
+
+#Solution: Cleanout all TLS running on this version in our AWS environments
+
+#Overview: Some apps are still using the deprecated tls versions. The intent of this project is to find those apps that are using that or wherever there is a configuration using the old version in the system and remove it.
+With the integration of CloudTrail and other services in AWS, you should be able to execute a query and then analyze the logs obtained, to get the locations of where the appropriate strings to be removed are.
+
+This project led me to the appropriate configurations and files that had the old tls versions.
+Subsequently cleaned those out.
+
+Validated the absence of the older versions of tls in our AWS environments with another query.
+
+Link to the file- https://github.com/Needium66/Cybersecurity/blob/main/All%20AWS%20Sec/tls.yaml
+
+Tools: 
+Data events for CloudTrail| S3| SQL|
+
