@@ -1,3 +1,6 @@
+#This contains the implementation of an incident response project in AWS
+#This is strictly based on AWS documentations and complies with international best practices specified.
+#This can be largely applied to AWS environments depending on your architecture or application stack.
 Intro:
 This is workplan or roadmap for incident response in AWS based on their incident response whitepaper
 https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-security-incident-response-guide/aws-security-incident-response-guide.pdf#aws-security-incident-response-guide
