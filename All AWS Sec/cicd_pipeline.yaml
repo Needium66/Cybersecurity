@@ -46,5 +46,10 @@ Summary
 2) Modify the build file in the repo and push to the remote repo from local.
 3) If your push fails because of permission issues, modify the "makefile" or whatever file that has some sort of permissions in the CI of choice
 4) Then modify the file again, to get version of the vm that is running or kernel.
-5) Then modify the file exhibit a secret key or encryption key.
+5) Then modify the file to exhibit a secret key or encryption key.
 6) Then exploit that.
+
+#Prevention
+# Appropriate security controls in the CICD pipeline
+#Extend approppraite security to any extension of your pipeline
+#Audit users in your CICD environment regularly- can integrate scanning tools to take care of this.
