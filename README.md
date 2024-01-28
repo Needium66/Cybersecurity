@@ -91,11 +91,13 @@ Microsoft Office 365| Microsoft Defender| Microsoft Outlook| PagerDuty| Contact 
 
 ############
 
-#LLMNR Project Link-Local Multicast Name Resolution (LLMNR Lab) 
-#Problem statement: Worked on a project to investigate usage of LLMNR in Windows servers in all environments in the system. 
+#LLMNR Project Link-Local Multicast Name Resolution (LLMNR Lab)
+
+#Problem statement: Worked on a project to investigate usage of LLMNR in Windows servers in all environments in the system.
+
 #Solution: Disable it and effectively implement usage of DNS
-#Overview: After the project, I went further to do a LAB on LLMNR poisoning using the cybermentor module. An attacker executes the responder script
-The script listens quietly to events and LLMNR queries taking place in the network.
+
+#Overview: After the project, I went further to do a LAB on LLMNR poisoning using the cybermentor module. An attacker executes the responder scriptThe script listens quietly to events and LLMNR queries taking place in the network.
 When a communication/connection does occur or gets established with a target, it SENDS poisoned response to them.
 If the SPOOFING ATTACKS turn successful, the username and password hash of the target will be displayed by the responder.
 1.	Execute a responder script.
@@ -105,12 +107,18 @@ If the SPOOFING ATTACKS turn successful, the username and password hash of the t
 5.	Exploit it more.
 
 #Lessons Learnt: It cannot be overemphasized, don’t use services that are not secure. Improve your security posture by using secure services e.g DNS as against LLMNR.
-Disable or get rid of insecure services e.g LLMNR
-Ensure you investigate the use of this in your system.
+
+1. Disable or get rid of insecure services e.g LLMNR
+2. Ensure you investigate the use of this in your system.
+
 You can automate a script to scan your network for use of LLMNR if you don’t have tools that scan your network for services like that. But if you use a tool like Tenable, it should automatically scan for vulnerabilities like this.
+
 Link- https://github.com/Needium66/Cybersecurity/blob/main/ADLAB/ad_lab.yaml
+
 Did another lab in “Hack-a-box” for the ad attack
-Tools: HTB account
+
+Tools:
+HTB account
 Kali linux
 PC
 Tools utilized:
