@@ -1,3 +1,7 @@
+#This is executed to describe how an attacker could exploit loopholes in access, authorization or controls in a CICD environment in an
+#organization and breach it to perform malicious activities detrimental to the existence of the organization
+#It also explains what to look out and how to avoid an attack like this
+#There will be probably more approaches to take care of this. But the only ways currently known to me are showcased here.
 Poisoned CICD Pipeline
 Poisoned Pipeline Execution(PPE): It is a sophisticated attack strategy that targets CICD pipeline. So its attack surface is CICD pipeline.
 Listed as CICD SEC-4 or on the top 10 of OWSASP CICD security risks.
