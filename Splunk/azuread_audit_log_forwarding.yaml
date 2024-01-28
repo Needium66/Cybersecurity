@@ -1,11 +1,11 @@
-#we have a self hosted splunk instance
-#we require sign-in logs and audit logs to be forwarded to splunk as part of ms logs
-#we will be sending those logs from one of our AzureAd
+#There is a self-hosted splunk instance
+#There is a requirement for sign-in logs and audit logs to be forwarded to splunk as part of ms logs
+#The required logs will be sent from AzureAd
 #Azure requires you to have at least a P2 license to be able to get logs sent from Azure to Splunk
-#you have to have admin access to be able to carry out what are needed.
-#all in all, we require logs for successful and failed logins, changes to user accounts and other activities to 
-#protect our data, users and services against risks, security breaches and suspicious activities that can take place and
-#needs to be investigated
+#You will have to have admin access to be able to carry out what are required.
+#All in all, we require logs for successful and failed logins, changes to user accounts and other activities to 
+#protect data, users and services against risks, security breaches and suspicious activities that can take place and
+#needs to be investigated.
 
 #Steps
 Create an app in AzureAd for the audit log forwarding
@@ -26,7 +26,7 @@ Select "Web" and enter a url in the "Redirect URI column"
 Click on "Register"
 Create a secret for it.
 
-#Add permissions
+#Add permissions (all these are configured from AzureAD)
 Microsoft graph
 Application permissions
 Go to "Policy", enable "Policy.Read.All"
