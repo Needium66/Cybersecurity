@@ -28,3 +28,26 @@ IAM|
 0365 Add-on|
 AWS Cloud Add-On|
 
+#################
+#Incident Response and Tabletop Project (Cloud):
+
+#Problem Statement: Out of date or outdated IR plan in the cloud for our environments
+
+#Solution: Review and Update according to regulatory and international best practices
+
+#Overview: Updated our incident response (IP) playbook for the cloud based on compliance and international best practices. Implemented improvements on the IR plan document including the roles and responsibilities, communications, phases, and severity of events.
+
+Updated the architecture designs with a more centralized architecture, accommodating latest AWS environments and infrastructures, SCPs, authentication and authorization patterns, logging and monitoring, network topology.
+
+Updated the steps in our tabletop simulations to reflect current trends and events.
+
+Updated our forensic capabilities to exhibit architectural and technology landscape in our system using the four CEAR phases.
+
+Carried out an optimal operational improvement on our IR by using the 5 phases of DECAR (Detection, Analysis, Containment, Eradication and Recovery)
+
+All these enabled me to be remarkably proficient in cloud security, especially in AWS and this translated to my being the operational lead for our tabletop simulations for 2 years in a row.
+
+A more detailed overview of this project can be found in my ir file-https://github.com/Needium66/Cybersecurity/blob/main/All%20AWS%20Sec/ir_file.yaml
+
+Tools: 
+CloudTrail |VPC Flow Logs | Load Balancer| Route 53| Lambda| Event Hub| Security Hub|  GuardDuty| CloudWatch Log| AWS Configs| IAM Access Analyzer|  SNS| Network Access Analyzer| Event Bridge| IAM etc.
