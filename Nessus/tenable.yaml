@@ -1,4 +1,6 @@
 #Tenable Cloud Security
+#Tenable used to be known as Nessus. It is tool used for vulnerability management, web app scanning and container security. 
+#I am currently using it for vulnerability management, but other organizations may have requirements for all its use cases.
 #How to set up and start using TCS platform 
 #Basic features and use cases
 #Policies
