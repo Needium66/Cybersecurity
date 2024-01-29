@@ -166,3 +166,102 @@ Link-https://github.com/Needium66/Cybersecurity/blob/main/Nessus/tenable.yaml
 
 Tools:
 Tenable
+
+
+
+##############
+#Google Cybersecurity Project/Lab
+
+#Problem Statement: Keep abreast of current trends or happening in the world of cybersecurity.
+
+#Solution: Take Google Cybersecurity Module course on YouTube.
+
+#Modules in the course include:
+
+1. Foundational
+2. Cybersecurity Incident, Detection and Response
+3. Cybersecurity Assets, Network Threats and Vulnerabilities
+4. Management of security risks
+5. Hands-on activities
+6. Internet Networks and Network Security
+7. Linux and SQL Foundational
+8. Automation of common security tasks
+
+#Foundational touches on CIA, preparation to mitigate against risks or damage. PII
+
+The evolution of attacks, starting from virus to malware with examples of Brain virus, Morris worm, Love letter attack, Equifax breach and Phishing.
+
+Safeguards: Conducting regular internal training for employees.
+
+Foundational also talks about CISSP 8 domains.
+-The 3 Key principles with which organizations protect themselves.
+
+#Management of security risks and threats through:
+
+- Security frameworks and controls
+- Security audits
+- Security tools
+- CISSP 8 domains and
+- Identity risks and threats in cybersecurity e.g SPII, PII, website content, published research data, company’s quarterly earnings, ransomware.
+
+Safeguards to security risks and threats:
+
+1. Implement security frameworks.
+2. Implement security controls through the 3 types: encryption, authentication, and authorization.
+
+The 3 common logs to analyze: firewall, network, and server.
+
+The playbook for malware
+
+#Internal Network and Network Security
+- Structure of a network
+- Network operations
+
+- Network attacks: malware, spoofing, on-path attack, replay attack, Smurf attack.
+
+Safeguard: Security hardening
+
+Examples of network attacks:
+2014 Home Depot attack
+
+#Denial of Service attack (Dos)
+
+#Distributed Denial of Service attack (DDoS)
+
+Safeguards:
+1. Firewalls
+2. Encryption
+3. Network segmentation
+4. Packet sniffing
+5. VPN tunneling
+6. TLS/ SSL
+7. HTTPS
+8. Patching
+9. Backups
+10. Strong Passwords
+13. Regular password change
+14. Disabling unused apps and ports
+15. Regular penetration testing
+16. MFA
+17. Decoupling of applications
+18. Data separation
+
+Protection of data in 3 different states (in-use, in-transit and at rest) against threats and vulnerabilities
+
+#Vulnerability management
+How to defend attack vectors: user education, apply least privilege rule, security controls and diverse security teams, managerial controls, staying informed of trends.
+
+#Social engineering attack examples: Phishing, Smishing, Vishing, Virus, Worm, Trojan, Ransomware, Spyware, Cryptojacking, Web-based exploits, Injection attacks, Cross-site scripting
+
+#SQL
+SQL injection attack:
+Safeguard: Code sanitizer or validation before executing a query.
+
+- Threat Modelling: Using 7 Steps Pasta Framework.
+
+- Playbook for DDos Attack.
+
+Link-https://github.com/Needium66/Cybersecurity/blob/main/Google/google.yaml
+
+Tools: 
+SIEM, Playbooks, Network protocol analyzer, Linux CLI.
