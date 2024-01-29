@@ -141,3 +141,28 @@ Smb|
 #PPE simulation: Updated our change documentation to always integrate our already established security controls and policies to any extension of pipeline. No rulebook or guidelines in the implementation of a pipeline extension prior to this.
 
 Link-https://github.com/Needium66/Cybersecurity/blob/main/All%20AWS%20Sec/cicd_pipeline.yaml
+
+
+###################
+#Tenable project
+
+#Problem statement: Automate Tenable for network security scanning, vulnerability assessment and management
+
+#Solution: Hands-on experience on using tenable for vulnerability assessments and management, port scanning etc
+
+#Overview: Post configuration of tenable to scan each account to assess vulnerabilities, the criticalities of them, the properties of the host or device or component and suggestions on how to mitigate against the vulnerabilities are all generated as a scheduled daily report.
+
+A report that summarizes the top 5 vulnerabilities based on “Severity”, “Plugin id” and “Name of the vulnerability.”
+
+It provides further summary of the assets based on “Asset”, “Critical” Medium”, “Low”, “Info” and “Total”.
+
+Then finally, the top 10 suggested remediations for the total assets and how much of the vulnerabilities would be resolved by taking those actions.
+
+Remediations will be based on “Action to take”, the number of “Vulnerabilities” that will be resolved and “Host” on which the vulnerabilities will be resolved.
+
+Some notable vulnerabilities that can be generated include-CentOS vulnerabilities for some of our on-prem assets, Microsoft Frame Network vulnerabilities etc. This shows it OS agnostic.
+
+Link-https://github.com/Needium66/Cybersecurity/blob/main/Nessus/tenable.yaml
+
+Tools:
+Tenable
