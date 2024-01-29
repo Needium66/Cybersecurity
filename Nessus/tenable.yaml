@@ -8,7 +8,7 @@
 Topics:
 Introduction to Tenable Cloud Security:
 Consolidating Multiple Point Solutions CNAPP- Cloud-Native Application Protection Platform
-CIEM Cloud iNFRASTRUCTURE Entitlement Management: Identity access and governance, Least privilege, Just-In-Time (JIT)- Mitigating identity risks and threats
+CIEM Cloud INFRASTRUCTURE Entitlement Management: Identity access and governance, Least privilege, Just-In-Time (JIT)- Mitigating identity risks and threats
 CSPM Cloud Security Posture Management: Multi-cloudinventory, Misconfiguration, Scoring and Reporting.
 CWP Cloud Workload Protection: Workload protection, Vulnerability Management, Malware dtection, Secrets- Helps customer detect and remediate
 misconfiguration of workload vulnerabilities
@@ -303,7 +303,7 @@ Tag view. You can filter on assets on a lot of ways- easy pivot views, filter on
 Discuss Asset Inventory advantages
 Show use cases
 
-Using Asset Inventiry
+Using Asset Inventory
 e.g type 2016 in the search box. Anything with 2016 will be filtered out
 To pivot to more details on the asset, click on the expand view at the extreme right
 To dig deeper into the resource, click on the source e.g tenable.io at the top of the page- you could see whether it is misconfiguration or any other reason
