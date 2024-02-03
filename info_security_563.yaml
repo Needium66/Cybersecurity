@@ -172,3 +172,64 @@ Role-Based-Access Control: For large number of users e.g 1000 users. very scalab
 #State the password functions and complexity
 
 #Cryptographic concept
+It is a MEANS to allow 2 parties, CUSTOMARILY Jide and Lola, to ESTABLISH a CONFIDENTIAL COMMUNICATION of an INSECURE CHANNEL that is SUBJECT
+to EAVESDROPPING.
+#Encryption and Decryption
+Jide will convert a plaintext M (message)to an ENCRYPTED form using an ENCRYPTION ALGORITHM E that outputs a CIPHERTEXT (C) for M
+Once Jide the sender sends the message that is encrypted, it turns to ciphertext in transit, and once it gets to the recipient, Lola.
+Lola can decrypt the ciphertext to a plaintext using an encryption algorithm too. Therefore no attacker can eavesdrop the message in
+traffic.
+#Equation
+
+C = E(M)
+M = D(C)
+Where M = plaintext
+C = Ciphertext
+E = Encryption function
+D = Decryption function
+#Explanation: The plaintext M is ENCRYPTED through the function of E to CONVERT it to CIPHERTEXT C i.e C = E(M)
+#TO DECRYPT: The CIPHERTEXT C  is input to the function of D, which converts it to the original message
+
+#CEASAR CIPHER
+Replacing each letter with the "three over" in the alphabet
+Key k is the number of shifts in alphabet and the value of the key was three (k = 3)
+Right shifting for ENCRYPTING
+Left shifting for DECRYPTING
+ENCRYPTING => C = E(M) = M + k
+              M = D(C) = C - k
+
+#Symmetric Encryption
+When both Jide and Lola dont share the same key i.e when it requires each pair of communication parties to share (a SEPARATE) SECRET KEY.
+i .e just one single key
+For 2 participants? 1 Key
+For 3 participants? 2 Keys
+For N participants? N - 1 Keys.
+
+#Public Key Cryptography
+It requires 2 keys- Private key, which is a secret key and a Public key, which is broadcasts widely.
+For Jide to send an encrypted message to Lola, he only needs his PUBLIC KEY (PK), to ENCRYPT his message and send it to LOLA. Then Lola
+will use her SECRET KEY to decrypt the message.
+Widely known example of public key is RSA
+Seperate keys are used for ENCRYPTION and DECRYPTION
+
+#CRYPTOGRAPHIC HASH FUNCTIONS
+It is
+One way: should be EASY to COMPUTE Y = H(M), but HARD to FIND M given Y only.
+Collision resistant: It should be HARD to FIND 2 messages, M and N, such that H(M) = H(N)
+Length of M can be a variable, but message digest Y has always the same length e.g SHA-1, SHA-256
+Hash is used for DATA INTEGRITY, if 2 parties share a secret key. Digest key in hash
+Message Authentication Code (MAC)
+
+#Digital Signatures
+Public key encryption provides a method for doing digital signatures. To sign a message, M, Jide can ENCRYPT it with his private key.
+Anyone can DECRYPT it using a valid public key.
+Digital Certificates: digitally SIGNS a binding between an IDENTITY and the PUBLIC KEY for that IDENTITY.
+Strong passwords: Combination of upper case, lower case, special characters and numbers.
+Social Engineering: ways to hack a password. it is of different types.
+1. Pretexting- creating a story that convinces an adminor operator into revealing info.
+2. Baiting- offering a kind of gift to get a user or agent to perform an insecure action
+3. Quid pro quo: Offering a kind of action or service and then expecting something in return.
+
+Current function foe encrypting and decrypting in ceazar cipher is C = E(M) = (M+k)% 26
+Number of keys required for N participants in symmetric encryption is N(N-1)/2
+Number of keys required for N participants in asymmetric encryption is 2N
