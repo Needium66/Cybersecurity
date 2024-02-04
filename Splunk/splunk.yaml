@@ -1,0 +1,63 @@
+#Introduction to Splunk
+#Incident handling with splunk
+#Investigation with Splunk
+#Labs
+
+#Introduction to Splunk
+- Splunk Architecture (Components)
+There are 3 COMPONENTS in Splunk
+1. Forwarder
+2. Indexer
+3. Search Head
+
+The architecture or components that are involved are all about FORWARDER/SENDER(Forwarder), STORAGE/PROCESSOR(Indexer), and FILTER/RETRIEVER(Search head)
+With all these components seperate and standing alone, a decoupled architecture is assured.
+
+#Forwarder
+Splunk forwarder is the AGENT that is installed on the ENDPOINT (Active directory, AWS instance/environment, etc) to be MONITORED.
+Its MAIN TASK is to act as COLLECTOR from the ENDPOINT on which it is installed and sends data collected to the Splunk instance.
+Because the agent is lightweight, it does not IMPACT the PERFORMANCE of the ENDPOINT on which it is installed.
+Some of the data sources for Splunk forwarding are outline below:
+1. Linux logs, syslog from a Linux host
+2. Windows Event Logs, PowerShell and Sysmon logs from Windows
+3. Database connections request, errors from a Database
+4. Web server traffic from a web server
+5. From AWS environment
+6. From Azure environment
+7. From Google environment
+
+#Indexer
+Its MAIN TASK is to PROCESS the data sent by the forwarder. IT PROCESSES the data e.g logs and all that from different endpoints. Then
+NORMALIZES all the data into key-value pairs, datatypes etc and converts them to EVENTS.
+
+#Search Head
+Main task is for users to use it to search for logs that they are interested in using a query. The requests get sent to INDEXER, which will
+forward EVENTS, that are returned as key-value pairs.
+
+
+#Types of data sources
+The types of data sources that you can have in Splunk include:
+1. Security services- Data from security services e.g Microsoft Entra, McAffee etc
+2. Application servers - e.g WebSphere, WebLogic, JMX and JMS
+3. Database servers - e.g MySQL, RDS, Microsft SQL Server etc
+4. Network events- data fromnetwork port, SNMPevents etc
+5. Cloud services- AWS etc
+6. IT Operations- e.g NetApp, Cisco, Nagios
+7. Files and directories- data from files and directories
+8. Virtualization sources- e.g VMware, XenApp
+9. Other sources- Queues, APIs etc
+
+
+#One way to upload the ingested data
+One way that can be used to upload the ingested data can be done by following these steps-
+1. Select Source i.e your log source
+2. Select Source Type i.e the type of logs being ingested
+3. Input settings i.e index where the logs ingested will reside and hostName associated with the logs
+4. Review- review your configurations
+5. Validate
+
+#Some basic queries
+source='$nameofthesourcedirectory' host='$hostname' index='$indexname' sourcetype='$sourcetype' $then your query
+Finding a specific ip - "source_ip = '$ip'"
+Events that originate from all countries except US - NOT "source_Country = 'US'"
+
