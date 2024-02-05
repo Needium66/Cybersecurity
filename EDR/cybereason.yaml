@@ -1,0 +1,57 @@
+#There are several Endpoint Detection and Response tools. Cybereason is one of the most important EDR tool subscribed too by enterprises
+#It monitors end-user devices to detect and respond to cyber threats e.g ransomware, malware etc.
+#To cover some fundamentals and basics of it
+#How to carry out a weekly status review of endpoints
+#How to add new endpoints/devices
+#How to investigate/troubleshoot
+#How to configure cybereason
+#Some other EDR tools include Crowdstrike, Checkpoint, Trellix, IBM QRadar EDR etc
+
+#Weekly status reveiw for a new machine that has not made it to the "Group" yet
+#This is to validate that all devices/endpoints/laptops etc that are running are being scanned, monitored by cybereason
+#Any new machine that is found not to be in the "Group", should be added accordingly. The precursor to this is the installation of cybereason
+#agent on the machine
+#Follow the below steps to know the machines that are unassigned-
+1. Access the cybereason portal of your organization
+2. Select the "Menu" or bread crumb on the left at the top (usually has EPP overview)
+3. Go to "Admin" from the navigation pane on the left and select "System"
+4. Select "Groups" tab at the top
+5. Select "Unassigned" from the navigation pane on your left
+6. Review and validate that there are no machines that have been added to Cybereason, but did not make it to this group.
+
+#How to create new group
+#You can assign your machines to different groups for seamless and review and management on cybereason
+#All laptops can belong to a group called Laptops for Users.
+#You can name your groups based on the environment in which a server is or the OS of the server or name of the machines etc.
+#Follow the below steps to create a new group
+1. Select the "Create new group" button at the top
+2. Enter "Group name" for the group.
+3. Enter a "Description" for the group
+4. Select "Assignment logic" based on IP, FQDN, Organization, OS etc
+5. Assign a "Policy assignment" for the new group (you have to be creative about this- this is just basically for identification)
+6. Click on the "Create group" button at the bottom.
+
+##How to carry out a weekly status review of endpoints
+1. Go to "Systems" from the navigation pane on your left.
+2. Select "Sensors" tab from the top
+3. Filter the endpoints(sensors) by "Last Seen" (It should be a column at the extreme right)
+4. Validate for machines that have not checked-in in at least 2 weeks.
+5. Review and if there is a need to investigate, follow the below steps
+  i. Select the specified machine
+  ii. Click on the "dropdown" on the "Actions" tab at the top
+  iii. Go to "Investigate" option and select
+  iv. Take action based on instructions that you see e.g offline etc
+6. If after a review, you have determined that a machine has been decommissioned, you can archive the machine from the list.
+7. Follow the below steps to archive a machine-
+  i. Select the specified machine
+  ii. Click on the "dropdown" on the "Actions" tab at the top
+  iii. Go to "Archive" option and select
+  iv. Take action based on instructions that you see e.g enter a reason for the "Archive"
+  v. Select the "Archive" button at the bottom.
+
+
+#Data collection could be "Advanced" for all endpoints and just "Enabled" for servers. The difference between Advanced and Enabled are
+#For Advanced, Anti-Ransomware is enabled. It prevemts signatures mode state, fileless mode is enabled.
+#For both Advanced and Enbabled, a "Full Scan" and "Quick Scan" are performed at least once  a week. 
+#You should be able to see when last the machine was scanned
+#It can scan all the machines with the major OS (Windows, Linux, Mac etc)

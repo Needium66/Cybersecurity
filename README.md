@@ -266,3 +266,12 @@ Link-https://github.com/Needium66/Cybersecurity/blob/main/Google/google.yaml
 
 Tools: 
 SIEM, Playbooks, Network protocol analyzer, Linux CLI.
+
+
+########################
+Endpoint Detection and Response Tool (Cybereason)
+
+
+Solution: How to use Cybereason for monitoring, detection and response on your endpoints to prevent attacks like ransomware and malware.
+
+Some basic tasks that can be carried using this tool can be found in this link-https://github.com/Needium66/Cybersecurity/blob/073f84da63d283c4d76d397e1d3c43e25db8d7d8/EDR/cybereason.yaml
