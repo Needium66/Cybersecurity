@@ -57,7 +57,41 @@ One way that can be used to upload the ingested data can be done by following th
 5. Validate
 
 #Some basic queries
-source='$nameofthesourcedirectory' host='$hostname' index='$indexname' sourcetype='$sourcetype' $then your query
-Finding a specific ip - "source_ip = '$ip'"
-Events that originate from all countries except US - NOT "source_Country = 'US'"
+- source='$nameofthesourcedirectory' host='$hostname' index='$indexname' sourcetype='$sourcetype' $then your query
+- Finding a specific ip - "source_ip = '$ip'"
+- Events that originate from all countries except US - NOT "source_Country = 'US'"
+- index=windowslogs | chart count(EventCode) by image
+- index=windowslogs
+- Check in the windows logs where account name is not equal to system- index=windowslogs AccountName !=SYSTEM
+- Adding conditions, checking from Jide's account- index=windowslogs AccountName !=SYSTEM AND AccountName=Jide (Dont want to see system and want to see Jide)
+- Wildcard- status=fail* (Returns values for failure and failing)
+- Looking for a particular destination ip in windows logs- index=windowslogs DestinationIp=192*
+- Using fields for filtering in query e.g using fields command to show host, user, and sourceIp- index=windowslogs | fields + host + user + sourceIp
+- index=windowslogs | fields + hostName - EventID (Adds hostName and removes EventID)
+#Fields command is used to narrow down a search e.g using it to only get event logs for only hostName
+- Using "search" command to ONLY search for a particular event logs e.g - index=windowslogs | search Powershell
+- Using "dedup" to REMOVE duplicate fields. index=windowslogs | table EventID user image  HostName | dedup EventID (Produce EventID, user, image and
+HostName in a tabular form and don't duplicate or repeat EventIDs i.e only unique EventIDs)
+- Using "Rename" to change the name of the field in the search result. - index=windowslogs | fields + host + user + sourceIp | rename User as Employees
+(rename the Users field as Employees field).
+- Using "reverse" to reorder a field - index=windowslogs | table time EventID HostName SourceName | reverse (It reverses the order of the timing
+from ascending order to descending order).
+#Using head, tail, and sort as structuring during investigation in Splunk
+- index=windowslogs | table time EventID HostName SourceName | head 20 (Returns first 20 events with the specified fields)
+#tail returns the last set of events specified.
+#sort is used for having the fields in ascending or descending order.
+- index=windowslogs | table time EventID HostName SourceName | sort HostName
+#STATS commands
+- stats avg($filed_name)
+- stats max($filed_name)
+- stats min($filed_name)
+- stats sum($filed_name)
+- stats count($filed_name)
+#Chart command - for providing data and a visualization or table
+- chart <$function>
+- index=windowslogs | chart count by User
+#Timechart command - like time series visualization
+- timechart <$function>
+- index=windowslogs | timechart count by image
+
 
