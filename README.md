@@ -287,7 +287,7 @@ Overview: The lab is on
 - Access control list for users with different privileges.
 - Capabilities list for users with different privileges
 
-This lab was carried out to exhibit the messages are encryped and decrypted, using a Vernam Cipher encoding and decoding table. It also
+This lab was carried out to exhibit how messages are encrypted and decrypted, using a Vernam Cipher encoding and decoding table. It also
 shows how to go about access control for users based on matrix list and capabilities.
 
 Link to the lab- https://github.com/Needium66/Cybersecurity/tree/main/info_sec536_labs
