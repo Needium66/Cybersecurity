@@ -95,3 +95,30 @@ from ascending order to descending order).
 - index=windowslogs | timechart count by image
 
 
+#Investigation (Incident Response in Splunk)- 4 Phases of it(The LifeCycle) (Preparation, Analysis, Containment/Eradication/Recovery, Post-Incident Activities)
+#Some incidents or events that could warrant investigation includes the usage of USB devices when there is a restriction of that based
+#organization policy, crashing of the system, access to sensitive info from an unathorized user, execution of an unwanted program, a website
+#being defaced by an attacker.
+# Learning outcomes include
+- Effective utilization of Splunk to investigate logs
+- Importance of host-centric (e.g Windows event logs, sysmon, osquery, Powershell execution, process executive activity,
+adding/editing/deleting a registry key or value process, user attempting to authenticate, a user accessing a file)
+and network-centric log (e.g SSH connections, file access via FTP, web traffic, user accesing company's resources through VPN,
+file sharing through the network, ip and subnet actvities) sources.
+- Mapping attacker's activities to Cyber Kill Chain Phases[Attacker's Ways] (Reconn,Weaponization,Delivery, Exploitation,Installation,Command&Control,Actions on Objectives).
+- Leveraging OSINT(Open Source Intelligence) sites during investigations.
+
+#4 Phases
+- Preparation: Readiness of an organization against attacks. It involves the organization's IR documentations, policies, playbooks,
+security controls implementations e.g SIEM, EDR, IDS(Intrusion Detection System) and IPS(Intrusion Prevention System) and training and recruitment.
+- Analysis: How an organization carries out detection, analysis/inestigation of an incident. It involves alerting from security controls
+e.g SIEM, EDR etc. Then investigating the alerts for the root cause. It also covers threat hunting too.
+- Containment/Eradication/Recovery: It involves prevention of the incident from spreading and securing the network. Steps taking to prevent
+the attack from spreading into the network, isolation of the attack from infected host, clearing the network from the infection traces and
+gaining control back from the attack.
+- Post Incident Activity/Lessons: Lessons learnt from the breach or intrusion and how to prevent reoccurence of an incident or breach like that.
+
+#Incident Handling of a website defacing attack.
+#Using Splunk for detection and analysis of the incident
+#Logs for this will be from the webserver ingested into Splunk
+
