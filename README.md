@@ -275,3 +275,19 @@ Endpoint Detection and Response Tool (Cybereason)
 Solution: How to use Cybereason for monitoring, detection and response on your endpoints to prevent attacks like ransomware and malware.
 
 Some basic tasks that can be carried using this tool can be found in this link-https://github.com/Needium66/Cybersecurity/blob/073f84da63d283c4d76d397e1d3c43e25db8d7d8/EDR/cybereason.yaml
+
+
+###################
+Some Fun Stuffs: Info Sec Lab1 on Encryption and Access Control
+
+Overview: The lab is on
+
+- Encryption using Vernam Cipher
+- Access control matrix for users with different privileges
+- Access control list for users with different privileges.
+- Capabilities list for users with different privileges
+
+This lab was carried out to exhibit the messages are encryped and decrypted, using a Vernam Cipher encoding and decoding table. It also
+shows how to go about access control for users based on matrix list and capabilities.
+
+Link to the lab- https://github.com/Needium66/Cybersecurity/tree/main/info_sec536_labs
