@@ -137,3 +137,33 @@ If you know a specific url or path or whatever to look for in the index too, you
 - Start looking for "GET" request in the logs etc
 - Run a query similar to this "index=icrash1 theywillnevergetme.com sourcetype="$" src_ip="$""
 
+#To know the NUMBER OF COUNTS BY SOURCE IP AGAINST A WEB SERVER (To know what is hitting your web server)
+index=$icrash.com sourcetype=stream* | stats count(src_ip) as Requests by src_ip | sort - Requets
+#Look for inbound traffic towards a web server (you have got to know the ip of the webserver). Run the bwlow query-
+index=$icrash.com sourcetype=stream:http dest_ip="$ip"
+#Check post requests.
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST
+#To dig deeper or to make it more granular on the kind of exploitation that might be going on, run the below query
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" uri="$uricontent" | table _time uri _src_ip dest_ip form_data
+#(in a tabular form, with the time column, uri, src_ip, dest_ip, form_data columns)
+#How to check logs that contain username and password in a field e.g form_data- using regex
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$uricontent" form_data="*username*passwd*" | table _time uri _src_ip dest_ip form_data
+#Further digging deeper to get the password "rex" in Splunk is used to perform field extractions using regex
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$uricontent" form_data="*username*passwd*"
+| rex field=form_data "passwd=(?<creds>\w+)" | table _time uri src_ip dest_ip form_data
+
+#run this next
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$uricontent" form_data="*username*passwd*"
+| rex field=form_data "passwd=(?<creds>\w+)" | table src_ip creds
+
+#Pinpointing where an attack is coming from by running this query-
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$uricontent" form_data="*username*passwd*"
+| rex field=form_data "passwd=(?<creds>\w+)" | table _time uri $sourceofattack src_ip creds
+
+#From last requests
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$uricontent" form_data="*username*passwd*"
+| rex field=form_data "passwd=(?<creds>\w+)" | table _time uri $sourceofattack src_ip creds | tail 10
+
+#To get all the passwords
+index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$uricontent" form_data="*username*passwd*"
+| rex field=form_data "passwd=(?<creds>\w+)" | dedup creds
