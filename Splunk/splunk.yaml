@@ -121,4 +121,19 @@ gaining control back from the attack.
 #Incident Handling of a website defacing attack.
 #Using Splunk for detection and analysis of the incident
 #Logs for this will be from the webserver ingested into Splunk
+#The kinds of data that you have in Splunk can be examined from "Data summary"
+#The data in the Data summary will be based on "Host" "Source" or "Source type"
+#Sources e.g suricata, logfiles, winevent logs win registryetc.
+#Hosts e.g disk, servers, different hosts
+#Source type e.g suricata, win event, smb, snmp, fortigate, win registry(modifications/deletions), iis, nessus scan
+#All the above are all kinds of logs you could get in Splunk
+
+- Once you discover that there might have been an attack and you want to start the investigation. Start with reconn step looking into
+the network traffic logs in your system. Assuming you know the index to focus on e.g icrash1. Run the below query
+- index=icrash1
+If you know a specific url or path or whatever to look for in the index too, you could run a below query
+- index=icrash1 theywillnevergetme.com
+- Look for the type of web traffic you are getting. The source IP address. Looking for source reconnaissance against your webserver
+- Start looking for "GET" request in the logs etc
+- Run a query similar to this "index=icrash1 theywillnevergetme.com sourcetype="$" src_ip="$""
 
