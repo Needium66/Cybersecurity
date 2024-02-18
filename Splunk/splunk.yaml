@@ -167,3 +167,20 @@ index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$ur
 #To get all the passwords
 index=$icrash.com sourcetype=stream:http dest_ip="$ip" http_method=POST uri="$uricontent" form_data="*username*passwd*"
 | rex field=form_data "passwd=(?<creds>\w+)" | dedup creds
+
+#In order to investigate further how the website was defaced, we can focus on the following:
+- Examine the log sourcee.g from Suricata or any other network analaysis, threat detection software e.g tenable and IP addresses communicating
+with the webserver serving the defaced website ( logs from scanner or network analysis and ips making request to the webserver)
+e.g "index=bottv1 dest=192.168.250.70 sourcetype=tenable" run a query like this to investigate the source ip addresses (src)
+- Once you run the query, you filter for source ip in the output
+- What are the ip addresses you find? are they internal or external
+- If the ip addresses are internal, find out if they are communicating with external ip addresses
+- What external ip addresses are communicating with your internal ips?
+- Source ip addresses are the internal ip addresses
+- The ip in the query is the ip in question- the impacted ip. The ip to be used as reference point.
+- You can either ref the ip as source or dest in order to find out the inbound and outbound communication with the ip.
+- Run this in order to get dest ip address- i.e outbound traffic from the source ip =
+"index=bottv1 source=192.168.250.70 sourcetype=tenable".
+- To pinpoint the exact ip that triggered the incident, run the below query.
+- "index=bottv1 dest=192.168.250.70 url="spoffing-everything-in-my-path.cer" | table _time src dest_ip http.hostname url
+- The instigator of the compromise is the url, then you are trying to get everything in a tabular form.
