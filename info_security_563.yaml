@@ -233,3 +233,72 @@ Social Engineering: ways to hack a password. it is of different types.
 Current function foe encrypting and decrypting in ceazar cipher is C = E(M) = (M+k)% 26
 Number of keys required for N participants in symmetric encryption is N(N-1)/2
 Number of keys required for N participants in asymmetric encryption is 2N
+
+
+##############################
+#### OS SECURITY
+#Objectives
+- Basic concepts of OS including processes, file system, memory and virtual machines
+- Functions that monitor and protect the processes
+- Understanding password-based authentication and salting (password security with a concept of salting)
+
+OS controls the CPU, RAM, I/O and Disk drive in a computer; it manages the ways apps access the resources in a computer e.g the disk drives,
+ CPU, main memory, input and output devices, and network interfaces
+- OS MANAGES multiple users.
+- OS MANAGES multiple programs.
+
+In the filesystem in your computer/server, the topmost directory in the tree of directories/folders is the root directory/folder. The tree
+can be accessed via the file explorer.
+#File permissions
+File permissions are TOOLS for access control
+File permissions are CHECKED by the OS to determine if a file is READABLE, WRITABLE or EXECUTABLE by a user or group of users.
+In Unix like OS(Linux), there is a FILE PERMISSION MATRIX that has OWNER PERMISSIONS (what owners can do), GROUP PERMISSIONS (what some group of users can do)
+WORLD PERMISSIONS( deafult access right)
+An example of file permissions below:
+jide:~/java % ls -l
+total 24
+-rwxrwxrwx  1 jide department  1234 Feb 21 01.44 Floats.class
+-rw-r--r    1 jide department  2341 Feb 21 01.44 Floats.java
+-rw-------  1 jide department  3214 Feb 21 01.44 Test.java
+
+In the above file permissions for Linux, there are 3 types of permissions (READ, WRITE and EXECUTABLE FILES) 
+The types of access that are available in LINUX are OWNER, GROUP and WORLD (for other permissions)
+e.g in the above file matrix, the file named (Test.java) is OWNED by Jide, the group for the file is department
+The first set of "rwx" is for OWNER, the next set of "rwx" is for GROUP, the last set of "rwx" is for WORLD(Others)
+Test.java is only ACCESSIBLE by the OWNER i.e  Jide
+Floats.java has OWNER having read and write access, GROUP(department group) having read access and OTHERS having write access
+Floats.class has anybody having all the privileges or access including read, write and executables.
+
+#Password security
+Approach to GUESSING password from PASSWORD FILE is to CONDUCT a "DICTIONARY ATTACK"; where each word in a dictionary is HASHED and the
+resulting value is COMPARED with the HASHED PASSWORDS stored in the PASSWORD FILE
+- A dictionary of 500,000 "words" is often enough to discover most passwords
+- You can achieve cracking of password by this because the passwords are not multi characters enabled.
+- 10 minutes to complete the hashing
+
+#Password salt
+A technique used to make distionary attack harder to be cracked
+- when you associate a random number with password
+- Rather than COMPARING the HASH of an entered password with a STORED HASH of a password, the system COMPARES the HASH of an ENTERED PASSWORD
+the SALT for the associated password with a stored hash of the password and salt.
+- 2 quandrillion- longer than a million years to complete this
+
+How Password Salt Works:
+Without Salt:
+1. Userid X, Password P
+2. System will look H, the STORED HASH of X's Password(P)
+3. System will TEST whether h(P) = H.
+Password File -----> X:H
+
+With Salt:
+1. Userid X, Password P
+2. System will look up S and H, where S is the RANDOM SALT for userid X  and H is the STORED HASH of S and X's Password(P)
+3. System will TEST whether h(S||P) = H.
+Password File -----> X:S,H
+
+#Linux Password File
+Linux has 2 files to keep the password info.
+Password file keeps the basic user info including the BASIC USER ID
+Shadow file keeps the hash password info and salt info
+- /etc/passwd: basic user and password info (world readable)
+- /etc/shadow: encrypted password info- based on one way function. readable only by super user. only accessible by ROOT USER 
