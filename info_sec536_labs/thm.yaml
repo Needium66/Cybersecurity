@@ -1,0 +1,91 @@
+#TRYHACKME LABS
+gobuster -u http://fakebank.com -w wordlist.txt dir
+run the script to display info about an account
+Extract the file that contains a user's account details
+Run the file against the account of the user
+Transfer money from the user's account to yours
+
+
+Saw a malicious IP alert on your SIEM (Suspicious activities alert)
+Validated that it was legit
+Reported it to AbuseIDB
+Contacted the SOC Lead
+Block the malicious IP or add it to the Blcok list.
+Got this flag
+
+#Web Application Security
+Web apps are applications you don't need to install on your laptops or mobile phones to be able to access them. Once you have a browser,
+you should be able to access a web app. Some of the common web apps that you can access are
+- online shopping apps e.g Amazon, Macy's, Etsy, Ebay, Walmart etc
+- online banking apps e.g Wells Fargo, BOA etc
+- Webmails- Gmail, Outlook, Yahoomail etc
+- Online office suites e.g Words, Powerpoint, Excel, Docs, Sheet etc
+- Money transfer e.g Western Union, Money Gram, Worldremit etc
+- Social media e.g LinkedIn, Facebook etc.
+
+To be able to access all these web apps, you need a web browser. All the web apps can be accessed through a web browser e.g Chrome, Firefox
+Safari, etc.
+
+There is a need for security of web application, from the top of my head, I will say an organization or company with web apps, always put
+these set of security measures in place. If they have not, they should try to implement them.
+1) MFA
+2) SSL
+3) HTTPS
+4) Decoupled/ Asynchronous web application- The major components of the web app are all decoupled- Product should be independent of
+Sales, Sales should be independent of Search, Checkout should be independent of Shipping etc.
+5) Architecture/ App Stack should be decoupled too- Web tier should be sepearte from App tier and Database
+6) Follow up to number 5 is that no direct access from a user's request to the database.
+7) Ensure segmentation and firewalls implementations in your web app.
+8) Strong password implementations for users'- multi characters and long . I guess 15 characters at least
+
+
+####
+Some Web App Attacks/Vulnerabilities/Weakness
+Some loopholes or weaknesses that an attacker could exploit in a web app include
+1) Identification and Authentication Attack - Ordinarily, for a user to successfully access a web app, a user needs to be identified and
+then authenticated through credentials that are provided. These credentails can be exploited by an attacker through
+- Brute force - random guessing of passwords through script or automation tools . If mandatory multi character password implementation is
+integrated for the web app, it may forestall this.
+- Weak password - Guessing of passwords through combination of users' names or date of birth could. Implementing at least 15 multi characters 
+password could help
+- Passwords in plaintext- I doubt if any web app are still run with passwords in plaintext. But if there is any that still does this, it will be
+easier for an attacker to exploit this.
+- Logging page allwoing for unlimited attempts to login. I think it is 3 times at most these days
+
+2) Access Control Attack-
+If the access control policy in an organization is weak or broken or non strictly implemeted, a web app would be prone to easy attacks.
+Inability to implement assigning least privilege permissions to users in a company or implementing a role-based access could cause access
+control related attacks. i.e if an employee in support is having save privileges as an employee in security or finance etc
+Some access control related threats or vulnerabilities include
+- Mistakenly allowing a write access/privilege to a user or customer . A concrete access control policy that defines principles of least
+privilege to both employees and users vis-a-vis privilege they can have will prevent this.
+- Exploitation of UI - PCI DSS compliance and other compliance to regulations will prevent this.
+- Insecure Direct Object References Vulnerability (IDOR)
+
+3) Injection Attack
+- Proper handling of data according to laid down rules and regulations. Adhering to CIA and other security and access control policies
+will prevent this too. Regular patching, Cert renewal, encryption and others could prevent this kind of attack too.
+
+4) Cryptographic related attacks
+Attacks related to encryption and decryption.
+- Not implementing the use of HTTPS
+- Usage of default keys etc
+- Having credentials in plaintext.
+
+#IDOR Lab
+An attacker exploiting a broken access control in a system by having access to info or carrying out functions that they are not authorized 
+to do.
+- A user having access to an image and manipulating the characters or parameters that make up the image to perform an unthorized action
+- Ability for a user to be able to manipulate/ exploit a url
+- Attackers can exploit IDOR on a manufacturing coy to stall production and collect ransom to stem their control.
+
+#Example
+An attacker exploited the url of a production company by successfully manipulating a number in the url that references the inventory
+management system of the company
+- To fix or stall this, you need to fix the url to ensure that no matter the random number that an attacker may use to exploit the system
+there will be no access since he/she is not authorized to be able to modify anything in the system. 
+- Also need to fix the inventory management system to be able to performing its fucntions as it were before the attack
+- Contain the attack
+- Eradicate the attack
+- Recover the system
+- Ensure there is no IDOR related vulnerabilities in url or in the system moving forward.

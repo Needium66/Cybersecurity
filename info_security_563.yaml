@@ -301,4 +301,7 @@ Linux has 2 files to keep the password info.
 Password file keeps the basic user info including the BASIC USER ID
 Shadow file keeps the hash password info and salt info
 - /etc/passwd: basic user and password info (world readable)
-- /etc/shadow: encrypted password info- based on one way function. readable only by super user. only accessible by ROOT USER 
+- /etc/shadow: encrypted password info- based on one way function. readable only by super user. only accessible by ROOT USER
+
+
+
