@@ -291,3 +291,17 @@ This lab was carried out to exhibit how messages are encrypted and decrypted, us
 shows how to go about access control for users based on matrix list and capabilities.
 
 Link to the lab- https://github.com/Needium66/Cybersecurity/tree/main/info_sec536_labs
+
+
+################Try Hack Me Labs
+
+Overview: Getting myself busy with some labs. Gaining more hands-on experience and retention of knowledge following through different labs on majorly defensive security on Try Hack Me.
+
+Started with a bunch of labs on web application security and os security.
+Continuing to follow through with other labs.
+
+- Web Aplication Security- Insecure Direct Object Reference (IDOR) Lab
+- OS Security - Obtaining Username and Password. Then elevate the privileges to SA
+
+Links to the labs- https://github.com/Needium66/Cybersecurity/blob/cac972deadae2da4e79bacccdb4a7240864ed4c6/THMLabs/thmlabs.yaml
+https://github.com/Needium66/Cybersecurity/blob/cac972deadae2da4e79bacccdb4a7240864ed4c6/THMLabs/oslab.yaml
