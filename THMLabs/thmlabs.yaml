@@ -89,3 +89,4 @@ there will be no access since he/she is not authorized to be able to modify anyt
 - Eradicate the attack
 - Recover the system
 - Ensure there is no IDOR related vulnerabilities in url or in the system moving forward.
+

@@ -1,0 +1,77 @@
+#Operating System Security.
+#This is an overview of the OS security module in Try Hack Me
+#This is an extension of OS security class that I took in my info_sec 563 class
+#This ensures a more detail hands-on experience and more modern trends and events in regards to OS security.
+OS is the layer that is between hardware (keyboard, mouse, monitor etc) and applications and programs (Web broswer(Firefox, Chrome, Messaging app (Whatsapp,
+Telegram)). OS are of different types and functions that includes-
+- OS for Phones - iOS for iphones, Android for Samsung, Huawei, etc
+- OS for laptops/personal computers/monitors - MS Windows, MacOS, Linux etc.
+- OS for Servers - MS Windows Server 2022, IBM AIX, Oracle Solaris etc.
+Android (Most smartphones run this) is the OS currently controlling the market share among all OS's. It has market share of about 39.4% according to Statcounter 2022
+Followed by Windows, with 32.1% (most PCs run on this).
+Followed by iOS (iphones run on this), with 17.6%
+Others make the rest of the percentage to round it up to 100%.
+PCs and Phones could contain data that need to be protected. These data includes:
+- Private conversations - texts, chats, messaging apps convo etc
+- Private photos
+- Emails from gmail, yahoo, outlook etc
+- Saved passwords
+- Apps
+- Personal files, documents etc- copies of birth certificate, SSN, passport etc
+The data we are always trying to protect to ensure the security of all these items will follow CIA
+Confidentiality- For example, all data that I have on my PC or Phone should only be able to be viewed by me, because the PC or phone is meant
+for me and intended for me. So with my pin or password, i can access any of these devices and perform any action. However, I could allow
+some other users access by giving them my password or pin
+Integrity- What data ( e.g file scans) etc. that i do on my PC must not be allowed to be tampered with by unauthorized user. Because gmail uses
+https and other security proof features, when i send a copy of my documents to someone else, it should only be accessible by the intended person.
+Nobody else should have access to it in transit or at rest.
+Availability- My devices should always be available to me whenever I want to use it. No other person should have control over them.
+
+#OS Vulnerabilities or weaknesses that attackers could exploit include
+1) Authentication and weak passwords- If the authentication on a server is not full security proof, an attacker could exploit it. If the server
+does not have a MFA, or proxy or joined AD with defined role to access it, an attacker could use brute force or other means to gain access.
+Setting up authentication through SSO, AD, etc. M
+Maintaining MFA
+Practicing least privilege access policy
+Not saving credentials or passwords in plain sight
+Implementing multi character strong password through Secret manager, passwordstate etc
+Using keys
+Setting up proxy servers etc.
+Using complex passwords and different passwords for different accounts
+2) Weak file permissions- When every Tom, Dick and Harry have access to all files, spurs enormous risks and threats. 
+Defining access based on roles
+Putting a policy in place to dictate how access will be assigned
+Practicing least privilege access policy
+No to indiscriminate access to root files
+3) Malicious programs- Sophisticated attacks created by attackers that target systems e.g Trojan Horse, Ransomware (encrypt your files so
+control the availability from CIA and requests for ransom to get back the availability)
+
+#Lab
+- Tricking target to run a malicious file
+- Obtaining credentials (username and password)
+
+#Obtaining credentials (username and password)
+Because most servers use root or administrator as usernames, an attacker could try to guess the password and use brute force, then escalate
+privileges to a SA.
+
+- Went to a client's company
+- Got a sticky note with a names Sammie and dragon
+- Guessed the username for access to a server could be sammie and password dragon
+- Started a terminal on a Linux server
+- Ran ssh command to access the machine - "ssh sammie@MACHINE_IP"
+- With the warning message, click on yes to Continue
+- Enter password with the guessed one - "dragon"
+- Run a "whoami" command to validate that the user with the access it sammie
+- If successful, run "ls" to view the files that in the current directory (pwd)
+- To see some details about contents of a particular file, run "cat $filename"
+- Run "history" to view set of commands that have beens used by users and some usernames.
+- Assuming that they are not following security best practices now, use one of the username and guess some common password from the darkweb list
+- Exit from sammie
+- Run "ssh johnny@$MACHINE_IP"
+- Guess the passwords
+- Password that got successful was "abc123" for Johnny
+- Run "history" again. You could be lucky to see a password among the list.
+- Switch to root account from johnny- run "su - root"
+- Enter the password that was seen in history as root password
+- Run "ls"
+- Obtain the content of the file - "flag.txt"
