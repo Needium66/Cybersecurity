@@ -1,0 +1,43 @@
+####Network security
+#An overview of network security in thm
+Network security consists of hardware and software security solutions.
+Hardware network security solutions includes:
+Firewalls - To define or set of rules to allow or deny traffic. To control how traffic runs in a system.
+Intrusion Detection System (IDS): To detect breaches or intrusion into a network system
+Intrusion Prevention System (IPS): To prevent or block unauthorized access into a network.
+Virtual Private Network(VPN): To allow for only known traffic in a system. Prevent public or unknown traffic.
+
+Software network security solutions includes:
+Anti virus: on phones and pcs etc.
+Host firewalls : e.g Microsoft defenter firewall on MS Windows and application firewall on apple phones
+
+There are 7 known steps to break into a TARGET'S NETWORK according to Lockheed Martin. It is called Cyber Kill Chain (CKC)
+The mnemonic for it for me is REWDEICA
+Recon: Attacker learning as much as possible about the target. Getting info like type of servers, OS, IPs, name of users, email addresses
+Weaponization: Preparing a malicious program of file or script to execute to gain remote access
+Delivery: Delivering the weaponized file to target via various means e.g email, web browser link, usb, text etc
+Exploitation: Start exploiting the target once the malicious file or script has been successfully executed e.g opening of it by a user
+Installation: Once the can of worm has been opened by a user inadventetly, the malware would have been installed on the system
+Command and Control: Then the attacker will have command and control over the target's system.
+Actions and Objectives: Once the attacker has gained the control of the system of a target, he has achieved is objective and can start
+performing functions like Data Exfiltration (stealing target's data)
+Side note- not allowing copy and paste on servers can PREVENT data exfiltration
+
+#Network Lab
+Carrying out a data exfiltration of a system:
+- Starting with recon to gather info using nmap (short for network mapper)- to scan for info about a system - "nmap $MACHINE_IP"
+- Connecting to the ftp server found in the system by running "ftp $MACHINE_IP"
+- Brute force attack by running "anonymous" to see if it works
+- Running "ls" once the brute force worked.
+- Running "get secret.txt" to get more info about a specific file
+- Run "exit" once the file has been downloaded successfully.
+- To display the content of the secret text file, run "cat secret.txt"
+- To gain command and control, ssh into the system and use one of the passwords found in the secret file by running "ssh root@$MACHINE_iP"
+- Then brute force for the password
+- Then action and objectives, run "pwd" to be sure of your working directory
+- Run "ls" to see available files
+- Run "cat flag.txt" to see the content of the flag text file.
+- Change directory to home directory by running "cd /home"
+- Run "ls" to see files that are available in home directory
+- Change the directory to one of the users in the home directory e.g librarian. Run "cd /librarian" or cd /home/librarian
+- View the file in the home directory by running "cat flag.txt"
