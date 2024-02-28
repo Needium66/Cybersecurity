@@ -305,3 +305,10 @@ Continuing to follow through with other labs.
 
 Links to the labs- https://github.com/Needium66/Cybersecurity/blob/cac972deadae2da4e79bacccdb4a7240864ed4c6/THMLabs/thmlabs.yaml
 https://github.com/Needium66/Cybersecurity/blob/cac972deadae2da4e79bacccdb4a7240864ed4c6/THMLabs/oslab.yaml
+
+
+############## Network Security on THM
+
+Overview: The lab is on network security. There is a use of nmap to scan for info on a Linux machine, then connect to an ftp to get a file and then use brute force to login has and then obtain an important file. Progressing to gaining command and control by login into the server as root. Achieving objectives and performing other actions as required.
+
+The link to the lab is - https://github.com/Needium66/Cybersecurity/blob/main/THMLabs/networklab.yaml
