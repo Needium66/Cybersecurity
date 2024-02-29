@@ -304,4 +304,49 @@ Shadow file keeps the hash password info and salt info
 - /etc/shadow: encrypted password info- based on one way function. readable only by super user. only accessible by ROOT USER
 
 
+####Week 6
+- Memory and file system security
+- Linux file system permissions
+- Application program security including the concept and mechanism of buffer overflow attacks
 
+#Access Control Model:
+1) Discretionary Access Control (DAC): It is the type of model where
+- The owner grants access to others.
+- The owner may define the type of access (write/read/execute) given to others.
+2) Mandatory Access Control (MAC): Model where
+- The admin grants access to users
+- Multiple levels of SECURITY for users and documents
+- Levels e.g in military - Top secret > Secret > Confidential > Restricted > Unclassified
+
+DAC is the standard MODEL used by operating system.
+Access Control Entries and Lists:
+An Access Control List (ACL) for a resource e.g file or folder is the SORTED LIST of zero or more of Access Control Entries (ACE)
+ACE means a certain set of accesses e.g READ, WRITE, EXECUTE to the resource is ALLOWED or DENIIED to a user or group.
+Examples of ACEs for folder "CSI351_Grades"
+- Bob; Read; Allow
+- TA's; Read; Allow
+- TWD; Read, Write, Allow
+- Bob; Write; Deny
+- TA's; Write; Allow
+#Two Types of Policies
+- Open Policy
+- Closed Policy
+Open Policy: 
+- Access is ALLOWED by default.
+- Deny Tom read access to "foo"
+- Deny Bob r/w access to "bar"
+Examples:
+Tom says "I would like to read foo"
+Answer: Denied
+Tom says "I would like to read bar"
+Answer: Allowed (Because access is allowed by default)
+
+Closed Policy:
+- Also called "default secure".
+- Give Tom read access to "foo"
+- Give Bob r/w access to "bar"
+Examples:
+Tom says "I would like to read foo"
+Answer:  Allowed
+Bob says "I would like to read bar"
+Answer: Denied.
