@@ -1,0 +1,92 @@
+#Digital Forensics THM
+#Steps to follow to investigate as an investigator in a crime scene
+1. Acquire the evidence: Collect the digital devices e.g laptops, storage devices, usb etc.
+2. Establish a chain of custody: Authorized investigator will fill out a form
+3. Place evidence in a secure container: Evidences collected in step 1 will be placed in a secure container.
+4. Transport evidence to digital forensics lab.
+
+#Steps to be followed at digital lab includes
+1. Retrieve digital evidence from the secure container (Step 3 above)
+2. Create a forensic copy of the evidence: use a tool to get a copy of the evidence to avoid modifying the original data
+3. Return the digital evidence to the secure container: Work off the copy of the digital evidence. If broken, you make another copy
+from original to work on.
+4. Start processing the copy from your workstation.
+
+Digital Forensics according to Ken Zatyko includes:
+- Proper search authority: Investigators having proper legal authority to search
+- Chain of custody: Required to have a record of who is holding the evidence at anytime.
+- Validation with mathematics: Using mathematical function called hash function to know if a FILE has not been modified.
+- Use of validated tools: Tools used in the investigation must be validated. All tools must be working properly
+- Repeatability: Establish a way to make the findings reproduceable based on skills and tools available.
+- Reporting: Conclude the investigation with a report.
+
+#Using DF to search for a kidnapped cat
+- A cat was kidnapped
+- Kidnapper sent a MS word document to make their request.
+- The MS Word document got converted to PDF to extract image for convenience.
+- Changed directory to the directory containing the case file by running " cd /root/Rooms/introdigitalforensics"
+- Run "ls" to view what the directory contains.
+- Note for document metadata in MS Word document or PDF, you can follow the below steps
+  - MS Word
+    - Select the "View" tab at the top
+    - Go to the extreme right and select "Properties"
+    - Under "Properties", you will see info like Title, Last Modified, Last Created, Printed, Author, Last Modified by, Pages, etc.
+  - PDF
+    - Select "setting" (the gear icon) at the extreme right at the top
+    - Select "view document properties"
+    - You will see properties like Author, Title, Created on, Modified on, Creator, Location, Subject etc.
+- We can also run some commands to view the pdf metatdata. Run "pdfinfo $Document_name". If you don't have pdfinfo installed on KaliLinux
+Run "sudo apt install poppler-utils"
+- Enter the "Author" that you found in the metadata running the command in the previous step
+- Run the command "exiftool $IMAGE_NAME" to get info embedded the image- metadata e.g location. If you don't have exiftool installed, run
+"sudo apt install libimage-exiftool-perl" to isntall it on Kali Linux.
+
+#lab output dump
+root@ip-10-10-81-177:~# cd /root/Rooms/introdigitalforensics
+root@ip-10-10-81-177:~/Rooms/introdigitalforensics# ls
+letter-image.jpg  ransom-letter.doc  ransom-letter.pdf  ransom-lettter-2.zip
+root@ip-10-10-81-177:~/Rooms/introdigitalforensics# pdfinfo ransom-letter.pdf
+Title:          Pay NOW
+Subject:        We Have Gato
+Author:         Ann Gree Shepherd
+Creator:        Microsoft® Word 2016
+Producer:       Microsoft® Word 2016
+CreationDate:   Wed Feb 23 09:10:36 2022 GMT
+ModDate:        Wed Feb 23 09:10:36 2022 GMT
+Tagged:         yes
+UserProperties: no
+Suspects:       no
+Form:           none
+JavaScript:     no
+Pages:          1
+Encrypted:      no
+Page size:      595.44 x 842.04 pts (A4)
+Page rot:       0
+File size:      71371 bytes
+Optimized:      no
+PDF version:    1.7
+
+
+Y Cb Cr Sub Sampling            : YCbCr4:4:4 (1 1)
+Aperture                        : 2.8
+Date/Time Created               : 2022:02:15 17:23:40-17:23
+Digital Creation Date/Time      : 2021:11:05 14:06:13+03:00
+GPS Latitude                    : 51 deg 30' 51.90" N
+GPS Longitude                   : 0 deg 5' 38.73" W
+GPS Position                    : 51 deg 30' 51.90" N, 0 deg 5' 38.73" W
+Image Size                      : 1200x800
+Megapixels                      : 0.960
+Scale Factor To 35 mm Equivalent: 0.7
+Shutter Speed                   : 1/200
+Create Date                     : 2022:02:25 13:37:33.42+03:00
+Date/Time Original              : 2022:02:25 13:37:33.42+03:00
+Modify Date                     : 2022:02:15 17:23:40+01:00
+Thumbnail Image                 : (Binary data 4941 bytes, use -b option to extract)
+Circle Of Confusion             : 0.043 mm
+Field Of View                   : 54.9 deg
+Focal Length                    : 50.0 mm (35 mm equivalent: 34.6 mm)
+Hyperfocal Distance             : 20.58 m
+Lens ID                         : Canon EF 50mm f/1.8 STM
+Light Value                     : 7.9
+
+- Run this command to know the model of the camera used - "grep: exiftool image.jpg | grep Camera"
