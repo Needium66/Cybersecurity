@@ -312,3 +312,11 @@ https://github.com/Needium66/Cybersecurity/blob/cac972deadae2da4e79bacccdb4a7240
 Overview: The lab is on network security. There is a use of nmap to scan for info on a Linux machine, then connect to an ftp to get a file and then use brute force to login has and then obtain an important file. Progressing to gaining command and control by login into the server as root. Achieving objectives and performing other actions as required.
 
 The link to the lab is - https://github.com/Needium66/Cybersecurity/blob/main/THMLabs/networklab.yaml
+
+
+################## Firewall Rule to block a malious IP lab
+
+Overview: Touched on discovering a malicious IP in your network that is targeting your web server. In order to prevent further attack,
+a firewall rule is created to block the malicious IP from your network.
+
+The link to the lab- https://github.com/Needium66/Cybersecurity/blob/main/THMLabs/thmlabs.yaml
