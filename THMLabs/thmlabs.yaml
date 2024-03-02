@@ -142,3 +142,19 @@ be "BLOCKED" because of malicious activities
 - Do this
 Source IP Address   Destination IP Address   Destination Port    Action
 198.51.100.34         203.0.110.1               80                DROP
+
+
+####Path
+#Intro to Cybersecurity
+- Intro to offensive sec
+- Intro to defensive sec
+- Careers in cyber
+
+#Intro to Offensive Sec
+- Web App Sec
+- OS Sec
+- Network Sec
+
+#Intro to Defensive Sec
+- DF
+- Security Operations

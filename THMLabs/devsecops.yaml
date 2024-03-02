@@ -1,0 +1,29 @@
+####Devsecops on thm focuses on securing pipelines throuh Iac and extends to containerization security.
+#secure software development workflow
+#Objectives
+#Into to Devsecops(Secure SDLC, environments and tools)
+#SDLC
+#SSDLC(Secure Software Development LifeCycle)
+#Security of Pipeline(Pipeline automation, Source code security, Automated Code Testing, Dependency Management, CI/CD and Environment Security)
+#Security in the pipeline (Attacking the pipeline, Exploiting vulnerabilities in the pipeline, Defending the pipeline)
+#Container security
+#Infrastructure as Code (Cloud Devops, secret management, exploiting terraform, exploiting vagrant, exploiting docker)
+- Agile: The methodology that relies on self-organizing teams that focus on constructive collaboration
+- DevOps: The methodology that relies on AUTOMATION and INTEGRATION to drive cultural change and unite teams.
+- Waterfall: The traditional approach to project management that led to MISTRUST and POOR COMMUNICATION between developmental teams.
+DevOps emphasises "BUILDING TRUST"
+- CI/CD: Helps in adding tests in an automated manner and dealing with frequent merging of code changes.
+- MONITORING: Focuses on collecting data to analyse the performance and stability of services.
+- IAC: A way to provision infrastructure through reusable and consistent code.
+- Shift Left: DevOps teams focus on instilling SECURITY from the earliest stages in the development lifecycle and establishes a more
+collaborative culture between DEVELOPMENT and SECURITY.
+Benefits:
+- Risks are reduced massively because security is introduced early in the SDLC
+- No unnecessary stress because bug are discovered in later stages of SDLC s before
+- No constant rollbacks because bugs are discovered in later stages
+- No economic losses as a result of discovering security flaws or bugs late.
+- Security flaws are discovered in early stages and these prevent stress, rollbacks and economic losses.
+Implementing security at every stages of the SDLC will ensure the software is designed with security best practices.
+The practice of SHIFTING LEFT in DevOps is called DEVSECOPS(Development approach whereby security is introduced from the early stages of development
+lifecycle until the final stages).
+Security is no more an add-on, it is a MUST DESIGN FEATURE.
