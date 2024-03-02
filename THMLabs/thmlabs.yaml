@@ -90,3 +90,55 @@ there will be no access since he/she is not authorized to be able to modify anyt
 - Recover the system
 - Ensure there is no IDOR related vulnerabilities in url or in the system moving forward.
 
+####Security Operations Center
+Monitor network and systems of a company 24 hours in a day and 7 days in a week.
+Responsibilities may include but not limited to
+- Finding vulnerabilities: Looking for vulnerabilities and taking actions like recommended patching or whatever that is recommended
+- Detect authorized activity: Detecting credentials of a user was used without authorization. Change in geographic location could a pointer.
+- Discover policy violation: e.g not sharing of files through ftp may trigger this
+- Detect intrusions: Intrusion through a user inadvertently clicking a malicious link.
+- Support with incident response: In the event of any incident, get into action to resolve this.
+
+SOC Data Sources include:
+- Server Logs: Logs from servers like mail server, web server, dc on ms windows network etc. Getting info like successful and blocked login attempts
+- DNS activity: Finding info about domain names that are interacting with your orgs DNS server (e.golajide.com). The IPs. Run a DNS query to get
+this and notice a DNS query repeating every minute- behavior is not that of a user browsing the internet. A laptopcan be communicating with
+a malicious server. Detect the laptop, Isolate the laptop, clean it up of the malware and begin threat hunting on other laptops in the network to validate
+that they are not infected.
+- Firewall Logs: Knowing the packets that are allowed into or blocked from your network. Dealing with source and destination IPs. 
+Source and destination ports.
+- DHCP Logs: Knowing IPs that are assigned to systems. Knowing the devices that have joined your orgs network. Dynamic Host Configuration Protocol
+- Database Logs: Logs from the databases. Who has logged in or not.
+
+SOC Services: Both reactive and proactive services.
+Reactive services include:
+1. Monitor security posture - Monitor network and computers for security notifications and incidents and responding to them
+2. Vulnerability management - Finding vulnerabilites in the system and patching them.
+3. Malware analysis - Recover malware that reached the system. Carry out basic analysis in a controlled environment before escalating.
+4. Intrusion detection - Monitor with your IDS tool and take action.
+5. Reporting - Report your findings to stakeholders and for compliance sake.
+Proactive services include:
+1. Network security monitoring (NSM) - Monitoring the network data and analysing it to find if there is an intrusion.
+2. Threat hunting - assumes intrusion has taken place and then trying to investigate if the assumption was true.
+3. Threat intelligence - Learning about potential adversaries and their techniques and tactics to improve the orgs's defense
+
+Cybersecurity training
+
+Lab using firewall rule to BLOCK a suspicious IP
+
+Source IP Address   Destination IP Address    Source Port   Destination Port    Action
+172.16.4.1            10.10.10.41               ANY            80                PASS
+172.16.8.1            10.10.10.81               ANY            23                DROP
+
+This is saying all packets from the source IP "172.16.4.1 " to the destination IP "10.10.10.41" to the destination PORT NUMBER "80" should
+be "ALLOWED". All packets from the source IP "172.16.8.1 " to the destination IP "10.10.10.80" to the destination PORT NUMBER "23" should
+be "BLOCKED" because of malicious activities
+
+####Lab using a firewall rule to BLOCK a MALICIOUS IP
+###Discover that website 203.0.110.1 is being attacked and you want to create a firewall rule to block it.
+- Discover that the source IP of the attack is 198.51.100.34 and destination port number for access into your website is 80.
+- The source IP to be allowed is 203.0.113.19
+- You are only concerned about BLOCKING the malicious IP
+- Do this
+Source IP Address   Destination IP Address   Destination Port    Action
+198.51.100.34         203.0.110.1               80                DROP
