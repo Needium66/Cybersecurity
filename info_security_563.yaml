@@ -350,3 +350,139 @@ Tom says "I would like to read foo"
 Answer:  Allowed
 Bob says "I would like to read bar"
 Answer: Denied.
+
+Closed Policy with Negative Authorizations and Deny Priority:
+- Give Tom r/w access to "bar"
+- Deny Tom write access to "bar"
+- Tom: I would like to read "bar" ---- READ
+Answer: Allowed
+- Tom: I would like to write "bar"
+Answer: Denied
+This kind of policy is used by Windows to manage access control to the file system.
+
+Differences between Windows and Linux
+Linux:
+- Allow-only ACEs
+- Access to file depends on ACL of file and of all ancestor folders
+- Start at root of file system
+- Traverse path of folders
+- Each folder must have execute permission(cd)
+- Different path to the same file not equilvalent
+- File's ACL must allow requested access
+
+Windows:
+- Allow and Deny ACEs
+- By default, deny ACEs precede allow ones
+- Access to file depends only on file's ACL
+- ACLs of ancestors ignored when access is requested
+- Permissions set on a folder usually propagated to descendants (inheritance)
+- System keeps track of inherited ACE's
+
+#Linux File System
+- Tree of directories (folders)
+- Each directory has links to zero or more files
+- File Access Control for:
+Files
+Directories
+Therefore....
+- \dev\: devices
+- \mnt\: mounted file systems
+- Sockets, pipes, symbolic links.
+Linux permissions:
+To see permissions, run "ls -l"
+Knowing the meaning the permissions and output e.g
+-rwxr-x--- 1 jk ugrad 16 2005-10-13 7:18 myfile.txt
+
+- first hyphen means FILE / DIRECTORY
+- The next "rwx" means "OWNER PRIVILEGE"
+- The next "r-x" means "GROUP PRIVILEGE"
+- The next "---" means "WORLD PRIVILEGE"
+- jk means "OWNER"
+- ugrad means "GROUP"
+- 16 means "SIZE"
+- 2005-10-13 7:18 means "MODIFIED date/time"
+- myfile.txt means "NAME"
+
+Octal Notation:
+- r = 4
+- w = 2
+- x = 1
+rwxr-x--- = 750
+
+Permissions for Directories:
+Read: bit allows listing names of files in directory, but not their properties like size and permissions
+Write: bit allows creating and deleting files within the directory
+Execute: bit means entering the directory and getting properties of files in the directory
+Special permission bits:
+- Set-user-ID ("suid" or "setuid") bit
+- Set-group-ID ("sgid" or "setgid") bit
+- Sticky bit
+Set-user-ID ("suid" or "setuid") bit:
+- Causes the program to run as FILE OWNER regardless of who runs it.
+- Ignored for everything else
+- In 10-character display, replaces the 4th character (x or -) with s (or S if not executable)
+-rwsr-xr-x: setuid, executable by all
+-rwxr-xr-x: executable by all, but not setuid
+-rwSr--r--: setuid, but not executable - not useful
+Sticky bit:
+- On directories, prevents users from deleting or renaming files they don't own
+- Ignored for everything else
+- Replaces 10th character (x or -) with t
+drwxrwxrwt: sticky bit set, full of access for everyone
+drwxrwx--t: sticky bit set, full of access for user/group
+drwxr--r-T: sticky bit set, full of access for everyone
+Commands to change permissions:
+chmod - change mode
+chgrp - change group to any group in which the user is a member.
+chown - change owner
+with r command- means recur - change for a particular file and everything within it.
+Explot: An exploit is any input(software, argument string, commands)  that takes advantage of a bug, glitch or vulnerrability in order to cause attack
+Attack: An unintended or unanticipated behavior that occurs on software, hardware or electronics that bring advantage to an attacker.
+Buffer Overflow Attack: It is one of the most common OS bugs. The following could cause it
+1. Dev FAILS to include code that checks whether an input string fits into its buffer array
+2. An INPUT to the RUNNING PROCESS exceeds the length of the buffer
+3. The INPUT string OVERWRITES a portion of the memory of the process.
+4. Causes the application to BEHAVE improperly and unexpectedly.
+Effect of a buffer overflow:
+- The process can operate on malicious data or execute malicious code passed in by the attacker
+- If the process is executed as root, the malicious code will be executing with root privileges.
+Buffer flow vulnerabilities:
+- Out-of-bounds memory accesses used to CORRUPT program's intended behavior.
+- Most common class of implementation flaws.
+Example:
+char sample [10];
+sample[10] = 'B';
+Places where buffer can overflow:
+Memory-
+Can affect "user's data"
+Can affect "user's code"
+Can affect "system data"
+Can affect "system code"
+
+Malicious Code Injection:
+char buf[80];
+  int (*fnptr) ();
+
+- function pointer fntpr invoked somewhere else
+Risk: An attacker can OVERWRITE fntpr with any address, redirecting project execution
+- Can input contains malicious machine instructions, followed by pointer to OVERWRITE fntpr
+- When fntpr is next invoked, flow of control is redirected to malicious code
+# Stack smashing attack
+- First, attacker STASHES malicious code sequence somewhere in program's address space.
+- Attacker provides carefully chosen 88 bit sequence next (last four bytes chosen to hold code's address overwrite saved return address)
+- When vulnerable () returns, VPU loads attacker'd return address -handling control over to attacker's malicious code.
+
+Overflow countermeasures:
+- Staying within bounds
+- Many languages have overflow protections (check lengths before writing, confirm that array subscripts are within limits, double-check boundary
+condition code for off-by-one errors, limit input to number of acceptable characters, limit program's privileges to reduce potential harm)
+- Code analyzers can identify many overflow vulnerabilities.
+- Canary values in stack to signal modification
+
+Other programming oversights
+- Undocumented access points(backdoor)
+- Off-by-one errors
+- Integer overflows
+- Un-terminated null-terminated string
+- Parameter length, type, or number errors
+- Unsafe utility libraries.
