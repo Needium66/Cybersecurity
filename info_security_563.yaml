@@ -486,3 +486,59 @@ Other programming oversights
 - Un-terminated null-terminated string
 - Parameter length, type, or number errors
 - Unsafe utility libraries.
+
+
+####Week 6
+- Various types of malware and history of malware
+- Insider attack tools including backdoor and logic bombs and defenses against insider attack
+- Characteristics and classifications of viruses and defenses against them
+Malware:
+- Programs planted by an AGENT with malicious intent to cause unanticipated or undesired effects
+- Insider attacks: backdoor, logic bomb.
+- Computer viruses
+- Malware attacks: Trojan horses, worms rootkits
+- Privacy-invasive software: Adware, spyware
+
+Malware tranmission and propagation:
+- Setup and installer program
+- Attached file
+- Document viruses
+- Autorun
+- Using non-malicious program (appended viruses, viruses that surround a program, integrated viruses and replacement)
+
+Countermeasures
+- Use software acquired from reliable sources
+- Test software in an isolated environment
+- Only open attachments when you know them to be safe
+- Treat every website as potentially harmful
+- Create and maintain backups.
+Viruses, worms, trojan, rootkits:
+Malware can be CATEGORIZED into various categories depending on PROPAGATION and CONCEALMENT
+Propagation:
+- Virus: human-assisted propagation (e.g open email attachment)
+- Worm: automatic propagation without human assistance
+Concealment:
+- Rootkit: modifies the OS to hide its existence
+- Trojan: provides desirable functionality but hides malicious operations.
+
+Insider Attacks:
+A security breach that is caused or facilitated by someone who is part of the org that controls or builds asset that should be protected.
+- A security hole that is created in a software system by one of its programmers.
+Backdoor:
+Sometimes called "trapdoor"
+- It is HIDDEN FEATURE or COMMAND in a program that allows a user to perform actions he or she would not be normally allowed to do
+- If the hidden feature is activated, the program will do something unexpected , often in violation of security policies e.g performing a
+privilege escalation.
+Logic bomb:
+- A program that performs a malicious action as a result of a certain logic condition.
+- e.g combining logic bomb with backdoor, where a programmer puts a logic bomb that will CRASH a PROGRAM on a certain day.
+e.g Tim LLyod Logic bomb on Omega Engineering Coorporation (1996)
+
+Defenses/Countermeasures against insider attack
+- Avoid single points of failure
+- Use code walk-throughs
+- Use archiving and reporting tools
+- Limit authority and permissions
+- Physically secure critical systems
+- Monitor employee behavior
+- Control software installations

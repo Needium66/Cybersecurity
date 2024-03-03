@@ -27,3 +27,42 @@ Implementing security at every stages of the SDLC will ensure the software is de
 The practice of SHIFTING LEFT in DevOps is called DEVSECOPS(Development approach whereby security is introduced from the early stages of development
 lifecycle until the final stages).
 Security is no more an add-on, it is a MUST DESIGN FEATURE.
+
+Devsecops challenge that can lead to a siloed culture is called "SECURITY SILO"
+
+#SDLC
+- Planning
+- Define requirements
+- Design and prototyping
+- Software development
+- Testing
+- Deployment
+- Operations and maintenance
+Requirement definition is the PHASE that focuses on determining the first idea for a prototype
+The "Planning stage" is also known as "Feasibility stage"
+You outline the user interfaces and network requirements at the "DESIGN and PROTOTYPING" phase
+Software Requirement Specification(SRS): Document usually converted to logical structures implemented in programming languages.
+Plans for operating, training and maintaining the system are drawn
+Architecture Design Review(ARD): Created by engineers and developers to ensure that all teams working in different areas are on the same page
+CALMS - Culture, Automation, Lean, Measureability and Sharing
+
+#DevOps Metrics
+- Meantime to Production (MTTP): Turnaround time for newly submitted code.
+- Frequency of deployment: frequency of deployment of new releases, average lead time, how long does it take to develop, build, test
+- Speed of deployment
+- Deployment agility
+- Production failure rate
+- Meantime to Recover (MTTR): Measurement for recovery time after a failure
+2 metrics that are used to measure deployment agility are "DEPLOYMENT SPEED and FREQUENCY"
+Failure rate is an essential rate for engineers in Production environment to know if code meets security requirements.
+Lab
+- Add "+1" twice to the "Number of developers"
+- Add "+10" 11x (11 times} to "Number of sprints"
+- Click on "Next"
+- Add "+1" to all the 7 phases of SDLC
+- Add "+10" to all the 7 phases of SDLC
+- Add "+10" 3x (3 times) to Deployment phase
+- Add "+5" to "Software Deployment" phase
+- Subtract "-1" 2x (2 times) from the "Software Development" phase
+- Click on "Start Game"
+- Click the "Next" button at the bottom until you do it for 12 months and get your result
