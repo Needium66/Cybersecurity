@@ -66,3 +66,132 @@ Lab
 - Subtract "-1" 2x (2 times) from the "Software Development" phase
 - Click on "Start Game"
 - Click the "Next" button at the bottom until you do it for 12 months and get your result
+
+
+####SSDLC
+#Objectives:
+#SSDLC and its importance
+#Processes of SSDLC
+#Secure SDLC Methodologies
+
+#What is SDLC
+Secure SDLC aims to introduce security at EVERY STAGE of the SDLC. This reduces cost and time by not discovering bugs, flaws and vulnerabilities late
+It costs 6x more to fix a bug discovered at implementation stage rather than at early stage (design stage- IBM)
+It costs 15x more to fix FLAWS if discovered at TESTING stage and 100x more if discovered at Operations and Maintenance stage-IBM
+- Helps to reduce vulnerability
+- Helps to reduce business risk
+Incorporate security at
+1. Architecture anaysis
+2. Design
+3. Code review
+4. Scanning during development
+5. Security assessment (penetration testing) before deployment
+
+#Implementing SDLC
+Understand security posture(before implementing SSDLC processes) by doing the following-
+Perform a gap analysis: to know the activities and policies that exist in your org and how effective they are
+Create Software Security Initiative(SSI) : Establish realistic and achievable goals with defined metrics for success. e.g playbook etc
+Formalize processes
+Invest in security training
+
+SSDLC Processes
+Integrating processes like security testing and other activities into an existing development processes e.g security requirements, 
+functional requirements, architecture risk activities in design phase etc
+Phases of SSDLC includes:
+- Risk assessment (Planning)- Identify security considerations that promote a security by design when functional requirements are gathered
+- Risk assessment (Define requirements) e.g a user requesting blog entry from a site, the user should not be able to "EDIT" the blog or remove unnecessary inputs
+- Threat modelling (Design and prototype)- Process of identifying a potential threatwhen there is lack of appropriate safeguards. Should
+happen in the design stage. Ensure there is a verification when a user request account's info.
+- Code scanning and review (Software development)- Can be either manual or automated. Can leverage static and dynamic testing technology
+- Code scanning and review (Testing)- Crucial in the development stage as code is being written
+- Secure configuration (Deployment)
+- Security assessments (Operations and Maintenance) e.g penetration testing and vulnerability assessments. Are automated that can identify
+critical paths of an application that may lead to exploitation of a vulnerability
+Carry out risk assessment during the planning and requirement stage
+Carry out threat modelling during the design phase
+
+#Risk Assessment
+Risk refers to the likelihood of a threat being exploited, negatively impacting a resource or target it affects.
+It is used to determine level of potential threats.
+A risk assessment is usually followed by threat modelling.
+Performing a risk analysis:
+Assume the software will be attacked and consider the factors that will motivate the threat actor
+- the data value of the program
+- the security level of the companies who provide the resources the code depends on
+- the clients purchasing the software
+- how big is the software distributed ( small group or rleased worldwide)
+Based on the factors, write down the acceptable level of risks. e.g losing millions due to fine paid after a data loss or eleiminating potential bugs in the security code with $40k
+Risk evaluation is the next after risk assessment. Worst case scenario- assuming there is a ransomware attack. Determine the value of data
+to be stolen e.g user's identity, credentials or data or assets with lower risks.
+Some attacks only affect 1 or 2 users, but Denial of Service attack will affect thousand of users
+Types of risk assessment:
+Qualitative Risk Assessment: Most common that you will find in companies. Goa; is to assess and classify risks in THRESHOLDS like "LOW"
+"MIDDLE", and "HIGH"
+A typical formular for evaluating it is - "Risk" = "Severity" x "Likelihood"
+Severity: Is the impact of consequence
+Likelihood: Is the probability of it happening
+Quantitative Risk Assessment: It is used to measure risk with numerical values. Numbers will represent low, medium, high. Use tools to determine
+"Severity" and "Likelihood"
+Risk assessments are better performed at THE BEGINNING OF SDLC, PLANNING and REQUIREMENT PHASES e.g
+Customer data gets exfiltrated by an attack
+Risk analysis- a customer can sue an org for $20k if their data get leaked
+You have $2k customers
+The Annual Rate of Occurrence is 0.001
+Hence, Annual Loss Expectancy is $20k * $2k * 0.001 = $400k
+Which means as long as the org's COMPENSATING SECURITY CONTROL is less than $400k, the org is not overspending.
+Have a quatitative risk analysis matrix.
+Formula to assign a qualitative risk level is "Risk * Likelihood"
+
+#Threat Modelling
+Integrate into DESIGN PHASE of an SDLC before any code is written. It is a structured process of identifying potential security threats
+and prioritizing techniques to mitigate attacks so valuable data or assets (confidential)  are protected.
+Several methods are used for threat modelling. Not all methods have the same purposes- some focus on RISK or PRIVACY CONCERN. Others are
+CUSTOMER-FOCUSED. They can be combined too. Just know which ones align with your business or project. Common thread methodologies includes.
+
+- STRIDE(Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation/Escalation of Privilege): It is developed
+by Microsoft. It evaluates the system design in a more detailed view. You develop the system data flow diagram into it. STRIDE is built upon
+CIA triad principle. You are trying to deal with the question- what could go wrong with the system?
+Spoofing: Act of impersonation by a malicious actor. It violates CIA triad principle. Common ways include ARP, IP and DNS spoofing
+Tampering: Modification of info by an unathorized user. Violates CIA triad principle
+Repudiation: Not taking responsibilities for events where the actions are not attributed to the attacker.
+Information Disclosure: An act of violation of confidentiality of triad. e.g data breaches.
+Denial of Service: An authorized user cannot assess the service, assets or system due to exhaustion of network
+Elevation/Escalation of privilege: Escalating privileges to gain unathorized access
+
+- DREAD (Damage Potential, Reproducibility, Exploitability, Affected Users and Discoverability): It is also a method created by MICROSOFT
+It can be a add-on to STRIDE MODEL.It is a model that ranks threats according to their SEVERITY and PRIORITY. It is scored based on RISK
+PROBABILITY.
+Damage: Possible damage a threat could cause to the existing infrastructure or targets. Based on a scale of 0 - 10. A score 0 means NOHARM
+5 means Info disclosure, 8 means USER DATA IS COMPROMISED, 9 means INTERNAL OR ADMIN DATA IS COMPROMISED. 10 means UNAVAILABILITY OF SERVICE
+Reproducibility: Measures complexity of the attack. A easy a hacker can replicate an attack. 0 means it is nearly impossible to copy, 5 means
+complex but possible, 7.5 for an authenticated user, 10 means attacker can reproduce quickly without autnentication
+Exploitability: Attack sophistication or how easy it would be to launch an attack. 2.5 means it would require an advanced skill, 5 means
+can be exploited with available tools, 9 means needing a simple web application proxy tool, 10 means it can exploit through a web browser
+Affected Users: Number of users affected by  the successful exploitation of vulnerability. 0 means no affected users, 2.5 means individual
+user, 6 means a small group of users, 9 means significant users e.g admin users, 10 means users are affected.
+Discoverability: Process of discovering vulnerable points in the process. 0 means challenging to be discovered.5 means can be discorvered
+by analysis of HTTP requests, 8 means it can easily be found- public facing, 10 means visible in the browser address bar.
+
+- PASTA: Process for Attack Simulation and Threat Analysis: risk-centric threat modelling framework. Focus is to allign TECHNICAL REQUIREMENTS
+with BUSINESS OBJECTIVES. Analysis threats and find ways to mitigate them. Identifies the threats, enumerates them and assigns them a score.
+It is divided into 7 stages-
+Define objectives: Noting the structure and defining objectives.
+Define technical scope: Architectural diagrams are defined, both logical and physical infrastructure.
+Decomposition and analysis: Each asset will have a defined trust boundary that encompases its components and data in this stage.
+Threat Analysis: Extracted info obtained from threat intelligence.
+Vulnerabilities & Weaknesses Analysis: It analysis the vulnerabilities of web application security controls.
+Attack/Exploit Enumeration and Modelling: Map out the possible threat landscape and entire attack surface of our web application.
+Risk Impact Analysis: Analyse the scoped assets and make recommendations to mitigate the risks and eliminate the residual risks.
+
+SUMMARY:
+Dread is the threat modelling methodology that assigns a rating system based on risk probability
+Stride is the threat modelling methodology based on CIA triad
+Pasta is the modelling methodology that helps align technical requirements with business objectives
+
+#Secure Coding
+
+#Security Assessments
+
+#SSDLC Methodologies
+
+#Secure Space Lifestyle
