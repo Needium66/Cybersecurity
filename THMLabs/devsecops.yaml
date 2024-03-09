@@ -220,6 +220,29 @@ Pre-Prod: DAST, SAST and IAST
 Prod: RASP
 
 #Security Assessments
+It should be implemented in ALL PHASES where possible. It ACCESSES a SYSTEM, SOFTWARE or WEB APP for VULNERABILITIES and other ATTACK VECTORS
+Usually carried out at the END of the SDLC(Operations and Maintenance), because they are more holistic. There are 2 types-
+- Penetration Testing: It includes vulnerability testing and goes more in-depth. It involves TESTING/VALIDATING VULNERABILITIES, QUANTIFYING
+RISKS and attempting to PENETRATE SYSTEM. A report is generated, suggesting countermeasures to mitigate against vulnerabilities. e.g recovering
+an employee password by exploiting the mentioned vulnerability. 
+PROS: 
+- Can be used to display what attacker is capable of doing
+- Can show how vulnerabilities can be exploited by attackers against an org - real risk
+CONS:
+- Very expensive
+- Requires detailed planning and time
+- Vulnerabilities Assessment: It focuses on finding vulnerabilities BUT don't validate the findings proving that they are xploitable.
+Tools like Tenable, OpenVAS and ISS Scanner are used to scan networks and systems . They scan ports, services in the systems, IPs, service
+versions in the database etc for vulnerabilities. They generate a report with a list of vulnerabilities found and their severity class (CVSS)
+PROS:
+- Suitable for quickly identifying potential vulnerability
+- Cheaper than pentesting
+- Part of pen testing
+CONS:
+- Can produce large number of reports
+- Quality is dependent on the tool
+- Not really in-depth
+
 
 #SSDLC Methodologies
 
