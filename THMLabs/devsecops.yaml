@@ -189,6 +189,35 @@ Stride is the threat modelling methodology based on CIA triad
 Pasta is the modelling methodology that helps align technical requirements with business objectives
 
 #Secure Coding
+According to Verizon in 2020, 43% of attacks were on web applications and some of these security breaches were from vulnerabilities in
+web applications. However, implementing code review and analysis in the implementation phase of the SDLC will increase the RESILIENCE
+and SECURITY of the product without any additional cost for FUTURE PATCHING. By implementing it, the org will also be compliant to government
+regulations. Code review can either be manual (expert or senior developers reviewing) or automated (using tools)
+Code Analysis: Static and Dynamic Analysis. Static analysis examines the SOURCE CODE without executing the program. It DETECTS bugs at the
+IMPLEMENTATION LEVEL. While Dynamic analysis EXAMINES the program when it is running. Dynamic analysis DETECTS errors during program
+runtime. Automated Static Application Security Testing (SAST) automatically ANALYSES and CHECKS the source code.
+SAST is also called WHITE BOX TESTING. It can HELP to DETECT VULNERABILITIES in the app before the code is merged or integrated into the software
+Done before an app is LIVE and RUNNING, before code is merged and compiled. Once a VULNERABILITY is detected, the code will be CHECKED 
+and PATCHED immediately, before the code is COMPILED and RELEASED.
+So SAST is USED TO SCAN SOURCE CODE FOR SECURITY VULNERABILITIES.
+SCA(Software Composition Analysis): It goes hand in hand with SAST. It is used to SCAN DEPENDENCIES for SECURITY VULNERABILITIES. helping
+devs to track any OPEN-SOURCE COMPONENT brought into a project
+DAST(Dynamic Application Security Testing): It is a BLACK BOX TESTING METHOD that DETECTS vulnerabilities at runtime. It is used to
+DETECT vulnerabilities inside a web app that has been DEPLOYED to PRODUCTION. It sends alert to appropriate stakeholders for remediation
+IAST(Interactive Application Security Testing): It ANALYSIS code for security vulnerabilities while the app is running. Usually deployed
+side by side with the main application on the application server. It is designed for WEB and MOBILE apps to DETECT and REPORT issues even
+while running. IAST was developed to STOP all limitations in SAST and SCA. It is called GRAY TESTING METHODOLOGY. It occurs in real-time
+while the app is running in the STAGING ENVIRONMENT. They are typically deployed on the app servers post-build stage (after SAST runs in build,
+DAST runs in staging before prod). The DAST agent inside the app server can detect a SQL injection for example.
+RASP(Runtime Application Self Protection): Runtime app integrated into an app to analyse inward and outward traffic and end-users behavioral
+patterns to prevent security attacks. It is used AFTER PRODUCT RELEASE.- Making it a security focused tool. It is a complete solution for
+security.
+STAGES AT WHICH EACH TOOL CAN BE USED:
+Development: SAST and SCA
+Integration: SCA
+Acceptance Stage: SAST and DAST
+Pre-Prod: DAST, SAST and IAST
+Prod: RASP
 
 #Security Assessments
 
