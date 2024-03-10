@@ -245,5 +245,50 @@ CONS:
 
 
 #SSDLC Methodologies
+There are several methodologies used, but some of the popular ones are:
+- Microsoft Security Development Lifecycle (SDL)
+- OWASP Secure Software Development Lifecycle Project (S-SDLC)
+- Software Security Touchpoints
+SDL's principles:
+- Secure by design - Security is in-built in the whole software lifecycle
+- Secure by Default - Software are built to minimize potential harm caused by attackers. e.g deploying software with least privilege
+- Secure in Development- deployment should be accompanied by tools and guidance supporting users and admins
+- Communications - communications openly and freely with users and admins about threats
+OWASP S-SDLC
+High Level Security Risk Analysis - GATE 1(Agreement Concept/Priority) - Project Definition
+Controls Selection - GATE 2(Agreement Project Definition) - Preliminary Design
+Security Design Recview - GATE 3(Agreement Preliminary Design) - Detailed Design and Development
+Penetration testing - GATE 4(Agreement Approve Build) - Deployment
+SAMM is the Maturity Model that helps you measure TAILORED RISKS facing your organization.
+BSIMM is the MATURITY MODEL that acts a measuring stick to determine your security posture.
 
 #Secure Space Lifestyle
+
+#Source Code and Version Control
+Attackers using GITTYLEAKS to scan pipelines for secrets - it will look for commits that either have secrets or database strings or connections
+committed or deleted from the repo.
+Internal Dependency: Created by the organization
+External dependency: Pypi, Nuget, Jquery, JFrog Artifactory, Azure Artifcats, Gems.
+Automated Testing:
+- Unit testing: It is a TEST CASE for a SMALL PART of the application or service. It is usually focused on functionality and not security
+- Integration Testing: It focuses on how the small part of the application or services tested in unit test worki together. Testing for
+Integration part of the pipeline. For CICD. A subset of it is REGRESSION TESTING. Not usually performed for security purposes.
+- SAST: Used to scan source codes for vulnerabilities. Integrated to the dev process or CICD.
+- DAST: Used to detect additional vulnerabilities that would not have been detected by ordinary code review(SAST) e.g cross site scripting
+attack XSS
+- Pentration Testing: Used to detect what automated testing cannot. What IAST, RASP, SAST, and DAST cannot detect e.g
+1) Credit card payment bypass
+2) Business logic
+3) Access control flaws
+GitHub and GitLab have in-built SAST tool (native)
+Snyk is a polpular SAST tool
+Sonarqube is a popular SAST tool
+COMMON MISCONFIGURATION WITH CICD PIPELINE:  Using the same BUILD AGENTS for both DEVELOPMENT(DEV) and PRODUCTION(PROD)
+Since most devs will have access to starting trigger in both DEV and PROD. If one of the devs were compromised, an attacker could exploit the
+their access to cause a MALICIOUS DEV build that would compromise the BUILD AGENT. Since the same agent is used for PROD too, an attacker
+could persist exploiting this to PROD and inject it compromise the production environment/application.
+Devs Bypasses in Prod:
+- MFA
+- CAPTCHA
+- Password resets
+- Login portals
