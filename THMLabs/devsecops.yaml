@@ -275,7 +275,7 @@ Automated Testing:
 Integration part of the pipeline. For CICD. A subset of it is REGRESSION TESTING. Not usually performed for security purposes.
 - SAST: Used to scan source codes for vulnerabilities. Integrated to the dev process or CICD.
 - DAST: Used to detect additional vulnerabilities that would not have been detected by ordinary code review(SAST) e.g cross site scripting
-attack XSS
+attack XSSlb,vvncmbmvn nnvbnvvvc,bv,v v mccmm,v,m;b;.h.h
 - Pentration Testing: Used to detect what automated testing cannot. What IAST, RASP, SAST, and DAST cannot detect e.g
 1) Credit card payment bypass
 2) Business logic
@@ -285,10 +285,162 @@ Snyk is a polpular SAST tool
 Sonarqube is a popular SAST tool
 COMMON MISCONFIGURATION WITH CICD PIPELINE:  Using the same BUILD AGENTS for both DEVELOPMENT(DEV) and PRODUCTION(PROD)
 Since most devs will have access to starting trigger in both DEV and PROD. If one of the devs were compromised, an attacker could exploit the
-their access to cause a MALICIOUS DEV build that would compromise the BUILD AGENT. Since the same agent is used for PROD too, an attacker
+their access t;;vvuiuyuohoyhhyyyyyyuyyyyhgggttyiyuytutv,hbbbbmggh,bo cause a MALICIOUS DEV build that would compromise the BUILD AGENT. Since the same agent is used for PROD too, an attacker
 could persist exploiting this to PROD and inject it compromise the production environment/application.
 Devs Bypasses in Prod:
 - MFA
 - CAPTCHA
 - Password resets
 - Login portals
+
+###Insufficient credential hygiene e.g
+- Insecurely storing credentials in code repositories
+- Improper usage of credentials in build
+- Improper usage of credentials in deployment processes
+- Leaving credentials in container image layers
+- Printing crdentials to console outputs
+- Neglecting to rotate credentials
+All the above can cause security breaches.
+
+To prevent the above, practice or implement the below:
+- Ensuring credentials follow the principle of least privilege
+- Avoid sharing credentials across multiple contexts for accountability and privilege management
+- Use temporary credentials and rotate credentials as frequent as possible
+- Use credentials only in predefined conditions e.g using it for specifc IP address or identity
+- Use IDE plugins, automatic scanning, and periodic repo commit scans to detect secrets pushed to and stored in code repo
+- Use tools to prevent secrets being printed on cosnole
+- Vvalidate removal secrets from artifacts.
+- Use environment variables.
+
+######PIPELINES
+#######CICD AND BUILD SECURITY
+After setting up a repository in GitLab-, the next thing in line is to connect the repo to a build tool or cicd tool
+After the integration of CICD for build with Gitlab( repo), the next thing is to secure it. So, over here, we talk about the
+set up of the CICD, build and repo and how to ensure their security.
+Some commands used in the set up in THM includes
+1) "ifconfig" or "ip a" to know the "IP of a network"
+2)  "sudo echo <Gitlab IP> gitlab.tryhackme.loc >> /etc/hosts && sudo echo <Jenkins IP> jenkins.tryhackme.loc >> /etc/hosts"= to configure
+"DNS" for the repo (GitLab) and build (Jenkins) for CICD. You need a landing page where you will input your credentials in order to access
+either your repo and Jenkins. In order to connect to them, you can access your repo, which is already integrated with your build (Jenkins)
+3) If the integration had been done already and the network or connection needs to be updated, modify the entries in the "/etc/host" folder
+4) Validate the login of your repo or set up, by running this on a browser- "http://gitlab.tryhackme.loc "
+
+#CICD AND BUILD SECURITY
+A secure build environment is important to mitigate against POTENTIIAL threats and vulnerabilities
+Lessons learnt from "SOLAR WINDS SUPPLY CHAIN ATTACK" is implemented in this module.
+The 8 FUNDAMENTALS OF CICD ACCORDING TO GITLAB:
+1) A single source repo: use single source repo to store all the required files and scripts to build the app
+2) Frequent check-ins to the main branch: Perform code update frequently to ensure integrations as frequent as possible
+3) Automated build: Builds need to be automated and executed as updates are pushed to the repo
+4) Self-testing builds: As soon as updates are executed in the build, there needs to be an automated test for the builds
+5) Frequent iterations: The more the frequency of your push, the less the conflict in the repo eventually
+6) Stable testing environment: the testing environment for the code should mimick a production environment
+7) Maximum visibility: Every or all devs should have access to the frequent changes or updates in the repo
+8) Predictable deployment any time: streamline the pipeline to ensure that deployment are made anytime with no risk to production stability.
+
+#SolarWinds Incident 2020
+Attacker injected malicious code called SUNBURST into Orion software updates of Solarwinds. This enabled them to gain unauthorized access
+into the networks of the org and several federal government agencies and private companies using SolarWinds. 
+#Fallout
+- Importance of securing software supply chains
+- Impact of a single compromised VENDOR on many entities.
+
+#Countermeasure to apply to environments to prevent against this incident
+- Implement isolation and segmentation techniques- Seperating or segmenting various stages of build processes or environments will prevent
+against a single point of compromise. When you implement CONTAINERIZATION and VIRTUALIZATION technologies to ensure ISOLATION of build process
+in different stages, the entire system is not going to be compromised. When you ensure a STRICT ACCESS CONTROLS or create SANDBOXES to
+execute SECURE BUILD PROCESSES, it will will prevent the exposure of the entire ENVIRONMENT.
+- Set up appropriate access controls- Limit unauthorized access to the BUILD ENVIRONMENT to ensure the INTEGRITY and SECURITY of the system
+1) Implement least privilege princip;e
+2) Implement MFA
+3) Enforce strong password policies
+4) Regularly review and update the access controls to ensure that the policies align with least privilege
+- Permissions to limit unauthorized access
+- Implement appropriate network segmentation e.g divide the BUILD ENVIRONMENT to different NETWORK ZONES. Doing this can prevent POTENTIAL
+BREACHES and LATERAL MOVEMENT
+- Implement regular secure communication channels for software updates (3rd party tools)
+- Regularly monitor and access the security of software suppliers to identify potential risks and vulnerabilities.
+#CREATING A PIPELINE
+- You will need to create a "PROJECT" in a yaml file for CI e.g in GitLab, Azure DevOps or whatever tool you are using
+- You can DEFINE various jobs in the CI file.
+- Usually the CI pipeline contains 3 stages:
+1) Build
+2) Test and
+3) Deploy
+However, there could be more than 3 stages.
+Jobs in EACH STAGE are executed in PARALLEL i.e ALL BUILD JOBS ARE EXCEUTED SIMULTANEOUSLY and also TEST and DEPLOY.
+The SCRIPT portion of a job SPECIFIES the command to be executed.
+TEST job stage is to test the build job. Usually, if one test fails, others can still run and eventually you will have to review what
+needs to be fixed to have a complete successful test.
+At the DEPLOY stage, you will be deploying your code to production usually after all the tests have passed and code for this will have to be
+pushed to the master or main branch, for it to be pushed. You could have other environments before this- DEV, UAT etc
+Agents are called another name in GitLab- "RUNNERS"
+#SECURING THE BUILD SOURCE
+SOURCE CODE SECURITY
+The FIRST STEP to securing the PIPELINE or BUILD is to secure the SOURCE. Trying to protect the SOURCE CODE against these 2 main issues
+1) Unauthorized tampering: Ensuring that only authorized users are able to make CHANGES to the code. Controlling who has the ability to
+PUSH new codes to the repo.
+2) Unauthorized disclosure: Prevent against disclosing source code that is sensitive e.g Microsoft won't want to disclose Word source code.
+Protect the IP
+#CONFUSION OF RESPONSIBILITIES
+Confusion of responsibilities always seep in large organizations mainly sue to management of granular access control or misconfiguration
+e.g
+- Leaving registration for code repo e.g Gitlab instance open to any user i.e all users internally
+It may not be a DIRECT RISK but the attack surface grows e.g a bank having a 10,000 employees, and 2000 out of the 10,000 are devlopers, who
+should ordinarily have access to it, but it is open to everybody, so the ATTACK SURFACE has grown by 500%. If one of the employees get
+compromised by an attacker, the attacker would be able to exfiltrate any publicly shared repo.
+- Because the gitlab instance is only accessible internally, a developer can configure a repo to be publicly shared. The danger is that
+any user with a valid gitlab account can have access to that repo. Therefore the IP of the bank is publicly exposed.
+#EXPLOITING A VULNERABLE BUILD SOURCE
+- Efficiently ENUMERATE publicly visible repos using PYTHON SCRIPT:
+- Create a connection to Gitlab (you will need a gitlab access token- API token)
+1) Select profile icon
+2) Select "Access token" from the navigation pane
+3) Enter a name for the token
+4) Select the access required- read, read_api, read_repo
+4) Create the token. 
+5) Add the token to the script to be able to successfully download publicly available projects.
+- Run the command to get all Gitlab projects that are publicly accessible
+- ENUMERATE through all the projects and download a copy of all th eprojects publicly accessible
+- Extract all repos by running a "grep" for specific keywords e.g "secret" or passwords
+
+The script:
+import gitlab
+import uuid
+
+# Create a Gitlab connection
+gl = gitlab.Gitlab("http://gitlab.tryhackme.loc/", private_token='glpat-TjQ4bSUSML5UUVf9Kg8S')
+gl.auth()
+
+# Get all Gitlab projects
+projects = gl.projects.list(all=True)
+
+# Enumerate through all projects and try to download a copy
+for project in projects:
+    print ("Downloading project: " + str(project.name))
+    #Generate a UID to attach to the project, to allow us to download all versions of projects with the same name
+    UID = str(uuid.uuid4())
+    print (UID)
+    try:
+        repo_download = project.repository_archive(format='zip')
+        with open (str(project.name) + "_" + str(UID) +  ".zip", 'wb') as output_file:
+            output_file.write(repo_download)
+    except Exception as e:
+        # Based on permissions, we may not be able to download the project
+        print ("Error with this download")
+        print (e)
+        pass
+
+
+#SECURING THE BUILD SOURCE
+- Group based access control: Set permissions to gitlab projects at the group level. Same access rules will apply to all projects within
+the group. e.g a group for DEV team with required permissions, for QA etc view, edit, or contribute to projects. It streamlines access
+management and reduces chances of errors or oversights.
+- Access levels: Assign appropriate access levels to USERS or Groups e.g Guest, Reporter, Develper, Maintener, Owner
+- Sensitive information protection: Prevent accidental exposure of sensitive info. Gitlab features that can help prevent this are:
+1) Gitlab's gitignore: It specifies which FILES or DIRECTORIES to be excluded from VERSION CONTROL e.g files containing passwords, API Keys
+configuration files
+2) Environment variables: Management of environment variables securely outside the code. Storing essential data or info needed during the
+CICD process without exposing the repository
+3) Branch protection: Protect main or master branch from direct pushes without review or approval i.e commits need to go through review
+and automated testing before being pushed to the main branch
