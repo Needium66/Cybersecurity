@@ -534,6 +534,14 @@ Logic bomb:
 - e.g combining logic bomb with backdoor, where a programmer puts a logic bomb that will CRASH a PROGRAM on a certain day.
 e.g Tim LLyod Logic bomb on Omega Engineering Coorporation (1996)
 
+Omega Bomb Code: The logic behind it is the following stings
+- 7/30/96 (Event that triggered the bomb)
+- F: (Focused attention to volume F (drive, which has critical files))
+- F:\LOGINLOGIN\12345 (Login a fictitious user, 12345 (the back door))
+- CD \ PUBLIC (Moves to the public folder or program)
+- FIX.EYE /Y F:\*.* (Run a program called FIX, which actually DELETES everything)
+- PURGE F:\/ALL (Prevent recovery of the deleted files)
+
 Defenses/Countermeasures against insider attack
 - Avoid single points of failure
 - Use code walk-throughs
@@ -542,3 +550,185 @@ Defenses/Countermeasures against insider attack
 - Physically secure critical systems
 - Monitor employee behavior
 - Control software installations
+
+#Computer virus
+It is a computer code that can REPLICATE itself by modifying other files or programs to insert code that is capable of further replication
+- Replication requires user assistance e.g clicking an email attachment or sharing USB drive.
+
+Analogy of Computer virus with Biology viruses
+Attack -----> Penetration -----> Replication and Assembly ----> Release.
+- When Early Was One Sci-fi movie in 1972
+- Ph D student Fred Cohen used the word VIRUS in 1984 and credited advisor Len Adelman for it.
+- Rich Skrenta a high school student released the first virus hit Erik Cloner( a boot sector virus) in 1982
+- Basit and Amjood Faroq  Alvi were credited for Brain virus that infected PCs in 1986
+
+
+#Week 8
+Different types of malware attacks
+- Worms
+- Trojan horses
+- Rootkits
+Privacy-invasive software description: adware, spyware
+Countermeasures and best practices
+
+Computer worms: is a MALWARE PROGRAM that spreads copies of itself without injecting itself in other programs, and often without HUMAN INTERACTION
+So technically, computer worms are not COMPUTER VIRUSES since they don't infect other programs, but people confuse the term because they self-replicate too
+In most cases, worms will carry a MALICIOUS PAYLOAD e.g deleting files or installing a backdoor. i.e worms can delete files and install backdoor
+- First worms were built in the lab of John Shocks and John Hepps at XEROR PARC in the eraly 80s.
+- The first worms to use email service is CHRISTMAS EXEC written in REXX, targeting IBM VM/CMS systems in 1987
+- First internet worm was Morris Worm. It was written by Cornell student, Robert Tappan Morris in 1988
+#Worm Development- How to develop worm. How to implement worm
+- Identify vulnerability still unpatched
+- Write code to (defined in the code how to spread through ramdomized hosts or lan or divide and conqquer and get installed. The code will include the PAYLOAD and REPORTING)
+  - Exploit vulnerability
+  - Generate a target list
+    - Random hosts on the internet
+    - Hosts on LAN
+    - Divide and conquer
+  - Installation and execution of PAYLOAD
+  - Querying nad reporting if a PAYLOAD is infected.
+- Initial deployment on botnet
+- Worm template:
+  - Generate target list
+  - For each host on the target list
+    - Check if infected
+    - Check if vulnerable
+    - Infect
+    - Recur
+= Distributed graph search algorithm:
+  - Forward edges: infection
+  - Backward edges: already infected or not vulnerable
+Worms spread by finding and infecting VULNERABLE HOSTS.
+- Needs a way to tell if a host is vulnerable
+- Needs a way to tell if a host is infected
+#Malware Zombies
+Malware can turn a computer into a zombie- a machine controlled externally to perform MALICIOUS ATTACKS, usually as part of a BOTNET.
+
+      BOTNET CONTROLLER(Attacker)
+         
+         ATTACK COMMANDS
+
+            BOTNET
+
+        ATTACK ACTIONS
+
+            VICTIM
+#Propagation: Theory
+Classic epidemic model:
+N = Total number of vulnerable hosts
+I(t) = Number of infected hosts at time t
+S(t) = Number of susceptible hosts at time t
+N = I(t) + S(t)
+Betta = infection rate
+Differential equation for total number of infected hosts I(t):
+dI/dt = BI(t) S(t) = Infection rate*Total number of infected hosts * Total number of susceptible hosts at time t
+I on the y axis and t on the x-axis
+
+Code Redl v2 infection July 2001
+
+#Trojan Horses
+It is a MALWARE PROGRAM that APPEARS to perform USEFUL TASKS, but does something with negative consequences e.g launches a KEYLOGGER
+They can be installed as PAYLOAD of other MALWARE, but often installed by a USER or ADMIN, either deliberately or accidentally.
+Visible action (something useful)--------> Invisible action (Something malicious)
+
+#Rootkits
+A rootkit MODIFIES the OS to HIDE its existence. e.g modifies file system exploration utiliites
+Hard to detect using software that relies on the OS itself.
+SONY XCP(2005)
+- Installed automatically from Sony Music CD (without user's knowledge) using Windows's autorun feature
+- Prevents a user from copying tunes
+- Intercepts function calls from reading from CD drive
+- Scramble the call if the call was from other applications
+- Concels not only XCP but any program beginning with $sys$ from any source, malicious or not
+- Any virus writer can CONCEAL a virus by naming it $sys$virus-1
+#Detecting Rootkits. How to detect rootkits
+- Maintain database of cryptographic hashes for
+Operating system files
+Popular applications
+Known infected files
+- Compute hash of each file
+- Look up into the database
+- Needs to protect the integrity of the database
+
+#Current Trends
+According to Symantec Internet Security Threat, 2009. Trojan currently have LARGEST INFECTION POTENTIAL
+- Often exploit browser vulnerabilities
+- Used to download other MALWARE in MULTI-STAGE ATTACK
+Trojan - 68%
+Worm - 29%
+Virus - 19%
+Backdoor - 15% 
+- Lovebug in 2000 caused $8.75Billion in damages and affected British Parliament
+- W32/MyDoom.A infected 8% of emails in 2004
+- Russian Stock Exchange was taking down by a virus February 2006
+Since 2002 Malware attack has grown exponentially- new threats continue to emerge
+According to purplesec report in 2018
+- 92% of malware is delivered by email.
+- Mobile malware increased by 54% in 2018
+- More than 250k unique users  were attacked by Trojans (Banker.AndroidOS.Asacub)
+- 98% of MOBILE MALWARE target Android Devices.
+- MacOS malware has increased by 165%
+
+#Adware
+  ADWARE SOFTWARE PAYLOAD
+    Adware engine infects a user's computer
+    Computer user gets agitated
+    Adware engine requests advertisement from adware agents -- Advertiser contract with adware agent for content
+    Adware agents deliver ad content to user
+#Spyware
+  SPYWARE SOFTWARE PAYLOAD
+    Spyware engine infects a user's computer
+    Spyware process collects keystrokes, passwords, and screen captures
+    Spyware periodically sends collected data to spyware data collection agent
+
+Signatures: A malware countermeasure
+Scan compare analyzed object with a database of signatures.
+A signature is a virus fingerprint e.g a string with a sequence of instructions specific to each virus. Different from digital signature
+A file is infected if there is a signature inside its code - using fast pattern techniques to search for its code.
+All the signature together create the malware database that usually is proprietary.
+Code Red Warm Signature:
+/default.ida?NNNN**********=a HTTP/1.0
+#STORAGE PATTERN
+- Code loacted on a specific address
+- Suspicious pattern e.g a jump INSTRUCTION as the first instruction of a program
+- File size changed as a result of the attached virus
+- How to know file change--
+1) Checksum (MD5 ) can be used to CHECK actual contents
+2) Using cryptographic function can enable that too
+#EXECUTION PATTERNS
+- Expected program behaviors
+- Anomaly detection
+- Deviation from the expected program behavior can be an alert for virus.
+#TRANSMISSION PATTERNS
+- One of the important goals of virus is to SPREAD itself
+- Worms always show a unique TRANSMISSION PATTERN (e.g internet worm and code red)
+SHIELD VS ON-DEMAND
+Sheild
+- Background process (service/deamon)
+- Scans each time a file is touched
+On-demand
+- Scan on explicit user request or according to regular schedule
+- On a suspicious file, directory or drive etc
+Online VS Offline Anti Virus Software
+Online Anti Virus Software:
+- Free browser plug-in
+- Authentication through 3rd party certificate (i.e Verisign)
+- No shielding
+- Software and signature updates at each scan
+- Poorly configurable
+- Scan needs internet connections
+- Report collected by the company that offers the service
+Offline Anti Virus Software:
+- Paid annual subscription
+- Installed on the OS
+- Software distributed securely by the vendor online or retailer
+- System shielding
+- Scheduled software and signature updates
+- Easily configurable
+- Scan without internet connection
+- Report collected locally and may be sent to vendor.
+#QUARANTINE
+- A suspicious file can be isolated in a folder called quarantine.
+- The suspicious file is not deleted but made harmless. User can decide when to remove it or eventually restore for a false positive
+- The file in quarantile is harmless becaiuse it is encrypted
+- Technique in quarantile is PROPRIETARY and details are kept secret
