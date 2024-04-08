@@ -444,3 +444,285 @@ configuration files
 CICD process without exposing the repository
 3) Branch protection: Protect main or master branch from direct pushes without review or approval i.e commits need to go through review
 and automated testing before being pushed to the main branch
+
+#SECURING THE BUILD PROCESS
+#Ensuring that the build process does not have MISCONFIGURATION that can lead to COMPROMISE.
+1) Managing Dependencies : First step in securing the BUILD PROCESS is securing DEPENDENCIES. e.g source code dependency on external library
+and SDK for its functionality. For every build, these dependencies will be used to perform the build.
+The 2 main CONCERNS (FEAR) for the build process when it comes to dependencies are
+- Supply Chain Attacks - A THREAT ACTOR could take over this and inject malicious code
+- Dependency Confusion - An ATTACKER could attempt a DEPENDENCY CONFUSION attack to inject a malicious code into the build process, if an
+internally developed dependency is used.
+
+FOCUSING ON MISCONFIGURATION IN THE BUILD PROCESS (What can be exploited by an attacker)
+For a build process to kick off, there needs to be COMMUNICATION between the BUILD SERVER and the BUILD AGENT for the build to be performed.
+An attacker could exploit this, since there are commands to be executed to complete the build. In order to REDUCE the attack surface or
+prevent a threat actor from undermining the build process, the following needs be strictly considered-
+- What actions do we allow to KICK OFF the build process?
+- Who has PERMISSION to perform these actions to KICK OFF the BUILD PROCESS?
+- Where will the BUILD PROCESS occur?
+# What actions do we allow to KICK OFF the build process?
+Deciding what actions can START the build process. By default, a commit to the pipeline will start the build process, but providing more
+GRANULAR CONFIGURATION will reduce the attack surface e.g DECIDING THAT ONLY COMMITS TO SPECIFIC BRANCH e.g main/master should start the
+PIPELINE. This way developers can make COMMITS to their branches directly. SO FAR the ability to COMMIT to the MAIN BRANCH or APPROVE MERGE
+REQUEST is LIMITED, the attack surface of the pipeline will be limited.
+To really tackle this and prevent the complications that arise from Mmerge request or breaking of pipeline through its activities, we can
+consider using multiple branches/ environments before it reaches main/master - i.e run the pipeline in build environment, then qa , then uat
+before running it in main that deploys to production. If anything will break the pipeline, you would have known before it gets to prod.
+There could be a manual approval created to kick off to prod too.
+#Who can start the build process
+After deciding what actions can start the BUILD PROCESS, next is to define who can START the build process. There can be SMALL LIST of users
+that can APPROVE the the MERGES.
+#Where will the build occur
+Build can be segregated and this will require build agents for different environments for the different builds. Build to the main branch
+will have its own build agent and will be different from build agents of other environments.
+#An example of Build Process Attack
+- Exploiting a Merge Build
+A user or someone that is managing the pipeline always test the MERGE REQUESTS before MERGING it to the main/master. So he ENABLES a CI/CD
+on merge request i.e Once there is a merge request and the pipeline runs and succeeds, the merge will be considered for MERGING. i.e a nuild
+will be EXECUTED to TEST the merge code as soon as a MERGE REQUEST is made. Jenkins enables this kind of feature by default. BUT the problem
+is that it could lead to a COMPROMISE.
+If the CI/CD is enabled by default, it means any user can modify the source and jenkinsfile and could inject a malicious code into it
+- Changing the jenkinsfile can execute this.
+#Best practices for protecting the build process
+- Isolation and containerization - Running builds in isolated containers
+- Least privilege - Restrict unnnecessary access to CICD tools
+- Secret Management - Use CICD secte management tools to store credentials etc
+- Immutable artifacts - Store build artifacts in a secure registry
+- Dependency scanning - Integrate dependency scanning to identify and address vulnerabilities
+- Pipeline as a code - Define CI/CD as a code, version-controlled, along side source code
+- Regualr updates - Keep CICD up to dates in terms of vulnerabilities
+- Logging and monitoring- Monitor build logs for unusual activities.
+Where should you store artefacts to prevent tampering? Secure registry
+What mechanism should you always use to store and inject sensitive data? Secret management
+What attack can malicious actors perform to inject malicious code in the build process? Dependency confusion
+Authenticate to Mother and follow the process to claim Flag 1. What is Flag 1? THM{7753f7e9-6543-4914-90ad-7153609831c3}
+
+#Securing the Build Server
+- Access ( Attack can guess credentials and gain access). With Jenkins, jenkins:jenkins could do the trick sometimes
+So to SECURE build server access, we will RESTRICT ACCESS . Apply granular access to ensure that compromise of one user does not affect 
+another, since it will be used by multiple users. Add MFA to it too.
+#Using MSF module to attack jenkins server
+- Start metasploit by running mfsfconsole
+- set target 1
+- set payload linux/x64/meterpreter/bind_tcp
+- set password jenkins
+- set username jenkins
+- set RHOST jenkins.tryhackme.loc
+- set targeturi /
+- set rport 8080
+- run
+- getuid
+#Protecting the build server
+- Build Agent Configuration: Configure build agent to only communicate with build server; no external exposure
+- Private Network: Place build agent within a PRIVATE NETWORK, preventing direct internal access
+- Firewalls: Use firewalls to restrict access into the build agent network
+- VPN: Use vpn to access the build server
+- Token based authentication: Use token to authenticate.
+- SSH Keys: Use secure SSH keys to authenticate for SSH based build agents
+- Continuous monitoring: Regularly monitor build agent and servers for unsual behavior
+- Regular updates: Regularly patch the build server
+- Security audits: Conduct periodic security audits to address vulnerabilities.
+- Remove defaults and harden configurations: Harden the build server and remove default credentials and weak configurations.
+What can be used to ensure that remote access to the build server can be performed securely? vpn
+What can be used to add an additional layer of authentication security for build agents? token-based authentication
+Authenticate to Mother and follow the process to claim Flag 2. What is Flag 2? THM{1769f776-e03c-40b6-b2eb-b298297c15cc}
+
+#Securing the Build Pipeline
+Access gates:
+Gates or checkpoints are stages within a software development pipeline.
+They ensure that code progresses ONLY after MEETING predefined quality and security criteria. Access gates will ensure
+1) Enhanced control: it allows for controlled progression to different stages
+2) Quality Control: Ensures predefined quality standards are met before progression
+3) Security Checks: Enables security accessment e.g vulnerability scan before deployment.
+#Implementation steps
+- Manual approvals - requires manual approval before progressing to the next stage
+- Automated tests - for code quality, unit tests, integration tests etc
+- Security scan - integrate security scan tools to detect vulnerability in the code base.
+- Release gates - Use gates to verify proper documentation, versioning and compliance.
+- Environment validation - validate the readines of the target environment before deployment
+- Roll back plan - include a gate for roll back plan in case of post-deployment issues
+- Monitoring - Implement monitoring to monitor progress of deployment and post-deployment
+- Parallel gates- Run parallel gates to expedite the piepline without compromise
+- Audit - Regularly review gate configurations
+#The Two Person Concept:
+No user must be able to pass any access gate single-handedly. Each access gates should require at least 2 users to be able to progress.
+If a developer is COMPROMISED, a build cannot progress because their needs to be another developer required to approve the build
+#Exploiting misconfigured access gates:
+Even though the org's POLICY says merge request requires a Manager's approval. However, this needs to be ENFORCED within the technology or
+tool being used e.g Gitlab indicates that APPPROVAL is optional. So, if it is not enabled on it, anybody should be able to merge requests
+So eventhough, pushes are not directly to the main branch, devs can still make pushes to it through the merge request. Therefore an attacker
+could exploit this.
+#Protecting Pipeline
+- Limit Branch Access: Only trusted devs should be given access to push to the main branch. Configure branch protection rules to require
+reviews before allowing changes- Seetings/Repo/Default branch
+- Review Merge Request: Enforce merge requests (or pull requests) to make main branch changes. Configure a merge request approvals to
+ensure multiple team members review and approve changes.
+- Use CI/CD Variables: Use CI/CD variables to STORE secrets like API keys, passwords, and tokens.
+- Limit Runner Access: Only allow trusted runners to execute CI/CD jobs. Specify runners with tags can help. Only runners with appropriate
+tags can run jobs on main branch.
+- Access control and permissions: Review and configure project-level and group-level access controls and permissions.
+- Regular Audits: Conduct regular audits of your CI/CD pipeline and configuration tools you are using.
+- Monitor and Alert: Set up monitoring and alert for the pipeline.
+What can we add so that merges are raised for review instead of pushing the changes to code directly? merge requests
+What should we do so that only trusted runners execute CI/CD jobs? limit runner access
+Authenticate to Mother and follow the process to claim Flag 3. What is Flag 3? THM{2411b26f-b213-462e-b94c-39d974e503e6}
+
+#Securing The Build Environment
+Securing the point where build is deployed to the environment
+#Environment Segregation
+Segregating environments. Devs are given a lot of access and abilities in envs other than prod environment and pre-prod environment.
+A common misconfiguration is using THE SAME BUILD AGENT FOR ALL THE ENVIRONMENTS.
+#One Build Agent To Rule Them All
+Even when access is restricted for main branch and allow devs' access to only dev environment. If all branches are using same RUNNER(build agent),
+An attacker could compromise the build agent in the DEV environment once a dev user's access is compromised. If that is compromised, the
+prod environment is a toast.
+#Protecting The Build Environment
+- Isolate Environments: Seperate environments and use sepearate runners and tags
+- Restricted Access for CI/CD Jobs: Only authorized users should have access to the machines. Implement strong access controls and monitor
+for unauthorised access.
+- Monitoring and Alerting: Set up alerts for suspicious activity or failed builds that indicate a compromise.
+What should you do so that a compromised environment doesn't affect other environments? isolate environments
+Authenticate to Mother and follow the process to claim Flag 4 from the DEV environment. What is Flag 4?THM{28f36e4a-7c35-4e4d-bede-be698ddf0883}
+Authenticate to Mother and follow the process to claim Flag 5 from the PROD environment. What is Flag 5? THM{e9f99dbe-6bae-4849-adf7-18a449c93fe6}
+
+#Securing The Build Secrets
+#One Secret To Rule Them All
+Once the pipelines, the environments and runners are segregated, secrets need to be segregated too. Using same secrets for dev and prod environments
+could lead to a compromise.  Once the dev environment is compromised, the production can be compromised too.
+#Protecting the Build Secrets
+- Masking Variables: e.g you can MASK  variable in the gitlab by using CI_JOB_TOKEN
+- Use Secure Variables: e.g Enable the option "Masked" for the Gitlab CI/CD variables. You go into Gitlab, provide it into it and enable "masked"
+- Access Controls: Only authorized can view job logs and variables in GitLab.
+Is using environment variables enough to protect the build secrets? (yay or nay) nay
+What is the value of the PROD API_KEY? THM{Secrets.are.meant.to.be.kept.Secret}
+
+Summary
+- Pipeline security is very important
+- Access controls are essential
+- Runner security is essential
+- Secrets Management matters
+- Isolate environments
+- Continuous vigilance
+- Education
+
+#DEPENDENCY MANAGEMENT
+Modern apps are not built from the ground up anymore. Modern apps use LIBRARIES and SOFTWARE DEVELOPMENT KITS that assist with basic
+features of the application. The libraries and SDKs are called dependencies and they need to be managed.
+#The scale of dependency
+The "import numpy" is a dependency in python that takes care of more than 250 lines of codes for you already. Every single line where the 
+numpy library is used is 250 lines of codes at least. So when you use it, it streamlines your code and makes it more enables you to focus on
+the functionalities. However, you need to manage this numpy dependency e.g
+
+#!/usr/bin/python3
+#Import the OS dependency
+import numpy
+
+x = numpy.array([1,2,3,4,5])
+y = numpy.array([6])
+print(x * y)
+#Dependency management
+Process of managing your dependencies through your SDLC process and DevOps pipeline.
+#Why do we perform dependency management?
+- Know your dependencies so that you can manage them
+- Trying to version lock dependencies because newer versions may add new features or deprecate features that our applications use.
+- Can help new devs onboard by installing all their dependencies for them.
+- Can monitor the dependencies for security reasons.
+Most big organizations use dependency management tool e.g JFrog Artifactory
+What do we call the libraries and SDKs that are imported into our application? Dependencies
+#Internal Vs External
+#External dependencies
+Are dependencies that are developed and maintained outside your org. Some of these dependencies are publicly available. Some are paid
+for. Examples of popular external dependencies:
+- Any python pip package from Pypi public repos
+- JQuery and any other Node Package Manager (NPM) library e.g VueJS or NodeJS
+- Paid for SDKs e.g Google Recaptcha SDK that can be used to integrate captchas into your application
+#Internal dependencies
+It is one that has been developed by someone in ypur org. Only used by apps in our org. Examples of them are:
+- An authentication library that standardizes the authentication processes of all of our internally developed app.
+- A data-source connection library that provides apps with various techniques to connect to different data centers
+- A message translation library that can convert app messages from a specific format to one that an internal application can read
+Would an authentication library that we created be considered an internal or external dependency? internal
+Would JQuery be considered an internal or external dependency? external
+#Securing external dependencies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
