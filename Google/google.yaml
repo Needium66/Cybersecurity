@@ -184,7 +184,7 @@ Security Ethics: Are guidelines to making accurate decisions in security related
 Ethical principles in security:
 Confidentiality: Keep info like PII confidential and safe in the course of your job
 Privacy: Safeguarding private information from unauthorized use.
-Laws: Rules that are recognized by a community and enforced by a governing entity.
+Laws: Rules that  are recognized by a community and enforced by a governing entity.
 
 #Tools
 SIEM tools: It collects and analyze log data to monitor critical actvities in an organization
@@ -567,7 +567,7 @@ across the network. ICMP Flood Attack: It is a type of DoS attack where an attac
 will FORCE a server to send an ICMP back. This eventually USES all the BANDWIDTH for incoming and outgoing traffic and causing the server
 to crash
 Both ICMP and SYN Flood Attacks take advantage of COMMUNICATION REQUESTS to achieve their goals. The 3rd one does damage with just ONE REQUEST
-3. Ping of Death- It is a type of DOS attack where an attacker PINGS A SYSTEM by sending it an OVERSIZED ICMP packet that is beigger than 64KB.
+3. Ping of Death- It is a type of DOS attack where an attacker PINGS A SYSTEM by sending it an OVERSIZED ICMP packet that is bigger than 64KB.
 Since a correctly sized ICMP packet is 64Kilobytes. An hacker sends more than appropriate size in order to overwhelm the network.
 
 #Security Hardening
@@ -973,6 +973,9 @@ Ways:
 Block the IP address/es of the attacker using firewall rules
 Data is known to be sent as packets. Packets contain the below
 Components of a packet:
+
+
+
 Header- it contains the packet of the source and destination address
 Payload- has the content of a packet
 Footer- end of a packet

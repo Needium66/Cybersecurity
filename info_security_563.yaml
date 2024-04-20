@@ -732,3 +732,126 @@ Offline Anti Virus Software:
 - The suspicious file is not deleted but made harmless. User can decide when to remove it or eventually restore for a false positive
 - The file in quarantile is harmless becaiuse it is encrypted
 - Technique in quarantile is PROPRIETARY and details are kept secret
+
+
+#### Week 9
+#Network Security
+
+#Understand the basic concepts of modern computer network and layered architecture
+#State vulnerabilities of intermediate layers (link, transport and network)
+#Denial of service attacks and their methods
+
+    Application      #Addressing Types Below
+      |
+      |
+    Transport        #(Port Number) (Transports traffic via ports)
+      |
+      |
+    Network          #(IP Address) (Transports traffic via IPs)
+      |
+      |
+    Link             #(MAC Address)(LAN Address)  (Transports traffic via MAC)
+
+Physical  #(Ethernet)  (Fibre Optics) (Wifi)  (Helps with the traffic transports via any of these)
+
+The "Intermediate Layers": Link, Network and Transport layers
+#Link Layer
+- LAN : Ethernet, Wifi, Fiber optic
+- 48 bit Media Access Control (MAC) Addresses
+- Packets called "Frames"
+#Network Layer
+- Internet wide communication
+- Efforts
+- 32-bit Internet Protocol (IP) named IPv4
+- 128-bit Internet Protocol (IP) named IPv6
+#Transport Layer
+- 16-bit addresses (ports) for classes of applications
+- Connection oriented Transmission Layer Protocol (TCP)
+- Connectionless User Datagram Protocol (UDP)
+
+#Network based attacks
+- Denial of service : DOS attacks using bot nets
+- Man in the middle : Man in the middle attack using IP scoping and session hijacking
+- Eavesdropping : Using packet sniffing bots
+- Victim network
+- Masquerading
+
+#Network Security Issues in terms of CIA Triage (Trying to show that network is not secure by default)
+Confidential: No requirement to keep the contents of network packets confidential. ENCRYPTION could either be in Application Layer (HTTPS)
+or lower layer protoocol (IPsec)-network layer. Wide wide west, just providing security via encryption
+Integrity: The HEADERS and FOOTERS that contain the DATA PACKETS have SIMPLE CHECKSUMS to validate the INETGRITY OF DATA and/or HEADER CONTENTS
+Checksums are not CRYPTOGRAPHICALLY secure. Not really secure, only providing security via checksums
+Availability: The inetrnet was designed to TOLERATE failures of routers and hosts.There is an aavailability challenge for network to be open
+24/7. Not really security tolerant, can still be overwhelmed.
+Assurance: By default, a packet is allowed to travel between any source and destination in a network. Network firewalls are designed to block
+traffic in and out of a network domain if that traffic violates policies set by admin.
+Authenticity: The headers and footers for the standard internet protocols DONT have a place to put digital signatures (and no notion of user identities)
+Anonymity: The ineternet has a built-in identities( with no user identities). Attackers on anonymity can come from technologies that identify
+a computer a person is using.
+
+#Link Layer Vulnerabilities
+ARP Cache maintains the MAPPING between IP address and MAC address
+Update will be through ARP request (Host) and ARP reply (Destination host)
+Attack: MAC spoofing attack (impersonating another machine)
+#ARP Cache example
+IP Address                     MAC Address                        Type
+128.148.31.1                00-00-0c-07-ac-00                  Dynamic
+ARP Posisoning: (ARP Spoofing)
+Almost all ARP implementations are STATELESS. An ARP Cache UPDATES every time it RECEIVES and ARP REPLY(Dest), even if it did not send any
+ARP REQUEST. Therefore, it is easy to POISON an ARP CACHE by sending anonymous ARP REPLIES.
+Using STATIC ENTRIES solves this problem, but it is very challenging to MANAGE
+An attacker will stay in the middle and provide false info to the ARP Cache that will poison it. Instead of communication between A(Request)
+and B (Reply). An attacker will be C (Stay in the middle and manipulate the communication between A and B with provide IP and MAC addresses)
+#NETWORK LAYER VULNERABILITIES
+IP Spoofing: It is an attempt by an intruder to send PACKETS from IP address that appear to originate at another. Manipulating the source
+address to be from a legitimate source that can be trusted. You have a source address and a destination address. The soource address will be
+modified or overwritten with a different IP address.
+There are 2 basic source of IP spoofing
+- Blind spoofing: Spoofing from any source
+- Non Blind Spoofing: Attack from the same subnet
+Packet Sniffing: They READ information through a network.
+- They INTERCEPT network packets e.g using ARP posisoning.
+Packet sniffer is a legitimate tool to ANALYSE a network, but it can be used maliciously as well.
+#Legitimate uses
+- Monitor network usage
+- Filter network traffic
+- Analyze network problems
+#Malicious use
+- Steal info (passwords, conversations)
+- Analyze network info to prepare an attack
+Packet sniffers can either be a software or hardware.
+#Example of packet sniffer - Wireshark
+Wireshark is a PACKET SNIFFER and PROTOCOL ANALYZER. It is an open source tool www.wireshark.org. It usually requires Admin privileges to
+run. It can capture traffic across the entire LAN segment and not just frames addressed to a machine.You install it on a machine. If the
+info seen is not encrypted, it can be used or discovered by a bad actor.
+- It CAPTURES and ANALYZES FRAMES
+- It SUPPORTS PLUGINS
+#WAYS TO STOP PACKET SNIFFING
+It is always HARD to detect packet sniffers, because they are PASSIVE (Packet sniffers usually collects DATA but don't make entry to STEAL data)
+Best way to stop it is:
+- Encrypt packets securely (sniffers can collect the data, but it will be meaningless to them)
+- Don't let them into your system at all. Secure your system
+
+#TRANSPORT LAYER VULNERABILITIES
+#TCP VULNERABILITIES
+TCP is a Transport Layer Protocol that GUARANTEES reliable data transfer,and deliver messages in order, and has the ability to distinguish
+data for multiple concurrent apps on the same host.
+Most popular app protocols e.g WWW, FTP, SSH and others are built on TCP . Application protocols built on Transport Layer Prototcol.
+TCP connection is made possible by using a pair of IP address and Port Number.
+Attack:
+- Session Hijacking: TCP session (connection) can be HIJACKED by a bad actor. Launch a man in the middle attack or ip spoofing to hijact it
+Take control of a network session. An attacker stays in the MIDDLE between the Client and Server using ARP Spoofing. Making the client the 
+victim and server, the target.
+
+#Denial of Service Attack. It is a type of network attack
+- Sending LARGE NUMBER of PACKETS to host providing service, to slow it down or crash it. It is often executed by botnets. Can be classified into
+2 - Flooding attacks and Crashing as explained
+- Attack gets propagated, starting as zombies, then travels through tree of internet routers rooted
+- Can also originate from IP source spoofing, where attacker is hidden and scatters return from traffic. Used by bot attacks.
+Examples of DOS Attack:
+#Smurf Attack
+Using a misconfigured network and exploiting it to overwhelm the bandwidth of a target.
+#SYN Flood
+Botnet will be used to flood a victim's machine with SYN traffic. To overwhelm the victim's network.
+
+####Week 10 Network Security Continued
