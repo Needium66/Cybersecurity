@@ -855,3 +855,97 @@ Using a misconfigured network and exploiting it to overwhelm the bandwidth of a 
 Botnet will be used to flood a victim's machine with SYN traffic. To overwhelm the victim's network.
 
 ####Week 10 Network Security Continued
+#Objectives
+- Describe DNS functiona and attacks
+- Explain the firewall functions and how to implement firewall policies
+- Concept of Tunneling with VPN
+- Functionalities of Intrusion Detection Systems
+- Wireless networking security and standard protocols
+
+#Domain Name Systems(DNS)
+It is an application layer protocol for MAPPING domain names (www.example.com) to IP address #.#.#.# Type an address into a browser, behind the
+seen, it will look for the ip address of the server that has the content for the domain name typed into the browser to able to provide the
+content needed.
+#Steps behind the scene
+Name server
+  |
+Root name server (Root)
+  |
+TLD servers (com or edu or ng or gov etc)
+  |
+Authoritative name servers (stanford.edu, google.com)
+  |
+Domain server
+
+#DNS ATTACKS
+Pharming Attack: DNS Hijacking
+Pharming attack will MAP a domain name to a malicious server. Then performs a a phishing attack attack by providing a webpage that looks the same
+as the real one
+DNS Cache Poisoning:
+Giving DNS servers FALSE RECORDS and get it cached.
+DNS uses a 16-bit request identifier (transaction ID) to pair QUERIES with ANSWERS. But sometimes ID is not CHECKED when receiving ANSWERS
+from the DNS server. Cache may be poisoned when a name server disregard:
+- Disregards name servers query identifiers (transaction ID)
+- Has predictable identifiers.
+- Accepts unsolicited DNS records.
+#DNS Cache Poisoning Prevention
+1) Always CHECK identifiers (transaction IDs)
+2) Use RANDOM IDENTIFIERS for queries to avoid prediction
+3) Source port randomnization for DNS requests. Default source port number = 53. Ramdomize the source port instead of using port 53.
+4) Deploy DNSSEC . Use digital signatures for the reply for DNS queries. DNSSEC provides data integrity and source authenticity
+  - Signing DNS replies for SOURCE AUTHENTICITY and INTEGRITY
+#FIREWALLS
+It is an integrated collections of security measures designed to prevent unauthorized electronic access to a networked computer system.
+Used to isolate one network or compartment from another.
+#Firewall Policies
+Are set of rules used to filter network of incoming and outgoing traffic.
+#Policy Actions
+Packets flowing through a FIREWALL can have 1 or 2 of the below outcomes:
+- Accepted: permitted through the firewall
+- Dropped: not allowed through the firewall with no indication of failure
+- Rejected: not allowed through, accompanied by an attempt to inform the source that packet was rejected.
+#The properties of the packets inspected by the firewall before actions are taking include
+- Transport Layer Protocol - TCP and UDP
+- Source and destination IPs
+- Source and destination ports
+- The application-level payload of the packet.
+#Blacklists and Whitelists
+2 fundamental approaches to creating firewall policies
+Blacklists: All PACKETS are allowed through except those that fit the RULES defined specifically in a BLACKLIST i.e there will be some
+packets in the blacklist, those packets will NOT BE ALLOWED, but others will be. It is a very FLEXIBLE CONFIGURATION RULE by ensuring that
+service to the ineternal network is not disrupted by the firewall. but the assumption that there is not going to be anything malicious in 
+the remaining packets besides the ones in the blacklist is naive.
+Whitelists: This is the SAFEST approach to firewall ruleset. It is called DEFAULT DENY POLICY, in which PACKETS are DROPPED or RE Attacks:ECTED, except
+they are ALLOWED by the FIREWALL.
+
+#TUNNELS
+Contents of TCP packets are not normally encrypted, so someone could be eavesdropping on the TCP connection between the client and the server
+To prevent the eavesdropping from happening without changing the software performing the communication, a TUNNELING PROTOCOL can be implemented.
+TUNNELING PROTOCOL will encrypt the data or TCP connection between the client and the server.
+The tunneling protocol will do the ENCRYPTION and DECRYPTION of payloads between the CLIENT (TCP/IP) and SERVER (TCP/IP)
+#VPN
+It is a TECHNOLOGY that allows PRIVATE NETWORKS to be safely extended over long PHYSICAL DISTANCES by making use of a PUBLIC NETWORK e.g
+inetrnet, as a means of transport. VPN provides guarantees of data CIA despite use of untrusted network for transmission. There are 2 types
+of VPN
+- Remote access VPN e.g Direct Connect
+- Site-to-Site VPN e.g AWS VPN
+#Intrusion Detection System (IDS)
+Intrusion: Actions aimed at COMPROMISING the security of the TARGET (CIA of computing/network resources)
+Intrusion Detection: The identification of intrusion activities in a network
+Intrusion Prevention: The process of detecting intrusion activities and providing automatic responsive actions throughout the network.
+#Threats that can be detected by IDS includes:
+Masquerader: An attacker falsely using the IDENTITY OR / AND CREDENTIALS of LEGITIMATE USER to gain access to a computer or network
+Misfeasor: A LEGITIMATE USER who is performing actions that he is NOT AUTHORIZED to do.
+Clandestine User: A USER who tries to BLOCK or COVER UP his actions by DELETING AUDIT FILES  and/or SYSTEM LOGS.
+Port Scans: Info gathering to DETERMINE which PORTS or HOSTS are OPEN for TCP Connections.
+Denial-Of-Service- Attacks: Network attack designed to OVERWHELM a HOST and SHUT DOWN legitimate access
+Malware Attacks: Replicating malicious software attacks e.g Trojan Horse, worms, viruses.
+ARP Spoofing: An attempt to REDIRECT IP Traffic in a Local Area Network.
+DNS Cache Poisoning: Pharming attack to change HOST DNS cache to create a FALSIFIED domain name/IP-address association.
+#IDS Components
+An IDS Manager COMPILES data from IDS Sensors to DETERMINE if an INTRUSION has occurred.
+The DETERMINATION is based on a set of SITE POLICIES ( Rules and Conditions that DEFINE probable intrusions)
+If an IDS MANAGER DETECTS an INTRUSION, it will trigger an ALARM.
+IDS Manager
+IDS Sensor
+
