@@ -948,4 +948,76 @@ The DETERMINATION is based on a set of SITE POLICIES ( Rules and Conditions that
 If an IDS MANAGER DETECTS an INTRUSION, it will trigger an ALARM.
 IDS Manager
 IDS Sensor
+#Possible Alarm Outcomes
+Alarms can be sounded POSITIVE or not NEGATIVE
+- Alarm Sounded: Intrusion Attack (TRUE POSITIVE) i.e alarm sounded and once checked, the intrusion is legitimate
+                 TP is when an alarm is SOUNDED on a malicious event (an intrusion)
+                 No Intrusion Attack (FALSE POSITIVE) i.e alarm sounded and once checked, the intrusion is not legitimate
+                 FP is when an alarm is SOUNDED on a BENIGN ACTIVITY (Not an intrusion)
+- No Alarm Sounded : Intrusion Attack (FALSE NEGATIVE). FN is when an alarm is not SOUNDED on a MALICIOUS EVENT, which is not an intrusion
+                   : No Intrusion Attack (TRUE NEGATIVE). TN is when an alarm is NOT SOUNDED on a BENIGN ACTIVITY, which is not an intrusion
 
+Types of Intrusion Detection System:
+- Rule-Based Intrusion Detection: Rule IDENTIFIES the type of ACTIONS tha MATCH certain KNOWN PROFILES for an intrusion attack i.e the
+rule will ENCODE a signature for such an attack.
+So if the IDS manager sees a rule that MATCHES the signature for such a rule, it would immediately sound an ALARM and possibly indicate 
+type of attack that was suspected.
+- Statistical Intrusion Detection: Built on statistical representation of the way a HOST or USER acts. Hence, it is used to DETERMINE
+when a HOST or USER acts HIGHLY UNUSUAL or in MALICIOUS WAY. i.e this is what AI cyber tools are based on
+#WIFI SECURITY
+- Encryption, Authentication
+- WEP : First attempt at 802.11 security
+        Wired Equilvalent Privacy
+- Current attempt: 802.11i (WPA2)
+  Wifi Protected Access 2
+
+
+
+
+#Week9
+#HTTP/HTTPS, Dynamic Contents, Sessions and Cookies
+#Web Attacks, Exploiting Client Side and Server-Side Vulnerabilities
+#Attacks/Threats under these include
+- Session hijacking
+- Phishing
+- Cross-site scripting
+- Database injections
+#HTTP
+- Web application layer protocol (Port 80)
+- Client/server model
+- No secure channel provided
+#HTTPS
+- HTTP over TLS/SSL (Port 443)
+- Server provides its certificate (Signed by CA) to client
+- Cipher suite negotiation between server and client
+- Data is exchanged over encrypted channel
+#Phishing Attack Based On Mispelled URL
+http://www.securetotaltrust.com but have it mispelled as http://www.securetotalrust.com
+The mispelled url could be included in a SPAM email asking a customer to check their account balance. The mispelled url link will lead
+to a different website instead of the legitimate (http://www.securetotaltrust.com) one, then the threat actor could steal the customer's info
+through this.
+#IE(Internet Explorer) IMAGE CRASH (Another attack)
+Injection of bugs in a browser can lead to DENIAL OF SERVICE ATTACK i.e browser implementation bugs can lead to denial of service attacks
+e.g Classic Image Crash on Internet Explorer is a perfect example i.e when you CREATE A SIMPLE IMAGE OF EXTREMELY LARGE PROPORTIONS
+(providing huge values for the HTML code), it can
+CRASH Internet Explorer and sometimes FREEZE a Window's Machine.
+#Mobile Code (Using mobile code for web attack)
+Mobile code is an executable program, sent via a computer network, executed at the destination. e.g javascript, activex, java plugins,
+Integrated Java Virtual Machines.
+Javascript can be used in a CLICK-JACKING ATTACK- A user could be induced to providing an input to a dialogue e.g "Do you want to perform
+this act for a prize?"
+#Cookies
+Cookies are A SMALL BIT OF INFO STORED ON A COMPUTER ASSOCIATED WITH A SPECIFIC SERVER
+- When you access a WEBSITE, it might store info as cookie
+- Everytime you revisit that server, the cookie is re-sent to a server.
+- Effectively used to HOLD STATE INFO over sessions.
+- Can jold sensitive info and any type of info e.g passwords, credit card info, SSN, session cookies, non-persistent cookies, persistent
+cookies.
+#It can be used for malicious purpose to disclose confidential info e.g login info, credentials
+Storage of cookies on a computer lends itself to exploits.
+#Session Hijacking Attack (Using stolen session ID) 
+e.g A threat actor taking over HTTP sessions in a session hijacking attack (TCP session hijacking)
+A legitimate user initiates a web request on a web browser, there is a SESSION ID (sent with GET or POST or cookie) created for the user
+to connect to a web server that is connected to a database (that maps session id to a user's info). In the middle of the connection
+between the client and the web server is a threat actor( e.g man in the middle attack) waiting to manipulate the session id to exploit it.
+An attacker can use WIRESHARK to im[ersonate a session id, intercepts the HTTP to collect the session id info.
