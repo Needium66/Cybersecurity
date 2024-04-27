@@ -1020,4 +1020,23 @@ e.g A threat actor taking over HTTP sessions in a session hijacking attack (TCP 
 A legitimate user initiates a web request on a web browser, there is a SESSION ID (sent with GET or POST or cookie) created for the user
 to connect to a web server that is connected to a database (that maps session id to a user's info). In the middle of the connection
 between the client and the web server is a threat actor( e.g man in the middle attack) waiting to manipulate the session id to exploit it.
-An attacker can use WIRESHARK to im[ersonate a session id, intercepts the HTTP to collect the session id info.
+An attacker can use WIRESHARK to impersonate a session id, intercepts the HTTP to collect the session id info.
+#Injection Attacks (One of the most common web security attack)
+Web attacks as a result of injection attacks were 59% of all the attacks in 2019
+Common injection attacks are
+- Cross=site Scripting: The injection of scripting code into a web application pages. Script could be malicious code e.g Javascript,
+VBScript, ActiveX, HTML, or Flash. Threats: Phishing, Hijacking, Changing of user setting, cookie theft/poisoning.
+- SQL injection: Injection of SQL commands that can MODIFY and READ a database management system
+Cookie stealing by Cross-site scripting.
+Client Side Cross-Site Scripting Defenses:
+- Proxy based: Analyze HTTP traffic between browser and firewall. Look for special HTML characters. Encode them before executing them on
+the user's web browser.
+- Application-level firewalls: Analyze HTML pages for hyperlinks that might lead to leakage of sensitive info. Stop bad request using a 
+set of connection rules.
+- Auditing system: Monitor execution of javascript code and compare the operations against high-level policies to detect malicious behavior
+#SQL Injection using 1=1
+#Defenses against SQL injections
+- Input validation: Test the content of string variables  and acccept only expected values.
+- Input checking function: Scan QUERY STRING for undesirable words like "insert", "update", "delete", "drop or character sequences e.g "---
+- Least access privilege
+- Validate input sources: Disallow unidentified or untrusted users and websites.
