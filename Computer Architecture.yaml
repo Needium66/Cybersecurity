@@ -1,0 +1,75 @@
+#Processor Structure and Function
+#Objectives
+#Distinguish between user-visible and control/status registers, and discuss the purposes of registers in each category
+#Summarize the instruction cycles
+#Discuss the principle behind instruction pipelining and how it works in practice
+#Compare and contrasts various forms of pipeline hazards.
+
+#Processor requirements
+- Fetch instruction: The processor reads an instruction from memory (register, cache, main memory)
+- Interpret instruction: The instruction is decoded to determine what action is required.
+- Fetch data: The execution of an instruction may require reading data from memory or an I/O module
+- Process data: The execution of an instruction may require performing some arithmetic or logical operation on data.
+- Write data: The results of an execution may require writing data to memory or an I/O module.
+- In order to do all these things, the processor needs to store some data temporarily and therefore needs a small internal memory.
+#The Internal Structure of a CPU
+ALU Arithmetic and Logic Unit
+Registers
+Control Unit
+Internal CPU Bus
+#Register Organization
+Within a processor, there is a set of registers that act at a level of MEMORY ABOVE the main memory and cache in the heirarchy
+The registers in the processor performs 2 roles:
+- User visible registers: Enable the machine or assembly language programmer to minimize main memory refrences by optimizing use of registers
+- Control and Status Registers: Used by the control unit to control the operation of a processor and by privileged OS programs.
+#The User-Visible Registers: Referenced by the means of machine language that the processor executes
+#Categories or Classes of User-Visible Registers
+- General purpose: It is the type of register that can be assigned to a variety of functions by the programmer
+- Data: It is a type of register that may be used only to hold data and cannot be employed in calculation of an operand address
+- Address: It is a type of register that maybe  general purpose or may be devoted to a particular addressing mode e.g segment pointer,
+index registers and stack pointer
+- Condition codes: It is a type of register also referred to as FLAGS. Bits set by the processor hardware as a result of operations.
+#Categories or Classes of Control and Status Registers. Not visible to users.
+- 4 Registers are essential to instruction execution:
+- Program Counter(PC): Contains the address of an instruction to be fetched
+- Instruction Register (IR): Contains the instruction most recently fetched
+- Memory Address Register (MAR): Contains the address of a location in the memory
+- Memory Buffer Register (MBR): Contains a word of data to be written in memory or the word most recently read.
+#Program Status Word (PSW)
+Register or set of registers that contain status information
+Common fields or flags include:
+- Sign
+- Zero
+- Carry
+- Equal
+- Overflow
+- Interrupt Enable/Disable
+- Supervisor: whether the program is executed in supervised mode user mode
+#Data Flow, Fetch Cycle- Address Bus, Data Bus, Control Bus. During Fetch cycle, the instruction is read from the memory
+MBR - Memory Buffer Register
+MAR - Memory Address Register
+IR - Instruction Register
+PC - Program Counter
+#Pipeline Strategy
+- Similar to the use of an assembly line in a manufacturing plan
+- New inputs are accepted at one end before previously accepted inputs appear as outputs at the other end.
+- To apply this to instruction execution, we must recognize that an instruction has a number of stages.
+Pipeline has 6 stages, from Fetch instruction to Write operand.
+9 instructions * 6 stages = 54.
+#Pipeline Hazards
+ or Pipeline bubble
+ - 3 types of hazards - when pipeline stalls
+ - Resource- access conflict to resources e.g 2 instructions needing to use same resource. also called structural hazards
+ - Data- access conflict to some data
+ - Control- has to do with instruction
+
+
+ 59 times unit to perform 9 instructions. 6 stages. From 1 to 14, first instruction is 6, the others after it ascends by 1.
+ OP Code = 54 units = 9 * 6
+ Conditional branch - instruction 3. The EI execution- executed at time unit 7, moves to instruction 15
+  in it jumps to conditional branch 15 - FI - Fetch instruction. non sequential ways
+  6 stage cpu instruction - first exact stages, conditional branches.
+  Alternative pipeline- Left shows based on timing. Riight shows based on instruction 15
+
+Multiple streams, conditional branches.
+
