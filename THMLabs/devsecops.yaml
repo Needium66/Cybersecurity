@@ -748,6 +748,38 @@ and submit, you should intercept your password.
 the modern web browser will VERIFY the hash of JS library and once it does not match, the library will not be loaded
 
 
+####securing internal dependencies
+- any libraries or sdks that have been developed internally are called internal dependencies
+##security concerns for sdk includes
+- legacy code
+- hard to maintain; you have got to patch this regularly
+- storage; are you able to control its storage?
+- you can use jfrog artifactory to centrally store all your dependencies. it is a dependency manager
+#attack/threat against internal dependency
+- dependency confusion- it is attack that can be launched against a dependency manager
+- when an attacker launches a malicious dependency attack against the dependency manager of an organization, whereby the attacker hosted
+package is being used as against the correct or appropriate package e.g an attacker gets privy to sensitive info of a package being used
+by a developer that asked question on stack overflow and forgot to obfuscate the sensitive data. the attacker pounces on this and modifies
+the package and hosts it with a superior version number.
+- dependency confusion can be achieved through supply chain attacks via
+1. typosquatting: an attacker hosting a package called "nunpy" instead of the real python package called "numpy". thereby expecting a
+developer to make a typo error of running a "pip install nunpy", instead of "pip install numpy"
+2. source injection: an attacker contributes to the source code of the package on public forum and embeds vulnerability into it
+3. domain expiry: an attacker takes an advantage of an expired domain that the real developer forgets to renew the email associated with
+hosting of the package.
+
+##risk of running the command for looking for an external package if available
+- "pip install numpy --extra-index-url https://our-internal-pypi-server.com/"
+- with the "extra-index-url", it looks for external package that might be available for the package and gets exposed to potential exploita
+tion of dependency confusion
+
+##defences
+- actively maintain internal dependencies.
+-  ensure the security of hosting internal dependencies by
+1. reference only one private supply point, not multiple. e.g using "index-url" instead of "external-index-url" will ensure that package
+is obtained only from one source
+2. use controlled scopes to protect packages- ensure dependencies are locked to the applications that require them.
+3. use client-side-verifications procedure- e.g version locking.
 
 
 
