@@ -63,7 +63,7 @@ AWS Managed Service(AMS)- It provides ongoing management of AWS infrastructure. 
 PATCH MANAGEMENT, SECURITY, and BACKUP SERVICES.
 Process: Set up processes, by DOCUMENTING ARCHITECTURE, DEVELOP incident response plan and CREATE PLAYBOOKS for consistent IR.
 Have clear steps and workflows to manage response to security incidents. Update, Iterate, and Test your incident response processes.
-Develop an INCIDENT RESPONSE PLAN document. Your incident response plan document should have these sections:
+Develop an INCIDENT RESPONSE PLAN document. Your incident response plan documentPlease, can  should have these sections:
 1) An incident response team overview
 2) Roles and responsibilities
 3) A communication plan
