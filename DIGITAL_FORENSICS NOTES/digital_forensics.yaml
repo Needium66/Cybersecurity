@@ -1,0 +1,109 @@
+####this file is for notes curating my journey in the world of digital forensics
+####it will be more structured, beginning with an introduction, then delves into other areas in digital forensics
+####text to be used throughout this journey is digital forensics basics: a practical guide using windows os by nihad hassan
+
+
+####introduction
+# what is digital investigation
+# why do we need digital investigation?
+- the world has changed and evolved into dependence on electronic devices e.g phones, laptops etc.
+- the world has gone digital with the prevalence of these devices and crimes are committed using these devices.
+- therefore to be able to investigate crimes that are committed involving these devices, we will have to incorporate digitization.
+###crime
+#what is a crime?
+- crime can be defined into 2 main groups
+1) physical - does not involve electronics
+2) digital
+  - identity theft
+  - cyberbullying
+  - skimming
+  - spoofing
+  - accessing accounts
+  - social engineering
+3) electronic device that can be useful in crime investigation
+  - commit the crime: you can use electronic device to commit a crime e.g wire fraud- credit card is involved
+  - research on the internet: you can use electronic device to carry out research on the crime to be committed on the internet e.g laptop
+  - communication: you can electronic device to communicate for a crime e.g phone
+  - save files: you can use electronic device to save files of a crime e.g on a thumbdrive or file in a laptop
+  - pictures: you can use electronic device to take pictures of who or what to commit a crime on e.g phone, camera etc
+  - car phone location: your visited locations for a crime
+
+#what are examples of crimes that require digital investiagtion?
+- gilgo beach serial killer
+- btk serial killer
+  - lived in kansas
+  - murdered 10 people between 1974 to 1991
+  - sent taunting letters to police and newspapers
+  - apprehended in 2005
+  #how was he arrested?
+  - could not arrest him through fingerprints or footprints etc
+  - he was arrested using digital evidence: he used a floppy disk in the 90s
+  - he sent a document to a tv station
+  - the police were able to retrieve the disk and search for evidences on the floppy disk; the author, location, modification, date 
+  metadataetc(properties)
+  - they found a deleted word document file and recover it, author is dennis, traced to microsoft word that, located in the church(physical)
+  - since the disk/ file is digital, it becomes a digital evidence
+
+###locard's exchange principle
+- every contact leaves a trace
+- i.e there is always a trace of the suspect at every crime scene. because he interacts with the environment (crime scene) and leaves or
+exchange  a trace e.g fingerprint, footprint, hair, piece of clothe (physical)
+- applies to digital evidence:
+   = login to your account
+   - signed out of your account
+   - gps
+   - documents exchanged
+   - sms
+   - phone calls
+   - saved files
+   - sites visited
+   - browser history
+
+#####terms
+# digital investigation
+# digital forensics
+# digital evidence
+
+#digital investigation
+- process of gathering or collecting evidence to answer questions about digital event e.g crime to test or hypothesize whether it is true
+or not.
+  - digital investigation using "scientific process"
+    - the crime to investigate
+    - ask questions - (what, who, how, where)
+    - develop your hypothesis
+    - gather evidence to proof or disproof hypothesis
+    - repeat steps 3 and 4 until you find that the hypothesis is correct
+    - document investigation for replications etc
+
+#digital forensics
+- usage of science  or technology in the investigation and establishments of facts or evidence in a court of law.
+
+#digital evidence
+- is any type of data that is saved or transferred using a digital device to aid the investigation
+- digital evidence has:
+  - legal usage
+  - investigative usage
+  - examples: face recognition, dna, surveillance video, camera, driver's license are all investigative usage
+  - legal usage- is all about can it be used or not: federal uses it, but some states are not using some now.
+
+#simulation
+- crime: a murder is committed
+- evidence: we have the victim's phone e.g sms
+- what type of crime? it is physical crime, siince the victim was murdered
+- we have digital evidence from the phone to aid in our investigation
+- use the steps outlined above
+    - the crime to investigate: murder using sms
+    - ask questions - (what, who, how, where)
+      - what was the victim's name?
+      - who was the last person he communicated with?
+      - how did he get to the crime scene?
+      - where did the crime happen?
+    - develop your hypothesis
+      - first suspect committed the crime at the location (where) at time (when) based on sms
+    - gather evidence to proof or disproof hypothesis
+      - find files; investigate digital files, saved files, deleted files
+      - images: face recognition, exchanged pictures
+      - gps
+      - test to proof or disproof
+    - repeat steps 3 and 4 until you find that the hypothesis is correct
+    - document investigation for replications etc
