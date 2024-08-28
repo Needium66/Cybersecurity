@@ -1,0 +1,52 @@
+#####this curates the documents, files, review and evaluations and other processes conducted for a soc2 audit for a coy this year
+#objectives:
+######Azure Entra ID default domain policy
+####follow the below steps to get the password policy of your domain
+- use admin privileges to access your domain-joined system
+- open the group policy management tool
+- select computer configuration
+- select policies
+- select windows settings
+- select security settings
+- select account policies
+
+- you can run the below command to get the default password policy of your domain:
+Get-ADDefaultDomainPasswordPolicy
+
+
+(2) AWS MFA settings for your accounts
+- go to "Microsoft Entra Admin Center"
+- go to "Home"
+- go to "Enterprise Applications"
+- go to where your "SSO" for aws is set up
+- get a screenshot.
+
+(3) network diagram for your environments (aws, azure, gcp for cloud, on-premises newtowrk diagram)
+- a screenshot of all your aws accounts
+- the overall network diagram of all your aws environments
+- the network diagram of each product line or aws account
+-
+
+(4) default domain policy of your on-prem environment
+(5) sftp server/tool encryption settings
+(6) your password/secret tool encryption settings
+(7) annual user review
+- user access rights
+- pull reports for end users from your user management tool, edr/ids tool
+- pull reports for user access in your organization domains
+- pull reports for user access in ticketing and password/secret tools
+- enduser/inventory checks
+- ad / dns health checks
+- enduser laptop patching
+- pull reports for some external licenses (3rd party license)
+- capacity management documentation or report
+- backup processes documentation or report
+- ticket management for support
+- monitoring tools verification processes
+- equipment and media use and disposal procedures
+- server inventory review
+- server patching cadence
+- decom checklist
+- ssh key creation
+- documents on some incident response 
+- cert renewal documents for all applications

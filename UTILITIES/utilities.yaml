@@ -1,0 +1,11 @@
+#####this file contains some regular queries/scripts/commands that i use in the process of doing my job, performing my responsibilities
+#####studying, labs or simulations.
+####use the below powershell script to download set of software/applications from chocolatey and other sources
+#####- there is a prompt asking you to select the department in which you want software to be downloaded for
+- run an "Invoke-WebRequest" to chocolatey send https requests to chocolatey and indicate if it is connected
+- run "Write-Host" to show that it is connected and set up to download
+- run the new command for "Set-ExecutionPolicy" to bypass any restricted policy on the computer and download all indicated software
+and applications to the computer
+- install from the drive that is available on the computer targeting the file in the path provided. (you can put some executable files in the path)
+- indicate when each of the software is downloaded
+- block usb port from being used from the path.
