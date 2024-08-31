@@ -771,17 +771,153 @@ hosting of the package.
 ##risk of running the command for looking for an external package if available
 - "pip install numpy --extra-index-url https://our-internal-pypi-server.com/"
 - with the "extra-index-url", it looks for external package that might be available for the package and gets exposed to potential exploita
-tion of dependency confusion
+    tion of dependency confusion
 
 ##defences
 - actively maintain internal dependencies.
 -  ensure the security of hosting internal dependencies by
-1. reference only one private supply point, not multiple. e.g using "index-url" instead of "external-index-url" will ensure that package
-is obtained only from one source
-2. use controlled scopes to protect packages- ensure dependencies are locked to the applications that require them.
-3. use client-side-verifications procedure- e.g version locking.
+    - reference only one private supply point, not multiple. e.g using "index-url" instead of "external-index-url" will ensure that package 
+    is obtained only from one source
+    - use controlled scopes to protect packages- ensure dependencies are locked to the applications that require them.
+    - use client-side-verifications procedure- e.g version locking.
 
 
+#####static application security testing (sast)
+sast is a tool that is used to discover vulnerabilities during the development lifecycle of an application
+it is best to integrate a sast tool right from the beginning of a sdlc.
+it is also important to be familiar with or know the owasp top 10 and owasp api top 10
+####owasp top 10
+- broken access control
+- insecure design
+- cryptographic failures
+- security misconfiguration
+- vulnerable and outdated components
+- identification and authentication failures
+- software and data integrity failures
+- injection
+- logging and monitoring failures
+- server side request forgery (ssrs)
+
+###owasp api top 10
+- broken object level authorization
+- broken function level authorization
+- broken user authentication
+- excessive data exposure
+- lack of resources and rate limiting
+
+#code review
+you need to carry out code review to test your code for security bugs. code review means testing your code for security bugs
+using a white box approach to search for vulnerabilities ata early stage of sdlc instead of later is important.
+vulnerabilities that are not detected at early stage because there is no code review or search for vulnerabilities will surfaceat the
+end of the project and more laborious to fix.
+code review early on in an sdlc will guarantee:
+- early bug fix
+- less laborious vulnerability management
+- less cost spent on vulnerability fix.
+cost of defects increases from design to maintenance stage i.e --------> design -- coding(development) -- testing -- maintenance
+##manual vs automated coding
+#manual code review
+- human involvement ensures that thorough review and analysis is carried, 
+- but more laborious if there is thousands lines of code to be reviewed
+- inconsistency because of thousands lines of code to be reviewed
+- cost is higher, because human is involved and spends a lot of time doing the review
+#automated code review (this where sast tools are used)
+- less laborious - faster
+- less cost, because it is swiftly completed
+- consistency - it does not suffer fatigue- produces same result every time
+
+#recommendation
+- use automated tools that are precisely defined at early stage to take care of vulnerabilities
+- use manual code review at later stage to take care of more complex vulnerabilities that automated tool might not be able to.
+
+###how manual code review is performed
+manual code review is performed by focusing on finding a type of vulnerability e.g sql injection vulnerabilities
+at a particular time and finding the rest subsequently.
+however we can define more than one type of vulnerability for an automated code review to find.
+first step in code review is to search for - insecure functions in use
+##search for sql injection functions (i.e find any function that could be used to send raw queries to the database)
+- any function that can send queries directly to the database can be used for sql injection
+- assuming we are using an application that uses php and mysql
+    - on the my sql database, we have the below functions:
+    - mysqli_query()
+    - mysql_query()
+    - mysqli_prepare()
+    - query()
+    - prepare()
+##searching for a specified function on the database
+- to search for "mysql_query" function
+    - use "grep", with "r" and "n" flags for recursively and the line number to search for the function directly on the project files
+        - go to the base directory of the project and run the below command:
+        - cd to the base directory e.g " cd /home/ninc/documents/cyberfile/html", then run the command below
+        " grep -r -n 'mysql_query(' "
+        - you will get an output that will indicate the number of the line in which the function can be found e.g
+        " db.php:18: $result = mysql_query($conn, $query); "
+        - this function on line 18 is a potential vulnerability for sql injection, but we cannot determine the vulnerability is present in it
+        until validation
+# to validate if vulnerabilites are present or not inside the function, you will need to look or investigate how it is used
+- so assuming the function "mysql_query" is used in a "db.php" file in our application (php and sql app)
+- we will take a look at that file to investigate further if there is a vulnerability or not
+- assuming after opening up the "db.php" file, we find this below script:
+- function db_query($conn, $query){
+    $result = mysql_query($conn, $query);
+    return $result;
+}
+#analysis
+- the "msql_query" function is wrapped inside the "db_query" function. it is nested inside it
+- unfortunately, there is a "$query" parameter that is passed without modification i.e it is in plain sight. anybody can exploit and modify this
+- the problem at hand now is to find what "db_query" is used for in the application
+    - use grep to search for where "db_query" is used in the application
+    - run the below command to search for row numbers of where the query is used
+    " grep -rn 'db_query(' "
+    - it should output the lines in which "db_query" is used in the code and you can analyze whether it is vulnerable or not
+    
+    hidden-panel.php:7:$result = db_query($conn, $sql);
+    hidden-panel.php:20:$result2 = db_query($conn, $sql2);
+    hidden-panel.php:23:$result3 = db_query($conn, $sql3);
+    db.php:17:function db_query($conn, $query){
+    - analysing the calls starting with the first one
+        - " hidden-panel.php:7:$result = db_query($conn, $sql); "
+        - running the below get call that passes first name and lastname(passes whatever that is stated) in the "guest_id" parameter
+        and concatenates it into the raw sql query "$sql"
+        - run the below command and you will validate the vulnerability present inside the "db_query" function
+        " $sql = "SELECT id, firstname, lastname FROM MyGuests WHERE id=".$_GET['guest_id'];  --- line 1
+        " $result = db_query($conn, $sql);"                                                   --- line 2
+        - the above indicates that an attacker can exploit the vulnerability in the present function and wreck havoc
+    - analysing the third result/output- the result 3, $sql3
+        - " hidden-panel.php:23:$result3 = db_query($conn, $sql3); "
+        - running the below get call passes id, name into the sql query "$sql3" through the parameter 'art_id'
+        - even though it was sanitized with the "preg_replace" function, the regex is only replacing the first character (1 in the script) with an empty string
+        - any other character will pass without being replaced, resulting in a potential "sql injection"
+        " $sql3 = "SELECT id, name FROM asciiart WHERE id=".preg_replace("/[^0-9]/", "", $_GET['art_id'], 1);
+        " $result3 = db_query($conn, $sql3);"
+        - the above indicates that an unauthorized user can run this and exploit the present vulnerabilities
+    - analysing the second result/output 2, $sql2
+        - hidden-panel.php:20:$result2 = db_query($conn, $sql2);
+        - running the below get call passes id, logtest into the sql query "$sql2" through the parameter 'log_id'
+        - even though it was sanitized with the "preg_replace" function, the regex is used to filter and allow characters that are either alpha numeric or double quotes
+        - the double quotes may look like a "vector" for sql injection, but they are not a threat in this case, since the string 'log_id'
+        - passed in the sql sentence is enclosed- so it is not vulnerable to an attack
+        - therefore it is not vulnerable and a sql injection won't work
+        " $sql2 = "SELECT id, logtext FROM logs WHERE id='".preg_replace('/[^a-z0-9A-Z"]/', "", $_GET['log_id']). "'";
+          $result2 = db_query($conn, $sql2);"
+        - the above indicates that exploitation won't be successful in this.
+
+
+####local file inclusion (lfi) attacks. 
+###misuse of a php function can lead to local file inclusion attack
+####functions that can be misused are below:
+- require()
+- include()
+- require_once()
+- include_once()
+####finding vulnerabilities in your application for lfi
+- run "grep" to search for where the specified queries can be found in your application
+- investigation the use cases of each
+- run a get call to check the vulnerabilites
+- validate what can be exploited
+- all these will be done by running it in the php file in the application.
+- lfi can only be present, when the attacker is able to manipulate a part of what is sent to the vulnerable function. 
+- the vulnerable instance must contain some reference to a get or post parameter or other manipulable inputs.
 
 
 

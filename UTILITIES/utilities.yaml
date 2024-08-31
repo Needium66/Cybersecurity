@@ -5,7 +5,43 @@
 - run an "Invoke-WebRequest" to chocolatey send https requests to chocolatey and indicate if it is connected
 - run "Write-Host" to show that it is connected and set up to download
 - run the new command for "Set-ExecutionPolicy" to bypass any restricted policy on the computer and download all indicated software
-and applications to the computer
+#and applications to the computer
 - install from the drive that is available on the computer targeting the file in the path provided. (you can put some executable files in the path)
 - indicate when each of the software is downloaded
 - block usb port from being used from the path.
+
+$(
+$department = Read-Host -Prompt 'Input a department from the following: Sales, IT, Infosec, Data, Technology'
+if ($department -notin @(Sales, IT, Infosec, Data, Technology, Test, N/A)) {
+    Write-Output "Invalid dept. Please, run the script again."
+    exit
+}
+$)
+
+
+####sql queiries to investigate vulnerabilities in a sql database for sql functions using grep
+####sql injection vulnerabilities investigation
+- use "grep", with "r" and "n" flags for recursively and the line number to search for the function directly on the project files:
+- " grep -r -n 'mysql_query(' "
+
+- run the below command to search for row numbers of where the query is used:
+- " grep -rn 'db_query(' "
+
+- running the below get call that passes first name and lastname(passes whatever that is stated) in the "guest_id" parameter:
+- and concatenates it into the raw sql query "$sql":
+- $sql = "SELECT id, firstname, lastname FROM MyGuests WHERE id=".$_GET['guest_id'];  --- line 1
+        " $result = db_query($conn, $sql);"
+
+- running the below get call passes id, name into the sql query "$sql3" through the parameter 'art_id':
+- even though it was sanitized with the "preg_replace" function, the regex is only replacing the first character (1 in the script) with an empty string
+- any other character will pass without being replaced:
+- $sql3 = "SELECT id, name FROM asciiart WHERE id=".preg_replace("/[^0-9]/", "", $_GET['art_id'], 1);
+        " $result3 = db_query($conn, $sql3);"
+
+- running the below get call passes id, logtest into the sql query "$sql2" through the parameter 'log_id':
+- even though it was sanitized with the "preg_replace" function, the regex is used to filter and allow characters that are either alpha numeric or double quotes:
+- the double quotes may look like a "vector" for sql injection, but they are not a threat in this case, since the string 'log_id':
+- passed in the sql sentence is enclosed- so it is not vulnerable to an attack:
+- $sql2 = "SELECT id, logtext FROM logs WHERE id='".preg_replace('/[^a-z0-9A-Z"]/', "", $_GET['log_id']). "'";
+          $result2 = db_query($conn, $sql2);"
+
