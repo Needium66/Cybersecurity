@@ -920,6 +920,68 @@ first step in code review is to search for - insecure functions in use
 - the vulnerable instance must contain some reference to a get or post parameter or other manipulable inputs.
 
 
+####automated code review
+- static application security testing (sast) is the tool that is used for carrying out code analysis
+- it is used to make code review/code analysis faster and simpler
+- it is not used to replace manual code review, but to make it simpler and completes dynamic application security testing (dast)
+- and software composition analysis (sca)
+####advantages
+- it does not require a running instance of the target application i.e the instance of the target application does not need to be running for sast to be deployed
+- it provides a great coverage of the application's functionality i.e it does more than carrying out vulnerability on a function at a time
+- it is faster compared to other dynamic techniques
+- it reports exactly where vulnerabilities are in the code
+- easy to integrate into ci/cd pipeline
+
+####disadvantages
+- false positive prone
+- specific to only a particular language - not language agnostic
+- can't identify vulnerabilities that are dynamic in nature
+- the source code of the app is not always available.
+####note
+- all sast tools are different, but they will always perform 2 main functions:
+- transform the code to an abstract model: represent the code using abstract syntax trees (ast) and then later analysis
+- analyze the abstract model for security issues
+
+#different analysis techniques commonly used by sast tools
+- semantic analysis: it is similar to grepping in manual code review. it finds flaws caused by insecure code in localized context
+    - e.g seraching for calls to mysql_query where get/post parameters are directly concatenated into the query
+    - "mysql_query($db, "SELECT * from users where username=".$_GET['username'])"
+- dataflow analysis: there could be usage of dangerous  function sometimes and it might not be easy to determine whether there is vulnerability
+    - or not by analysing the context around the function call locally.
+    - it traces info/data from the inputs the user can manipulate to potentially vulnerable function
+    - the input is regarded as the "source" and the potentially vulnerable function is "sink"
+    - if data flows from a source to a sink without sanitation, there is a "vulnerability"
+- control flow analysis: used to analyse the order of operations in a code:
+    - race conditions
+    - use of uninitialized variables
+    - resource leaks
+- structural analysis: analysis the code structure of each programming language
+    - e.g following best practices when declaring classes, evaluating code blocks that may not execute, try/catch blocks for cryptographic issues
+    - "e.g $options = array('private_key_bits' => 1024, 'private_key_type' => OPENSSL_KEYTYPE_RSA);  
+     $res = openssl_pkey_new($options);"
+    - rsa key of 1024 is insufficient in this time and age.
+- configuration analysis: analysis application configuration flaws instead of code itself.
+    - e.g application running under (iis) internet information service will have a "web.config". php will have its configurations in php.ini
+#####rechecking with sast tools
+- rechecking with psalm (php static analysis linting machine): simple tool for analysing php code.
+- it is installed as part of the application's project. psalm's configuration file.
+- run the below command to execute psalm on the configuration file for structural issues perhaps to avoid runtime error sometimes
+    - " ./vendor/bin/psalm --no-cache "
+- it can also be used to carry out dataflow analysis
+- run the below command taint_analysis for the dataflow analysis
+    - " ./vendor/bin/psalm --no-cache --taint-analysis "
+- there is always going to be errors with sast tools and the two most common are:
+    - False positives: The tool reports on a vulnerability that isn't present in the code i.e vuln not present in the code
+    - False negatives: The tool doesn't report a vulnerability that is present in the code i.e does not report vuln present in the code
+###implementaion of sast
+- add sast at developing cycle or codding cycle of sdlc
+- sast can be implemented in either of the 2 ways
+    - cicd integration: each time a pr or merge occurs, sast will run
+    - ide integration: integrate it directly to a dev's ide.
+    - can combine both
+    - another sast tool: "semgrep", can be installed from vs marketplace
+    - runs when you start your vs code.
+
 
 
 
