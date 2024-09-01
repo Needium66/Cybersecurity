@@ -44,4 +44,5 @@ $)
 - passed in the sql sentence is enclosed- so it is not vulnerable to an attack:
 - $sql2 = "SELECT id, logtext FROM logs WHERE id='".preg_replace('/[^a-z0-9A-Z"]/', "", $_GET['log_id']). "'";
           $result2 = db_query($conn, $sql2);"
+          
 
