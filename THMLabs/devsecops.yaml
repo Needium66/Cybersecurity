@@ -982,15 +982,112 @@ first step in code review is to search for - insecure functions in use
     - another sast tool: "semgrep", can be installed from vs marketplace
     - runs when you start your vs code.
 
+#####dynamic application security testing (dast)
+- application of dast tool to find weaknesses
+- advantages and disadvantages of dast
+- dast tools
 
+####required knowledge
+- how website works
+- http overview
+- owasp top 10
+####how website works| http/s
+- there are many steps to how a website works, but at a high level, a summary of how that occurs will be expressed
+- a user sends a request to a website (url) on a web browser.
+- the request on that particular url is intended for only one web server that is located somewhere in the world
+- there needs to be a match of the url with an associated ip. the intended server has an ip meant for only it.
+- often, the url for a particular website will have a cname (an alias) meant for the internet.
+- a url will have a dns that is being used at the backend associated with it and server ip attached to it.
+- there will need to be a 3 way handshake that must sync, before connection is successful i.e sync acknowledge sync
+- therefore, user sends a request, the request goes through the necssary steps to the intended server
+- then the server will respond with the content requested for.
+- example:
+- url: www.ninc.com
+- a user makes a request to www.ninc.com
+- ip for the server: #.#.#.#
+- dns for the website: abacd1234.#$%##############.com
+- cname: fgijk904.################.com
+- ip associated with the dns
+- cname pointed to the dns
+- url matched with cname matched with the server ip eventually to respond to the request
+####structure/components for a url
+- https://user:password@ninc.com:443/view-room?id=1#task4
+- what the parts of the url mean:
+- scheme: https or http is the scheme. it instructs on what protocol to use to access the website
+- user: user:password is the user. authentication to login
+- domain/host: ninc.com is the domain or host of ip of the website you are trying to access
+- port: port to be connected to, to give you access to the website e.g 443/80
+- path: location or file name of the resource being tried to access e.g view-room
+- query-string: extra bit of info that can be sent to requested path e.g "?id=1"
+- fragment: reference to the location on the actual page requested.
+####request and response
+#request
+- GET / HTTPs/1.1
+- Host: ninc.com
+- User-Agent: Mozilla/5.0 Firefox/87.0
+- Referer: https://ninc.com/
 
+#what each request line above means
+- line 1025: this request is sending the GET method. request the home page with / and telling the web server we are using HTTPs protocol version 1.1.
+- line 1026: telling the web server we want the website ninc.com
+- line 1027: telling the web server we are using the Firefox version 87 Browser
+- line 1028: telling the web server that the web page that referred us to this one is https://ninc.com
+- line 1029: HTTPs requests always end with a blank line to inform the web server that the request has finished.
+#response
+- HTTPs/1.1 200 OK
+- Server: nginx/1.15.8
+- Date: Fri, 09 Apr 2021 13:34:03 GMT
+- Content-Type: text/html
+- Content-Length: 98
 
+#what each response line means
+- line 1037: HTTPs 1.1 is the version of the HTTPs protocol the server is using and then followed by the HTTPs Status Code in this case "200 Ok" 
+- which tells us the request has completed successfully.
+- line 1038: telling us the web server software and version number.
+- line 1039: telling us the current date, time and timezone of the web server.
+- line 1040: Content-Type header telling us the client what sort of information is going to be sent, such as HTML, images, videos, pdf, XML.
+- line 1041: Content-Length telling us the client how long the response is, this way we can confirm no data is missing
+####components of a website
+- the components that are used to make a website:
+    - html: used to build and define structure for the website
+    - css: used to style the website
+    - javascript: used to implement the complex interactive part of the website
+####hypertext markup language (html)
+- it is the language used for a website- to build a website and how the browser will display contents for the website.
+- an example below:
+- structure (as shown in the screenshot) has the following components:
+- <!DOCTYPE html> defines that the page is a HTML5 document. This helps with standardisation across different browsers and tells the browser to use HTML5 to interpret the page
+- <html> element is the root element of the HTML page - all other elements come after this element.
+- <head> element contains information about the page (such as the page title)
+- <body> element defines the HTML document's body; only content inside of the body is shown in the browser.
+- <h1> element defines a large heading
+- <p> element defines a paragraph
+- other tags that are being used: are many other elements (tags) used for different purposes. For example.
+- there are tags for buttons (<button>), images (<img>), lists, and much more
+- can contain attributes such as the class attribute which can be used to style an element (e.g. make the tag a different color) <p class="bold-text">, or the src attribute which is used on images to specify the location of an image: <img src="img/cat.jpg">.
+- an element can have multiple attributes each with its own unique purpose, e.g., <p attribute1="value1" attribute2="value2">.
+- elements can also have an id attribute (<p id="example">), which is unique to the element. Unlike the class attribute, where multiple elements can use the same class, an element must have different id's to identify them uniquely. 
+- element id's are used for styling and to identify it by JavaScript.
+- you can view the HTML of any website by right-clicking and selecting "View Page Source" (Chrome) / "Show Page Source" (Safari).
+####javascript
+- used to enable a page/website to be more interactive
+- to control the functionality of the webpage
+- to make a page more dynamic as against static from html
+- js can dynamically update a page real-time e.g  a user clicking a button.
+- javaScript is added within the page source code and can be either loaded within:
+- <script> tags or
+- can be included remotely with the src attribute: <script src="/location/of/javascript_file.js"></script>
+-  the js code finds a HTML element on the page with the id of "demo" and changes the element's contents to "Hack the Planet"
+- :document.getElementById("demo").innerHTML = "Hack the Planet";
+- html elements can also have events, such as "onclick" or "onhover" that execute js when the event occurs
+- the following code changes the text of the element with the demo ID to Button Clicked
+- :<button onclick='document.getElementById("demo").innerHTML = "Button Clicked";'>Click Me!</button>
+- onclick events can also be defined inside the JavaScript script tags, and not on elements directly.
 
-
-
-
-
-
+####html injection
+- avoid or protect your website by removing sensitive info or links from html for the website.
+- review the page source code for exposed login credentials or hidden links
+- do input sanitation as a defence.
 
 
 
