@@ -6,9 +6,7 @@
 ####introduction
 # what is digital investigation
 # why do we need digital investigation?
-- the world has changed and evolved into dependence on electronic devices e.g phones, laptops etc.
-- the world has gone digital with the prevalence of these devices and crimes are committed using these devices.
-- therefore to be able to investigate crimes that are committed involving these devices, we will have to incorporate digitization.
+- therefore to be able to incorporate digitization in investigating crimes that are committed involving devices
 ###crime
 #what is a crime?
 - crime can be defined into 2 main groups
@@ -23,7 +21,7 @@
 3) electronic device that can be useful in crime investigation
   - commit the crime: you can use electronic device to commit a crime e.g wire fraud- credit card is involved
   - research on the internet: you can use electronic device to carry out research on the crime to be committed on the internet e.g laptop
-  - communication: you can electronic device to communicate for a crime e.g phone
+  - communication: you can use electronic device to communicate for a crime e.g phone
   - save files: you can use electronic device to save files of a crime e.g on a thumbdrive or file in a laptop
   - pictures: you can use electronic device to take pictures of who or what to commit a crime on e.g phone, camera etc
   - car phone location: your visited locations for a crime
@@ -41,7 +39,7 @@
   - he sent a document to a tv station
   - the police were able to retrieve the disk and search for evidences on the floppy disk; the author, location, modification, date 
   metadataetc(properties)
-  - they found a deleted word document file and recover it, author is dennis, traced to microsoft word that, located in the church(physical)
+  - they found a deleted word document file and recover it, author is dennis, traced a microsoft word document to a church
   - since the disk/ file is digital, it becomes a digital evidence
 
 ###locard's exchange principle
@@ -71,7 +69,7 @@ or not.
     - the crime to investigate
     - ask questions - (what, who, how, where)
     - develop your hypothesis
-    - gather evidence to proof or disproof hypothesis
+    - gather evidence to prove or disprove hypothesis
     - repeat steps 3 and 4 until you find that the hypothesis is correct
     - document investigation for replications etc
 
@@ -104,7 +102,7 @@ or not.
       - find files; investigate digital files, saved files, deleted files
       - images: face recognition, exchanged pictures
       - gps
-      - test to proof or disproof
+      - test to prove or disprove
     - repeat steps 3 and 4 until you find that the hypothesis is correct
     - document investigation for replications etc
 
@@ -115,7 +113,7 @@ or not.
 - used for:
   - what happened when: find evidence for what occurred at what time e.g if investigation who copied or deleted a file in an organization
   - who interacted with whom: link 2 entities together e.g person a copied a file from this location. person a + a file
-  - the origination of a paticular item: source of an item e.g a cache of file was found, which location or source is that
+  - the origination of a particular item: source of an item e.g a cache of file was found, which location or source is that
   - who was responsible: which person is responsible. who did what etc
   - determine the intent of a crime: why did the crime happen. what was the motivation for the crime.
 
@@ -157,7 +155,7 @@ or not.
   - identification/assessment: is it stealing or murder or breakdown of system. just knowing what kind of crime it is
   - walk-through or initial documentation: learning more about what kind of crime it is. inestigating the crime scene to know whether
   - the crime is physical or what is available around the crime scene and document everything, location, device, camera etc. document
-  - before touching. who are the people inn the crime scene
+  - before touching. who are the people at the crime scene
   - collection/acquisition: it involves collection of devices. collecting devices e.g laptops, phones, and other evidences associated with
   - the crime. is there a unique identification for the device etc
   - preservation: keeping the data associated, device etc as intact as possible. e.g no file was deleted or added to a laptop collected from
@@ -189,8 +187,8 @@ or not.
   - steps:
   - identification/assessment: who took the cash from the manager's office
   - walk-through and initial documentation: going through the office. what is inside the office? who has access to the office?
-  - who came to the office when the office was opened. how much got missing? how many dollar bills is it? how was it placed
-  - take photos, name of the people, phone numbers of the people, garbage, cars of the people.
+  - who came to the office when the office was opened. how much is missing? how many dollar bills is it? how was it placed
+  - take photos, name of the people, phone numbers of the people, check garbage, cars of the people.
   - collection/ acquisition: take fingerprints, footprints, garbage, personal effects, devices, keys etc
   - preservation: preserve all of the evidences gathered.
   - examination:
