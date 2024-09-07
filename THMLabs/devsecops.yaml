@@ -1089,6 +1089,44 @@ first step in code review is to search for - insecure functions in use
 - review the page source code for exposed login credentials or hidden links
 - do input sanitation as a defence.
 
+####
+- is the process of testing a running web application for weaknesses and vulnerabilities.
+- focuses on black-box testing approach that hackers normally operate- blackhat
+- dast identifies vulnerabilities by trying to exploit them via a manual or automated approach
+- dast does not replace any other method of testing, it just complements it. 
+
+#manual vs automated dast
+- manual dast: a security engineer or appropriate personnel in an org manually carries out the test for vulnerabilities on a web app
+- automated dast: an approriate personnel uses a dast tool to scan a web app for vulnerabilites.
+- from experience or best practice is to combine these methods of dast in a company.
+- dast is best used in the testing phase of sdlc
+    - dev: plan ---> code ---> ---> build ---> test (dast):---->  ops:-----> release ---> deploy ---> operate ---> monitor --->
+- automated dast is respected and used for its fast outcome- it does testing speedily and produces result.
+- manual scans can be done weekly, while using automated scans routinely as needed.
+- note: run a thorough or full blown pentesting when  app is about going to production
+- automated dast is often referred as just "dast" while manual dast can be referred as "traditional dast"
+
+#advantages and disadvantages of dast (pros vs cons)
+#advantages
+- it finds vulnerabilities during runtime
+- dast can find vulnerabilities that may not be found in sast e.g http request smuggling, cache poisoning, parameter pollution
+- dast is programming-agnostic. all kinds of web app with different programming languages are tested.
+- it reduces the number of false positives compared to sast
+- it is capable of finding some business logic flaws.
+#disadvantages
+- code coverage might be limited. it does cover all areas required to be tested. focuses on some specific vulnerabilites
+- may not be the best to find some vulnerabilities compared to sast
+- some apps may be difficult to be crawled i.e harder for dast tools to traverse some apps
+- may be limited in recommending how to remediate some vulnerabilities since thy are not familiar with the underlying technologies
+- time consuming i.e some dast tools take time to finish
+- a running app is required to carry out testing
+- dast tool is certainly performing at least 2 of the below tasks against a target website:
+    - spidering/crawling: navigate through the web app, trying to map the application and identify a list of pages and parameters
+    - vulnerable to attacks.
+    - vulnerability scanning: it will try to launch attack payloads against identified pages and parmaters. you include the type of attacks
+    to be targeted by the tool i.e you will have a list of attacks, and you can choose from them.
+- an example of dast tool is zap proxy
+
 
 
 
