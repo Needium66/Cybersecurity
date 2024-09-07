@@ -6,9 +6,7 @@
 ####introduction
 # what is digital investigation
 # why do we need digital investigation?
-- the world has changed and evolved into dependence on electronic devices e.g phones, laptops etc.
-- the world has gone digital with the prevalence of these devices and crimes are committed using these devices.
-- therefore to be able to investigate crimes that are committed involving these devices, we will have to incorporate digitization.
+- therefore to be able to incorporate digitization in investigating crimes that are committed involving devices
 ###crime
 #what is a crime?
 - crime can be defined into 2 main groups
@@ -23,7 +21,7 @@
 3) electronic device that can be useful in crime investigation
   - commit the crime: you can use electronic device to commit a crime e.g wire fraud- credit card is involved
   - research on the internet: you can use electronic device to carry out research on the crime to be committed on the internet e.g laptop
-  - communication: you can electronic device to communicate for a crime e.g phone
+  - communication: you can use electronic device to communicate for a crime e.g phone
   - save files: you can use electronic device to save files of a crime e.g on a thumbdrive or file in a laptop
   - pictures: you can use electronic device to take pictures of who or what to commit a crime on e.g phone, camera etc
   - car phone location: your visited locations for a crime
@@ -41,7 +39,7 @@
   - he sent a document to a tv station
   - the police were able to retrieve the disk and search for evidences on the floppy disk; the author, location, modification, date 
   metadataetc(properties)
-  - they found a deleted word document file and recover it, author is dennis, traced to microsoft word that, located in the church(physical)
+  - they found a deleted word document file and recover it, author is dennis, traced a microsoft word document to a church
   - since the disk/ file is digital, it becomes a digital evidence
 
 ###locard's exchange principle
@@ -71,7 +69,7 @@ or not.
     - the crime to investigate
     - ask questions - (what, who, how, where)
     - develop your hypothesis
-    - gather evidence to proof or disproof hypothesis
+    - gather evidence to prove or disprove hypothesis
     - repeat steps 3 and 4 until you find that the hypothesis is correct
     - document investigation for replications etc
 
@@ -90,7 +88,7 @@ or not.
 - crime: a murder is committed
 - evidence: we have the victim's phone e.g sms
 - what type of crime? it is physical crime, siince the victim was murdered
-- we have digital evidence from the phone to aid in our investigation
+- we have digital evidence from the phone to aid in the investigation
 - use the steps outlined above
     - the crime to investigate: murder using sms
     - ask questions - (what, who, how, where)
@@ -99,14 +97,173 @@ or not.
       - how did he get to the crime scene?
       - where did the crime happen?
     - develop your hypothesis
-      - first suspect committed the crime at the location (where) at time (when) based on sms
+      - first suspect committed the crime at the location (where) at what time (when) based on sms
     - gather evidence to proof or disproof hypothesis
       - find files; investigate digital files, saved files, deleted files
       - images: face recognition, exchanged pictures
       - gps
-      - test to proof or disproof
+      - test to prove or disprove
     - repeat steps 3 and 4 until you find that the hypothesis is correct
     - document investigation for replications etc
+
+
+####week 2 notes
+####digital evidence
+- any digital item that you can find on digital device that can be used for digital investigation.
+- used for:
+  - what happened when: find evidence for what occurred at what time e.g if investigation who copied or deleted a file in an organization
+  - who interacted with whom: link 2 entities together e.g person a copied a file from this location. person a + a file
+  - the origination of a particular item: source of an item e.g a cache of file was found, which location or source is that
+  - who was responsible: which person is responsible. who did what etc
+  - determine the intent of a crime: why did the crime happen. what was the motivation for the crime.
+
+###analysis types
+#there are 3 main types of analysis that can be done on digital evidence
+- relational analysis: finding position, or relation or location or person or file etc. e.g a gps will help to find a location, an ip address
+  - will give the address of the person involved or phone number
+- functional analysis: finding an application e.g zoom usage- finding the login credentials, attachments etc, microsoft word, ppt i.e finding
+  - analysis on an applicaton to aid with
+- temporal analysis: relation with time. evidence of what time it occurred. sequence of occurrences. creating timelines to help with investigation
+  - keep track of time stamp i.e mac - modified, accessed, created-when was the document modified e.g somebody opened the file, read it and
+  - modified it. e.g opening up a word document or a file and looking at the "properties", you will see the name of the document,
+  - the location (path) of the document, the size of the document and the time stamp (mac)
+  note: for mac. the modified time might predate the creation time, depending on if the document was copied or when created on a new machine
+    - i.e if a document was copied and created in a new machine. the date of creation might be today (09/03/2024). while modified date may
+    - be the previous year e.g (05/05/2023). created date is the date it is created on the present machine being used.
+#exercise
+- which event reconstruction analysis is affected
+  - misreading 3:15 for 3:15pm: it is temporal, since it involves time.
+  - misreading 232.23.22.1 as 23.223.22.1: this is relational, since it involves the ip of a device to find out the location.
+- example:
+- searching sms messages of a murder victim's mobile phone
+- solution: use the 5 steps for digital evidence
+  - what happened when:
+  - who interacted with whom: 
+  - the origination of a paticular item: 
+  - who was responsible: 
+  - determine the intent of a crime: 
+- analysis:
+  - functional analysis: learn about the application. does the device has history, does it have the names of people? what format is it?
+  - e.g using iphone. the pin, fingerprint etc. the icloud files, the text history, the settings etc
+  - relational analysis: the ip addresses associated with the iphone, the connections
+  - temporal analysis: timestamps of the sms messages.
+
+  #investigation process of a digital crime
+  #you identify or assess the evidences; you document the evidences; you acquire or collect the evidences; you preserve the evidences; 
+  #you examine the evidences; you analyse the evidences; you report the evidences
+  #the 7 steps of investigating a digital crime is below
+  - identification/assessment: is it stealing or murder or breakdown of system. just knowing what kind of crime it is
+  - walk-through or initial documentation: learning more about what kind of crime it is. inestigating the crime scene to know whether
+  - the crime is physical or what is available around the crime scene and document everything, location, device, camera etc. document
+  - before touching. who are the people at the crime scene
+  - collection/acquisition: it involves collection of devices. collecting devices e.g laptops, phones, and other evidences associated with
+  - the crime. is there a unique identification for the device etc
+  - preservation: keeping the data associated, device etc as intact as possible. e.g no file was deleted or added to a laptop collected from
+  - a crime scene. need to preserve the exact position or state of data associated.
+  - examination: do investigation and analysis next
+  - analysis: e.g using a scientific method
+    - scientific method:
+      - asking questions:
+      - hypothesis:
+      - prove or disprove hypothesis: i.e investigation using digital eveidence to proof or disproof the hypothesis
+      - documentation & reporting:
+  - you will be needing to examine( step 5) by asking questions through the scientific method.
+  - you will be needing to analyse by investigating using digital evidence to proof and disproof the hypothesis
+  - then reporting and keeping documentations of how we went about our investigation
+  - reporting: report/document the evidences.
+
+  #investigation process of a digital crime
+  - gather facts:
+  - form a hypothesis based on the available evidence:
+  - should be objective:
+  - follows the law:
+  - always be open to other possibilities:
+
+  #example
+  - a wad of cash was missing on top of the manager's desk in the office
+  - who stole the cash from the manager's desk?
+  - crime scene is our manager's office
+  - investigating who stole the cash
+  - steps:
+  - identification/assessment: who took the cash from the manager's office
+  - walk-through and initial documentation: going through the office. what is inside the office? who has access to the office?
+  - who came to the office when the office was opened. how much is missing? how many dollar bills is it? how was it placed
+  - take photos, name of the people, phone numbers of the people, check garbage, cars of the people.
+  - collection/ acquisition: take fingerprints, footprints, garbage, personal effects, devices, keys etc
+  - preservation: preserve all of the evidences gathered.
+  - examination:
+  - analysis:
+    - start asking questions- maybe someone entered the office during this period and start developing hypothesis; who are the people
+    - that have access to the office. who are the people that don't have access to the office. is there a camera? who did we see access
+    - ing the office etc. can we check everybody's personal effects? can we check everybody's cars, bags etc
+  - reporting: document everything and present it.
+
+  #major phases in the investiagtion of a digital crime
+  - there are 3 major phases in the investigation of a digital crime
+  - system preservation phase <=======> evidence searching phase <==========> event reconstruction phase
+  - system preservation phase is keeping copies and ensuring that the collections gathered are not tampered with
+  - evidence searching phase involves what type of eveidence is needed. how is the evidence sought for etc
+  - evidence searching phase can either be: there are 2 types of analysis when carrying out the investigation process
+    - live analysis
+    - dead analysis
+    - the main difference between them is e.g if a device is involved in a crime and an analysis on the os of the device
+    - is being used will be carried out. that type of analysis on the os is called "live analysis"
+    - however if the anaylsis to be conducted is not on the device's os, but on a trusted os, it is called "dead analysis"
+    - getting who last logged on the machine etc can be recovered from the os.
+    - the device that we are conducting analysis on for live analysis means the device is on. for dead analysis, the device will be off
+    - for evidence searching phase too:
+    - define the general characteristics of the object
+      - define the intial locations to search for
+      - looking for data to support or refute the hypotheses
+        - salvage deleted files
+        - special files
+        - filter out irrelevant files
+        - extract embedded metadata
+      - search criteria can be based on:
+        - file extensions
+        - names
+        - keyword
+        - temporal data
+        - message digest value: for hashes. there is a database for all hashes or unique values etc
+        - content signatures
+    - event reconstruction phase is used to determine what are the events that occurred in a system.
+
+#scenario
+- someone reports getting harrasing emails and requests a forensic analysis be done, so that he can file criminal charges
+- evidences are currently insufficient to file criminal charges or get a warrant to arrest the perpetrator
+- victim has produced his laptop has evidence
+
+- examination:
+- take possessions of the victim and suspect laptops on a noted date
+- gather your evidence using a sterile storage media (examination media) that had been forensically wiped
+- verified the evidence by an examiner using md5 hash value: ############### using accessdata's disk imager
+- the md5 has value for the examination medium yielded the same md5 hash value as previous forensic wipes to sterilize the media
+- then analyse the email received on the laptop using paraben's email analysis tools
+
+- findings:
+- discovered 5 emails that contained threatening and harassing images with the screenshot attached
+- tried the ip addresses of the email sender to a local isp
+- subpoaned the isp provider and validated that the emails were sent from the alleged suspect.
+
+
+#data analysis
+# types of data analysis that can be done
+- application/os analysis: one of the most advanced
+- swap space analysis: related to os manager
+- file system analysis
+- database analysis
+- volume analysis: lowest level of analysis
+- memory analysis: e.g ram
+- physical storage analysis
+- network analysis
+
+#evidence characteristics
+- characteristics of evidence:
+  - class characteristics: not very helpful evidence. evidence that belongs to a class of evidences e.g a chrome browser. most machines
+  - have chrome on them, so it may not really be helpful using it as an evidence or calculators on windows system
+  - individual characteristics: e.g word documents or log files for login, etc
+
+
 
 
 #####nihad a ahmed
