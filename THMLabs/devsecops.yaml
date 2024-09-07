@@ -1126,6 +1126,38 @@ first step in code review is to search for - insecure functions in use
     - vulnerability scanning: it will try to launch attack payloads against identified pages and parmaters. you include the type of attacks
     to be targeted by the tool i.e you will have a list of attacks, and you can choose from them.
 - an example of dast tool is zap proxy
+####spiders and crawlers
+- to spider an app with zap, follow the below steps:
+    - map all resources in the target web application for identification of scope
+    - zap maps or explores all resources once a website is provided or you point a website to zap
+    - follow the below steps
+    - access zap
+    - go to "tools"
+    - select "spider"
+    - specify the website url or ip with port in the "starting point" e.g "http://10.10.185.191:8082" or "http://machine_ip:port"
+    - you can leave the "context" and "user" boxes empty
+    - enable the "recurse" box --- spider the website for links recursively.
+    - enable the "spider subtree only" box - limits spidering to subfolders of the starting point
+    - enable "show advanced options" - additional parameters are added to tune the spidering
+    - select "start scan" tab at the bottom.
+    - output should be all urls that spider found on the website
+    - note: however any item that is outside the starting pages's url won't be covered, because it is considered as out of scope for spidering
+    - to validate this: if you check the pages manually and navigate to the starting page, you might see other urls that cannot be seen by zap
+    - reason: the url link is not embedded in the html code of website. the urls that are not seen are generated on the fly by e.g javascript
+    - innovation/advancement: to overcome the limitations of zap not detecting url built on the fly, a dast tool that can be accessed via
+    - browsers e.g firefox/ chrome can be used and since the browser has javascript, it will be able to process websites with those kinds
+    - of on the fly links/urls. an example of that kind of dast tool is "ajax spider"
+    - for ajax spider, follow the steps below
+        - access ajax spider
+        - go to "tools"
+        - select "ajax spider"
+        - specify the website url or ip with port in the "starting point"
+        - leave the "context" and "user" boxes empty
+        - leave the "just in scope" box unchecked
+        - check the box for "spider subtree only"
+        - select "firefox" as browser
+        - leave "show advanced option" box unchecked
+        - select "start scan" tab at the bottom.
 
 
 
