@@ -1159,7 +1159,62 @@ first step in code review is to search for - insecure functions in use
         - leave "show advanced option" box unchecked
         - select "start scan" tab at the bottom.
 
-
+####scanning for vulnerabilities
+- customize your tests when running dast tools. fit appropriate tests to be carried out to reduce scanning period after payload is launched
+- for example, running a test on an app without database. limit the tests to only web app related attacks/vulnerabilities
+- e.g remove sql injection scanning
+- to create a scanning or modify scanning in zap, you have to use scanning policy. follow the below steps to modify scanning policies:
+    - access zap
+    - go to "analyse"
+    - select " scan policy manager"
+    - select "add" to create a new one.
+    - you can configure or define thee kinds of tests you prefer or need from this point based on these 2 major categories
+        - threshold: it controls the extent to which you want the test to reach. if you select a "low threshold" you risk
+        - getting more false positives (vulnerabilites that are not present). while selecting a "high threshold" means getting
+        - results only with high certainty. but the drawback is some vulnerabilites that are present (false negatives) might not be reported
+        - so choose medium
+        - strength: it controls how many parameters are run for each category."higher strengths" means more additional findings will be discovered
+        - but it will be more time-consuming.
+        - note: tune the configurations acccording to your requirements e.g disable all the "sql injections" test because their is no database
+        - disable cross-site scripting too because it will consume time.
+        - kinds of policies under "scan policy" in zap includes:
+            - client browser
+            - information gathering
+            - injection
+            - miscellaneous
+            - server security
+            - the groups of test names under these 5 are:
+                - buffer overflow
+                - cloud metadata potentialy exposed
+                - crlf injection
+                - cross site scripting (persistent)
+                - cross site scripting (persistent)- prime
+                - cross site scripting (persistent)- spider
+                - cross site scripting (reflected)
+                - format string error
+                - parameter tampering
+                - remote os command injection
+                - server side code injection
+                - server side include
+                - sql injection
+                - sql injection - hypersonic sql
+                - sql injection - mssql
+                - sql injection - mysql
+                - sql injection - oracle
+                - sql injection - sqllite
+                - xml external entity attack
+                - xslt injection
+        - then to run the scans; follow the below steps:
+            -go to "tools"
+            - select "active scans"
+            - enter the the required ip and port into the "starting point"
+            - select the prior policy that you created e.g neediumpolicy for "policy"
+            - leave "context" and "user" boxes empty
+            - check the box for "recurse"
+            - leave the "advanced setting option" as empty
+            - results will start trickling in under the "alerts" tab for vulnerabilites that were found.
+            - if you find out that any one of them is false positive. right click on it and select "false positive"
+                - 
 
 
 
