@@ -1305,6 +1305,29 @@ first step in code review is to search for - insecure functions in use
             - select "active scan"
             - it will get scanned and produce result.
 
+#how to integrate dast into a development pipeline
+- things to consider when you want to integrate dast into your pipeline
+    - decide at which stage of the cicd you want to run scans
+    - decide what will trigger a scan e.g run scan on each commit or run a scheduled basis.
+    - decide on the intensity of each scan e.g a full blown scan will require the significant time to take place.
+    - recommendation: introduce it earlier to provide earlier visibility of vulnerabilities. scans running on each commit and test for a
+    - "subset of vulnerabilities" to prevent long delays in the pipeline
+    - to integrate "zap" in a pipeline, use "zap2docker", a dockerized version of zap proxy built with automation
+    - run this command manually or add it to the pipeline to run to install zap2docker:
+        - docker pull owasp/zap2docker-stable
+        - use one of the below scan scripts to run whatever scan profile you prefer:
+            - baseline scan: zap spidering the target website for a max of 1 min. no active san is performed. can do an ajax spider optionally
+                - "docker run -t owasp/zap2docker-stable zap-baseline.py -t https://www.example.com"
+            - full scan: zap running spider unlimitedly. followed by an active scan
+                - docker run -t owasp/zap2docker-stable zap-full-scan.py -t https://www.example.com
+            - api scan: zap performing an active san on an api. provide a url to an api description file
+                - "docker run -t owasp/zap2docker-stable zap-api-scan.py -t https://www.example.com/swagger.json -f openapi"
+                - the flag "-j" can be added to perform an ajax scan on the baseline and full scans
+            - building zap2docker into the pipeline, can be done by adding a stage after the build stage that will run the scan i.e
+            - after the commit and build stage, run the zap2docker scan on the app or run a baseline scan after each commit to find low hanging
+            - vulnerabilities. the downside is you won't be able to get "sql injection", or "cross-site scripting".
+            - get your result after each run of the pipeline.
+
 
 
 
