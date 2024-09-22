@@ -1282,6 +1282,28 @@ first step in code review is to search for - insecure functions in use
 - select "start scan" button at the bottom
 
 ####checking api with zap
+- web app depends on apis these days. you dast needs to be able to spider web apis too, instead of traditional web apps.
+- we need to know the endpoints in the api
+- need to know if parameters can be passed in the api.
+- the easiest and best way to go about this is to ask dev team for the specifications of endpoints in the api
+- develop will build proper requests in the api and know the responses to the available endpoints. so they know better
+- apis can be defined by any of the below:
+    - soap
+    - open api ( ex swagger)
+    - graphql
+        - there will be a "paths" defined in the api, where every single endpoint is defined
+        - a list of parameters will be defined inside endpoints too.
+        - e.g you call make calls to a particular path/endpoint via "get" method or "post"
+        - apis are usually hidden or protected from external attacks
+        - to use zap for api spidering, follow the below steps:
+            - you will have to import the file that contains the endpoints or url
+            - go to "imports"
+            - select e.g "import an openapi definition from url"
+            - select "import" button at the bottom
+            - zap will scan the available endpoints and parameters that are produced
+            - to run the scan, right click on the target url and select "attack"
+            - select "active scan"
+            - it will get scanned and produce result.
 
 
 
