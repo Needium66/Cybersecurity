@@ -264,6 +264,120 @@ or not.
   - individual characteristics: e.g word documents or log files for login, etc
 
 
+####week3
+#objectives
+- intro to binary: 0 and 1. smallest memory unit is byte. 1 byte = 8 bits. most significant bit on the left and least significant on the right
+- data representation: positioning numbers 1275 as 1000, 100, 10 and 1 respectively. 1000 * 1, 100 * 2, 10 * 7, 1 * 5 to indicate what it is
+- one thousand, two hundred and seventy five. binary is low level rep while hexademical is compact rep.
+- how data is stored in memory: -
+  - numeric: numeric data representation
+    - integer: (signed (postive & negative)) and unsigned (positive)
+    - floating point
+  - strings:
+    - each character has 1 byte to represent it (ascii/unicode)
+    - new line: to have a new line for strings in operating system e.g 0d oa for windows; new line
+      - for windows: crlf (carriage return line feed)
+      - for unix: lf
+      - mac: cr
+    - depending on the os, new line is represented differently.
+    - 20 is for white space/space
+    - on the table for (ascii/unicode), decimal is on the left, hexadecimal is in the middle and their representation is on the right e.g
+    - for a representation that is "a" decimal is 97, while hexadecimal is 61.
+  - data structures
+  - bit flags
+- cpu architecture
+- hex editor
+
+
+- data represenation: there is positional representation and value representation. the positional representation is from 0 to 7
+- while value represenation of that will be from 2 raised to power of 0 for the position 0, till 2 raised to the power of 7 for the position 7
+- 1, 2, 4, 8, 16, 32, 64, 128. 1 is the least significant value, while 128 is the most significant value.
+- how can 46 be stored- 46 is a value between 32 and 64- can have 1s in between the positional and real values that will aggregate to greater
+- than or equal to 46 i.e 1 for 32, 16, 8, 4 and 2: all these values aggregate to 62 and it is still a value between 32 and 64.
+- to get 70- i can do 1 on 64, 4 and 2, while others have 0s.
+- to store the largest value: it will be 1 on all of them and that will aggregate to 255 i.e 128 + 64 + 32 + 16 + 8 + 4 + 1 = 255
+- to store the smallest vale: it will be 0 on all of them. which translates to 0
+- all these are obtained from 1 byte = 8 bits
+- to get a larger value than 255, more than 1 byte will have to be used e.g 2 bytes and above. e.g to represent 3750, use like 2 bytes probably
+- 2 bytes will be from 0 to 15 i.e 2 raised to power 0 to 15 for the values representation.
+- byte 1 will be the least significant because it has the least value, while the right will be the most significant, because it has more value
+- e.g needs a value of 559: puts 1 on 512, needs 47, can't use 256 or 128 0r 64 because they will give a larger value. can use 32, 8, 4, 2 and 1.
+- can't use 16 too, because it will get it to over 559. the rest of the values will have 0s on them
+
+- decimals use digits from 0 to 9. binary uses 0 and 1. hexidecimal uses digits from 0 to 15
+- hexadecimal overview:
+- 0 ------> 0
+- |
+- |
+- 9 ------> 9
+- a ------> 10
+- b ------> 11
+- c ------> 12
+- d ------> 13
+- e ------> 14
+- f ------> 15
+- hexidecimal is different. you divide the 8 bits into 2 equal halves( 4 bits part on either sides) positional still from 0 to 7,
+- but divides into halves between 3 and 4
+- the values are 1 to 8 from the right for the first half. then another 1 to 8 on the left for the second half.
+- assuming you have 1s on 8, 2 and 1 on the first half on the right. which gives 11. 11 in hexidecimal is b. so answer is b
+- on the left second half, there is 1s on 4 and 2 and 0s on 8 and 1. therefore, the aggregate is 6.
+- therefore, the answer for this hexidecimal is 6b.
+- another example: decimal is 138 i.e 1s on 7, 3 and 1 i.e 128 + 8 + 2 = 138, from 2 , 8, 128 for values
+- hexidecimal for the example will be 10 on the right hand side = a, and 8 on the left hand side = 8. therefore = 8a.
+#BIG VS LITTLE ACHITECTURE
+- when the numeric data needs 2 or more bytes (16 bits and more) e.g demonstrated by 4 bytes with most significant and least significant
+- big end: for big end, most significant byte is stored first i.e the byte on the left hand side after division
+- little end: for little end, least significant byte is stored first i.e the byte on the right hand side of the division
+- between the two architecture, little end: is more popular. most cpus are made of this. e.g intel, amd
+- big end: most old architecture are made of this e.g xbox 360, ibm, ps3, motorola etc. but all new versions of xbox are little end now.
+#example
+- representation of this hexidecimal number in memory? 0x12345678 
+  - first is how many bytes is this data?
+  - 0x is hexidecimal representation
+  - every 2 digits are a byte i.e 12, 34, 56, 78 = 4 bytes
+  - the least significant byte is 78 on the right and most significant byte is 12 on the left
+  - how to store them:
+    - little end: 78 first, followed by 56, then 34, then 12 i.e from least significant to most significant.
+    - big end: 12 first, followed by 34, then 56, then 78 i.e from the most significant to least significant.
+
+#data representation
+- f = open(r' ./output.txt', 'wb') # we are opening the file. wb represents write
+- num1 = 555; #represent the first number
+- num2 = 98; # represent the second number. there is 2 numbers in all; above and this
+- f.write(num1.to_bytes(2, 'little')) # telling file to use little end to write 555. because 555 is 2 bytes (that is why you have the 2)
+- f.write(num2.to_bytes(1, 'little')) # write 98
+- f.close() # close the file.
+- this file has only 3 bytes.
+
+#example
+- Welcome to CSCI 554...
+- DATA REPRESENTATION FOR IT IS:
+  - see the screenshot
+  - OD 0A 0D 0A; represents two lines . this is highly likely to be windows with these representation of crlf
+  - for forensic analysis
+
+#others
+#data structures:
+- are broken up into fields
+- a field has a size and a name
+- for example if a programmer wants a class that stores an integer and a string 
+- example:
+  - how to represent below data structure
+  - bytes description
+  -  2    street number
+  -  30   street name
+  - answer:
+  - street number is an integer. while street name is a string
+
+#bit flags
+- having os has flags or conditions. where sometimes we may have 5 or more. e.g is this flag an am or pm, true or false etc.
+- for management of space, flags can be used. e.g instead of using one byte for flags, one flag can be used to represent multiple flags.
+- 6 conditions of busy, sleepy, tired, hungry, loc or study. 1 represents busy, and 0 represents not busy
+- arithmetic operations: using "and". "&" ampersand. needs both to be true i.e 1 and 1, if it is 0 and 1, it is false.
+- 1 and 1 gives you 1. 1 and 0 gives you 0, 0 and 0 gives you 0.
+- for "all" operation: it means either one (1 and 0) is good enough i.e 1 and 0 is true, which means 1. 0 and 0 is false, 1 and 1 is true i.e 1
+-
+
 
 
 #####nihad a ahmed
@@ -275,3 +389,4 @@ or not.
 - acquiring and analyzing digital evidence
 - conducting in-depth forensic analysis of windows-os
 - utilizing anti-forensic tools e.g steganography, data destruction techniques, encryption and anonymity techniques
+

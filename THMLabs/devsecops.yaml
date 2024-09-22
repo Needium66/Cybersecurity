@@ -1159,10 +1159,129 @@ first step in code review is to search for - insecure functions in use
         - leave "show advanced option" box unchecked
         - select "start scan" tab at the bottom.
 
+####scanning for vulnerabilities
+- customize your tests when running dast tools. fit appropriate tests to be carried out to reduce scanning period after payload is launched
+- for example, running a test on an app without database. limit the tests to only web app related attacks/vulnerabilities
+- e.g remove sql injection scanning
+- to create a scanning or modify scanning in zap, you have to use scanning policy. follow the below steps to modify scanning policies:
+    - access zap
+    - go to "analyse"
+    - select " scan policy manager"
+    - select "add" to create a new one.
+    - you can configure or define thee kinds of tests you prefer or need from this point based on these 2 major categories
+        - threshold: it controls the extent to which you want the test to reach. if you select a "low threshold" you risk
+        - getting more false positives (vulnerabilites that are not present). while selecting a "high threshold" means getting
+        - results only with high certainty. but the drawback is some vulnerabilites that are present (false negatives) might not be reported
+        - so choose medium
+        - strength: it controls how many parameters are run for each category."higher strengths" means more additional findings will be discovered
+        - but it will be more time-consuming.
+        - note: tune the configurations acccording to your requirements e.g disable all the "sql injections" test because their is no database
+        - disable cross-site scripting too because it will consume time.
+        - kinds of policies under "scan policy" in zap includes:
+            - client browser
+            - information gathering
+            - injection
+            - miscellaneous
+            - server security
+            - the groups of test names under these 5 are:
+                - buffer overflow
+                - cloud metadata potentialy exposed
+                - crlf injection
+                - cross site scripting (persistent)
+                - cross site scripting (persistent)- prime
+                - cross site scripting (persistent)- spider
+                - cross site scripting (reflected)
+                - format string error
+                - parameter tampering
+                - remote os command injection
+                - server side code injection
+                - server side include
+                - sql injection
+                - sql injection - hypersonic sql
+                - sql injection - mssql
+                - sql injection - mysql
+                - sql injection - oracle
+                - sql injection - sqllite
+                - xml external entity attack
+                - xslt injection
+        - then to run the scans; follow the below steps:
+            -go to "tools"
+            - select "active scans"
+            - enter the the required ip and port into the "starting point"
+            - select the prior policy that you created e.g neediumpolicy for "policy"
+            - leave "context" and "user" boxes empty
+            - check the box for "recurse"
+            - leave the "advanced setting option" as empty
+            - results will start trickling in under the "alerts" tab for vulnerabilites that were found.
+            - if you find out that any one of them is false positive. right click on it and select "false positive"
+                - 
 
+####authenticated scans
+- there might be some vulnerabilities that zap proxy may not be able to discover because the application would need to be accessed by
+- credentials i.e when an admin accesses an app with credentials, he/ she may find some vulnerabilities that zap proxy may not have
+- originally found. in order to get over a deficiency like this or improves upon it, the below steps might be followed.
+- need to use what is called "zest script" to record how the app is authenticated to on the zap proxy. this way, zap proxy would be
+- able to do this independently in the future. follow the below steps:
+    - ensure to disable the "zap hud" on zap proxy( button is almost at the end of the toolbar at the top)
+    - click on the "record a new zest script" button on the toolbar
+    - enter a name for "title"
+    - select "authentication" as "type"
+    - select "server side script" as "record type"
+    - set the "prefix" as the base url of the application e.g http://$ip:$port/ (it will filter out requests made to other sites)
+    - select "start recording" at the bottom
+    - result is that every http request that goes through zap proxy will be recorded as part of the script
+    - select the browser e.g firefox or chrome or microsoft edge on the toolbar
+    - enter your credentials for the application
+    - zest script will record all these steps and zap proxy will replicate them subsequently to scan the app with authenticated credentials
+    - stop the recording by clicking on "record a new zest script" on the toolbar again
+    - can close zap browser as well 
+- for each of the requests, zap will check the status code e.g 200, 302 etc and response length to see if they match ( if they match, zap
+- will assume the login was successful). follow the below steps to test the recorded script
+    - select "run" button on the script console (to test if the process was done correctly)
+    - once the authentication process is confirmed to be recorded. follow the below steps to show zap how to use it:
+        - creating a "context" i.e a way to define a group of urls
+        - ensure you include every single urls in the app in this context
+        - if you have another part of the apps to allow zap have access to, you will have to create another context. follow the below steps:
+            - go to "sites" tab
+            - right click on the base url of the target app
+            - select "include in context"
+            - select "new context". it will automatically create a regex that matches any page on the web application.
+            - select "authentication"
+            - select "script-based authentication" to link zest script to.
+            - select "load" to the right of the script's name.
+- need to follow the below steps, for zap to successfully run an authenticated scan i.e need to define at least a user in "users" section
+    - select "users" under the base url under "scripts"
+    - select "ok". you should all the site's resources marked by the target icon i.e now part o defined context.
+####respidering the application
+- rerun the spider once you finished setting up your first script, to ensure using the correct context and user that were set up
+- you enter all the correct context and user
+- zap should be able to detect the rest of the vulnerabilities that were not detected before setting up authenticated credentials.
+- select "start scan" button at the bottom
+- to validate if new resources have been added, select " added nodes" tab
+- if "logout" is ine of the resources discovered, you may not want zap to mess with this. so you can exclude it. follow the below steps:
+    - right click on the logout resource script
+    - select " exclude from context"
+    - this way, you have prevented zap from logging out itself
+    - however, in order to enable zap to validate if it is still running or active, you can follow the below steps:
+        - select one of the script resources that can only be accessed when zap is logged in from the "sites" tab
+        - select "the text that corresponds to logout link"
+        - right click the selected text
+        - select "flag as context"
+        - select the "authentication logged-in indicator"
+        - follow the below steps to direct zap when it should verify/validate the logged-in session:
+            - double click on context
+            - select "authentication"
+            - select "poll the specified url" under "verification strategy"
+            - select the url to poll for
+            - select "ok" button at the bottom.
+#### to rerun zap to scan the application at any time, follow the below steps:
+- go to "tools"
+- select "active scans"
+- select "context"
+- select "user"
+- select "start scan" button at the bottom
 
-
-
+####checking api with zap
 
 
 
