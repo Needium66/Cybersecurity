@@ -904,7 +904,7 @@ first step in code review is to search for - insecure functions in use
 
 
 ####local file inclusion (lfi) attacks. 
-###misuse of a php function can lead to local file inclusion attack
+###misuse of a php function can lead to local file intrusion attack
 ####functions that can be misused are below:
 - require()
 - include()
@@ -1330,7 +1330,115 @@ first step in code review is to search for - insecure functions in use
 
 
 
-
+####containerisation
+- docker: docker engine is an api that runs on the host os
+- docker engine commmunicates between the os and the containers in order to access the hardware (cpu, ram, networking and disk)
+- docker engine allows to do things like:
+    - connect containers together
+    - export and import apps (images)
+    - transfer files between os and containers
+- multiple containers can be built as a part of a group and allow containers to communicate with each other.
+- one container running a web server can communicate with another container running the databse
+- docker is agile, convenient and extensive means of deploying an applications
+- docker is open source
+- docker is compatible: it is compatible with windows, linux and mac os.
+- docker is efficient and minimal: an efficient way to isolate apps vs vms. because it interacts with host os and vms don't. the size is
+- minimal too e.g ubuntu image is only 100mb in size. it can be stored once and used multiple times.
+- docker is easy to use
+- docker is easy to share with others: because it is portable, it uses images to store instructions on how containers can be built
+- the images can be exported, shared and uploaded  from dockerhub and github
+- it is cheaper to run- cpu, ram, disk spaces are expensive in the cloud and vms. you don't need all these for docker.
+- vms requiere lots of memory and disk space.
+- some utilities
+- "docker build -t dockerapache"
+- "ps aux"
+- the stack:
+----- "application"
+----- "container os(minimal)"
+----- "container engine"
+----- "physical os"
+----- "physical machine"
+- you use dockerfiles to build containers
+- use docker compose to orchestrate multiple containers
+- the 4 groups in which docker syntax are categorized into:
+    - running a container
+    - managing docker images
+    - docker daemon stats and information
+    - managing and inspecting containers
+- managing docker images:
+    - run "docker pull" to download an image e.g "docker pull ubuntu"
+    - add a "tag" to the command to specify the variation or version preferred e.g "docker pull ubuntu:latest"
+    - run "docker image ls" to list all images stored in the local system
+    - run "docker image rm" to remove an image stored in the local system e.g "docker image rm ubuntu:latest"
+    - run "docker run" to create running containers from images. defines this way "docker run [options] $image_name [commands] [arguments...]" 
+    - run the image "helloworld" interactively (-it). spawn a shell within the conatiner by providing "bin/bash" as command path. you will
+    - place the commands you prefer to run within the path e.g a file, app or a shell.
+    - example: "docker run -it helloworld /bin/bash"
+    - the hostname of a container is the container id. you can view it by running "docker ps"
+    - run docker container in detached mode i.e in the background e.g "docker run -d helloworld"
+    - run docker container to interact with it directly( i for interactive and to for running in a shell) e.g docker run -it helloworld
+    - run docker to mount a directory or file (volume) from the host os to a location within the container. the location is defined within
+    - the docker file e.g "docker run -v /host/os/directory:/container/directory helloworld"
+    - run docker to bind a port on the host os to the port that is being exposed in the container. it is used when running a webserver and
+    - wish to access the app (webserver) by navigating to the ip e.g "docker run -p 80:80 webserver"
+    - run docker to remove a container e.g "docker run --rm helloworld"
+    - run docker to give a display name to a container e.g "docker run --name helloworld"
+    - to list all containers including those that have been stopped, use "docker ps -a"
+#####dockerfile
+- the blueprint structure of dockerfile:
+    - FROM: it sets a build stage for the container and set the base image (os). "all dockerfiles must start with this" e.g "FROM ubuntu"
+    - "RUN": it executes the commands in the container within a layer e.g "RUN whoami"
+    - "COPY": it copies files from the local system to working directory in the container e.g "COPY /home/cmnatic/myfolder/app/"
+    - "WORKDIR": it sets thw working directory of the container. same as cd in linux e.g "WORKDIR /(sets to the root of the filesystem in the container)"
+    - "CMD": it determines what command is run when the container starts i.e used to start a system or application e.g "CMD /bin/sh -c script.sh"
+    - "EXPOSE": it indicates what port the should be published for the container when running it e.g "EXPOSE 80" i.e docker run -p 80:80
+    - examples:
+        - use the “Ubuntu” (version 22.04) os as the base
+        - set the working directory to be the root of the container
+        - create the text file “helloworld.txt”
+        - # Use Ubuntu 22.04 as the base operating system of the container
+        FROM ubuntu:22.04
+        # Set the working directory to the root of the container
+        WORKDIR /
+        # Create helloworld.txt
+        RUN touch helloworld.txt
+        - use docker build to build an image from the dockerfile created
+        - i.e "docker build -t helloworld ." #the "." means docker should look for the file in the working directory
+        - note: the base os of what is listed in the "FROM" will be downloaded in the image that is created i.e when you check "docker image ls"
+        - you will see hellowworld and ubuntu as the images
+        - you can use the image in a container now i.e use the image to build a container:
+            - use Ubuntu 22.04 as the base os for the container.
+            - install the “apache2” web server.
+            - add some networking, since it is a web server. use the EXPOSE to tell the container to expose port 80.
+            - tell the container to start the “apache2” service at startup. containers don't use systemd (by design - it is bad practice to run multiple applications in the same container. 
+            - e.g this container is for the apache2 web server - only it).
+            - # THIS IS A COMMENT
+            FROM ubuntu:22.04
+            # update the apt repo to ensure the latest version of apache2 is obtained
+            RUN apt-get update -y 
+            # install apache2
+            RUN apt-get install apache2 -y
+            # tell the container to expose port 80 to allow connection on port 80
+            EXPOSE 80 
+            # tell the container to run the apache2 service
+            CMD ["apache2ctl", "-D","FOREGROUND"]
+            - run this command to build the container "docker build -t webserver ." #the dockerfile needs to be in the same directory as where the command is run
+            - run this command to start the conatiner "docker run -d --name webserver -p 80:80  webserver"
+            ####optimizing the docker file
+            - install only the essential packages
+            - remove cached files
+            - use only minimal base os
+            - minimize the number of layers
+            - this reduces the load a little bit and enables it to run faster:
+                FROM ubuntu:latest
+                RUN apt-get update -y
+                RUN apt-get upgrade -y
+                RUN apt-get install apache2 -y
+                RUN apt-get install net-tools -y
+                - run the command to build it - "docker build -t before ."
+            - the one below makes it faster:
+            FROM ubuntu:latest
+            RUN apt-get update -y && apt-get upgrade -y && apt-get install apache2 -y && apt-get install net-tools
 
 
 
