@@ -1423,7 +1423,7 @@ first step in code review is to search for - insecure functions in use
             # tell the container to run the apache2 service
             CMD ["apache2ctl", "-D","FOREGROUND"]
             - run this command to build the container "docker build -t webserver ." #the dockerfile needs to be in the same directory as where the command is run
-            - run this command to start the conatiner "docker run -d --name webserver -p 80:80  webserver"
+            - run this command to start the container "docker run -d --name webserver -p 80:80  webserver"
             ####optimizing the docker file
             - install only the essential packages
             - remove cached files
@@ -1440,20 +1440,75 @@ first step in code review is to search for - insecure functions in use
             FROM ubuntu:latest
             RUN apt-get update -y && apt-get upgrade -y && apt-get install apache2 -y && apt-get install net-tools
 
+####docker compose
+- used to spin up multiple containers or microservices simultaneously at the same time e.g webserver, database and app server for a website
+- at the same time.
+- it makes deployment to be more efficient and easier as against individual deployment by just "docker"
+- a need to install "docker compose" on docker
+- a need for docker compose valid file i.e docker-compose.yaml file
+- some docker-compose commands:
+    - run "docker-compose up" to (re)create/build and start containers defined in a compose file
+    - run "docker-compose start" to start a container already built with from a compose file
+    - run "docker-compose down" to stop or delete the containers specified in a compose file
+    - run "docker-compose stop" to stop( but not delete) containers defined in a compose file
+    - run "docker-compose build" to build but not start containers defined in a compose file.
+####example
+- use docker compose to spin up a website running on apache with customers data stored in mysql database
+######docker-compose file structure
+- version: to identify the version of docker-compose being used e.g '3.4'
+- services: the indicates the beginning of the containers to be managed e.g services:
+- name: where you define the container and its configurations. enter the name of the container to be defined e.g webserver or database
+- build: it defines the directory containing the dockerfile for the container/service e.g ./webserver
+- ports: ports to be exposed in the container e.g 80:80
+- volumes: to indicate the directories to be mounted on the container from the host os e.g './home/cmnatic/webserver/:/var/www/html'
+- environment: used to pass environment variables e.g passwords, username, timezone, configs e.t.c e.g MYSQL_ROOT_PASSWORD=helloworld
+- image: defines the image the container should be built with e.g mysql:latest
+- networks: defines the network the container will be part of i.e a webserver can only contact one db, but one db can contact multiple
+- webservers e.g needcommerce.
+###
+- the docker compose file:
+version: '3.3'
+services:
+  web:
+    build: ./web
+    networks:
+      - ecommerce
+    ports:
+      - '80:80'
 
 
+  database:
+    image: mysql:latest
+    networks:
+      - ecommerce
+    environment:
+      - MYSQL_DATABASE=ecommerce
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=helloword
+    
+networks:
+  needcommerce:
+    #
+    - run just one command with docker-compose to run all the associated microservices at the same time instead of running them
+    - individually like the 3 commands below: i.e just run
+    - "docker-compose up needcommerce"
+    - instead of the 3 commands below:
+    - run this command to create a "network" between the 2 containers (webserver and database):
+        "docker network create needcommerce"
+    - run this command for running the apache webserver- "docker run -p 80:80 --name webserver --net needcommerce webserver"
+    - run this command for running the mysql database- "docker run --name database --net needcommerce webserver"
+####benefits of one liner docker-compose command or docker-compose itself
+- a single command to run them both( both microservices)
+- networked the two containers simultaneouly, reducing stress of doing that configuration individually.
+- extremely portable- shareable and easy to understand
+- easy to maintain and change.
 
-
-
-
-
-
-
-
-
-
-
-
+####docker socket
+- docker socket is used for communications between client and server in docker
+- it allows for data to be communicated.
+- an example of socket is- in a chat , a socket can be used for storing sent messages, while another socket can be used for storing
+- messages that are being sent to you.
+- sockets allow for interprocess communications (ipc)
 
 
 
