@@ -1510,6 +1510,25 @@ networks:
 - messages that are being sent to you.
 - sockets allow for interprocess communications (ipc)
 
+####kubernetes
+- kubernetes is a container orchestration system
+- benefits:
+    - it enables application to be highly available and scalable. no single point of failure
+    - it is highly portable
+    - compatible with many technology because of its popularity.
+#k8s architecture
+- pod: contains one or more containers
+- nodes: control plane (master node) and workers node
+- cluster: set of nodes
+- apiserver: front end of the control plane and responsible for exposing k8 api
+- etcd: key/value store containing cluster data
+- scheduler: actively monitors the cluster
+- controller-manager: responsible for running the controller processes. e.g node controller
+- cloud-controller manager: enables communication between a k8 cluster and a cloud provider api.
+####components present in every worker node
+- kubelet: an agent that runs on every node in the cluster and ensures that containers are running in a pod
+- kube-proxy: responsible for network communication within the cluster
+- container runtime: since pods have containers running in them. a container runtime needs to be installed on each node for this to happen
 
 
 
