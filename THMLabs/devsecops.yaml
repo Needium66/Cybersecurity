@@ -999,7 +999,7 @@ first step in code review is to search for - insecure functions in use
 - often, the url for a particular website will have a cname (an alias) meant for the internet.
 - a url will have a dns that is being used at the backend associated with it and server ip attached to it.
 - there will need to be a 3 way handshake that must sync, before connection is successful i.e sync acknowledge sync
-- therefore, user sends a request, the request goes through the necssary steps to the intended server
+- therefore, user sends a request, the request goes through the necessary steps to the intended server
 - then the server will respond with the content requested for.
 - example:
 - url: www.ninc.com
@@ -1089,7 +1089,7 @@ first step in code review is to search for - insecure functions in use
 - review the page source code for exposed login credentials or hidden links
 - do input sanitation as a defence.
 
-####
+####dast
 - is the process of testing a running web application for weaknesses and vulnerabilities.
 - focuses on black-box testing approach that hackers normally operate- blackhat
 - dast identifies vulnerabilities by trying to exploit them via a manual or automated approach
@@ -1098,7 +1098,7 @@ first step in code review is to search for - insecure functions in use
 #manual vs automated dast
 - manual dast: a security engineer or appropriate personnel in an org manually carries out the test for vulnerabilities on a web app
 - automated dast: an approriate personnel uses a dast tool to scan a web app for vulnerabilites.
-- from experience or best practice is to combine these methods of dast in a company.
+- from experience or best practice, it is to combine these methods of dast in a company.
 - dast is best used in the testing phase of sdlc
     - dev: plan ---> code ---> ---> build ---> test (dast):---->  ops:-----> release ---> deploy ---> operate ---> monitor --->
 - automated dast is respected and used for its fast outcome- it does testing speedily and produces result.
@@ -1117,7 +1117,7 @@ first step in code review is to search for - insecure functions in use
 - code coverage might be limited. it does cover all areas required to be tested. focuses on some specific vulnerabilites
 - may not be the best to find some vulnerabilities compared to sast
 - some apps may be difficult to be crawled i.e harder for dast tools to traverse some apps
-- may be limited in recommending how to remediate some vulnerabilities since thy are not familiar with the underlying technologies
+- may be limited in recommending how to remediate some vulnerabilities since they are not familiar with the underlying technologies
 - time consuming i.e some dast tools take time to finish
 - a running app is required to carry out testing
 - dast tool is certainly performing at least 2 of the below tasks against a target website:
@@ -1258,7 +1258,7 @@ first step in code review is to search for - insecure functions in use
 - zap should be able to detect the rest of the vulnerabilities that were not detected before setting up authenticated credentials.
 - select "start scan" button at the bottom
 - to validate if new resources have been added, select " added nodes" tab
-- if "logout" is ine of the resources discovered, you may not want zap to mess with this. so you can exclude it. follow the below steps:
+- if "logout" is one of the resources discovered, you may not want zap to mess with this. so you can exclude it. follow the below steps:
     - right click on the logout resource script
     - select " exclude from context"
     - this way, you have prevented zap from logging out itself
@@ -1293,7 +1293,7 @@ first step in code review is to search for - insecure functions in use
     - graphql
         - there will be a "paths" defined in the api, where every single endpoint is defined
         - a list of parameters will be defined inside endpoints too.
-        - e.g you call make calls to a particular path/endpoint via "get" method or "post"
+        - e.g you can make calls to a particular path/endpoint via "get" method or "post"
         - apis are usually hidden or protected from external attacks
         - to use zap for api spidering, follow the below steps:
             - you will have to import the file that contains the endpoints or url
@@ -1316,11 +1316,11 @@ first step in code review is to search for - insecure functions in use
     - run this command manually or add it to the pipeline to run to install zap2docker:
         - docker pull owasp/zap2docker-stable
         - use one of the below scan scripts to run whatever scan profile you prefer:
-            - baseline scan: zap spidering the target website for a max of 1 min. no active san is performed. can do an ajax spider optionally
+            - baseline scan: zap spidering the target website for a max of 1 min. no active scan is performed. can do an ajax spider optionally
                 - "docker run -t owasp/zap2docker-stable zap-baseline.py -t https://www.example.com"
             - full scan: zap running spider unlimitedly. followed by an active scan
                 - docker run -t owasp/zap2docker-stable zap-full-scan.py -t https://www.example.com
-            - api scan: zap performing an active san on an api. provide a url to an api description file
+            - api scan: zap performing an active scan on an api. provide a url to an api description file
                 - "docker run -t owasp/zap2docker-stable zap-api-scan.py -t https://www.example.com/swagger.json -f openapi"
                 - the flag "-j" can be added to perform an ajax scan on the baseline and full scans
             - building zap2docker into the pipeline, can be done by adding a stage after the build stage that will run the scan i.e
@@ -1333,12 +1333,12 @@ first step in code review is to search for - insecure functions in use
 ####containerisation
 - docker: docker engine is an api that runs on the host os
 - docker engine commmunicates between the os and the containers in order to access the hardware (cpu, ram, networking and disk)
-- docker engine allows to do things like:
+- docker engine allows you to do things like:
     - connect containers together
     - export and import apps (images)
     - transfer files between os and containers
 - multiple containers can be built as a part of a group and allow containers to communicate with each other.
-- one container running a web server can communicate with another container running the databse
+- one container running a web server can communicate with another container running the database
 - docker is agile, convenient and extensive means of deploying an applications
 - docker is open source
 - docker is compatible: it is compatible with windows, linux and mac os.
@@ -1389,9 +1389,9 @@ first step in code review is to search for - insecure functions in use
     - FROM: it sets a build stage for the container and set the base image (os). "all dockerfiles must start with this" e.g "FROM ubuntu"
     - "RUN": it executes the commands in the container within a layer e.g "RUN whoami"
     - "COPY": it copies files from the local system to working directory in the container e.g "COPY /home/cmnatic/myfolder/app/"
-    - "WORKDIR": it sets thw working directory of the container. same as cd in linux e.g "WORKDIR /(sets to the root of the filesystem in the container)"
+    - "WORKDIR": it sets the working directory of the container. same as cd in linux e.g "WORKDIR /(sets to the root of the filesystem in the container)"
     - "CMD": it determines what command is run when the container starts i.e used to start a system or application e.g "CMD /bin/sh -c script.sh"
-    - "EXPOSE": it indicates what port the should be published for the container when running it e.g "EXPOSE 80" i.e docker run -p 80:80
+    - "EXPOSE": it indicates what port should be published for the container when running it e.g "EXPOSE 80" i.e docker run -p 80:80
     - examples:
         - use the “Ubuntu” (version 22.04) os as the base
         - set the working directory to be the root of the container
@@ -1456,7 +1456,7 @@ first step in code review is to search for - insecure functions in use
 - use docker compose to spin up a website running on apache with customers data stored in mysql database
 ######docker-compose file structure
 - version: to identify the version of docker-compose being used e.g '3.4'
-- services: the indicates the beginning of the containers to be managed e.g services:
+- services: this indicates the beginning of the containers to be managed e.g services:
 - name: where you define the container and its configurations. enter the name of the container to be defined e.g webserver or database
 - build: it defines the directory containing the dockerfile for the container/service e.g ./webserver
 - ports: ports to be exposed in the container e.g 80:80
