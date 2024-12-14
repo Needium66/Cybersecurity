@@ -13,7 +13,7 @@ Writing code to automate tasks
 #How to manage security risks
 Security domains
 Frameworks and controls
-Common secutrity threats, risks and vulnerabilities
+Common security threats, risks and vulnerabilities
 Tools used by security analysts
 
 #CISO Google Fiber
@@ -170,7 +170,7 @@ Designed to reduce specific security riskse.g an org conducting a training for i
 the risk of data breaches. As a SA, you may use a tool to track which employee has completed the training
 #C.I.A Triage
 Foundational model that helps inform how organizations consider risks when setting up systems and security policies.
-Confidentiality: Only authorized users can access specific data or assets. e.g there should be a policy stating who shoul and should not
+Confidentiality: Only authorized users can access specific data or assets. e.g there should be a policy stating who should and should not
 have access to a data should be in place.
 Integrity: Means the data is correct, authentic and reliable.. use encryption to protect data integrity
 Availaibility: Data is accessible to those who are authorized to access it.
@@ -293,7 +293,7 @@ Authentication and
 Authroization
 Encryption: Is the process of converting data from a readable format to an encoded format. converting data from plain text
 to cypher text.
-Authentication: Is the process of verifyin who someone or something is. e.g login in with your username and password into a website
+Authentication: Is the process of verifying who someone or something is. e.g login in with your username and password into a website
 One of social engineering attack that can exploit authentication is vishing- the exploitation of electronic voice communication
 to obtain sensitive information or to impersonate a known source.
 Authorization: The concept of granting access to specific resources within a system. Access a deep web only if you are a federal employee.
@@ -340,7 +340,7 @@ Purpose of internal security audits
 
 #Common elements of internal audits
 1. Establishing the scope and goals
-2. Conducting a risk assessment of the organization's assets- often consucted by managers or other stakeholders
+2. Conducting a risk assessment of the organization's assets- often conducted by managers or other stakeholders
 3. Completing a controls assessment
 4. Assessment compliance- e.g compliance with GDPR if you run your business in the EU
 5. Communicating results
@@ -363,7 +363,7 @@ What controls and compliance regulations need to be implemented?
 
 #Controls division
 Administrative e.g passowrd policies
-Technicale.g intrusion detection systems, encryption
+Technical e.g intrusion detection systems, encryption
 Physical e.g surveilance camera, locks
 
 #Stakeholder communication
@@ -435,10 +435,10 @@ Router: It is device that connects multiple networks to one and another. e.g pas
 It leaves the computer and goes to the router, which finds the network address and forwards the data to the intended router and finally
 the receiving router directs the info to the tablet
 Modem: A device that connects your router to the internet and brings internet access to LAN. computer sending info from one location to
-a computer in another location- computer to a router, through a modem, to the internet. to the reciving router, and then to the computer
+a computer in another location- computer to a router, through a modem, to the internet. to the receiving router, and then to the computer
 #Virtualization tools: 
 Pieces of software that performs network operations. They replace the physical tools and provided by cloud service providers
-AWS Transit Gateway is used a network hub in AWS
+AWS Transit Gateway is used as a network hub in AWS
 A data packet will have a Header e.g IP address, Body e.g MAC(Media Address Control) address and Footer e.g Protocol number i.e HEADER+BODY+FOOTER
 #TCP/IP Model
 TCP is an internet communication protocol that allows two devices to form a connection and stream data.
@@ -453,7 +453,7 @@ and switches that directs data to its destination
 Internet layer: Layer 2- it is where IP addresses are attached to data packets to indicate location of the sender or receiver. It determines
 whether data will be sent to e.g LAN or remote network for example.
 Transport layer:  It controls the flow of the traffic across a network
-Application layer: It determines how the data packets will interact receiving devcies e.g file transmers, email.
+Application layer: It determines how the data packets will interact receiving devcies e.g file transfers, email.
 
 #Network Protocols
 A set of rules used by two or more devices on a network to describe the order of delivery and the structure of the data. e.g
@@ -510,7 +510,7 @@ other servers. It is a dedicated SERVER that is between the INTERNET and the res
 different from all the private network. It hides the private IP address from malicious act from the internet and adds a layer of security.
 It can also be used to block websites that you don't want anybody from your organization to have access to. It uses temporary memory.
 Types of proxy service:
-1) Forward proxy server- regualtes and restrict's access to the internet. Goal is to hide IP address and approve all outgoing requests.
+1) Forward proxy server- regulates and restrict's access to the internet. Goal is to hide IP address and approve all outgoing requests.
 2) Reverse Proxy Server-regulates and restricts internet access to an internal server. Goal is to accept traffic from external service, approves it
 and forward it to internal server. Used for protecting web servers with confidential info.
 3) Email proxy server- it filter's spam email by verifying whether a sender's address is forged, It reduces phishing for example.
@@ -519,12 +519,12 @@ Common network intrusion attacks:
 Malware
 Spoofing: It is another type of network attack, when an attacker changes the SOURCE IP of a data packet to impersonate an authorized user
 and gain access to a network. Hackers pretend to be what they are not so that can communicate over the network with the target Some common
-IP sppofing attacks are-
+IP spoofing attacks are-
 On-path attack: An attacker will place himself or herself in the middle of an authrorized connections and alters or intercepts data in transit.
 e.g the attacker gains access and put himself between two devices (web server and web browser). Then, they sniff the packet info and learn
 about the IP and MAC addresses of the two devices.
-Replay attack: A network performed when a malicious actor INTERCEPTS a data packet in transit and DELAYS IT or REPEAT IT another time.
-Smurf attack: A network attack performed when an attacker SNIFFS an AUTHORIZED USER'S IP ADRESS and FLOOD it with PACKETS. It is combination
+Replay attack: A network attack performed when a malicious actor INTERCEPTS a data packet in transit and DELAYS IT or REPEAT IT another time.
+Smurf attack: A network attack performed when an attacker SNIFFS an AUTHORIZED USER'S IP ADDRESS and FLOOD it with PACKETS. It is combination
 of DDoS attack and IP spoofing to bring down the servers and the entire network.
 How to protect your network from packet spoofing attack:
 Implement encryption of data always
@@ -635,11 +635,11 @@ You can only protect things that you account for.
 Asset Management: The process of tracking assets and the risks that affect them.
 All security plan revolves around Asset management.
 You need to be able to rate your assets-
-Asset classification: The practice of labelling assets based on sensitivity and importance to an organization. Bais that most companies 
+Asset classification: The practice of labelling assets based on sensitivity and importance to an organization. Basis that most companies 
 follow to classify their assets include- PUBLIC, INTERNAL ONLY, CONFIDENTIAL and RESTRICTED.
 Public- can be shared with anyone
-Internal-only- can be shared ONLY with people int the organization.
-Confidential- can only be shared by people working only a specific project.\
+Internal-only- can be shared ONLY with people in the organization.
+Confidential- can only be shared by people working only a specific project.
 RESTRICTED- HIGHLY SENSITIVE AND NEED TO BE PROTECTED e.g IP, FINANCIAL INFO ETC.
 
 Security teams PROTECT data in 3 different STATE:
@@ -662,7 +662,7 @@ Standards
 Procedures
 #Policies
 A policy is a set of rules that REDUCES risk or PROTECT information. It identifies the scope, objectives and purpose of a security plan.
-e.g New hieres sign Acceptable Use Policy (AUP)
+e.g New hires sign Acceptable Use Policy (AUP)
 #sTANDARDS
 Tactical part of security planning. References that inform how to set policies. e.g companies using password management standard identified
 in special publication, 800-63B
@@ -674,11 +674,11 @@ Compliance:
 It is the process of ADHERING to internal STANDARDS and EXTERNAL REGULATIONS. Maintaining trust, reputation, safety and integrity are what 
 are important for COMPLIANCE. fines, lawsuit and regulations are what make compliance important.
 Focus of our compliance will be based on NIST-CSF:
-One of the roles of NIST is to openly provide organization with set of frameworksand security standards that REFLECT key security regulations
+One of the roles of NIST is to openly provide organization with set of frameworks and security standards that REFLECT key security regulations
 Components of NIST-CSF are 3:
 Core- simplified version of FUNCTIONS, or DUTIES, of a security plan. It identifies 5 broad functions of NIST-CSF
 1. Identify(asset management related), Protect, Detect, Respond, Recover (IPDRR)
-Tiers- It provides security teams a way to MEASURE performance of each of the 5 fucntions of Core. From levels 1 -5. Level 1 means it is
+Tiers- It provides security teams a way to MEASURE performance of each of the 5 functions of Core. From levels 1 -5. Level 1 means it is
 PASSIVE and Level 4 means it is ADAPTIVE.
 Profiles: Final components of CSF. It provides INSIGHT into the CURRENT STATE of a security plan.
 
@@ -703,7 +703,7 @@ Asymmetric encryption: Involves use of a public and private key pair for encrypt
 any reource, server or anybody to have access to data it is encrypting, private key is only accessible to the user or resource to decrypt
 whatever data that is encrypted. It slows down process
 Symmetric encryption: The use of SINGLE secret key to exchange information. It is a faster process.
-2. Establish trust using a system of digital certifcates.
+2. Establish trust using a system of digital certificates.
 
 Hash function: An algorithm that PRODUCES a code that can't be DECRYPTED. It is a one-way key unlike asymmetric and symmetric encryption.
 It produces unique identifier instead. Find the hash values of files or applications and comparing them against known malicious files.
@@ -746,7 +746,7 @@ GIANT STONE WALLS, WATCH TOWERS. Adopted in cybersecurity using a 5 Layer Design
 that protects this layer.
 4. Application Layer- Interfaces that are used to interact with technology. Security measures are PROGRAMMED as part of an application
 e.g MFA
-5. Data Layer- Critical data layer e.g PII. Asset classification is a SECURITY CONTROLthat is very important in this layer.
+5. Data Layer- Critical data layer e.g PII. Asset classification is a SECURITY CONTROL that is very important in this layer.
 A lot of orgs design their SECURITY CONTROL through this model-DID
 Explosure: It is a mistake that can be EXPLOITED by a threat.
 One of the most popular libraries of exposure is a CVE LIST-
@@ -806,7 +806,7 @@ Vishing: The exploitation of electronic voice communication to obtain sensitive 
 Types of malware:
 Virus
 Worm: Malware that can DUPLICATE and SPREAD itself across systems on its own
-Trojan: Malware thatlooks like a legitimate file or program.
+Trojan: Malware that looks like a legitimate file or program.
 Ransomware: Type of malicious attack where attackers encrypt an organization's data and demand payment to restore access
 Spyware: Malware that is used to gather and sell information without consent.
 
@@ -833,7 +833,7 @@ get INFO about the cookies and sessions.
 Stored XSS Attack: Not hidden- A MALICIOUS SCRIPT is directly INJECTED into a SERVER. e.g An attacker will target elements of a site
 that are served to a user. e.g targets the IMAGE and SITE that are loaded for the visit.
 DOM Based XSS Attack: Document Object Model- It is basically the source code of a website. An instance when a MALICIOUS SCRIPT exists in the
-WEBPAGE a BROWSER loads. A malicipus script can be seen in the URL of a DOM-based XSS. Criminals will change the PARAMETERS that are in a url e.g
+WEBPAGE a BROWSER loads. A malicious script can be seen in the URL of a DOM-based XSS. Criminals will change the PARAMETERS that are in a url e.g
 mywebsite.com/mything?theme=color to mywebsite.com/mything?theme=<script>alert(1);</script> (this hidding malicious java script in an html tag)
 ALL THESE ARE CROSS-SITE SCRIPTING.
 
@@ -897,7 +897,7 @@ incident response lifecycle
 incident handler's journal
 incident response teams
 documentation
-incident respnse lifecycle framework: using NIST CSF - 5 STEPS. This will focus on the last 3 steps
+incident response lifecycle framework: using NIST CSF - 5 STEPS. This will focus on the last 3 steps
 Detect
 Respond
 Recover
@@ -922,7 +922,7 @@ and response.
 Security Analyst- He will determine the critical rating of an incident. Some incidents can be immediately REMEDIATED and does not need  
 require escalation.
 Technical Lead- Provides technical leadership by guiding security incidents through their lifecycle
-Incident coordinator-Tracks and manages the actvities of ++                                  bbbbthe CSIRTs and other teams involved in the CSIRTs. Update teams on the status
+Incident coordinator-Tracks and manages the actvities of the CSIRTs and other teams involved in the CSIRTs. Update teams on the status
 of incident responses. Can be Ops Lead in some other organizations.
 CSIRT can be Incident Handling Team(IHT) or Security Incident Response Team (SIRT) in some other organizations.
 #Incident response plan
@@ -930,7 +930,7 @@ Elements of a security plan are: Policies, Standards and Procedures
 Incident response procedures
 System information- network diagram, data flow, asset inventory information and other documents.
 Other documents- contact list, forms and templates.
-You can do tzbletops or simulations to review and test
+You can do tabletops or simulations to review and test
 Tools that SA uses:
 Detection and management tools
 Documentation tools                                                                                                                                                                    
@@ -972,15 +972,12 @@ Detect and stop the exfiltration
 Ways:
 Block the IP address/es of the attacker using firewall rules
 Data is known to be sent as packets. Packets contain the below
-Components of a packet:
-
-
-
+#Components of a packet:
 Header- it contains the packet of the source and destination address
 Payload- has the content of a packet
 Footer- end of a packet
 Use a Network Protocol Analyzer(Packer sniffer): A tool designed to capture and analyze data traffic within a network.
-Packet Capture(P-Cap): A file containing data packets intercepted from ana interface network.
+Packet Capture(P-Cap): A file containing data packets intercepted from an interface network.
 Use TCPDUMP and WIRESHARK to analyze network
 Analyze IP headers for packets transmission: The way the layers are structured
 1. Application
@@ -996,7 +993,7 @@ Next 3 Fields- Identification, Flags and Fragment Offset- deal with information 
 into chunks and get transmitted). These 3 fields find out if fragmentations had been used
 Time to Live-it determines how long a packet can live before it gets DROPPED
 Protocol- It provides a VALUE that corresponds to protocol e.g TCP is represented by 6
-Header checksum-it stores a value called a checksum, which is used to DTEREMINE if any error has occured in the header.
+Header checksum-it stores a value called a checksum, which is used to DETERMINE if any error has occured in the header.
 Source address- specifies the source IP address
 Destination address- Specifies the destination IP address.
 Options- It is not really required. Commonly used for network troubleshooting, rather than network traffic. If it is used, the header length
@@ -1007,7 +1004,7 @@ MONITOR traffic like TCP,IP,ICMP, and many more. It is a CLI. With it you can FI
 to capture data packets: "sudo tcpdump -i any -v -c 1"
 sudo - given tcpdump permission since it does not have it on that machine
 tcpdump - to start tcpdump
--i - to indicate inteface we want to SNIFF traffic from
+-i - to indicate interface we want to SNIFF traffic from
 -v - is for verbose to indicate detailed packet info
 -c - stands for count which specifies how many packets tcpdump will CAPTURE- 1 is specified here.
 Output: tcpdump is listening on any available tools and given us additional info e.g capture size
@@ -1029,12 +1026,12 @@ Challenges of detection:
 It is difficult to DETECT everything
 How volumes of alerts- misconfigured alert rules can cause this or actors taking advantage of a new vulnerability
 Documentation is important:
-to ensures TRANSPARENCY- Can be used as a source of truth for insurance claims for example.
+to ensure TRANSPARENCY- Can be used as a source of truth for insurance claims for example.
 Provides STANDARADIZATION too e.g if you have policies, playbooks
 Evidence is important- tracking what has occured: You can use CHAIN OF CUSTODY
-CHAIN OF CUSTODY s used in digital forensic e.g if there is a compromised hard drive, if an SA detected this, after documenting what
+CHAIN OF CUSTODY is used in digital forensic e.g if there is a compromised hard drive, if an SA detected this, after documenting what
 happened and transfers it to another SA, it needs to be logged in COC, and whenever it gets transferred to another person too, needs to
-be logged. paper trail of who handled the eveidence, where, and when did they do that
+be logged. paper trail of who handled the evidence, where, and when did they do that
                                  Description of Evidence
 Item     Quantity    Description of item(location, hostname, MAC address, IP address)
 
@@ -1059,7 +1056,7 @@ requires immediate response. Higher priority than an employee receiving phishing
 TRIAGE PROCESS:
 Receive and access- receive and access whether an alert is false positive or true positive, known issue or new, 
 Assign priority
-Collect and analyse- investigate and analyse whether there is any eveidence associated with it. e.g system logs
+Collect and analyse- investigate and analyse whether there is any evidence associated with it. e.g system logs
 Failed login attempt- questions to ask yourself
 1. Is there anything out of ordinary
 2. Are there multiple failed login attempts?
@@ -1069,7 +1066,7 @@ Failed login attempt- questions to ask yourself
 #CONATAINMENT, ERADICATION AND RECOVERY- THIRD PHASE - RESPOND AND RECOVER PHASE.
 Containment is the act of LIMITING and PREVENTING additional damage caused by an incident. e.g
 Containment strategy for a malware attack:
-1. Isolate the affected system by DISCONNECTING IT from the NETWORK. tHIS WILL prevent the MALWARE from spreading to other parts of the system.
+1. Isolate the affected system by DISCONNECTING IT from the NETWORK. THIS WILL prevent the MALWARE from spreading to other parts of the system.
 Eradication is COMPLETE REMOVAL of the incident elements from all affected systems. examples of eradication-
 1. Perform vulnerability tests
 2. Update patches
@@ -1097,8 +1094,8 @@ Location
 Action
 Names
 How do log gets collected?:
-Tools like log forwarders collect logs from various sourcesand automatically forward them to a CENTRAL SOURCE for storage.
-Types of nlogs
+Tools like log forwarders collect logs from various sources and automatically forward them to a CENTRAL SOURCE for storage.
+Types of logs
 Network logs: Generated by devices like routers, switches, proxies and firewalls
 System Logs: Generated by OS
 Application Logs: logs related to software applications
@@ -1117,12 +1114,12 @@ structured data- CONTAINS ADDITIONAL INFO WITH KEY VALUE PAIRS e.g eventsource a
 a message- message for the event
 2. JavaScript Object Notation(JSON)- It also uses key value pairs to structure data.
 Alert is the key, value is malware
-3. exTensible Markup Language (XML)- is a language used for STROING and TRANSMITTING. It uses tags and other keys to structure data e.g
+3. exTensible Markup Language (XML)- is a language used for STORING and TRANSMITTING. It uses tags and other keys to structure data e.g
 first name, last name
 employee id
 date joined
 all seperated with arrows
-4. Common Seperated Values (CSV)- Is a format, that uses sperators like commas to seperate values.
+4. Common Seperated Values (CSV)- Is a format, that uses seperators like commas to seperate values.
 #TELEMETRY
 Endpoint: Any device connected on a network e.g laptop, tablet, smart phone etc
 Host-base Intrusion Detection System- That is what we use cybereason for- Installed as an agent on a single-host. To monitor endpoint
@@ -1155,7 +1152,7 @@ Examples of search-
 failed login with eventid in a specified day
 Splunk uses Search Processing Language
 buttercups error OR fail*, select a time range
-right click on one of the outputs to exclude it, it will show what is executed in the serach bar.
+right click on one of the outputs to exclude it, it will show what is executed in the search bar.
 Chronicle uses the YARA-L language to DEFINE rules for detection. Using it, you can search for hostname, domain, IP, URL, email, username
 or file hash.
 Types of search:
@@ -1178,11 +1175,11 @@ if failed_attempts > 5:
     print ("Account locked")
 
 Print if the OS matches OS 2 --MATCHES, if the condition evaluates to 2, it print updates now. If it is false, it will not be printed
-The indentaion means it depends on the top, to be executed.
+The indentation means it depends on the top, to be executed.
 operating_system = "OS 2"
 if operating_system == "OS 2":
     print("Updates needed")
-Incorportaing "else" if the if statement is false or fails
+Incorporating "else" if the if statement is false or fails
 operating_system = "OS 3"
 if operating_system = "OS 3":
     print("Updates needed")
@@ -1419,7 +1416,7 @@ User
 Group
 Other
 #full permission
-drwxrwxrwx - d indicates the file type(directory), if it contains "-", it means it is a regualr file. the 2nd,3rd nand 4th characters
+drwxrwxrwx - d indicates the file type(directory), if it contains "-", it means it is a regualr file. the 2nd,3rd and 4th characters
 indicate the permissions for the user(read,write and execute), if one of the permissions was missing, it will have "-" and that means no 
 permission for that. the 5th,6th and 7th indicate permissions for the next owner type-group(read, write and execute). the 8th,9th and 10th
 characters- indicate permission for the last owner group(others.)

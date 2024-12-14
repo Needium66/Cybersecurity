@@ -27,7 +27,7 @@ AWS CAF (Cloud Adoption Framework)
 You need detective and response baselines
 You need to have an alerting system in place, that when triggers, you can INVESTIGATE any deviations from the baseline set.
 AWS Security Incident Response Guide:https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-security-incident-response-guide/aws-security-incident-response-guide.pdf#aws-security-incident-response-guide
-Build your security controls together to have an effective secuirty control system
+Build your security controls together to have an effective security control system
 Threat Modeling:
 What are we trying to protect?
 What are the threats?
