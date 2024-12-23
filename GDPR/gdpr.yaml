@@ -1,0 +1,93 @@
+##########################################################
+#    GDPR for CISSP and CSSP
+##########################################################
+
+#Consent
+#For personal data to be processed by a coy or individual, there are 6 bases or factors that can allow it
+1. Consent: It needs to be consented to by the data subject or through legal backing
+2. Contract: If there is a contract between a data subject that allows it.
+3. Legal Obligations: Can be granted by legal backing
+4. Vital interest of the data subject: Can be allowed if it is in the interest of the data subject
+5. Public interest: Can be allowed if it is in public interest.
+6. Legitimate: Can be allowed if it is legitimate.
+#Consent
+For consent, it must be freely given, unambiguous, specific and informed. Any form of pressure or influence to get it, nullifies consent.
+Function Creep: Maligned use of data and puprose of processing it, leading to invalidation of consent.
+Consent can either be granted by someone from age 16 and above. However, anyone below 16 needs additional consent from parents or guardians
+It can be reduced to 13 by ember states.
+
+#Data Protection Officer
+Any company that processes personal sensitive data on a large scale or more far reaching data processing that for the rights of data
+subject, needs to appoint a Data Protection Officer (DPO). French data authority (CNIL) Not compulsory for some member states.
+Duties of DPO:
+1. Working towards compliance with all data protection laws.
+2. Monitoring specific processes e.g awareness and training of employees, data protection impact assessments.
+3. Collaborating with supervisory activities
+
+#Email Marketing
+News letter mailings and online marketing to data subject must be CONSENTED to, especially when personal data is invlved
+
+#Encryption
+With encryption of data, coys can reduce the probability of data breach and fines in the event of data breach.
+Best way to protect data during transfer and to secure stored personal data.
+It also limits the risk of abuse in the coy, since only authorized user with the right key can access the data
+
+#Fines and Penalties
+Internal infringements- failure to take measures to mitigate the damage or lack of collaborations with authorities can increase the fine
+Severe penalties can be up to 20 million euros or 4% of global turnover of preceding fiscal year
+
+#Personal Data
+Personal data are any info which are related to identified or identifiable natural person.
+identifer: e.g name
+identification number
+location data
+online identifier
+special characteristics: e.g
+physical
+physiological
+genetic
+mental
+commercial
+cultural
+social identity
+other assigned data to people: e.g
+telephone
+credit card
+personal number of a person
+account data
+plate number
+appearance
+address
+ALL THE ABOVE ARE PERSONAL DATA
+
+The sensitive personal data include:
+genetic
+biometric
+health data
+racial and ethnic group
+political opinions
+religious
+ideological convictions
+trade union membership.
+
+#Privacy by Design and Privacy by DEfault
+Privacy by Design means DATA PROTECTION THROUGH TECHNOLOGY DESIGN. Integrating data protection in the technology used for data processing
+Recognized certification can indicate to authorities that a coy is complying to Privacy by Design.
+
+#Privacy Impact Assessment or Data Privacy Impact Assessment
+It means the Controller carrying out an impact assessment and document it before conducting the actual data processing.
+A DPIA should be conducted whenever data processing could result to high risk to the rights and freedom of natural persons.
+There are Catalogue of 10 criteria: 
+scoring/profiling
+systematic monitoring
+processing of special personal data
+use of newer technogies or biometric procedures
+transfer of data outside EU/EEC
+data processing hindering people from exercising their rights.
+It should be repeated after 3 years.
+
+#Processing
+A controller can process data. A controller can assign a processor to process data too, with documented instructions from the controller
+There needs to be a contract and it needs to contain personal data to be processed.
+
+
