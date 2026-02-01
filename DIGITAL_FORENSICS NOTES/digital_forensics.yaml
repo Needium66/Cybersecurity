@@ -6,7 +6,7 @@
 ####introduction
 # what is digital investigation
 # why do we need digital investigation?
-- therefore to be able to incorporate digitization in investigating crimes that are committed involving devices
+- Concept that involves capacity to be able to incorporate Digitization in Investigating Crimes that are Committed involving Devices
 ###crime
 #what is a crime?
 - crime can be defined into 2 main groups
@@ -38,11 +38,11 @@
   - he was arrested using digital evidence: he used a floppy disk in the 90s
   - he sent a document to a tv station
   - the police were able to retrieve the disk and search for evidences on the floppy disk; the author, location, modification, date 
-  metadataetc(properties)
-  - they found a deleted word document file and recover it, author is dennis, traced a microsoft word document to a church
+  metadata etc(properties)
+  - they found a deleted word document file and recover it, author is Dennis, traced a microsoft word document to a church
   - since the disk/ file is digital, it becomes a digital evidence
 
-###locard's exchange principle
+###Locard's Exchange Principle
 - every contact leaves a trace
 - i.e there is always a trace of the suspect at every crime scene. because he interacts with the environment (crime scene) and leaves or
 exchange  a trace e.g fingerprint, footprint, hair, piece of clothe (physical)
@@ -74,7 +74,7 @@ or not.
     - document investigation for replications etc
 
 #digital forensics
-- usage of science  or technology in the investigation and establishments of facts or evidence in a court of law.
+- usage of Science  or Technology in the Investigation and Establishments of Facts or Evidence in a court of law.
 
 #digital evidence
 - is any type of data that is saved or transferred using a digital device to aid the investigation
@@ -87,7 +87,7 @@ or not.
 #simulation
 - crime: a murder is committed
 - evidence: we have the victim's phone e.g sms
-- what type of crime? it is physical crime, siince the victim was murdered
+- what type of crime? it is physical crime, since the victim was murdered
 - we have digital evidence from the phone to aid in the investigation
 - use the steps outlined above
     - the crime to investigate: murder using sms
@@ -153,11 +153,11 @@ or not.
   #you examine the evidences; you analyse the evidences; you report the evidences
   #the 7 steps of investigating a digital crime is below
   - identification/assessment: is it stealing or murder or breakdown of system. just knowing what kind of crime it is
-  - walk-through or initial documentation: learning more about what kind of crime it is. inestigating the crime scene to know whether
+  - walk-through or initial documentation: learning more about what kind of crime it is. investigating the crime scene to know whether
   - the crime is physical or what is available around the crime scene and document everything, location, device, camera etc. document
   - before touching. who are the people at the crime scene
   - collection/acquisition: it involves collection of devices. collecting devices e.g laptops, phones, and other evidences associated with
-  - the crime. is there a unique identification for the device etc
+  - the crime. is there a unique identification for the device? etc
   - preservation: keeping the data associated, device etc as intact as possible. e.g no file was deleted or added to a laptop collected from
   - a crime scene. need to preserve the exact position or state of data associated.
   - examination: do investigation and analysis next
@@ -165,7 +165,7 @@ or not.
     - scientific method:
       - asking questions:
       - hypothesis:
-      - prove or disprove hypothesis: i.e investigation using digital eveidence to proof or disproof the hypothesis
+      - prove or disprove hypothesis: i.e investigation using digital evidence to proof or disproof the hypothesis
       - documentation & reporting:
   - you will be needing to examine( step 5) by asking questions through the scientific method.
   - you will be needing to analyse by investigating using digital evidence to proof and disproof the hypothesis
@@ -194,8 +194,8 @@ or not.
   - examination:
   - analysis:
     - start asking questions- maybe someone entered the office during this period and start developing hypothesis; who are the people
-    - that have access to the office. who are the people that don't have access to the office. is there a camera? who did we see access
-    - ing the office etc. can we check everybody's personal effects? can we check everybody's cars, bags etc
+    - that have access to the office?. who are the people that don't have access to the office?. is there a camera? who did we see access
+    - ing the office etc?. can we check everybody's personal effects? can we check everybody's cars, bags? etc
   - reporting: document everything and present it.
 
   #major phases in the investiagtion of a digital crime

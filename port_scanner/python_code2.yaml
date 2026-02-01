@@ -18,7 +18,7 @@
 #importing
 print("importing is important for scripting:")
 
-import sys #system functions and paramters
+import sys #system functions and parameters
 
 from datetime import datetime
 print(datetime.now())
